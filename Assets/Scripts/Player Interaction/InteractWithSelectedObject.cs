@@ -43,13 +43,8 @@ public class InteractWithSelectedObject : MonoBehaviour
     {
         if (objectToInteractWith != null && Input.GetButtonDown("Interact"))
         {
-            objectToInteractWith.Interact();
+            // Passes root gameObject (Player) as interacting agent.
+            objectToInteractWith.Interact(transform.root.gameObject);
         }
-#if UNITY_EDITOR
-        else if (objectToInteractWith == null && Input.GetButtonDown("Interact"))
-        {
-            Debug.Log("No Interactable detected");
-        }
-#endif
     }
 }
