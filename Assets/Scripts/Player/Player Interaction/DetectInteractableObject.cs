@@ -184,6 +184,8 @@ public class DetectInteractableObject : MonoBehaviour
         Vector3 dirFromPlayer = toCheck.transform.position - this.transform.position;
         RaycastHit hit; //holder for the collided object
         Physics.Raycast(this.transform.position, dirFromPlayer, out hit); // begin raycast from the player camera center
+        //Hit.collider is null when a hit object has the same local position as the gameobject this script is attached to.
+        //This causes a null reference exception. (Might happen in some other cases too).
         if (toCheck == hit.collider.gameObject) // check if it hit the object to check
             toReturn = false; // not blocked
         else
