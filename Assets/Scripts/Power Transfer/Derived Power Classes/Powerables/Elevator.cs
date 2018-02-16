@@ -34,6 +34,7 @@ public class Elevator : PowerableObject
 
     private void Descend()
     {
-        myAnimator.SetTrigger("Descend");
+        //Elevator descends
+        myAnimator.SetBool("ascend", false);
     }
 }
