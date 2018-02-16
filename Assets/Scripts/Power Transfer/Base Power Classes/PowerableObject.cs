@@ -40,6 +40,18 @@ public class PowerableObject : MonoBehaviour, IPowerable
     {
         if (startsOn) PowerOn();
         else PowerOff();
+
+        EngineSequenceManager.OnShutdown += OnShutdownHandler;
+    }
+
+    /// <summary>
+    /// Shuts down the power on every powerable on the ship except for things that should retain
+    /// power after the generator shutdown.
+    /// </summary>
+    private void OnShutdownHandler()
+    {
+        if (!retainsPowerAfterGeneratorShutdown) PowerOff();
+        else PowerOn();
     }
 
     /// <summary>

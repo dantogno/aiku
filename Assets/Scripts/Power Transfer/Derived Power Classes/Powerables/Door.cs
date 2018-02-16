@@ -8,14 +8,25 @@ using UnityEngine;
 /// </summary>
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 
 public class Door : PowerableObject
 {
+    [Tooltip("The sound the door makes when it opens")]
+    [SerializeField]
+    private AudioClip openClip;
+
+    [Tooltip("The sound the door makes when it opens")]
+    [SerializeField]
+    private AudioClip closeClip;
+
     [Tooltip("If this box is checked, the door will not open.")]
     [SerializeField]
     private bool locked = false;
 
     private Animator myAnimator;
+
+    private AudioSource myAudioSource;
 
     private bool open = false;
 
@@ -24,6 +35,7 @@ public class Door : PowerableObject
         base.Start();
 
         myAnimator = GetComponent<Animator>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -56,13 +68,27 @@ public class Door : PowerableObject
     private void OpenDoor()
     {
         myAnimator.SetTrigger("Open");
+        PlayOpenSound();
         open = true;
     }
 
     private void CloseDoor()
     {
         myAnimator.SetTrigger("Close");
+        PlayClosedSound();
         open = false;
+    }
+
+    private void PlayOpenSound()
+    {
+        myAudioSource.clip = openClip;
+        myAudioSource.Play();
+    }
+
+    private void PlayClosedSound()
+    {
+        myAudioSource.clip = closeClip;
+        myAudioSource.Play();
     }
 
     public void UnlockDoor()
