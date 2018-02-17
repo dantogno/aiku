@@ -11,9 +11,14 @@ public class Task : MonoBehaviour{
     protected bool active = false;
 
     [SerializeField]
+    [Tooltip("Description of the task")]
     protected string objectiveText;
-
     public string ObjectiveText { get { return objectiveText; } protected set { objectiveText = value; } }
+
+    [SerializeField]
+    [Tooltip("NavNode nearest to where the task can be completed")]
+    protected NavNode objectiveNode;
+    public NavNode ObjectiveNode { get { return objectiveNode; } protected set { objectiveNode = value; } }
 
     /// <summary>
     /// true if the player has completed the task
