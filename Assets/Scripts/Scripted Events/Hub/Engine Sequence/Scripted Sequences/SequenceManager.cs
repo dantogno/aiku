@@ -9,6 +9,10 @@ using UnityEngine.UI;
 /// </summary>
 public class SequenceManager : MonoBehaviour {
 
+    [SerializeField]
+    [Tooltip("GPSDisplay attached to the player, used to navigate to objectives")]
+    private GPSDisplay gps;
+
     //list of tasks to be completed in order
     private List<Task> Tasks = new List<Task>();
 
@@ -82,6 +86,8 @@ public class SequenceManager : MonoBehaviour {
 
             CurrentTask.OnTaskCompleted += TaskCompletedHandler;
             CurrentTask.SetActive();
+
+            gps.SetNavigationTarget(CurrentTask.ObjectiveNode);
         }
         //otherwise, we are done with the sequence
         else
