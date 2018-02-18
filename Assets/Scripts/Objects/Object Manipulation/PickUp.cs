@@ -41,18 +41,21 @@ public class PickUp : MonoBehaviour, IInteractable
     [SerializeField]
     private bool childToPlayer = false;
 
-    //The offset position is determined by xOffset, yOffset and zOffset
-    //It is relative to the player.
+    // The offset position is determined by xOffset, yOffset and zOffset
+    // It is relative to the player.
     private Vector3 offsetPosition;
-    //The rigidbody currently attached to the GameObject (if any).
+    // The rigidbody currently attached to the GameObject (if any).
     private Rigidbody thisRigidbody;
-    //When a player drops an object, we want to make sure they don't interact
-    //with it again on the same frame.
+    // When a player drops an object, we want to make sure they don't interact
+    // with it again on the same frame.
     private bool wasDroppedThisFrame = false;
+    // Similarly, we want to make sure that the object isn't dropped on the same
+    // frame it was picked up.
+    private bool wasPickedUpThisFrame = false;
 
-    //Is the object currently being held?
+    // Is the object currently being held?
     protected bool isHeld;
-    //A reference to the agent holding the object (if any).
+    // A reference to the agent holding the object (if any).
     protected GameObject holder;
 
     protected virtual void Start()
@@ -65,22 +68,25 @@ public class PickUp : MonoBehaviour, IInteractable
 
     protected virtual void Update()
     { 
-        //Reset the variable so the the object can be interacted with again.
+        // Reset the variable so the the object can be interacted with again.
         wasDroppedThisFrame = false;
-        if(isHeld && Input.GetButtonDown("Interact"))
+        // Only drop the object if it is being held and was not picked up this frame.
+        if(isHeld && !wasPickedUpThisFrame && Input.GetButtonDown("Interact"))
         {
             //Drop the object and make a note that it was dropped this frame.
             DropThis();
             wasDroppedThisFrame = true;
         }
+        // Reset the variable so that the object can be dropped again.
+        wasPickedUpThisFrame = false;
     }
 
     protected virtual void FixedUpdate()
     {
-        //Move the object to a position relative to the holder if it is currently
-        //being held.
+        // Move the object to a position relative to the holder if it is currently
+        // being held.
         // Also makes sure that the object stays in its place in case of wall
-        //collision or other physics events.
+        // collision or other physics events.
         if(isHeld && holder != null)
         {
             LerpObjectToDesiredPosition();
@@ -93,10 +99,11 @@ public class PickUp : MonoBehaviour, IInteractable
     /// <param name="agentInteracting">The agent interacting with the object</param>
     public virtual void Interact(GameObject agentInteracting)
     {
-        //Only pick the object up if it is not currently being held and if it was not dropped this frame.
+        // Only pick the object up if it is not currently being held and if it was not dropped this frame.
         if (!isHeld && !wasDroppedThisFrame)
         {
             PickThisUp(agentInteracting);
+            wasPickedUpThisFrame = true;
         }
     }
 
@@ -105,16 +112,16 @@ public class PickUp : MonoBehaviour, IInteractable
     /// </summary>
     private void LerpObjectToDesiredPosition()
     {
-        //Translate the offset position into world space to get the world coordinate.
+        // Translate the offset position into world space to get the world coordinate.
         Vector3 worldCoordinate = Vector3.Lerp(this.transform.position, holder.transform.TransformPoint(offsetPosition), lerpSpeed);
         if (thisRigidbody != null)
         {
-            //Move the object with the physics engine if it has a rigidbody.
+            // Move the object with the physics engine if it has a rigidbody.
             thisRigidbody.MovePosition(worldCoordinate);
         }
         else
         {
-            //If not, just set its position.
+            // If not, just set its position.
             this.transform.position = worldCoordinate;
         }
     }
@@ -128,13 +135,13 @@ public class PickUp : MonoBehaviour, IInteractable
     /// <param name="agentInteracting">The agent interacting with the object</param>
     protected virtual void PickThisUp(GameObject agentInteracting)
     {
-        //Turn off the rotation and gravity for the object.
+        // Turn off the rotation and gravity for the object.
         TurnOffRigidbody();
-        //Make this object a child of the agent that picked it up.
+        // Make this object a child of the agent that picked it up.
         ChildThisToPlayerOrCamera(agentInteracting); //Sets "holder" to an object
-        //Ignore collision with the agent holding this object.
+        // Ignore collision with the agent holding this object.
         IgnoreCollisionWithPlayer(true);
-        //The object is currently being held.
+        // The object is currently being held.
         isHeld = true;
     }
 
@@ -146,13 +153,13 @@ public class PickUp : MonoBehaviour, IInteractable
     /// </summary>
     protected virtual void DropThis()
     {
-        //Turn on rotation and gravity for the object.
+        // Turn on rotation and gravity for the object.
         TurnOnRigidbody();
-        //Stop ignoring collision with the agent holding the object.
+        // Stop ignoring collision with the agent holding the object.
         IgnoreCollisionWithPlayer(false);
-        //Unchild this from the agent currently holding this.
+        // Unchild this from the agent currently holding this.
         UnchildThisFromPlayerOrCamera(); //Sets "holder" to null
-        //The object is no longer being held.
+        // The object is no longer being held.
         isHeld = false;
     }
 
@@ -186,16 +193,16 @@ public class PickUp : MonoBehaviour, IInteractable
     /// <param name="trueOrFalse">Should collision be ignored or not?</param>
     private void IgnoreCollisionWithPlayer(bool trueOrFalse)
     {
-        //Make sure someone is holding it.
+        // Make sure someone is holding it.
         if(holder != null)
         {
             Collider parentCollider = holder.GetComponent<Collider>();
             if (parentCollider == null)
             {
-                //In case there is no collider on the agent holding this, look for one in its parent.
+                // In case there is no collider on the agent holding this, look for one in its parent.
                 parentCollider = holder.GetComponentInParent<Collider>();
             }
-            //If a collider is found, ignore collision
+            // If a collider is found, ignore collision
             if (parentCollider != null)
             {
                 Physics.IgnoreCollision(parentCollider, this.GetComponent<Collider>(), trueOrFalse);
@@ -209,20 +216,20 @@ public class PickUp : MonoBehaviour, IInteractable
     /// <param name="agentInteracting"></param>
     private void ChildThisToPlayerOrCamera(GameObject agentInteracting)
     {
-        //ChildToPlayer is set in the editor
+        // ChildToPlayer is set in the editor
         if(childToPlayer)
         {
-            //If specified, this object translates based on the location of the player, and not the camera.
+            // If specified, this object translates based on the location of the player, and not the camera.
             this.transform.parent = agentInteracting.transform;
-            //Set the holder to be the player.
+            // Set the holder to be the player.
             holder = agentInteracting;
         }
         else
         {
-            //By default, set the object as a child of the camera if there is one.
+            // By default, set the object as a child of the camera if there is one.
             GameObject camera = agentInteracting.GetComponentInChildren<Camera>().gameObject;
             this.transform.parent = camera.transform;
-            //Set the holder to be the camera.
+            // Set the holder to be the camera.
             holder = camera;
         }
     }
