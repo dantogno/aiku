@@ -1,0 +1,283 @@
+fileFormatVersion: 2
+guid: 6b62da221c1fa244d838e1cd74205333
+timeCreated: 1519268134
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Corner_Round_1
+    100002: Corner_Round_1_Extended
+    100004: Corner_Round_2
+    100006: Corner_Round_2_Extended
+    100008: Extruded_Series_1_Full
+    100010: Extruded_Series_1_Half
+    100012: Extruded_Series_1_One
+    100014: Extruded_Series_2_Full
+    100016: Extruded_Series_2_Full_Bare
+    100018: Extruded_Series_2_Half
+    100020: Extruded_Series_2_One
+    100022: //RootNode
+    100024: Flat_Series_1_End_Full
+    100026: Flat_Series_1_End_Half
+    100028: Flat_Series_1_End_One
+    100030: Flat_Series_1_Middle_Full
+    100032: Flat_Series_1_Middle_Half
+    100034: Flat_Series_1_Middle_One
+    100036: Flat_Series_2_End_Full
+    100038: Flat_Series_2_End_Half
+    100040: Flat_Series_2_End_One
+    100042: Flat_Series_2_Middle_Full
+    100044: Flat_Series_2_Middle_Half
+    100046: Flat_Series_2_Middle_One
+    100048: Window_Series_2
+    100050: Windows_Series_1_End_Pointed
+    100052: Windows_Series_1_End_Square
+    100054: Windows_Series_1_Middle_Half
+    100056: Windows_Series_1_Middle_One
+    100058: Windows_Series_2_Wall
+    400000: Corner_Round_1
+    400002: Corner_Round_1_Extended
+    400004: Corner_Round_2
+    400006: Corner_Round_2_Extended
+    400008: Extruded_Series_1_Full
+    400010: Extruded_Series_1_Half
+    400012: Extruded_Series_1_One
+    400014: Extruded_Series_2_Full
+    400016: Extruded_Series_2_Full_Bare
+    400018: Extruded_Series_2_Half
+    400020: Extruded_Series_2_One
+    400022: //RootNode
+    400024: Flat_Series_1_End_Full
+    400026: Flat_Series_1_End_Half
+    400028: Flat_Series_1_End_One
+    400030: Flat_Series_1_Middle_Full
+    400032: Flat_Series_1_Middle_Half
+    400034: Flat_Series_1_Middle_One
+    400036: Flat_Series_2_End_Full
+    400038: Flat_Series_2_End_Half
+    400040: Flat_Series_2_End_One
+    400042: Flat_Series_2_Middle_Full
+    400044: Flat_Series_2_Middle_Half
+    400046: Flat_Series_2_Middle_One
+    400048: Window_Series_2
+    400050: Windows_Series_1_End_Pointed
+    400052: Windows_Series_1_End_Square
+    400054: Windows_Series_1_Middle_Half
+    400056: Windows_Series_1_Middle_One
+    400058: Windows_Series_2_Wall
+    2100000: Flat_Series_1
+    2100002: Flat_Series_2
+    2100004: Extruded_Series_1
+    2100006: Extruded_Series_2
+    2100008: Window_Series_1_Glass
+    2100010: Window_Series_1_Metal
+    2100012: Window_Series_2_Metal
+    2100014: Window_Series_2_Glass
+    2300000: Corner_Round_1
+    2300002: Corner_Round_1_Extended
+    2300004: Corner_Round_2
+    2300006: Corner_Round_2_Extended
+    2300008: Extruded_Series_1_Full
+    2300010: Extruded_Series_1_Half
+    2300012: Extruded_Series_1_One
+    2300014: Extruded_Series_2_Full
+    2300016: Extruded_Series_2_Full_Bare
+    2300018: Extruded_Series_2_Half
+    2300020: Extruded_Series_2_One
+    2300022: Flat_Series_1_End_Full
+    2300024: Flat_Series_1_End_Half
+    2300026: Flat_Series_1_End_One
+    2300028: Flat_Series_1_Middle_Full
+    2300030: Flat_Series_1_Middle_Half
+    2300032: Flat_Series_1_Middle_One
+    2300034: Flat_Series_2_End_Full
+    2300036: Flat_Series_2_End_Half
+    2300038: Flat_Series_2_End_One
+    2300040: Flat_Series_2_Middle_Full
+    2300042: Flat_Series_2_Middle_Half
+    2300044: Flat_Series_2_Middle_One
+    2300046: Window_Series_2
+    2300048: Windows_Series_1_End_Pointed
+    2300050: Windows_Series_1_End_Square
+    2300052: Windows_Series_1_Middle_Half
+    2300054: Windows_Series_1_Middle_One
+    2300056: Windows_Series_2_Wall
+    3300000: Corner_Round_1
+    3300002: Corner_Round_1_Extended
+    3300004: Corner_Round_2
+    3300006: Corner_Round_2_Extended
+    3300008: Extruded_Series_1_Full
+    3300010: Extruded_Series_1_Half
+    3300012: Extruded_Series_1_One
+    3300014: Extruded_Series_2_Full
+    3300016: Extruded_Series_2_Full_Bare
+    3300018: Extruded_Series_2_Half
+    3300020: Extruded_Series_2_One
+    3300022: Flat_Series_1_End_Full
+    3300024: Flat_Series_1_End_Half
+    3300026: Flat_Series_1_End_One
+    3300028: Flat_Series_1_Middle_Full
+    3300030: Flat_Series_1_Middle_Half
+    3300032: Flat_Series_1_Middle_One
+    3300034: Flat_Series_2_End_Full
+    3300036: Flat_Series_2_End_Half
+    3300038: Flat_Series_2_End_One
+    3300040: Flat_Series_2_Middle_Full
+    3300042: Flat_Series_2_Middle_Half
+    3300044: Flat_Series_2_Middle_One
+    3300046: Window_Series_2
+    3300048: Windows_Series_1_End_Pointed
+    3300050: Windows_Series_1_End_Square
+    3300052: Windows_Series_1_Middle_Half
+    3300054: Windows_Series_1_Middle_One
+    3300056: Windows_Series_2_Wall
+    4300000: Flat_Series_1_End_Full
+    4300002: Flat_Series_1_End_One
+    4300004: Flat_Series_1_End_Half
+    4300006: Flat_Series_1_Middle_Full
+    4300008: Flat_Series_1_Middle_One
+    4300010: Flat_Series_1_Middle_Half
+    4300012: Flat_Series_2_End_Full
+    4300014: Flat_Series_2_End_One
+    4300016: Flat_Series_2_End_Half
+    4300018: Flat_Series_2_Middle_Full
+    4300020: Flat_Series_2_Middle_One
+    4300022: Flat_Series_2_Middle_Half
+    4300024: Extruded_Series_1_Full
+    4300026: Extruded_Series_1_One
+    4300028: Extruded_Series_1_Half
+    4300030: Extruded_Series_2_Full
+    4300032: Extruded_Series_2_Full_Bare
+    4300034: Extruded_Series_2_One
+    4300036: Extruded_Series_2_Half
+    4300038: Corner_Round_1
+    4300040: Corner_Round_1_Extended
+    4300042: Corner_Round_2
+    4300044: Corner_Round_2_Extended
+    4300046: Windows_Series_1_End_Pointed
+    4300048: Windows_Series_1_End_Square
+    4300050: Windows_Series_1_Middle_One
+    4300052: Windows_Series_1_Middle_Half
+    4300054: Window_Series_2
+    4300056: Windows_Series_2_Wall
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Extruded_Series_1
+    second: {fileID: 2100000, guid: 6d43aee64f741354e970252efacad06f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Extruded_Series_2
+    second: {fileID: 2100000, guid: 6b6767902f7865a49823a7fffb76c52f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flat_Series_1
+    second: {fileID: 2100000, guid: 7cd78aa3ee4260546a3dfb808f8cab89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flat_Series_2
+    second: {fileID: 2100000, guid: c77fe54724115764190c5191e13e8393, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window_Series_1_Glass
+    second: {fileID: 2100000, guid: 7141e1bf7cbf71a40b457c974e06996d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window_Series_1_Metal
+    second: {fileID: 2100000, guid: f351d11e26d45b044817ed322e51ca94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window_Series_2_Glass
+    second: {fileID: 2100000, guid: a500146c20ad7394cad6d92ba1d8f538, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window_Series_2_Metal
+    second: {fileID: 2100000, guid: 30e566d2d936cec4dad0b68f7c2a38fd, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
