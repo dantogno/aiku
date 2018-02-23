@@ -3,47 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 /// <summary>
-/// I'm sorry, I don't want to comment this one. I'll do it on Friday.
+/// This script handles the game's title sequence.
+/// It is applied to a prefabbed Canvas in the opening scene (not the Hub scene).
 /// </summary>
 
 public class OpeningTitleSequence : MonoBehaviour
 {
-    [SerializeField, Tooltip("")]
-    private Image openingPanel;
-
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("The opening text is shown right when the game starts, introducing the game.")]
     private Text openingText;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("The text object containing the first half of the game's title.")]
     private Text coldText;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("The text object containing the second half of the game's title.")]
     private Text sleepText;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("This allows thye title text to fade smoothly - more smoothly than a lerp.")]
     private AnimationCurve TitleTextFadeCurve;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("This is the color of the title text.")]
+    private Color titleTextColor;
+
+    [SerializeField, Tooltip("How long it takes the opening text to fade in.")]
     private float openingTextFadeTime = .5f;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("How long the opening text is onscreen for.")]
     private float openingTextWaitTime = 2.5f;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("How long it takes the title text to fade in.")]
     private float titleTextFadeInTime = 2.5f;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("How long it takes the title text to fade out.")]
     private float titleTextFadeOutTime = 1.5f;
 
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("The time between when the words 'Cold' and 'Sleep' (the game's title) fade in and out.")]
     private float titleTextStaggerTime = 1;
 
-    [SerializeField, Tooltip("")]
-    private float titleTextWaitTime = 2;
-
-    private Color blue, clearBlue, clearWhite;
+    [SerializeField, Tooltip("How long the title text is onscreen for.")]
+    private float titleTextWaitTime = 1;
 
     private void OnEnable()
     {
@@ -57,91 +57,110 @@ public class OpeningTitleSequence : MonoBehaviour
     private void Start()
     {
         HideText();
-        StartCoroutine(FadeOpeningTextInAndOut());
+        StartCoroutine(OpeningSequence());
     }
 
+    /// <summary>
+    /// All the text objects should start clear, so that they only appear when needed.
+    /// </summary>
     private void HideText()
     {
-        blue = coldText.color;
-        clearBlue = new Color(blue.r, blue.g, blue.b, 0);
-        clearWhite = new Color(1, 1, 1, 0);
-
-        openingText.color = clearWhite;
-        coldText.color = clearBlue;
-        sleepText.color = clearBlue;
+        openingText.color = Color.clear;
+        coldText.color = Color.clear;
+        sleepText.color = Color.clear;
     }
 
+    /// <summary>
+    /// The title text is displayed when the generator shuts down.
+    /// </summary>
     private void DisplayTitleText()
     {
-        StartCoroutine(FadeTitleTextInAndThenOut());
+        StartCoroutine(TitleSequence());
     }
 
-    private IEnumerator FadeOpeningTextInAndOut()
+    /// <summary>
+    /// This short sequence presents the game to the player right at the very beginning.
+    /// After the text fades in and out, the first scene of the game is loaded.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator OpeningSequence()
     {
+        #region Fade text in and out.
+
         yield return new WaitForSeconds(openingTextFadeTime);
 
-        float elapsedTime = 0;
-        while (elapsedTime < openingTextFadeTime)
-        {
-            openingText.color = Color.Lerp(clearWhite, Color.white, elapsedTime / openingTextFadeTime);
-
-            yield return new WaitForEndOfFrame();
-            elapsedTime += Time.deltaTime;
-        }
-
-        openingText.color = Color.white;
+        yield return StartCoroutine(FadeText(openingText, Color.white, openingTextFadeTime, true));
 
         yield return new WaitForSeconds(openingTextWaitTime);
 
-        elapsedTime = 0;
-        while (elapsedTime < openingTextFadeTime)
-        {
-            openingText.color = Color.Lerp(Color.white, clearWhite, elapsedTime / openingTextFadeTime);
-
-            yield return new WaitForEndOfFrame();
-            elapsedTime += Time.deltaTime;
-        }
-
-        openingText.color = clearWhite;
+        yield return StartCoroutine(FadeText(openingText, Color.white, openingTextFadeTime, false));
 
         yield return new WaitForSeconds(openingTextFadeTime);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        #endregion
 
-        openingPanel.color = Color.clear;
+        // Load the game.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    private IEnumerator FadeTitleTextInAndThenOut()
+    /// <summary>
+    /// We stagger the fade-in and fade-out of the two words in the game's title, because it looks cooler.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator TitleSequence()
     {
-        StartCoroutine(FadeText(coldText, true));
+        yield return new WaitForSeconds(titleTextStaggerTime);
+
+        // We are not using yield return StartCoroutine for this line, because we want the fades to overlap.
+        StartCoroutine(FadeText(coldText, titleTextColor, titleTextFadeInTime, true));
         
         yield return new WaitForSeconds(titleTextStaggerTime);
-        
-        StartCoroutine(FadeText(sleepText, true));
+
+        yield return StartCoroutine(FadeText(sleepText, titleTextColor, titleTextFadeInTime, true));
 
         yield return new WaitForSeconds(titleTextWaitTime);
 
-        StartCoroutine(FadeText(coldText, false));
+        // We are not using yield return StartCoroutine for this line, because we want the fades to overlap.
+        StartCoroutine(FadeText(coldText, titleTextColor, titleTextFadeInTime, false));
 
         yield return new WaitForSeconds(titleTextStaggerTime);
 
-        StartCoroutine(FadeText(sleepText, false));
+        // We are not using yield return StartCoroutine for this line, because we want the fades to overlap.
+        StartCoroutine(FadeText(sleepText, titleTextColor, titleTextFadeInTime, false));
     }
 
-    private IEnumerator FadeText(Text textToFade, bool fadeIn)
+    /// <summary>
+    /// Fade text in or out.
+    /// </summary>
+    /// <param name="textToFade"></param>
+    /// <param name="textColor"></param>
+    /// <param name="fadeTime"></param>
+    /// <param name="fadeIn"></param>
+    /// <returns></returns>
+    private IEnumerator FadeText(Text textToFade, Color textColor, float fadeTime, bool fadeIn)
     {
-        Color originalColor = fadeIn ? clearBlue : blue,
-            targetColor = fadeIn ? blue : clearBlue;
+        // Fades look weird if their non-alpha channels do not match their counterpart's color.
+        Color clear = textColor == titleTextColor ?
+            new Color(titleTextColor.r, titleTextColor.g, titleTextColor.b, 0) : new Color(1, 1, 1, 0);
+        
+        // Figure out which colors we want to lerp between, based on whether we are fading the text in or out.
+        Color originalColor = fadeIn ? clear : textColor,
+            targetColor = fadeIn ? textColor : clear;
+
+        #region Lerp between the two colors.
 
         float elapsedTime = 0;
-        while (elapsedTime < titleTextFadeInTime)
+        while (elapsedTime < fadeTime)
         {
-            textToFade.color = Color.Lerp(originalColor, targetColor, TitleTextFadeCurve.Evaluate(elapsedTime / titleTextFadeInTime));
+            textToFade.color = Color.Lerp(originalColor, targetColor, TitleTextFadeCurve.Evaluate(elapsedTime / fadeTime));
 
             yield return new WaitForEndOfFrame();
             elapsedTime += Time.deltaTime;
         }
 
+        #endregion
+
+        // Set the text color to the target color.
         textToFade.color = targetColor;
     }
 }
