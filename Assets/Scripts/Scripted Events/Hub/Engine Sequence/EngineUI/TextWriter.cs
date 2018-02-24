@@ -39,7 +39,7 @@ public class TextWriter : MonoBehaviour {
     /// <summary>
     /// Called by animations to show text as part of animation cycle
     /// </summary>
-   public void TypeText()
+    public void TypeText()
     {
         StopCoroutine(Go());
         StartCoroutine(Go());
@@ -55,7 +55,7 @@ public class TextWriter : MonoBehaviour {
         if(type != null)
             StopCoroutine(type);
 
-        type = StartCoroutine(TypeText(text));
+        type = StartCoroutine(TypeTextLineByLine(text));
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class TextWriter : MonoBehaviour {
         if(type != null)
             StopCoroutine(type);
 
-        type = StartCoroutine(TypeText(text));
+        type = StartCoroutine(TypeTextLineByLine(text));
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class TextWriter : MonoBehaviour {
     /// </summary>
     /// <param name="text">The text to type</param>
     /// <returns></returns>
-    private IEnumerator TypeText(string text)
+    private IEnumerator TypeTextLineByLine(string text)
     {
         if(blink != null)
             StopCoroutine(blink);
@@ -101,7 +101,7 @@ public class TextWriter : MonoBehaviour {
     /// </summary>
     /// <param name="text">Array of strings. Each string is typed on its own line</param>
     /// <returns></returns>
-    private IEnumerator TypeText(string[] text)
+    private IEnumerator TypeTextLineByLine(string[] text)
     {
         if(blink != null)
             StopCoroutine(blink);

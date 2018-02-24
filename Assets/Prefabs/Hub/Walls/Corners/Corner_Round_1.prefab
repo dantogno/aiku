@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4824519950048924}
   - component: {fileID: 33839731498162804}
   - component: {fileID: 23195716964564890}
+  - component: {fileID: 64685577627358352}
   m_Layer: 0
   m_Name: Corner_Round_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4824519950048924
 Transform:
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1823567988332640}
+  m_Mesh: {fileID: 4300038, guid: 6b62da221c1fa244d838e1cd74205333, type: 3}
+--- !u!64 &64685577627358352
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1823567988332640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300038, guid: 6b62da221c1fa244d838e1cd74205333, type: 3}
