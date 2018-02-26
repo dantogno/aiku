@@ -15,13 +15,10 @@ public class OpeningTitleSequence : MonoBehaviour
     [SerializeField, Tooltip("The opening text is shown right when the game starts, introducing the game.")]
     private Text openingText;
 
-    [SerializeField, Tooltip("The text object containing the first half of the game's title.")]
-    private Text coldText;
+    [SerializeField, Tooltip("The text object containing the game's title.")]
+    private Text titleText;
 
-    [SerializeField, Tooltip("The text object containing the second half of the game's title.")]
-    private Text sleepText;
-
-    [SerializeField, Tooltip("This allows thye title text to fade smoothly - more smoothly than a lerp.")]
+    [SerializeField, Tooltip("This allows the title text to fade smoothly - more smoothly than a lerp.")]
     private AnimationCurve TitleTextFadeCurve;
 
     [SerializeField, Tooltip("This is the color of the title text.")]
@@ -34,16 +31,13 @@ public class OpeningTitleSequence : MonoBehaviour
     private float openingTextWaitTime = 2.5f;
 
     [SerializeField, Tooltip("How long it takes the title text to fade in.")]
-    private float titleTextFadeInTime = 2.5f;
+    private float titleTextFadeInTime = 3;
+
+    [SerializeField, Tooltip("How long the title text is onscreen for.")]
+    private float titleTextWaitTime = 1.5f;
 
     [SerializeField, Tooltip("How long it takes the title text to fade out.")]
     private float titleTextFadeOutTime = 1.5f;
-
-    [SerializeField, Tooltip("The time between when the words 'Cold' and 'Sleep' (the game's title) fade in and out.")]
-    private float titleTextStaggerTime = 1;
-
-    [SerializeField, Tooltip("How long the title text is onscreen for.")]
-    private float titleTextWaitTime = 1;
 
     private void OnEnable()
     {
@@ -66,8 +60,7 @@ public class OpeningTitleSequence : MonoBehaviour
     private void HideText()
     {
         openingText.color = Color.clear;
-        coldText.color = Color.clear;
-        sleepText.color = Color.clear;
+        titleText.color = Color.clear;
     }
 
     /// <summary>
@@ -104,29 +97,18 @@ public class OpeningTitleSequence : MonoBehaviour
     }
 
     /// <summary>
-    /// We stagger the fade-in and fade-out of the two words in the game's title, because it looks cooler.
+    /// Fade the title of the game in, and then out.
     /// </summary>
     /// <returns></returns>
     private IEnumerator TitleSequence()
     {
-        yield return new WaitForSeconds(titleTextStaggerTime);
+        yield return new WaitForSeconds(titleTextWaitTime);
 
-        // We are not using yield return StartCoroutine for this line, because we want the fades to overlap.
-        StartCoroutine(FadeText(coldText, titleTextColor, titleTextFadeInTime, true));
-        
-        yield return new WaitForSeconds(titleTextStaggerTime);
-
-        yield return StartCoroutine(FadeText(sleepText, titleTextColor, titleTextFadeInTime, true));
+        yield return StartCoroutine(FadeText(titleText, titleTextColor, titleTextFadeInTime, true));
 
         yield return new WaitForSeconds(titleTextWaitTime);
 
-        // We are not using yield return StartCoroutine for this line, because we want the fades to overlap.
-        StartCoroutine(FadeText(coldText, titleTextColor, titleTextFadeInTime, false));
-
-        yield return new WaitForSeconds(titleTextStaggerTime);
-
-        // We are not using yield return StartCoroutine for this line, because we want the fades to overlap.
-        StartCoroutine(FadeText(sleepText, titleTextColor, titleTextFadeInTime, false));
+        yield return StartCoroutine(FadeText(titleText, titleTextColor, titleTextFadeInTime, false));
     }
 
     /// <summary>
@@ -142,7 +124,7 @@ public class OpeningTitleSequence : MonoBehaviour
         // Fades look weird if their non-alpha channels do not match their counterpart's color.
         Color clear = textColor == titleTextColor ?
             new Color(titleTextColor.r, titleTextColor.g, titleTextColor.b, 0) : new Color(1, 1, 1, 0);
-        
+
         // Figure out which colors we want to lerp between, based on whether we are fading the text in or out.
         Color originalColor = fadeIn ? clear : textColor,
             targetColor = fadeIn ? textColor : clear;
