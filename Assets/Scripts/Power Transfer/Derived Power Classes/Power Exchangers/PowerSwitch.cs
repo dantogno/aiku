@@ -70,6 +70,9 @@ public class PowerSwitch : PowerExchanger
     // The stored color of the power switch's emissive materials, which changes based on the connected powerable's power state.
     private Color currentColor;
 
+    // Power switches are only activated after the generator shuts down.
+    private bool activated = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -79,11 +82,13 @@ public class PowerSwitch : PowerExchanger
 
     private void OnEnable()
     {
+        EngineSequenceManager.OnShutdown += Activate;
         connectedPowerable.OnPoweredOn += DisplayOnColor;
         connectedPowerable.OnPoweredOff += DisplayOffColor;
     }
     private void OnDisable()
     {
+        EngineSequenceManager.OnShutdown -= Activate;
         connectedPowerable.OnPoweredOn -= DisplayOnColor;
         connectedPowerable.OnPoweredOff -= DisplayOffColor;
     }
@@ -94,35 +99,38 @@ public class PowerSwitch : PowerExchanger
     /// <param name="otherPowerable"></param>
     protected override void TransferPower(IPowerable otherPowerable)
     {
-        if (!blocked)
+        if (activated)
         {
-            bool otherPowerableHasEnoughPower = otherPowerable.CurrentPower >= connectedPowerable.RequiredPower,
-                otherPowerableCanAcceptPower = otherPowerable.CurrentPower + connectedPowerable.CurrentPower <= otherPowerable.RequiredPower;
-
-            // If the interacting agent can withdraw power from the connected powerable...
-            if (connectedPowerable.IsFullyPowered && otherPowerableCanAcceptPower)
+            if (!blocked)
             {
-                AllowOtherPowerableToExtractAllPowerFromConnectedPowerable(otherPowerable);
-            }
+                bool otherPowerableHasEnoughPower = otherPowerable.CurrentPower >= connectedPowerable.RequiredPower,
+                    otherPowerableCanAcceptPower = otherPowerable.CurrentPower + connectedPowerable.CurrentPower <= otherPowerable.RequiredPower;
 
-            // If the connected powerable needs more power and the interacting agent has enough power to fully power it...
-            else if (!connectedPowerable.IsFullyPowered && otherPowerableHasEnoughPower)
-            {
-                ReceivePowerFromOtherPowerable(otherPowerable);
+                // If the interacting agent can withdraw power from the connected powerable...
+                if (connectedPowerable.IsFullyPowered && otherPowerableCanAcceptPower)
+                {
+                    AllowOtherPowerableToExtractAllPowerFromConnectedPowerable(otherPowerable);
+                }
+
+                // If the connected powerable needs more power and the interacting agent has enough power to fully power it...
+                else if (!connectedPowerable.IsFullyPowered && otherPowerableHasEnoughPower)
+                {
+                    ReceivePowerFromOtherPowerable(otherPowerable);
+                }
+
+                // Edge case. No power is exchanged, and an error light blinks.
+                else
+                {
+                    StartCoroutine(BlinkErrorColor());
+                }
             }
 
             // Edge case. No power is exchanged, and an error light blinks.
-            else
-            {
-                StartCoroutine(BlinkErrorColor());
-            }
+            else StartCoroutine(BlinkErrorColor());
+
+            // Play the appropriate sound effect for the power exchange.
+            myAudioSource.Play();
         }
-
-        // Edge case. No power is exchanged, and an error light blinks.
-        else StartCoroutine(BlinkErrorColor());
-
-        // Play the appropriate sound effect for the power exchange.
-        myAudioSource.Play();
     }
     
     /// <summary>
@@ -208,6 +216,9 @@ public class PowerSwitch : PowerExchanger
     {
         Color displayColor = blocked ? blockedColor : onColor;
 
+        // If the switch cannot be interacted with, best not to draw attention to it with color.
+        if (!activated) displayColor = noColor;
+
         SetPowerLightMaterialColor(displayColor);
         currentColor = displayColor;
     }
@@ -217,6 +228,9 @@ public class PowerSwitch : PowerExchanger
     /// </summary>
     private void DisplayOffColor()
     {
+        // If the switch cannot be interacted with, best not to draw attention to it with color.
+        Color displayColor = activated ? offColor : noColor;
+
         SetPowerLightMaterialColor(offColor);
 
         if (connectedPowerable.IsFullyPowered) StartCoroutine(BlinkErrorColor());
@@ -227,5 +241,10 @@ public class PowerSwitch : PowerExchanger
         }
 
         currentColor = offColor;
+    }
+
+    private void Activate()
+    {
+        activated = true;
     }
 }

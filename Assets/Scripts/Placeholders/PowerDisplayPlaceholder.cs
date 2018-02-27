@@ -16,6 +16,17 @@ public class PowerDisplayPlaceholder : PowerExchanger
 
         powerSlider = GetComponentInChildren<Slider>();
         powerText = GetComponentInChildren<Text>();
+        powerSlider.gameObject.SetActive(false);
+        powerText.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        EngineSequenceManager.OnShutdown += ActivatePowerDisplay;
+    }
+    private void OnDisable()
+    {
+        EngineSequenceManager.OnShutdown -= ActivatePowerDisplay;
     }
 
     private void Update()
@@ -26,6 +37,12 @@ public class PowerDisplayPlaceholder : PowerExchanger
     protected override void TransferPower(IPowerable otherObject)
     {
 
+    }
+
+    private void ActivatePowerDisplay()
+    {
+        powerSlider.gameObject.SetActive(true);
+        powerText.gameObject.SetActive(true);
     }
 
     private void UpdatePowerDisplay()
