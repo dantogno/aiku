@@ -70,9 +70,6 @@ public class PowerSwitch : PowerExchanger
     // The stored color of the power switch's emissive materials, which changes based on the connected powerable's power state.
     private Color currentColor;
 
-    // Power switches are only activated after the generator shuts down.
-    private bool activated = false;
-
     protected override void Awake()
     {
         base.Awake();
@@ -80,15 +77,17 @@ public class PowerSwitch : PowerExchanger
         InitializeReferences();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        EngineSequenceManager.OnShutdown += Activate;
+        base.OnEnable();
+
         connectedPowerable.OnPoweredOn += DisplayOnColor;
         connectedPowerable.OnPoweredOff += DisplayOffColor;
     }
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        EngineSequenceManager.OnShutdown -= Activate;
+        base.OnDisable();
+
         connectedPowerable.OnPoweredOn -= DisplayOnColor;
         connectedPowerable.OnPoweredOff -= DisplayOffColor;
     }
@@ -99,38 +98,35 @@ public class PowerSwitch : PowerExchanger
     /// <param name="otherPowerable"></param>
     protected override void TransferPower(IPowerable otherPowerable)
     {
-        if (activated)
+        if (!blocked)
         {
-            if (!blocked)
+            bool otherPowerableHasEnoughPower = otherPowerable.CurrentPower >= connectedPowerable.RequiredPower,
+                otherPowerableCanAcceptPower = otherPowerable.CurrentPower + connectedPowerable.CurrentPower <= otherPowerable.RequiredPower;
+
+            // If the interacting agent can withdraw power from the connected powerable...
+            if (connectedPowerable.IsFullyPowered && otherPowerableCanAcceptPower)
             {
-                bool otherPowerableHasEnoughPower = otherPowerable.CurrentPower >= connectedPowerable.RequiredPower,
-                    otherPowerableCanAcceptPower = otherPowerable.CurrentPower + connectedPowerable.CurrentPower <= otherPowerable.RequiredPower;
+                AllowOtherPowerableToExtractAllPowerFromConnectedPowerable(otherPowerable);
+            }
 
-                // If the interacting agent can withdraw power from the connected powerable...
-                if (connectedPowerable.IsFullyPowered && otherPowerableCanAcceptPower)
-                {
-                    AllowOtherPowerableToExtractAllPowerFromConnectedPowerable(otherPowerable);
-                }
-
-                // If the connected powerable needs more power and the interacting agent has enough power to fully power it...
-                else if (!connectedPowerable.IsFullyPowered && otherPowerableHasEnoughPower)
-                {
-                    ReceivePowerFromOtherPowerable(otherPowerable);
-                }
-
-                // Edge case. No power is exchanged, and an error light blinks.
-                else
-                {
-                    StartCoroutine(BlinkErrorColor());
-                }
+            // If the connected powerable needs more power and the interacting agent has enough power to fully power it...
+            else if (!connectedPowerable.IsFullyPowered && otherPowerableHasEnoughPower)
+            {
+                ReceivePowerFromOtherPowerable(otherPowerable);
             }
 
             // Edge case. No power is exchanged, and an error light blinks.
-            else StartCoroutine(BlinkErrorColor());
-
-            // Play the appropriate sound effect for the power exchange.
-            myAudioSource.Play();
+            else
+            {
+                StartCoroutine(BlinkErrorColor());
+            }
         }
+
+        // Edge case. No power is exchanged, and an error light blinks.
+        else StartCoroutine(BlinkErrorColor());
+
+        // Play the appropriate sound effect for the power exchange.
+        myAudioSource.Play();
     }
     
     /// <summary>
@@ -241,10 +237,5 @@ public class PowerSwitch : PowerExchanger
         }
 
         currentColor = offColor;
-    }
-
-    private void Activate()
-    {
-        activated = true;
     }
 }
