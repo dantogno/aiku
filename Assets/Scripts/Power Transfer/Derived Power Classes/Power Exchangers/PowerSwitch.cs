@@ -77,13 +77,17 @@ public class PowerSwitch : PowerExchanger
         InitializeReferences();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         connectedPowerable.OnPoweredOn += DisplayOnColor;
         connectedPowerable.OnPoweredOff += DisplayOffColor;
     }
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
+
         connectedPowerable.OnPoweredOn -= DisplayOnColor;
         connectedPowerable.OnPoweredOff -= DisplayOffColor;
     }
@@ -208,6 +212,9 @@ public class PowerSwitch : PowerExchanger
     {
         Color displayColor = blocked ? blockedColor : onColor;
 
+        // If the switch cannot be interacted with, best not to draw attention to it with color.
+        if (!activated) displayColor = noColor;
+
         SetPowerLightMaterialColor(displayColor);
         currentColor = displayColor;
     }
@@ -217,6 +224,9 @@ public class PowerSwitch : PowerExchanger
     /// </summary>
     private void DisplayOffColor()
     {
+        // If the switch cannot be interacted with, best not to draw attention to it with color.
+        Color displayColor = activated ? offColor : noColor;
+
         SetPowerLightMaterialColor(offColor);
 
         if (connectedPowerable.IsFullyPowered) StartCoroutine(BlinkErrorColor());

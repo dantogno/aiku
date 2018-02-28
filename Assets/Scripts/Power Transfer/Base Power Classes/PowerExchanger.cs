@@ -15,6 +15,9 @@ public abstract class PowerExchanger : MonoBehaviour, IInteractable
     public PowerableObject ConnectedPowerable { get { return connectedPowerable; } }
     protected PowerableObject connectedPowerable;
 
+    // Power exchangers are only activated after the generator shuts down.
+    protected bool activated = false;
+
     protected virtual void Awake()
     {
         // The exchanger's connected powerable must be a parent GameObject of this GameObject.
@@ -22,6 +25,15 @@ public abstract class PowerExchanger : MonoBehaviour, IInteractable
 
         if (connectedPowerable == null)
             Debug.LogError("GameObject must be a child object of the connected powerable.");
+    }
+
+    protected virtual void OnEnable()
+    {
+        EngineSequenceManager.OnShutdown += Activate;
+    }
+    protected virtual void OnDisable()
+    {
+        EngineSequenceManager.OnShutdown -= Activate;
     }
 
     /// <summary>
@@ -32,7 +44,10 @@ public abstract class PowerExchanger : MonoBehaviour, IInteractable
     {
         IPowerable otherPowerable = otherObject.GetComponentInParent<IPowerable>();
 
-        if (otherPowerable != null) TransferPower(otherPowerable);
+        // If the interacting agent is a powerable and the exchanger has been activated, the exchanger can transfer power.
+        bool canTransferPower = otherPowerable != null && activated;
+
+        if (canTransferPower) TransferPower(otherPowerable);
     }
 
     /// <summary>
@@ -40,4 +55,9 @@ public abstract class PowerExchanger : MonoBehaviour, IInteractable
     /// </summary>
     /// <param name="otherObject"></param>
     protected abstract void TransferPower(IPowerable otherObject);
+
+    protected virtual void Activate()
+    {
+        activated = true;
+    }
 }
