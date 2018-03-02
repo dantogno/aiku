@@ -1,46 +1,46 @@
 fileFormatVersion: 2
-guid: 5564b6f8ef6ac314fba0fd5de4299a5c
-timeCreated: 1519779470
-licenseType: Free
+guid: 4ff1206a8f1fc2948bd7e2d8fb6c0775
+timeCreated: 1520021710
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: DoorFrameAndRamp_Metal_Hermon
-    100002: FanBackBlade
-    100004: FrontBlade
-    100006: //RootNode
-    100008: LowerrDoorOpening_Metal_hermon
-    100010: UpperDoorOpening_Metal_hermon
-    400000: DoorFrameAndRamp_Metal_Hermon
-    400002: FanBackBlade
-    400004: FrontBlade
-    400006: //RootNode
-    400008: LowerrDoorOpening_Metal_hermon
-    400010: UpperDoorOpening_Metal_hermon
+    100000: //RootNode
+    100002: DoorFrame
+    100004: Emergency_Light
+    100006: FanBackBlade
+    100008: FrontBlade
+    100010: LowerrDoorOpening_Metal_hermon
+    100012: UpperDoorOpening_Metal_hermon
+    400000: //RootNode
+    400002: DoorFrame
+    400004: Emergency_Light
+    400006: FanBackBlade
+    400008: FrontBlade
+    400010: LowerrDoorOpening_Metal_hermon
+    400012: UpperDoorOpening_Metal_hermon
     2100000: smalldoor
-    2300000: DoorFrameAndRamp_Metal_Hermon
-    2300002: FanBackBlade
-    2300004: FrontBlade
-    2300006: LowerrDoorOpening_Metal_hermon
-    2300008: UpperDoorOpening_Metal_hermon
-    3300000: DoorFrameAndRamp_Metal_Hermon
-    3300002: FanBackBlade
-    3300004: FrontBlade
-    3300006: LowerrDoorOpening_Metal_hermon
-    3300008: UpperDoorOpening_Metal_hermon
+    2300000: DoorFrame
+    2300002: Emergency_Light
+    2300004: FanBackBlade
+    2300006: FrontBlade
+    2300008: LowerrDoorOpening_Metal_hermon
+    2300010: UpperDoorOpening_Metal_hermon
+    3300000: DoorFrame
+    3300002: Emergency_Light
+    3300004: FanBackBlade
+    3300006: FrontBlade
+    3300008: LowerrDoorOpening_Metal_hermon
+    3300010: UpperDoorOpening_Metal_hermon
     4300000: LowerrDoorOpening_Metal_hermon
     4300002: UpperDoorOpening_Metal_hermon
-    4300004: DoorFrameAndRamp_Metal_Hermon
-    4300006: FrontBlade
-    4300008: FanBackBlade
+    4300004: DoorFrame
+    4300006: Emergency_Light
+    4300008: FrontBlade
+    4300010: FanBackBlade
     7400000: Take 001
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: smalldoor
-    second: {fileID: 2100000, guid: c6c7b148e79f6e24d849434872a4e22b, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
