@@ -10,33 +10,30 @@ public enum GMDState { Grab, Grapple, Scoped, Off };
 public class GMD : MonoBehaviour
 {
 	[Tooltip("The 'Player' GameObject goes here. Must have a Rigidbody component.")] 
-	[SerializeField] GameObject playerGameObject;
+	[SerializeField] private GameObject playerGameObject;
 
 	[Tooltip("Camera used by the player.")]
-	[SerializeField] Camera playerCamera;
+	[SerializeField] private Camera playerCamera;
 
 	[Tooltip("Current state of the GMD. Off means it is not currently doing anything.")]
-	[SerializeField] GMDState currentState;
+	[SerializeField] private GMDState currentState;
 
 	[Tooltip("Determines how quickly an object that is picked up with the GMD follows the player's camera.")]
-	[SerializeField] float smoothSpeed = 0.125f;
+	[SerializeField] private float smoothSpeed = 0.125f;
 
 	[Tooltip("Object's distance from player when picked up by the GMD.")]
-	[SerializeField] float grabDistance = 3.0f;
+	[SerializeField] private float grabDistance = 3.0f;
 
 	[Tooltip("Distance for detecting objects.")]
-	[SerializeField] float rayCastDistance = 10f;
+	[SerializeField] private float rayCastDistance = 10f;
 
 	[Tooltip("How quickly the player moves when grappling.")]
-	[SerializeField] float grappleSpeed = 0.5f;
+	[SerializeField] private float grappleSpeed = 0.5f;
 
 	[Tooltip("Percent value for how far a player will grapple. 0.75 = Player will go 75% of the way to the grapple object from where the player is standing.")]
-	[SerializeField] float grappleOffset = 0.75f;
+	[SerializeField] private float grappleOffset = 0.75f;
 
-	[Tooltip("Can see if player is grabbing an object. Currently used by another script but that will most likely change and this variable will become private.")]
 	public bool isGrabbingObject = false;
-
-	[Tooltip("Allows other scripts to check if player has the ore. This is temporary and will be trashed. Ignore.")]
 	public bool hasOre = false;
 
 	//This allows the GMD to continue to hold the object while the interact button is down even when the raycast is not pointed at the object. 
@@ -58,20 +55,15 @@ public class GMD : MonoBehaviour
 	private Rigidbody playerRigidbody;
 
 	// Use this for initialization
-	void Start ()
+	private void Start ()
 	{
 		currentState = GMDState.Off;
 		playerRigidbody = playerGameObject.GetComponent<Rigidbody> ();
 	}
 
-	// Update is called once per frame
-	void Update ()
-	{
-		GMDStateMachine ();
-	}
-
 	private void FixedUpdate()
 	{
+		GMDStateMachine ();
 		GMDRaycast();
 	}
 
@@ -79,7 +71,7 @@ public class GMD : MonoBehaviour
 	/// Sets the state of the GMD to the new state.
 	/// </summary>
 	/// <param name="state">State.</param>
-	void SetCurrentState(GMDState state)
+	private void SetCurrentState(GMDState state)
 	{
 		currentState = state;
 	}
@@ -87,7 +79,7 @@ public class GMD : MonoBehaviour
 	/// <summary>
 	/// Determines when each state should be active.
 	/// </summary>
-	void GMDStateMachine()
+	private void GMDStateMachine()
 	{
 		switch (currentState) 
 		{
@@ -117,12 +109,16 @@ public class GMD : MonoBehaviour
 			
 			Off ();
 			
-			if (gmdRaycastHit) 
+			if (hit.transform != null) 
 			{
-				if (hit.transform.tag == "Metal Object" && Input.GetButton ("Interact") || hit.transform.tag == "Good Ore" && Input.GetButton ("Interact")) 
+				if (hit.transform.tag == "Metal Object" && Input.GetButton ("Interact")) 
 				{
 					SetCurrentState (GMDState.Grab);
 				} 
+				else if (hit.transform.tag == "Good Ore" && Input.GetButton ("Interact")) 
+				{
+					SetCurrentState (GMDState.Grab);
+				}
 				else if (hit.transform.tag == "Grapple" && Input.GetButton ("Interact")) 
 				{
 					SetCurrentState (GMDState.Grapple);
@@ -135,7 +131,7 @@ public class GMD : MonoBehaviour
 	/// <summary>
 	/// Raycasts in front of the player camera if the player is not grabbing an object.
 	/// </summary>
-	void GMDRaycast()
+	private void GMDRaycast()
 	{
 		if (!isGrabbingObject) 
 		{
@@ -151,7 +147,7 @@ public class GMD : MonoBehaviour
 	/// <summary>
 	/// Smoothly lerps object to a specific distance in front of the player camera.
 	/// </summary>
-	void Grab()
+	private void Grab()
 	{
 		if (hit.transform.tag == "Metal Object") 
 		{
@@ -171,8 +167,8 @@ public class GMD : MonoBehaviour
 		//This is a temporary way for the player to pick up ore. This will change.
 		if (hit.transform.tag == "Good Ore") 
 		{
-			Destroy (hit.transform.gameObject);
 			hasOre = true;
+			Destroy (hit.transform.gameObject);
 			currentState = GMDState.Off;
 		}
 	}
@@ -180,7 +176,7 @@ public class GMD : MonoBehaviour
 	/// <summary>
 	/// Turns off gravity on player rigidbody and uses Vector3.SmoothDamp to move player smoothly toward object tagged as 'Grapple'.
 	/// </summary>
-	void Grapple()
+	private void Grapple()
 	{
 		playerRigidbody.useGravity = false;
 		if (!hasSetGrappleOffset) 
@@ -196,7 +192,7 @@ public class GMD : MonoBehaviour
 	/// <summary>
 	/// Resets gravity and velocity for grabbed object. Resets gravity for player that was previously grappling to an object.
 	/// </summary>
-	void Off()
+	private void Off()
 	{
 		if (isGrabbingObject) 
 		{
