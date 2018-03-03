@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4355373166637876}
   - component: {fileID: 33230216739965602}
   - component: {fileID: 23624098443727212}
+  - component: {fileID: 65976751187063600}
   m_Layer: 0
   m_Name: Flat_Series_2_End_Full
   m_TagString: Untagged
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196814951416898}
   m_Mesh: {fileID: 4300012, guid: 6b62da221c1fa244d838e1cd74205333, type: 3}
+--- !u!65 &65976751187063600
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1196814951416898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.035099983, y: 0.035, z: 0.0024494934}
+  m_Center: {x: 0, y: 0, z: 0}
