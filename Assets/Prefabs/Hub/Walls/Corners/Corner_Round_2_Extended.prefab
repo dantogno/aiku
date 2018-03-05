@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4567636129766570}
   - component: {fileID: 33349147075581432}
   - component: {fileID: 23927935733501486}
+  - component: {fileID: 64587038552303816}
   m_Layer: 0
   m_Name: Corner_Round_2_Extended
   m_TagString: Untagged
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625253678773408}
+  m_Mesh: {fileID: 4300044, guid: 6b62da221c1fa244d838e1cd74205333, type: 3}
+--- !u!64 &64587038552303816
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625253678773408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300044, guid: 6b62da221c1fa244d838e1cd74205333, type: 3}
