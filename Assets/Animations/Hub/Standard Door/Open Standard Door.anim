@@ -19,7 +19,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 0, z: 0}
+        value: {x: -30, y: 487.82996, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: {x: -30, y: 487.82996, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -32,27 +38,27 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: -0.10936006, y: 2.99, z: -0.0117397625}
+        value: {x: -9.7000885, y: -646, z: 0.4013336}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: polySurface2092
+    path: LowerrDoorOpening_Metal_hermon
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: -0.09340975, y: -0.729, z: 0.09332776}
+        value: {x: -9.7000885, y: 523, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: polySurface2178
+    path: UpperDoorOpening_Metal_hermon
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -71,14 +77,14 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1441285850
+      path: 3134428413
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 712829053
+      path: 2137908734
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -90,7 +96,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -111,7 +117,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: -30
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1
+        value: -30
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -127,7 +139,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: 487.82996
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1
+        value: 487.82996
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -147,6 +165,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -159,7 +183,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.10936006
+        value: -9.7000885
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -167,7 +191,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: polySurface2092
+    path: LowerrDoorOpening_Metal_hermon
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -175,7 +199,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 2.99
+        value: -646
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -183,7 +207,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: polySurface2092
+    path: LowerrDoorOpening_Metal_hermon
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -191,7 +215,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.0117397625
+        value: 0.4013336
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -199,7 +223,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: polySurface2092
+    path: LowerrDoorOpening_Metal_hermon
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -207,7 +231,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.09340975
+        value: -9.7000885
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -215,7 +239,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: polySurface2178
+    path: UpperDoorOpening_Metal_hermon
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -223,7 +247,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.729
+        value: 523
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -231,7 +255,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: polySurface2178
+    path: UpperDoorOpening_Metal_hermon
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -239,7 +263,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.09332776
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -247,7 +271,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: polySurface2178
+    path: UpperDoorOpening_Metal_hermon
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
