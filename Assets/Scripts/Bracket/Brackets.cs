@@ -31,6 +31,8 @@ public class Brackets : MonoBehaviour
     private Rect defaultBracketArea;
     [SerializeField]
     private Image CenterBracket;   
+    [SerializeField]
+    float centerBracketRotationSpeed = 1f;
     #endregion
 
     #region Private Fields
@@ -224,9 +226,8 @@ public class Brackets : MonoBehaviour
         CenterBracket.enabled = false;
     }
     private void RotateCenterBracket()
-    {
-        float centerBracketRotationSpeed = .03f;
-        CenterBracket.transform.Rotate(0, centerBracketRotationSpeed, 0, Space.World);
+    {      
+        CenterBracket.transform.Rotate(0, centerBracketRotationSpeed * Time.deltaTime, 0, Space.World);
     }
     #endregion
 }
