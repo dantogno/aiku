@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 /// <summary>
+/// This script goes on a GameObject in the scene.
 /// Generates a value between 0 and 1 for determining the intensity of a glitch effect.
 /// This number is generated based on a combination of distance and angle from this object.
 /// </summary>
@@ -34,13 +35,7 @@ public class GlitchValueGenerator : MonoBehaviour {
     float AngleToGlitch()
     {
         float a;
-
         a = Vector3.Angle((this.transform.position - plyrCamera.transform.position), plyrCamera.transform.forward);
-
-#if UNITY_EDITOR
-        Debug.Log(a + " degrees");
-#endif
-
         return a;
     }
 
@@ -51,13 +46,7 @@ public class GlitchValueGenerator : MonoBehaviour {
     float DistanceToGlitch()
     {
         float d;
-
         d = Vector3.Distance(this.transform.position, Player.transform.position);
-
-#if UNITY_EDITOR
-        Debug.Log(d + " units away");
-#endif
-
         return d;
     }
 
@@ -71,7 +60,6 @@ public class GlitchValueGenerator : MonoBehaviour {
     float CalculateValue(float distance, float angle)
     {
         float n;
-
         float normDistance = NormalizeDistance(distance);
         float normAngle = NormalizeAngle(angle);
 
@@ -103,10 +91,6 @@ public class GlitchValueGenerator : MonoBehaviour {
             d = 1 - (dist / MaxDistance);
         }
 
-#if UNITY_EDITOR
-        Debug.Log(d + " Distance");
-#endif
-
         return d;
     }
 
@@ -132,10 +116,6 @@ public class GlitchValueGenerator : MonoBehaviour {
             a = 1 - (angle / MaxAngle);
         }
 
-#if UNITY_EDITOR
-        Debug.Log(a + " Angle");
-#endif
-
         return a;
     }
 
@@ -149,10 +129,6 @@ public class GlitchValueGenerator : MonoBehaviour {
         {
             ValueAboveZero(i);
         }
-
-#if UNITY_EDITOR
-        Debug.Log(i);
-#endif
     }
 
     private void Awake()

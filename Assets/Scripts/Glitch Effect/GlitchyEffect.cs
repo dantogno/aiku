@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Attach to the Player.
+/// Attach to the Player camera.
 /// Creates a scan line jitter effect over top the games normal rendering.
 /// Takes in a value between 0-1 from GlitchValueGenerators through out the scene.
 /// </summary>
@@ -53,9 +53,7 @@ public class GlitchyEffect : MonoBehaviour
         {
             _scanLineJitter = 1;
         }
-#if UNITY_EDITOR
-        Debug.Log("On Render " + _scanLineJitter);
-#endif
+
         //Creates scan line jitter - DO NOT TOUCH
         var sl_thresh = Mathf.Clamp01(1.0f - _scanLineJitter * 1.2f);
         var sl_disp = /*0.002f*/ + Mathf.Pow(_scanLineJitter, 3) * 0.05f;
@@ -66,13 +64,7 @@ public class GlitchyEffect : MonoBehaviour
         _scanLineJitter = 0;
     }
 
-#endregion
-    private void Update()
-    {
-#if UNITY_EDITOR
-        Debug.Log("scan line " + _scanLineJitter);
-#endif
-    }
+    #endregion
 
     /// <summary>
     /// Subscribe the event to the event handler
