@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,27 +13,31 @@ public class Brackets : MonoBehaviour
     [SerializeField]
     [Tooltip("Render texture that the scanning camera is rendering to")]
     private RenderTexture renderTexture;
-
     [SerializeField]
     [Tooltip("Sampling detail (lower is higer res)")]
     [Range(0.001f, 0.05f)]
     private float resolution;
-
     [SerializeField]
     [Tooltip("UI element containing the brackets")]
     private RectTransform bracketArea;
-
+    [SerializeField]
+    private float bracketScreenBuffer;
     [SerializeField]
     [Tooltip("Speed brackets move")]
     [Range(0.1f, 1)]
     private float bracketLerpSpeed = 0.3f;
-
     [SerializeField]
     [Tooltip("Area to leave brackets when no object is being targeted")]
     private Rect defaultBracketArea;
+    [SerializeField]
+    private Image CenterBracket;   
+    [SerializeField]
+    float centerBracketRotationSpeed = 1f;
     #endregion
 
     #region Private Fields
+    private Vector2 bracketVelocity = Vector3.zero;
+    private float bracketSmoothTiming = 0.4f; 
     // GameObject that has been sent to the shadow realm, so that we can return it when a new target is selected
     private GameObject currentScanningLayerObject = null;
     // Holds a reference to the current object's previous layer (so that it can be restored later)
@@ -43,6 +48,7 @@ public class Brackets : MonoBehaviour
 
     // The render texture is copied into this Texture2D so that we can check individual pixels' alpha
     private Texture2D scanningImage;
+
     #endregion
 
     #region Unity Methods
@@ -51,12 +57,18 @@ public class Brackets : MonoBehaviour
     {
         scanningLayer = LayerMask.NameToLayer("BracketLayer");
         scanningImage = new Texture2D(renderTexture.width, renderTexture.height);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Depending on performance impact it may be better to do this every few frames instead of every time, but seems negligible if you set resolution at a decent value
+        // Depending on performance impact it may be better to do this every few frames instead of every time, but seems negligible if you set resolution at a decent value 
+        
+
+    }
+    private void LateUpdate()
+    {
         DrawBrackets(FindObjectBounds());
     }
 
@@ -94,6 +106,7 @@ public class Brackets : MonoBehaviour
         if (currentScanningLayerObject != null)
         {
             currentScanningLayerObject.layer = currentObjectPreviousLayer;
+           
         }
 
         // If there is a new object we want to select, move it to the scanning layer
@@ -106,7 +119,8 @@ public class Brackets : MonoBehaviour
         else
         {
             // Reset the previous layer if no object was passed
-            currentObjectPreviousLayer = 0;
+            CenterBracketInactive();
+            currentObjectPreviousLayer = 0;           
         }
 
         // Remember the new object on the scanning layer so we can put it back later
@@ -137,17 +151,21 @@ public class Brackets : MonoBehaviour
                     rightBound = Mathf.Max(x, rightBound);
                     lowerBound = Mathf.Min(y, lowerBound);
                     upperBound = Mathf.Max(y, upperBound);
+                    //Activate center bracket
+                    RotateCenterBracket();
+                    CenterBracketActive();
                 }
             }
         }
 
         // This Rect surrounds the area where the object is in normalised screen coordinates
         Rect bounds = new Rect(leftBound, lowerBound, rightBound - leftBound, upperBound - lowerBound);
-
+       
         // If we can't see the object or if no object is selected, revert to defaults
         if (bounds.min == Vector2.one && bounds.max == Vector2.zero)
         {
             bounds = defaultBracketArea;
+            CenterBracketInactive();
         }
 
         return bounds;
@@ -159,8 +177,8 @@ public class Brackets : MonoBehaviour
     /// <param name="rect">The area surrounding the current object</param>
     private void DrawBrackets(Rect rect)
     {
-        bracketArea.anchorMin = Vector2.Lerp(bracketArea.anchorMin, rect.min, bracketLerpSpeed);
-        bracketArea.anchorMax = Vector2.Lerp(bracketArea.anchorMax, rect.max, bracketLerpSpeed);
+        bracketArea.anchorMin = Vector2.SmoothDamp(bracketArea.anchorMin, new Vector2(rect.min.x - bracketScreenBuffer, rect.min.y - bracketScreenBuffer), ref bracketVelocity, bracketSmoothTiming, bracketLerpSpeed, bracketLerpSpeed);
+        bracketArea.anchorMax = Vector2.SmoothDamp(bracketArea.anchorMax, new Vector2(rect.max.x + bracketScreenBuffer, rect.max.y + bracketScreenBuffer), ref bracketVelocity, bracketSmoothTiming, bracketLerpSpeed, bracketLerpSpeed);
     }
 
     /// <summary>
@@ -171,12 +189,16 @@ public class Brackets : MonoBehaviour
     /// <returns>true if the pixel is the object, false if bg</returns>
     private bool PixelIsObject(float x, float y)
     {
+
         // The camera creating the scanningImage clears every pixel to a = 0, so if alpha is 1 something is there
-        if (scanningImage.GetPixelBilinear(x, y).a == 1)
+        if (scanningImage.GetPixelBilinear(x, y).a == 1f)
         {
             return true;
         }
-        else return false;
+        else
+        {
+            return false;
+        }
     }
 
     /// <summary>
@@ -191,6 +213,21 @@ public class Brackets : MonoBehaviour
 
         // Don't actually change the image, but unity will complain if I don't at least pretend
         Graphics.Blit(source, destination);
+    }
+    #endregion
+
+    #region Extra Unneccessary things for center bracket which is also unnecccessary. 
+    private void CenterBracketActive()
+    {
+        CenterBracket.enabled = true;          
+    }
+    private void CenterBracketInactive()
+    {
+        CenterBracket.enabled = false;
+    }
+    private void RotateCenterBracket()
+    {      
+        CenterBracket.transform.Rotate(0, centerBracketRotationSpeed * Time.deltaTime, 0, Space.World);
     }
     #endregion
 }
