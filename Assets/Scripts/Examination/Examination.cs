@@ -15,19 +15,19 @@ using UnityEngine;
 public class Examination : MonoBehaviour, IInteractable
 {
     #region  Private Variables 
-    Camera mainCamera;
+    private Camera mainCamera;
     //Sets the original position of the obect upon start.
-    Vector3 StartPos;
+    private Vector3 StartPos;
     //Sets the original rotation of the object upon start.
-    Quaternion originalRotationValue;
+    private Quaternion originalRotationValue;
     //Distance is what we set for the zoom function to work.
-    float AddedDistance;
+    private float addedDistance;
     //Check to see if the player is currently inspecting something. 
-    bool isInspecting;
-    float rotX;
-    float rotY;
-    MonoBehaviour playerController;
-    GameObject Player;
+    private bool isInspecting;
+    private float rotX;
+    private float rotY;
+    CustomRigidbodyFPSController playerController;
+    private GameObject Player;
 
     #endregion
     /// <summary>
@@ -53,8 +53,9 @@ public class Examination : MonoBehaviour, IInteractable
     [SerializeField]
     bool isRotationAllowed = true;
     [Tooltip("Sensitivity for the rotation")]
+    [Range(0.0f, 1.0f)]
     [SerializeField]
-    float mouseSensitivity = 50.0f;
+    float mouseSensitivity = 0.5f;
 
     [Space(10)]
     [Tooltip("Allow the object to zoom in towards the camera or not")]
@@ -120,7 +121,7 @@ public class Examination : MonoBehaviour, IInteractable
             //Sets the player to the agentInteracting.
             Player = agentInteracting;
             //Calls for the player Controller script from the Player. 
-            playerController = Player.GetComponent<MonoBehaviour>();
+            playerController = Player.GetComponent<CustomRigidbodyFPSController>();
             //Calls for the camera component from the player.
             mainCamera = Player.GetComponentInChildren<Camera>();
             //Set to true to enable the inspection sequence. 
@@ -131,7 +132,7 @@ public class Examination : MonoBehaviour, IInteractable
     void Inspecting()
     {
         //Lerps the gameobject to the main camera.
-        transform.position = Vector3.Lerp(transform.position, mainCamera.transform.position + mainCamera.transform.forward * (distance + AddedDistance), Time.deltaTime * smooth);
+        transform.position = Vector3.Lerp(transform.position, mainCamera.transform.position + mainCamera.transform.forward * (distance + addedDistance), Time.deltaTime * smooth);
         //Since we do not want to move with the object, we disable the script.
         playerController.enabled = false;
         //We set this to a trigger to ignore collision of the gameobject.
@@ -144,7 +145,7 @@ public class Examination : MonoBehaviour, IInteractable
         {
             GetComponent<Rigidbody>().useGravity = false;
             GetComponent<Rigidbody>().detectCollisions = true;
-            GetComponent<Rigidbody>().isKinematic = false;      
+            GetComponent<Rigidbody>().isKinematic = false;
         }
         //If rotation is enabled, call for the function of Rotation.
         if (isRotationAllowed == true)
@@ -154,8 +155,8 @@ public class Examination : MonoBehaviour, IInteractable
         //If zoom is enabled, set a value for Added Distance. I added clamps to be set by the user. 
         if (isZoomEnabled == true)
         {
-            AddedDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
-            AddedDistance = Mathf.Clamp(AddedDistance, ZoomMin, ZoomMax);
+            addedDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
+            addedDistance = Mathf.Clamp(addedDistance, ZoomMin, ZoomMax);
 
         }
 
@@ -176,7 +177,7 @@ public class Examination : MonoBehaviour, IInteractable
         isInspecting = false;
         //Disable Trigger to make it a collidable object. 
         GetComponent<Collider>().isTrigger = false;
-        AddedDistance = 0;
+        addedDistance = 0;
         //Enable back the player controller. Needed to continue
         playerController.enabled = true;
         //Sets the gameobject to go back to the original positon and rotation.
@@ -189,14 +190,14 @@ public class Examination : MonoBehaviour, IInteractable
             GetComponent<Rigidbody>().isKinematic = false;
         }
     }
-    
+
     //In the case that rotation is called, this is what gets the ball rolling 
     private void Rotation()
     {
-        rotX += Input.GetAxis("Mouse X") * mouseSensitivity * (Time.deltaTime);
-        rotY += Input.GetAxis("Mouse Y") * mouseSensitivity * (Time.deltaTime);
-        rotX = Mathf.Clamp(rotX, MIN_X, MAX_X); 
+        rotX += Input.GetAxis("Mouse X") * mouseSensitivity;
+        rotY += Input.GetAxis("Mouse Y") * mouseSensitivity;
+        rotX = Mathf.Clamp(rotX, MIN_X, MAX_X);
         rotY = Mathf.Clamp(rotY, MIN_Y, MAX_Y);
         this.transform.Rotate(-rotY, -rotX, 0);
     }
-}        
+}
