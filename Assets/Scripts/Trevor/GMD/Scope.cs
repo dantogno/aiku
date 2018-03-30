@@ -25,8 +25,10 @@ public class Scope : MonoBehaviour
 	[Tooltip("Animator component of the GMD.")]
 	[SerializeField] private Animator zoomAnimator;
 
-	//Currently used by another script. Will be made private eventually.
-	public bool isEquipped;
+    [SerializeField] private CustomRigidbodyFPSController character;
+
+    //Currently used by another script. Will be made private eventually.
+    public bool isEquipped;
 
 	public static event Action<int> ScopedIn;
 
@@ -35,6 +37,7 @@ public class Scope : MonoBehaviour
 	private GameObject[] goodOre;
     private bool hasWaitedForAnimation;
 	private bool hasSentEvent = false;
+	private bool hasFirstEventBeenSent = false;
 
 	Material metalObjectMaterial;
 	Material grappleObjectMaterial;
@@ -76,8 +79,12 @@ public class Scope : MonoBehaviour
         {
             zoomAnimator.SetBool("UsingScope", true);
 			gmdCameraObject.SetActive(false);
-
-            if(hasWaitedForAnimation)
+            //THIS IS BAD I KNOW ITS BAD
+            character.movementSettings.ForwardSpeed = 0.7f;
+            character.movementSettings.BackwardSpeed = 0.5f;
+            character.movementSettings.StrafeSpeed = 0.5f;
+            //End of bad
+            if (hasWaitedForAnimation)
             {
                 isEquipped = true;
                 lensMask.SetActive(true);
@@ -100,7 +107,11 @@ public class Scope : MonoBehaviour
 			overlay.SetActive(false);
 			gmdModel.SetActive(true);
 
-            if(hasWaitedForAnimation)
+            character.movementSettings.ForwardSpeed = 5f;
+            character.movementSettings.BackwardSpeed = 3.5f;
+            character.movementSettings.StrafeSpeed = 3.5f;
+
+            if (hasWaitedForAnimation)
             {
 				gmdCameraObject.SetActive(true);
             }
@@ -115,6 +126,12 @@ public class Scope : MonoBehaviour
 	{
 		if (isEquipped && hasWaitedForAnimation && !hasSentEvent) 
 		{
+			if (!hasFirstEventBeenSent) 
+			{
+				gmdModel.GetComponent<VOAudio> ().TriggerVOAudio ();
+				hasFirstEventBeenSent = true;
+			}
+
 			if (ScopedIn != null) 
 			{
 				ScopedIn.Invoke(0);
