@@ -1,0 +1,641 @@
+fileFormatVersion: 2
+guid: 6c31987c5abfb7f4ea50fc821d76724c
+timeCreated: 1520559823
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: back
+    100002: bedset01_Nguyen
+    100004: blanket
+    100006: bottom
+    100008: bottom 1
+    100010: bottomchair
+    100012: bottomframe
+    100014: bulb
+    100016: chair01_Nguyen
+    100018: chairholder
+    100020: chairlegs
+    100022: computerDesk01_Nguyen
+    100024: door
+    100026: door01_Nguyen
+    100028: doorframe
+    100030: doorknob
+    100032: drawer10
+    100034: drawer12
+    100036: drawer13
+    100038: drawer14
+    100040: drawer16
+    100042: drawer17
+    100044: drawer18
+    100046: drawer9
+    100048: dresser2_01Nguyen
+    100050: dresserchest_01Nguyen
+    100052: foundation
+    100054: frontleg
+    100056: frontleg1
+    100058: holder
+    100060: inside
+    100062: keyboard_holder
+    100064: knob10
+    100066: knob11
+    100068: knob12
+    100070: knob13
+    100072: knob14
+    100074: knob15
+    100076: knob16
+    100078: knob17
+    100080: knob18
+    100082: knob2
+    100084: knob6
+    100086: knob7
+    100088: knob8
+    100090: knob9
+    100092: lamp01_Nguyen
+    100094: leg
+    100096: leg 1
+    100098: leg 2
+    100100: leg 3
+    100102: leg 4
+    100104: leg2
+    100106: leg2 1
+    100108: leg2 2
+    100110: leg3
+    100112: leg3 1
+    100114: leg4
+    100116: leg5
+    100118: leg6
+    100120: leg7
+    100122: leg8
+    100124: mattress
+    100126: middlechair
+    100128: middleframe
+    100130: outside
+    100132: pillow
+    100134: pillow1
+    100136: plug01_Nguyen
+    100138: roller
+    100140: roller1
+    100142: room01_Nguyen
+    100144: shade
+    100146: stand
+    100148: top
+    100150: top2
+    100152: top4
+    100154: top_holder
+    100156: top_holder1
+    100158: topcahir
+    100160: topframe
+    100162: trashbin
+    100164: trashbin01_Nguyen
+    100166: //RootNode
+    100168: wheel
+    100170: wheel1
+    100172: wheel2
+    100174: wheel3
+    100176: wire
+    400000: back
+    400002: bedset01_Nguyen
+    400004: blanket
+    400006: bottom
+    400008: bottom 1
+    400010: bottomchair
+    400012: bottomframe
+    400014: bulb
+    400016: chair01_Nguyen
+    400018: chairholder
+    400020: chairlegs
+    400022: computerDesk01_Nguyen
+    400024: door
+    400026: door01_Nguyen
+    400028: doorframe
+    400030: doorknob
+    400032: drawer10
+    400034: drawer12
+    400036: drawer13
+    400038: drawer14
+    400040: drawer16
+    400042: drawer17
+    400044: drawer18
+    400046: drawer9
+    400048: dresser2_01Nguyen
+    400050: dresserchest_01Nguyen
+    400052: foundation
+    400054: frontleg
+    400056: frontleg1
+    400058: holder
+    400060: inside
+    400062: keyboard_holder
+    400064: knob10
+    400066: knob11
+    400068: knob12
+    400070: knob13
+    400072: knob14
+    400074: knob15
+    400076: knob16
+    400078: knob17
+    400080: knob18
+    400082: knob2
+    400084: knob6
+    400086: knob7
+    400088: knob8
+    400090: knob9
+    400092: lamp01_Nguyen
+    400094: leg
+    400096: leg 1
+    400098: leg 2
+    400100: leg 3
+    400102: leg 4
+    400104: leg2
+    400106: leg2 1
+    400108: leg2 2
+    400110: leg3
+    400112: leg3 1
+    400114: leg4
+    400116: leg5
+    400118: leg6
+    400120: leg7
+    400122: leg8
+    400124: mattress
+    400126: middlechair
+    400128: middleframe
+    400130: outside
+    400132: pillow
+    400134: pillow1
+    400136: plug01_Nguyen
+    400138: roller
+    400140: roller1
+    400142: room01_Nguyen
+    400144: shade
+    400146: stand
+    400148: top
+    400150: top2
+    400152: top4
+    400154: top_holder
+    400156: top_holder1
+    400158: topcahir
+    400160: topframe
+    400162: trashbin
+    400164: trashbin01_Nguyen
+    400166: //RootNode
+    400168: wheel
+    400170: wheel1
+    400172: wheel2
+    400174: wheel3
+    400176: wire
+    2100000: lamp
+    2100002: room
+    2100004: chest_dresser
+    2100006: dresser
+    2100008: computer_desk
+    2100010: trash_bin
+    2100012: foundation1
+    2100014: bedset1
+    2100016: chair1
+    2100018: door1
+    2300000: back
+    2300002: blanket
+    2300004: bottom
+    2300006: bottom 1
+    2300008: bottomchair
+    2300010: bottomframe
+    2300012: bulb
+    2300014: chairholder
+    2300016: door
+    2300018: doorframe
+    2300020: doorknob
+    2300022: drawer10
+    2300024: drawer12
+    2300026: drawer13
+    2300028: drawer14
+    2300030: drawer16
+    2300032: drawer17
+    2300034: drawer18
+    2300036: drawer9
+    2300038: foundation
+    2300040: frontleg
+    2300042: frontleg1
+    2300044: holder
+    2300046: inside
+    2300048: keyboard_holder
+    2300050: knob10
+    2300052: knob11
+    2300054: knob12
+    2300056: knob13
+    2300058: knob14
+    2300060: knob15
+    2300062: knob16
+    2300064: knob17
+    2300066: knob18
+    2300068: knob2
+    2300070: knob6
+    2300072: knob7
+    2300074: knob8
+    2300076: knob9
+    2300078: leg
+    2300080: leg 1
+    2300082: leg 2
+    2300084: leg 3
+    2300086: leg 4
+    2300088: leg2
+    2300090: leg2 1
+    2300092: leg2 2
+    2300094: leg3
+    2300096: leg3 1
+    2300098: leg4
+    2300100: leg5
+    2300102: leg6
+    2300104: leg7
+    2300106: leg8
+    2300108: mattress
+    2300110: middlechair
+    2300112: middleframe
+    2300114: outside
+    2300116: pillow
+    2300118: pillow1
+    2300120: plug01_Nguyen
+    2300122: roller
+    2300124: roller1
+    2300126: room01_Nguyen
+    2300128: shade
+    2300130: stand
+    2300132: top
+    2300134: top2
+    2300136: top4
+    2300138: top_holder
+    2300140: top_holder1
+    2300142: topcahir
+    2300144: topframe
+    2300146: trashbin
+    2300148: wheel
+    2300150: wheel1
+    2300152: wheel2
+    2300154: wheel3
+    2300156: wire
+    3300000: back
+    3300002: blanket
+    3300004: bottom
+    3300006: bottom 1
+    3300008: bottomchair
+    3300010: bottomframe
+    3300012: bulb
+    3300014: chairholder
+    3300016: door
+    3300018: doorframe
+    3300020: doorknob
+    3300022: drawer10
+    3300024: drawer12
+    3300026: drawer13
+    3300028: drawer14
+    3300030: drawer16
+    3300032: drawer17
+    3300034: drawer18
+    3300036: drawer9
+    3300038: foundation
+    3300040: frontleg
+    3300042: frontleg1
+    3300044: holder
+    3300046: inside
+    3300048: keyboard_holder
+    3300050: knob10
+    3300052: knob11
+    3300054: knob12
+    3300056: knob13
+    3300058: knob14
+    3300060: knob15
+    3300062: knob16
+    3300064: knob17
+    3300066: knob18
+    3300068: knob2
+    3300070: knob6
+    3300072: knob7
+    3300074: knob8
+    3300076: knob9
+    3300078: leg
+    3300080: leg 1
+    3300082: leg 2
+    3300084: leg 3
+    3300086: leg 4
+    3300088: leg2
+    3300090: leg2 1
+    3300092: leg2 2
+    3300094: leg3
+    3300096: leg3 1
+    3300098: leg4
+    3300100: leg5
+    3300102: leg6
+    3300104: leg7
+    3300106: leg8
+    3300108: mattress
+    3300110: middlechair
+    3300112: middleframe
+    3300114: outside
+    3300116: pillow
+    3300118: pillow1
+    3300120: plug01_Nguyen
+    3300122: roller
+    3300124: roller1
+    3300126: room01_Nguyen
+    3300128: shade
+    3300130: stand
+    3300132: top
+    3300134: top2
+    3300136: top4
+    3300138: top_holder
+    3300140: top_holder1
+    3300142: topcahir
+    3300144: topframe
+    3300146: trashbin
+    3300148: wheel
+    3300150: wheel1
+    3300152: wheel2
+    3300154: wheel3
+    3300156: wire
+    4300000: holder
+    4300002: shade
+    4300004: stand
+    4300006: bulb
+    4300008: wire
+    4300010: plug01_Nguyen
+    4300012: room01_Nguyen
+    4300014: inside
+    4300016: leg
+    4300018: leg6
+    4300020: leg7
+    4300022: leg8
+    4300024: bottom
+    4300026: knob2
+    4300028: knob14
+    4300030: knob15
+    4300032: knob16
+    4300034: knob17
+    4300036: knob18
+    4300038: drawer16
+    4300040: drawer17
+    4300042: drawer18
+    4300044: leg
+    4300046: leg2
+    4300048: leg3
+    4300050: leg4
+    4300052: outside
+    4300054: knob6
+    4300056: knob7
+    4300058: knob8
+    4300060: knob9
+    4300062: knob10
+    4300064: knob11
+    4300066: knob12
+    4300068: knob13
+    4300070: top4
+    4300072: bottom
+    4300074: drawer12
+    4300076: drawer13
+    4300078: drawer10
+    4300080: drawer9
+    4300082: drawer14
+    4300084: top_holder
+    4300086: leg
+    4300088: leg2
+    4300090: keyboard_holder
+    4300092: roller
+    4300094: roller1
+    4300096: top
+    4300098: leg3
+    4300100: back
+    4300102: top_holder1
+    4300104: top2
+    4300106: trashbin
+    4300108: foundation
+    4300110: bottomframe
+    4300112: leg
+    4300114: leg5
+    4300116: frontleg
+    4300118: middleframe
+    4300120: frontleg1
+    4300122: topframe
+    4300124: mattress
+    4300126: pillow1
+    4300128: pillow
+    4300130: blanket
+    4300132: leg2
+    4300134: leg
+    4300136: wheel
+    4300138: wheel1
+    4300140: wheel2
+    4300142: wheel3
+    4300144: chairholder
+    4300146: bottomchair
+    4300148: middlechair
+    4300150: topcahir
+    4300152: doorframe
+    4300154: door
+    4300156: doorknob
+    6400000: back
+    6400002: blanket
+    6400004: bottom
+    6400006: bottom 1
+    6400008: bottomchair
+    6400010: bottomframe
+    6400012: bulb
+    6400014: chairholder
+    6400016: door
+    6400018: doorframe
+    6400020: doorknob
+    6400022: drawer10
+    6400024: drawer12
+    6400026: drawer13
+    6400028: drawer14
+    6400030: drawer16
+    6400032: drawer17
+    6400034: drawer18
+    6400036: drawer9
+    6400038: foundation
+    6400040: frontleg
+    6400042: frontleg1
+    6400044: holder
+    6400046: inside
+    6400048: keyboard_holder
+    6400050: knob10
+    6400052: knob11
+    6400054: knob12
+    6400056: knob13
+    6400058: knob14
+    6400060: knob15
+    6400062: knob16
+    6400064: knob17
+    6400066: knob18
+    6400068: knob2
+    6400070: knob6
+    6400072: knob7
+    6400074: knob8
+    6400076: knob9
+    6400078: leg
+    6400080: leg 1
+    6400082: leg 2
+    6400084: leg 3
+    6400086: leg 4
+    6400088: leg2
+    6400090: leg2 1
+    6400092: leg2 2
+    6400094: leg3
+    6400096: leg3 1
+    6400098: leg4
+    6400100: leg5
+    6400102: leg6
+    6400104: leg7
+    6400106: leg8
+    6400108: mattress
+    6400110: middlechair
+    6400112: middleframe
+    6400114: outside
+    6400116: pillow
+    6400118: pillow1
+    6400120: plug01_Nguyen
+    6400122: roller
+    6400124: roller1
+    6400126: room01_Nguyen
+    6400128: shade
+    6400130: stand
+    6400132: top
+    6400134: top2
+    6400136: top4
+    6400138: top_holder
+    6400140: top_holder1
+    6400142: topcahir
+    6400144: topframe
+    6400146: trashbin
+    6400148: wheel
+    6400150: wheel1
+    6400152: wheel2
+    6400154: wheel3
+    6400156: wire
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bedset1
+    second: {fileID: 2100000, guid: f88c731feda3d424c91929001adca690, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chair1
+    second: {fileID: 2100000, guid: df9cea66283ba7d4c8fba5f287dde945, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chest_dresser
+    second: {fileID: 2100000, guid: 41c3e37b7db813d46ada64172057c220, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: computer_desk
+    second: {fileID: 2100000, guid: bd2a64352cd56984b8aa6474ab99c227, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door1
+    second: {fileID: 2100000, guid: d39fc3271bf5f49408cae6698781505b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dresser
+    second: {fileID: 2100000, guid: 416403aff063d124ab6d68778ef23216, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: foundation1
+    second: {fileID: 2100000, guid: 3e278971a65faed4c8837c0821e5d562, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lamp
+    second: {fileID: 2100000, guid: 4921644ab773376488087ea3a8e59008, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: room
+    second: {fileID: 2100000, guid: b2603ea6cd20cb741a4f63747d3e892a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trash_bin
+    second: {fileID: 2100000, guid: 00eec2c69f563a64c969e39b1b5f93cd, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
