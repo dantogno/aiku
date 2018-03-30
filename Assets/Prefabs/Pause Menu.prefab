@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4089216993876326}
-  - component: {fileID: 114132067816332364}
+  - component: {fileID: 114587967837777286}
   m_Layer: 0
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -291,17 +291,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuCanvas: {fileID: 223162928522705120}
---- !u!114 &114132067816332364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1472775837068998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3bb7cd656f3e8b4a9d1e1a7634f0abd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114155967168016938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,6 +402,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114587967837777286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472775837068998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64de78b817797124d8c5ce952b5db903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114613975318629264
 MonoBehaviour:
   m_ObjectHideFlags: 1
