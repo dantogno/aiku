@@ -25,7 +25,8 @@ public class Scope : MonoBehaviour
 	[Tooltip("Animator component of the GMD.")]
 	[SerializeField] private Animator zoomAnimator;
 
-    [SerializeField] private CustomRigidbodyFPSController character;
+	[Tooltip("CustomRigidbodyFPSController component of the player")]
+	[SerializeField] private CustomRigidbodyFPSController character;
 
     //Currently used by another script. Will be made private eventually.
     public bool isEquipped;
@@ -79,11 +80,9 @@ public class Scope : MonoBehaviour
         {
             zoomAnimator.SetBool("UsingScope", true);
 			gmdCameraObject.SetActive(false);
-            //THIS IS BAD I KNOW ITS BAD
-            character.movementSettings.ForwardSpeed = 0.7f;
-            character.movementSettings.BackwardSpeed = 0.5f;
-            character.movementSettings.StrafeSpeed = 0.5f;
-            //End of bad
+
+			SlowDownPlayer ();
+
             if (hasWaitedForAnimation)
             {
                 isEquipped = true;
@@ -107,9 +106,7 @@ public class Scope : MonoBehaviour
 			overlay.SetActive(false);
 			gmdModel.SetActive(true);
 
-            character.movementSettings.ForwardSpeed = 5f;
-            character.movementSettings.BackwardSpeed = 3.5f;
-            character.movementSettings.StrafeSpeed = 3.5f;
+			ResetPlayerMovementSpeed ();
 
             if (hasWaitedForAnimation)
             {
@@ -204,6 +201,26 @@ public class Scope : MonoBehaviour
             }
         }
     }
+
+	/// <summary>
+	/// Slows down player
+	/// </summary>
+	private void SlowDownPlayer()
+	{
+		character.movementSettings.ForwardSpeed = 0.7f;
+		character.movementSettings.BackwardSpeed = 0.5f;
+		character.movementSettings.StrafeSpeed = 0.5f;
+	}
+
+	/// <summary>
+	/// Resets the player movement speed.
+	/// </summary>
+	private void ResetPlayerMovementSpeed()
+	{
+		character.movementSettings.ForwardSpeed = 5f;
+		character.movementSettings.BackwardSpeed = 3.5f;
+		character.movementSettings.StrafeSpeed = 3.5f;
+	}
 
 	/// <summary>
 	/// Waits for scope animations.
