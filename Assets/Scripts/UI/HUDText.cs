@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This class displays the player's current objective on the screen.
+/// It is applied to a dedicated world-space canvas which is a child of the main camera.
 /// </summary>
 
 public class HUDText : MonoBehaviour
@@ -18,15 +19,20 @@ public class HUDText : MonoBehaviour
         public string[] lines;
     }
 
-    [SerializeField]
+    [SerializeField, Tooltip("The text writer component used to print text lines one letter at a time.")]
     private TextWriter textWriter;
 
-    [SerializeField]
-    private Lines[] firstGoalLines, secondGoalLines;
+    [Space]
+
+    [SerializeField, Tooltip("The HUD text for the first objective of the game.")]
+    private Lines[] firstObjectiveLines;
+
+    [SerializeField, Tooltip("The HUD text for the second objective of the game.")]
+    private Lines[] secondObjectiveLines;
 
     #endregion
 
-    // Tasks which trigger HUD objective text changes.
+    [Header("Tasks Which Trigger HUD Text Changes")]
     [SerializeField]
     private Task firstCheckingTask, elevatorButtonTask, SOSTask;
 
@@ -61,7 +67,7 @@ public class HUDText : MonoBehaviour
     /// </summary>
     private void SetSOSText()
     {
-        textWriter.DisplayText(secondGoalLines[0].lines);
+        textWriter.DisplayText(secondObjectiveLines[0].lines);
     }
 
     /// <summary>
@@ -80,7 +86,7 @@ public class HUDText : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
 
-        textWriter.DisplayText(secondGoalLines[1].lines);
+        textWriter.DisplayText(secondObjectiveLines[1].lines);
     }
 
     /// <summary>
@@ -89,9 +95,9 @@ public class HUDText : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DisplayFirstHubObjective()
     {
-        textWriter.DisplayText(firstGoalLines[0].lines);
+        textWriter.DisplayText(firstObjectiveLines[0].lines);
         yield return StartCoroutine(ClearTextAfterWait(10));
-        textWriter.DisplayText(firstGoalLines[1].lines);
+        textWriter.DisplayText(firstObjectiveLines[1].lines);
     }
 
     /// <summary>
