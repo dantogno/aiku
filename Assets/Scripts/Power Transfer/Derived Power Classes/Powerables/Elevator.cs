@@ -10,14 +10,8 @@ using UnityEngine;
 
 public class Elevator : PowerableObject
 {
+    [SerializeField]
     private Animator myAnimator;
-
-    protected override void Start()
-    {
-        base.Start();
-
-        myAnimator = GetComponent<Animator>();
-    }
 
     /// <summary>
     /// Sets CurrentPower to zero.
