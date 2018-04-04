@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 42117402e0fc3714c98ba32ba644ba85
+timeCreated: 1520915180
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: cabinet1
+    100002: cabinets2
+    100004: counters2
+    100006: cups1
+    100008: //RootNode
+    100010: mic
+    100012: mugs
+    100014: plates
+    100016: polySurface82
+    100018: pot2
+    100020: sink1
+    100022: stove1
+    100024: teappot
+    100026: toaster1
+    400000: cabinet1
+    400002: cabinets2
+    400004: counters2
+    400006: cups1
+    400008: //RootNode
+    400010: mic
+    400012: mugs
+    400014: plates
+    400016: polySurface82
+    400018: pot2
+    400020: sink1
+    400022: stove1
+    400024: teappot
+    400026: toaster1
+    2100000: pot
+    2100002: mug8
+    2100004: mug7
+    2100006: mug6
+    2100008: mug5
+    2100010: mug4
+    2100012: mug3
+    2100014: mug2
+    2100016: mug1
+    2100018: cabinets1
+    2100020: cabinet
+    2100022: counters1
+    2100024: handle
+    2100026: countertop
+    2100028: cups
+    2100030: plate
+    2100032: toaster
+    2100034: microwave
+    2100036: counters
+    2100038: hinges
+    2100040: sink
+    2100042: teapot
+    2100044: stove
+    2100046: knifeset
+    2300000: cabinet1
+    2300002: cabinets2
+    2300004: counters2
+    2300006: cups1
+    2300008: mic
+    2300010: mugs
+    2300012: plates
+    2300014: polySurface82
+    2300016: pot2
+    2300018: sink1
+    2300020: stove1
+    2300022: teappot
+    2300024: toaster1
+    3300000: cabinet1
+    3300002: cabinets2
+    3300004: counters2
+    3300006: cups1
+    3300008: mic
+    3300010: mugs
+    3300012: plates
+    3300014: polySurface82
+    3300016: pot2
+    3300018: sink1
+    3300020: stove1
+    3300022: teappot
+    3300024: toaster1
+    4300000: pot2
+    4300002: mugs
+    4300004: cabinets2
+    4300006: cabinet1
+    4300008: counters2
+    4300010: cups1
+    4300012: plates
+    4300014: toaster1
+    4300016: mic
+    4300018: sink1
+    4300020: teappot
+    4300022: stove1
+    4300024: polySurface82
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cabinet
+    second: {fileID: 2100000, guid: 229c97070efdc93489ff486ebb79ae9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cabinets1
+    second: {fileID: 2100000, guid: 372641a573bdb8540bbcac6a31b5d6fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: counters
+    second: {fileID: 2100000, guid: 0faf93c97fca7244780bb7e5aedfc474, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: counters1
+    second: {fileID: 2100000, guid: f5554778ffd43584e8fe46cf87c790f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: countertop
+    second: {fileID: 2100000, guid: b8654ff2b939fbe418ef04aa1b8e1057, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cups
+    second: {fileID: 2100000, guid: 4feb37a620d29464c9030a694f07ec11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle
+    second: {fileID: 2100000, guid: b71834ca51be0564ea64651aced353aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hinges
+    second: {fileID: 2100000, guid: a0af270415d06aa428da93ef178252ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: knifeset
+    second: {fileID: 2100000, guid: 90186610b527b5f4c9e03f1c473ea9a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: microwave
+    second: {fileID: 2100000, guid: af593ca1485dcc04e972200befc047f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug1
+    second: {fileID: 2100000, guid: aa1e3b22776202e4a94636977c636bf3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug2
+    second: {fileID: 2100000, guid: 14ca334e68c2e0f4abbf6d88fba07460, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug3
+    second: {fileID: 2100000, guid: d427c1c3ed057d04da5d44f56f99ead5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug4
+    second: {fileID: 2100000, guid: e3e4240aaed4064499b120fb3d56b32b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug5
+    second: {fileID: 2100000, guid: 1526c2ada68991f429e9503a7f08e156, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug6
+    second: {fileID: 2100000, guid: b9210d291c96a9445a9e23253f1e704f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug7
+    second: {fileID: 2100000, guid: c7579fb31f6edb44bbeb3ea159b9f18c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mug8
+    second: {fileID: 2100000, guid: 8e6e10fabce78b54090c6ed4296b816b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plate
+    second: {fileID: 2100000, guid: c62599eaa28e46a4cb24be78d9f7e225, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pot
+    second: {fileID: 2100000, guid: 6742de3a3fad380428a805e4877e28ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sink
+    second: {fileID: 2100000, guid: 010495addb787594493b72e7a56155df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stove
+    second: {fileID: 2100000, guid: 4ecb456992be96247b05cce31bfb9c57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: teapot
+    second: {fileID: 2100000, guid: e8085d9943c4f924cb253c0ea3c0703a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: toaster
+    second: {fileID: 2100000, guid: 12a3c226705e2bd428a257ab50399981, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
