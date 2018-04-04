@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SubtitleManager : MonoBehaviour {
-
+public class SubtitleManager : MonoBehaviour
+{
     [Tooltip("Base number of seconds each subtitle is shown")]
-    [SerializeField] float subtitlePadding;                         //Base time added to every line
+    [SerializeField] public float subtitlePadding;                         //Base time added to every line
 
     [Tooltip("Speed of subtitles")]
     [SerializeField, Range(0.1f, 1f)] public float TextSpeed;       //Speed in seconds per word of subtitles
 
     [Tooltip("Text component the Subtitle Manager prints to")]
-    [SerializeField] Text SubtitleTextComponent;                    //Text object to print to
+    [SerializeField] private Text SubtitleTextComponent;                    //Text object to print to
 
-	public static Action<int> SubtitleFinished;
+	public static event Action<int> SubtitleFinished;
     private static SubtitleManager instance;
+    private Coroutine coroutine;
 
 
-	// Use this for initialization
-	void Start () {
-
+    // Use this for initialization
+    void Start ()
+    {
         SubtitleTextComponent.text = "";
     }
 
@@ -51,8 +52,6 @@ public class SubtitleManager : MonoBehaviour {
         ShowSubtitles(_subtitles);
     }
 
-    private Coroutine coroutine;
-
     private void ShowSubtitles(string[] subtitles)
     {
         if (coroutine != null)
@@ -61,7 +60,7 @@ public class SubtitleManager : MonoBehaviour {
         coroutine = StartCoroutine(ShowSubtitleAndWait(subtitles));
     }
 
-    IEnumerator ShowSubtitleAndWait(string[] subtitles)
+    private IEnumerator ShowSubtitleAndWait(string[] subtitles)
     {
         foreach (string subtitle in subtitles)
         {

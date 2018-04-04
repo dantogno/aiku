@@ -4,16 +4,17 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(AudioSource))]
-public class VOAudio : MonoBehaviour {
-
+public class VOAudio : MonoBehaviour
+{
     [Tooltip("Enter subtitles here. Separate each subtitle with a tilde, like this.~ And this.~")]
-    [SerializeField, TextArea(3, 5)] string Subtitle;
-    AudioSource audioSource;
+    [SerializeField, TextArea(3, 5)] public string Subtitle;
+    private AudioSource audioSource;
 
-    public static Action<string> VOAudioTriggered;   
+    public static event Action<string> VOAudioTriggered;   
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         audioSource = this.GetComponent<AudioSource>();
 	}
 
