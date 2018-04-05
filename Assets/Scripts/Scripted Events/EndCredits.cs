@@ -13,6 +13,8 @@ using UnityEngine.UI;
 
 public class EndCredits : MonoBehaviour
 {
+    public static event Action CreditsStarted;
+
     /// <summary>
     /// This is an inspector struct containing information for one "slide" of the end credits sequence (concentration and names of people in that concentration).
     /// </summary>
@@ -44,6 +46,15 @@ public class EndCredits : MonoBehaviour
     [SerializeField, Tooltip("Enter our game's credits in these fields!")]
     private Credit[] credits;
 
+    private void OnEnable()
+    {
+        HubVFXManager.FinalVFXHasFinished += RollCredits;
+    }
+    private void OnDisable()
+    {
+        HubVFXManager.FinalVFXHasFinished -= RollCredits;
+    }
+
     private void Start()
     {
         HideCreditsPanel();
@@ -62,8 +73,10 @@ public class EndCredits : MonoBehaviour
         nameText.color = Color.clear;
     }
 
-    // This method simply allows other scripts to trigger the end credit sequence without requiring them to use the StartCoroutine syntax.
-    public void RollCredits()
+    /// <summary>
+    /// Game is done!
+    /// </summary>
+    private void RollCredits()
     {
         StartCoroutine(CycleThroughCredits());
     }
@@ -74,17 +87,14 @@ public class EndCredits : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CycleThroughCredits()
     {
+        if (CreditsStarted != null) CreditsStarted.Invoke();
+
         // This variable is re-used for each while loop as a timer.
         float elapsedTime = 0;
 
-        // Fade the backdrop in.
-        while (elapsedTime < textFadeTime)
-        {
-            endCreditsPanel.color = Color.Lerp(Color.clear, Color.black, elapsedTime / textFadeTime);
+        endCreditsPanel.color = Color.black;
 
-            yield return new WaitForEndOfFrame();
-            elapsedTime += Time.deltaTime;
-        }
+        yield return new WaitForSeconds(3);
 
         // This foreach loop cycles through the credits.
         foreach(Credit credit in credits)
@@ -103,6 +113,9 @@ public class EndCredits : MonoBehaviour
                 elapsedTime += Time.deltaTime;
             }
 
+            headerText.color = Color.white;
+            nameText.color = Color.white;
+
             #endregion
 
             // Allow some time for the player to read the names on the slide.
@@ -120,8 +133,13 @@ public class EndCredits : MonoBehaviour
                 elapsedTime += Time.deltaTime;
             }
 
+            headerText.color = Color.clear;
+            nameText.color = Color.clear;
+
             #endregion
         }
+
+        yield return new WaitForSeconds(4);
 
         // After the credits are done, quit the game! Wow, this is a clean script. This is such a nice, clean script. Good job, me.
         Application.Quit();
