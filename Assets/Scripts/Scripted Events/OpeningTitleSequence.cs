@@ -7,7 +7,7 @@ using System;
 
 /// <summary>
 /// This script handles the game's title sequence.
-/// It is applied to a prefabbed Canvas in the opening scene (not the Hub scene).
+/// It is applied to a dedicated canvas in the hub scene.
 /// </summary>
 
 public class OpeningTitleSequence : MonoBehaviour

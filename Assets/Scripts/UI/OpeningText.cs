@@ -5,25 +5,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// This class controls the bootup text that plays over the game's opening scene.
+/// Text which plays at beginning of game.
+/// The script is applied to a dedicated GameObject.
 /// </summary>
 
 public class OpeningText : MonoBehaviour
 {
-    #region Text writer component and lines to feed into text writer.
-
     [Serializable]
-    private struct Lines { public string[] lines; }
+    private struct Lines
+    {
+        public string[] lines;
+    }
 
-    [SerializeField]
+    [SerializeField, Tooltip("The text writer component that prints text to the screen.")]
     private TextWriter textWriter;
 
-    [SerializeField]
+    [SerializeField, Tooltip("Lines which are printed to the screen.")]
     private Lines[] startUpLines;
 
-    #endregion
-
-    // Controls whether the player can click the mouse to skip over the opening sequence.
+    // The player can only press skip once, to prevent button-mashing.
     private bool canSkip = true;
 
     private void Start()
@@ -33,7 +33,7 @@ public class OpeningText : MonoBehaviour
 
     private void Update()
     {
-        // Load next scene if the player presses the skip button.
+        // Player can skip intro.
         if (Input.GetButtonDown("Interact") && canSkip)
         {
             StartCoroutine(LoadNextScene());
@@ -41,29 +41,23 @@ public class OpeningText : MonoBehaviour
     }
 
     /// <summary>
-    /// Opening text sequence of the game.
+    /// Print text to screen.
     /// </summary>
     /// <returns></returns>
     private IEnumerator StartUpTextSequence()
     {
         yield return new WaitForSeconds(2);
 
-        #region Display startup text lines sequentially.
-
         textWriter.DisplayText(startUpLines[0].lines);
         yield return StartCoroutine(ClearTextAfterWait(10));
         textWriter.DisplayText(startUpLines[1].lines);
         yield return StartCoroutine(ClearTextAfterWait(12));
         textWriter.DisplayText(startUpLines[2].lines);
-
-        #endregion
-
-        // When finished printing lines, load next scene.
         StartCoroutine(LoadNextScene());
     }
 
     /// <summary>
-    /// Clear text after x seconds.
+    /// Get rid of all text on the screen.
     /// </summary>
     /// <param name="waitTime"></param>
     /// <returns></returns>
@@ -75,7 +69,7 @@ public class OpeningText : MonoBehaviour
     }
 
     /// <summary>
-    /// Load the next scene in the build settings.
+    /// Start the game!
     /// </summary>
     /// <returns></returns>
     private IEnumerator LoadNextScene()
