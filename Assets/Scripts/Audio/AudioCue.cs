@@ -20,7 +20,7 @@ public class AudioCue : MonoBehaviour
     private Task task;
 
     [SerializeField, Tooltip("The AudioSource which will respond to the cue.")]
-    AudioSource audioSource;
+    private AudioSource audioSource;
 
     [SerializeField, Tooltip("The clip which will be played, if applicable.")]
     private AudioClip clip;
