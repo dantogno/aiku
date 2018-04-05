@@ -24,6 +24,9 @@ public class TextWriter : MonoBehaviour {
     [Tooltip("Blocks are typed out one at a time and each block replaces the previous")]
     private string[] textBlock1, textBlock2, textBlock3;
 
+    [SerializeField]
+    private AudioSource myAudioSource;  // DW
+
     private string[][] textStrings;
 
     private Coroutine type, blink;
@@ -34,7 +37,11 @@ public class TextWriter : MonoBehaviour {
         string[][] assembledBlocks = { textBlock1, textBlock2, textBlock3 };
 
         textStrings = assembledBlocks;
-	}
+        if (myAudioSource == null) myAudioSource = GetComponent<AudioSource>();    // DW
+
+        float pitch = myAudioSource.pitch;
+        myAudioSource.pitch = Random.Range(pitch - .05f, pitch + .05f);   // DW
+    }
 
     /// <summary>
     /// Called by animations to show text as part of animation cycle
@@ -71,6 +78,11 @@ public class TextWriter : MonoBehaviour {
         type = StartCoroutine(TypeTextLineByLine(text));
     }
 
+    public void ChangeTypingSpeed(float newSpeed)
+    {
+        typingSpeed = newSpeed;
+    }
+
     /// <summary>
     /// Erases all other text on the screen, then types the given line
     /// </summary>
@@ -88,12 +100,12 @@ public class TextWriter : MonoBehaviour {
             float timeElapsed = Time.time - startTime;
             currentPosition = Mathf.Clamp(Mathf.FloorToInt(timeElapsed * typingSpeed), 0, text.Length);
 
-            uiText.text = text.Substring(0, currentPosition) + "|";
+            uiText.text = text.Substring(0, currentPosition);  // DW: deleted cursor
             yield return null;
         }
 
         uiText.text = text;
-        blink = StartCoroutine(BlinkCursor(0.2f));
+        //blink = StartCoroutine(BlinkCursor(0.2f));        // commented out by DW
     }
 
     /// <summary>
@@ -103,7 +115,7 @@ public class TextWriter : MonoBehaviour {
     /// <returns></returns>
     private IEnumerator TypeTextLineByLine(string[] text)
     {
-        if(blink != null)
+        if (blink != null)
             StopCoroutine(blink);
 
         float startTime = Time.time;
@@ -114,10 +126,12 @@ public class TextWriter : MonoBehaviour {
         {
             while (currentPosition < text[currentLine].Length)
             {
+                if (!myAudioSource.isPlaying) myAudioSource.Play(); // DW
+
                 float timeElapsed = Time.time - startTime;
                 currentPosition = Mathf.Clamp(Mathf.FloorToInt(timeElapsed * typingSpeed), 0, text[currentLine].Length);
 
-                uiText.text = previousLines + text[currentLine].Substring(0, currentPosition) + " |";
+                uiText.text = previousLines + text[currentLine].Substring(0, currentPosition);  // DW: deleted cursor
                 yield return null;
             }
 
@@ -137,7 +151,7 @@ public class TextWriter : MonoBehaviour {
 
         uiText.text = previousLines;
 
-        blink = StartCoroutine(BlinkCursor(0.2f));
+        //blink = StartCoroutine(BlinkCursor(0.2f));        // commented out by DW
     }
 
     /// <summary>
