@@ -1,0 +1,446 @@
+fileFormatVersion: 2
+guid: c15905bd376af0b42bd18a4e9f021414
+timeCreated: 1520636819
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BallBarringSupports
+    100002: BallBarringSupports1
+    100004: BallBarringSupports2
+    100006: BallBarringSupports3
+    100008: BallJoint
+    100010: BallJoint1
+    100012: BallJoint2
+    100014: BallJoint3
+    100016: BarringRod
+    100018: BarringRod1
+    100020: BarringRod2
+    100022: BarringRod3
+    100024: BarringShell
+    100026: BarringShell 1
+    100028: BarringShell 2
+    100030: BarringShell 3
+    100032: BarringShell2
+    100034: BarringShell2 1
+    100036: BarringShell2 2
+    100038: BarringShell2 3
+    100040: BOTTOM
+    100042: Bottom
+    100044: DOWN
+    100046: Elbows
+    100048: Elbows1
+    100050: Flooring
+    100052: FlooringBot
+    100054: Hydraulic0
+    100056: HydraulicU0
+    100058: HydraulicU0 1
+    100060: OuterShell
+    100062: OuterShell 1
+    100064: Plateau
+    100066: Platform
+    100068: polySurface1
+    100070: polySurface1 1
+    100072: polySurface1 2
+    100074: polySurface1 3
+    100076: Socket1
+    100078: Socket2
+    100080: Socket4
+    100082: Socket5
+    100084: //RootNode
+    100086: StairSupport_D
+    100088: StairSupport_D1
+    100090: StairSupport_U
+    100092: StairSupportU1
+    100094: STEP_D10
+    100096: STEP_D2
+    100098: STEP_D3
+    100100: STEP_D4
+    100102: STEP_D5
+    100104: STEP_D6
+    100106: STEP_D7
+    100108: STEP_D8
+    100110: STEP_D9
+    100112: STEP_U10
+    100114: STEP_U2
+    100116: STEP_U3
+    100118: STEP_U4
+    100120: STEP_U5
+    100122: STEP_U6
+    100124: STEP_U7
+    100126: STEP_U8
+    100128: STEP_U9
+    100130: STEPS_D
+    100132: STEPS_U
+    100134: TOP
+    100136: Top
+    100138: TopHyd
+    100140: TopHyd1
+    100142: transform11
+    100144: transform11 1
+    100146: transform11 2
+    100148: transform12
+    100150: transform12 1
+    100152: transform12 2
+    100154: UP
+    100156: Wallmount
+    100158: Wallmount 1
+    100160: Wallmount 2
+    100162: Wallmount 3
+    400000: BallBarringSupports
+    400002: BallBarringSupports1
+    400004: BallBarringSupports2
+    400006: BallBarringSupports3
+    400008: BallJoint
+    400010: BallJoint1
+    400012: BallJoint2
+    400014: BallJoint3
+    400016: BarringRod
+    400018: BarringRod1
+    400020: BarringRod2
+    400022: BarringRod3
+    400024: BarringShell
+    400026: BarringShell 1
+    400028: BarringShell 2
+    400030: BarringShell 3
+    400032: BarringShell2
+    400034: BarringShell2 1
+    400036: BarringShell2 2
+    400038: BarringShell2 3
+    400040: BOTTOM
+    400042: Bottom
+    400044: DOWN
+    400046: Elbows
+    400048: Elbows1
+    400050: Flooring
+    400052: FlooringBot
+    400054: Hydraulic0
+    400056: HydraulicU0
+    400058: HydraulicU0 1
+    400060: OuterShell
+    400062: OuterShell 1
+    400064: Plateau
+    400066: Platform
+    400068: polySurface1
+    400070: polySurface1 1
+    400072: polySurface1 2
+    400074: polySurface1 3
+    400076: Socket1
+    400078: Socket2
+    400080: Socket4
+    400082: Socket5
+    400084: //RootNode
+    400086: StairSupport_D
+    400088: StairSupport_D1
+    400090: StairSupport_U
+    400092: StairSupportU1
+    400094: STEP_D10
+    400096: STEP_D2
+    400098: STEP_D3
+    400100: STEP_D4
+    400102: STEP_D5
+    400104: STEP_D6
+    400106: STEP_D7
+    400108: STEP_D8
+    400110: STEP_D9
+    400112: STEP_U10
+    400114: STEP_U2
+    400116: STEP_U3
+    400118: STEP_U4
+    400120: STEP_U5
+    400122: STEP_U6
+    400124: STEP_U7
+    400126: STEP_U8
+    400128: STEP_U9
+    400130: STEPS_D
+    400132: STEPS_U
+    400134: TOP
+    400136: Top
+    400138: TopHyd
+    400140: TopHyd1
+    400142: transform11
+    400144: transform11 1
+    400146: transform11 2
+    400148: transform12
+    400150: transform12 1
+    400152: transform12 2
+    400154: UP
+    400156: Wallmount
+    400158: Wallmount 1
+    400160: Wallmount 2
+    400162: Wallmount 3
+    2100000: Hydraulics
+    2100002: STAIRS
+    2300000: BallJoint
+    2300002: BallJoint1
+    2300004: BallJoint2
+    2300006: BallJoint3
+    2300008: BarringRod
+    2300010: BarringRod1
+    2300012: BarringRod2
+    2300014: BarringRod3
+    2300016: BarringShell
+    2300018: BarringShell 1
+    2300020: BarringShell 2
+    2300022: BarringShell 3
+    2300024: BarringShell2
+    2300026: BarringShell2 1
+    2300028: BarringShell2 2
+    2300030: BarringShell2 3
+    2300032: Bottom
+    2300034: OuterShell 1
+    2300036: Socket1
+    2300038: Socket2
+    2300040: Socket4
+    2300042: Socket5
+    2300044: StairSupport_D
+    2300046: StairSupport_D1
+    2300048: StairSupport_U
+    2300050: StairSupportU1
+    2300052: STEP_D10
+    2300054: STEP_D2
+    2300056: STEP_D3
+    2300058: STEP_D4
+    2300060: STEP_D5
+    2300062: STEP_D6
+    2300064: STEP_D7
+    2300066: STEP_D8
+    2300068: STEP_D9
+    2300070: STEP_U10
+    2300072: STEP_U2
+    2300074: STEP_U3
+    2300076: STEP_U4
+    2300078: STEP_U5
+    2300080: STEP_U6
+    2300082: STEP_U7
+    2300084: STEP_U8
+    2300086: STEP_U9
+    2300088: Top
+    2300090: Wallmount
+    2300092: Wallmount 1
+    2300094: Wallmount 2
+    2300096: Wallmount 3
+    3300000: BallJoint
+    3300002: BallJoint1
+    3300004: BallJoint2
+    3300006: BallJoint3
+    3300008: BarringRod
+    3300010: BarringRod1
+    3300012: BarringRod2
+    3300014: BarringRod3
+    3300016: BarringShell
+    3300018: BarringShell 1
+    3300020: BarringShell 2
+    3300022: BarringShell 3
+    3300024: BarringShell2
+    3300026: BarringShell2 1
+    3300028: BarringShell2 2
+    3300030: BarringShell2 3
+    3300032: Bottom
+    3300034: OuterShell 1
+    3300036: Socket1
+    3300038: Socket2
+    3300040: Socket4
+    3300042: Socket5
+    3300044: StairSupport_D
+    3300046: StairSupport_D1
+    3300048: StairSupport_U
+    3300050: StairSupportU1
+    3300052: STEP_D10
+    3300054: STEP_D2
+    3300056: STEP_D3
+    3300058: STEP_D4
+    3300060: STEP_D5
+    3300062: STEP_D6
+    3300064: STEP_D7
+    3300066: STEP_D8
+    3300068: STEP_D9
+    3300070: STEP_U10
+    3300072: STEP_U2
+    3300074: STEP_U3
+    3300076: STEP_U4
+    3300078: STEP_U5
+    3300080: STEP_U6
+    3300082: STEP_U7
+    3300084: STEP_U8
+    3300086: STEP_U9
+    3300088: Top
+    3300090: Wallmount
+    3300092: Wallmount 1
+    3300094: Wallmount 2
+    3300096: Wallmount 3
+    4300000: HydraulicU0
+    4300002: HydraulicU0
+    4300004: BallJoint3
+    4300006: BallJoint2
+    4300008: StairSupport_U
+    4300010: StairSupportU1
+    4300012: Socket4
+    4300014: Socket5
+    4300016: BarringRod
+    4300018: BarringRod1
+    4300020: STEP_U2
+    4300022: STEP_U3
+    4300024: STEP_U4
+    4300026: STEP_U5
+    4300028: STEP_U6
+    4300030: STEP_U7
+    4300032: STEP_U8
+    4300034: STEP_U9
+    4300036: STEP_U10
+    4300038: BarringShell
+    4300040: BarringShell2
+    4300042: Wallmount
+    4300044: BarringShell
+    4300046: BarringShell2
+    4300048: Wallmount
+    4300050: BarringShell
+    4300052: BarringShell2
+    4300054: Wallmount
+    4300056: BarringShell
+    4300058: BarringShell2
+    4300060: Wallmount
+    4300062: OuterShell
+    4300064: Hydraulic0
+    4300066: StairSupport_D
+    4300068: BallJoint
+    4300070: StairSupport_D1
+    4300072: BallJoint1
+    4300074: BarringRod2
+    4300076: BarringRod3
+    4300078: Top
+    4300080: Bottom
+    4300082: Socket1
+    4300084: Socket2
+    4300086: STEP_D2
+    4300088: STEP_D3
+    4300090: STEP_D4
+    4300092: STEP_D5
+    4300094: STEP_D6
+    4300096: STEP_D7
+    4300098: STEP_D8
+    4300100: STEP_D9
+    4300102: STEP_D10
+    7400000: Deploy2
+    9500000: //RootNode
+    13700000: Hydraulic0
+    13700002: HydraulicU0
+    13700004: HydraulicU0 1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hydraulics
+    second: {fileID: 2100000, guid: d21399b8e6d014e48af1bd4587407d03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: STAIRS
+    second: {fileID: 2100000, guid: 1ada084c4c5228c40b6143700e6cac90, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Deploy2
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
