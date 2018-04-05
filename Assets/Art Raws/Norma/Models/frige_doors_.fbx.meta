@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 812a5b37e8db254488914517e1a8e5a2
-timeCreated: 1509416498
-licenseType: Free
+guid: b3074f81c33d01e4295234722b1c51df
+timeCreated: 1512702052
+licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Lock 1
-    100004: Lock1
-    100006: Lock2
-    100008: Numbers
+    100002: polySurface1
+    100004: polySurface4
+    100006: polySurface4 1
+    100008: pPipe1
     100010: pTorus1
+    100012: pTorus3
+    100014: transform3
+    100016: transform5
+    100018: transform6
+    100020: transform7
+    100022: transform8
     400000: //RootNode
-    400002: Lock 1
-    400004: Lock1
-    400006: Lock2
-    400008: Numbers
+    400002: polySurface1
+    400004: polySurface4
+    400006: polySurface4 1
+    400008: pPipe1
     400010: pTorus1
-    2300000: Lock 1
-    2300002: Lock1
-    2300004: Lock2
-    2300006: Numbers
-    2300008: pTorus1
-    3300000: Lock 1
-    3300002: Lock1
-    3300004: Lock2
-    3300006: Numbers
-    3300008: pTorus1
-    4300000: Lock1
-    4300002: Lock2
-    4300004: pTorus1
-    4300006: Lock
-    4300008: Numbers
+    400012: pTorus3
+    400014: transform3
+    400016: transform5
+    400018: transform6
+    400020: transform7
+    400022: transform8
+    2300000: polySurface4
+    3300000: polySurface4
+    4300000: polySurface4
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -60,13 +60,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.025
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -82,7 +82,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

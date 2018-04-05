@@ -14,6 +14,11 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
     [SerializeField]
     [Tooltip("Drag your Character Here")]
     private MonoBehaviour Player;
+
+    [SerializeField]
+    [Tooltip("Drag the target for the lookAt function")]
+    Transform NewTarget;
+
     Transform Target;
     private float smooth = 5f;
 
@@ -23,7 +28,7 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
 
     [SerializeField]
     [Tooltip("Place the Camera To View Lock Prefab as a child to your player and then drag it here")]
-    private Camera lerpingCamera;
+    public Camera lerpingCamera;
     [Space(15)]
     [Header("Camera Bounds")]
     [SerializeField]
@@ -43,8 +48,12 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
     float MAX_Y =45;
     #endregion
 
-    private bool isFocused;
+
     private bool ifCanceled;
+    [HideInInspector]
+    public bool isFocused;
+    [HideInInspector]
+    public bool allowExit = true;
     private float v_Axis;
     private float h_Axis;
     private float mouseSensitivy = 50.0f;
@@ -82,6 +91,11 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
         gameObject.GetComponent<LockInteract>().enabled = true;
         ifCanceled = false;
         CameraSwitch();
+        if (allowExit == true)
+        {
+            gameObject.GetComponent<LockInteract>().canMove = true;
+
+        }
     }
 
     /// <summary>
@@ -143,7 +157,7 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
         Target = this.gameObject.transform.GetChild(6);
 
         lerpingCamera.transform.position = Vector3.Lerp(lerpingCamera.transform.position, Target.position, Time.deltaTime * smooth);
-        lerpingCamera.transform.LookAt(transform.transform); //Keeps the camera in the same spot, no matter how you look at it
+        lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
 
         if (lerpingCamera.transform.position == Target.transform.position && RotationAllowed == true) //Wait until the camera is in front of the object to allow rotation
         {

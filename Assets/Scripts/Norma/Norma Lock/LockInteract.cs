@@ -45,6 +45,10 @@ public class LockInteract : MonoBehaviour
     public int selectedNumber;
     [HideInInspector]
     public string passwordInput;
+
+    [HideInInspector]
+    public bool canMove = false;
+
     #endregion
 
     public void Start()
@@ -58,8 +62,12 @@ public class LockInteract : MonoBehaviour
 
     private void Update()
     {
-        LockInteraction();
-        CheckIfFinishedWithLock();        
+        if (canMove == true)
+        {
+            LockInteraction();
+            CheckIfFinishedWithLock();
+        }
+
     }
 
     /// <summary>
