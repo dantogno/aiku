@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4059850508954940}
   - component: {fileID: 33310413175278804}
   - component: {fileID: 23641030035954094}
-  - component: {fileID: 95522000266983012}
   - component: {fileID: 65088682247665360}
   m_Layer: 0
   m_Name: Pipe_Dirty_Medium
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012999992, y: 0.052743718, z: 0.013000002}
   m_Center: {x: 0, y: 0.026371058, z: -6.9849193e-10}
---- !u!95 &95522000266983012
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546118859092890}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 87d20e5fe8e6bba458779d150522f852, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

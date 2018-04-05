@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4169684821347784}
   - component: {fileID: 33703070916468114}
   - component: {fileID: 23094945182987038}
-  - component: {fileID: 95108270997501098}
   - component: {fileID: 65950673360044018}
   m_Layer: 0
   m_Name: Pipe_Clean_Broken
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.013000011, y: 0.10274758, z: 0.013017105}
   m_Center: {x: -0.000000009546056, y: 0.051393684, z: 0}
---- !u!95 &95108270997501098
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198807086751568}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a4eb28a167274ed4ebbd0a0135843cf8, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4902014533464600}
   - component: {fileID: 33693416289354438}
   - component: {fileID: 23359230334915236}
-  - component: {fileID: 95375546287532828}
   - component: {fileID: 65465068766823086}
   m_Layer: 0
   m_Name: Pipe_Clean_Branch_T
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027742209, y: 0.02036107, z: 0.013000001}
   m_Center: {x: -0.013871, y: 0.0036804369, z: 0}
---- !u!95 &95375546287532828
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466828231702002}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 24448f78eeedb4a4b956af3b22b426fe, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

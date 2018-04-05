@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4347016679088992}
   - component: {fileID: 33002947308874536}
   - component: {fileID: 23985577960286724}
-  - component: {fileID: 95560462163532438}
   - component: {fileID: 65645619802885788}
   m_Layer: 0
   m_Name: Pipe_Clean_Valve_Butterfly
@@ -168,20 +167,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027734127, y: 0.027046423, z: 0.013000001}
   m_Center: {x: -0.013867063, y: 0.007023217, z: 0}
---- !u!95 &95560462163532438
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1130635094202774}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c8dd2db9cacc7e142bf045c9d3c2aa4c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

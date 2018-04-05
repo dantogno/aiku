@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4839467910371388}
   - component: {fileID: 33418044220083464}
   - component: {fileID: 23542423356822424}
-  - component: {fileID: 95893031984856466}
   - component: {fileID: 65305832355482310}
   m_Layer: 0
   m_Name: Pipe_Dirty_Long_Capless
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.099999994, z: 0.01}
   m_Center: {x: 0, y: 0.050000258, z: 0}
---- !u!95 &95893031984856466
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1339915945417570}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 642a8af87122a8a4aab70ea2df0fa0c9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

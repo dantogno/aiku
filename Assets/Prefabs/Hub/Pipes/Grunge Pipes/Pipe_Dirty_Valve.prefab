@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 4223497090903670}
   - component: {fileID: 33542996664447004}
   - component: {fileID: 23172830017047630}
-  - component: {fileID: 95489689243165174}
-  - component: {fileID: 65191887910189742}
+  - component: {fileID: 114268207581568954}
+  - component: {fileID: 65916067020598562}
   m_Layer: 0
   m_Name: Pipe_Dirty_Valve
   m_TagString: Untagged
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189034636350982}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.578, y: 0.13840008, z: 0.107850075}
+  m_LocalPosition: {x: 9.827343, y: -3.3435996, z: 37.21602}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4851839350716508}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138066353241656}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013849754, y: 0.017812727, z: 5.9604643e-10}
+  m_LocalPosition: {x: -0.02758, y: 0.034, z: 0.00005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4223497090903670}
@@ -156,7 +156,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138066353241656}
   m_Mesh: {fileID: 4300002, guid: f31de10c835cea64782968c60a25d2ed, type: 3}
---- !u!65 &65191887910189742
+--- !u!65 &65916067020598562
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -166,22 +166,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.027736664, y: 0.026865255, z: 0.013000001}
-  m_Center: {x: -0.013868341, y: 0.0069326176, z: 0}
---- !u!95 &95489689243165174
-Animator:
-  serializedVersion: 3
+  m_Size: {x: 0.055473328, y: 0.05373051, z: 0.026000002}
+  m_Center: {x: -0.027736682, y: 0.013865235, z: 0}
+--- !u!114 &114268207581568954
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189034636350982}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f31de10c835cea64782968c60a25d2ed, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca941a2f945e2f49992b31deaa860d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valveType: 0

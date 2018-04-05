@@ -21,8 +21,6 @@ GameObject:
   - component: {fileID: 4872484264306550}
   - component: {fileID: 33896924088373062}
   - component: {fileID: 23847866200155210}
-  - component: {fileID: 95621329359841914}
-  - component: {fileID: 65149104680696860}
   m_Layer: 0
   m_Name: Pipe_Dirty_Valve_Pressure
   m_TagString: Untagged
@@ -157,32 +155,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313554121168028}
   m_Mesh: {fileID: 4300000, guid: 1df7da7d9f5eea6459b656d2cfe0444e, type: 3}
---- !u!65 &65149104680696860
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1313554121168028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.027736168, y: 0.019081159, z: 0.013000001}
-  m_Center: {x: -0.013868017, y: 0.0030410031, z: 0}
---- !u!95 &95621329359841914
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1313554121168028}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1df7da7d9f5eea6459b656d2cfe0444e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

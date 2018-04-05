@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4092599449117172}
   - component: {fileID: 33754251805751674}
   - component: {fileID: 23939717269825362}
-  - component: {fileID: 95273283019543670}
   - component: {fileID: 65853716026991600}
   m_Layer: 0
   m_Name: Pipe_Dirty_Elbow_90
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.024439873, y: 0.026309602, z: 0.013000002}
   m_Center: {x: -0.0057132123, y: 0.013160855, z: -6.9849193e-10}
---- !u!95 &95273283019543670
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1945860428738338}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 7f259cee88d0ff64e88e7dd49fa8f6d9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

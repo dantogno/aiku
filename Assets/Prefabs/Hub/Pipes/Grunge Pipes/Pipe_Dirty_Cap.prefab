@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4428886623132584}
   - component: {fileID: 33646032288075994}
   - component: {fileID: 23688145667770342}
-  - component: {fileID: 95755220122827306}
   - component: {fileID: 65922150185351062}
   m_Layer: 0
   m_Name: Pipe_Dirty_Cap
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012999992, y: 0.0027385538, z: 0.013000002}
   m_Center: {x: 0, y: 0.0013684746, z: -6.9849193e-10}
---- !u!95 &95755220122827306
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1928746985187550}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 19750d9cb46f5ea4f92c5b57a781fdaa, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
