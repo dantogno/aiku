@@ -39,13 +39,13 @@ public class Examination : MonoBehaviour, IInteractable
     [Tooltip("Choose from 0 units to 2 units")]
     [Range(0.0f, 2.0f)]
     [SerializeField]
-    float distance = .83f;
+    float distance = .3f;
 
     [Header("Animation Speed")]
     [Tooltip("Higher the Value, Quicker the animation. Recommend higher number for pickup")]
     [Range(0.0f, 10.0f)]
     [SerializeField]
-    int smooth = 5;
+    int smooth = 10;
 
     [Header("Customize Limitations")]
     [Space(10)]
@@ -68,19 +68,19 @@ public class Examination : MonoBehaviour, IInteractable
     [Space(10)]
     [Tooltip("Minimum X Rotation value for object")]
     [SerializeField]
-    float MIN_X = -45f;
+    float MIN_X = -180f;
 
     [Tooltip("Maximum X Rotation value for object")]
     [SerializeField]
-    float MAX_X = 45;
+    float MAX_X = 180;
 
     [Tooltip("Minimum Y Rotation value for object")]
     [SerializeField]
-    float MIN_Y = -45;
+    float MIN_Y = -180;
 
     [Tooltip("Maximum Y Rotation value for object")]
     [SerializeField]
-    float MAX_Y = 45;
+    float MAX_Y = 180;
 
     [Space(10)]
     [Tooltip("Minimum Zoom Distance Value for object")]
