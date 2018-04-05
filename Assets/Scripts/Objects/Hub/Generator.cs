@@ -12,13 +12,13 @@ public class Generator : MonoBehaviour
 {
     public static event Action Exploded;
 
-    [SerializeField]
+    [SerializeField, Tooltip("When the player has completed, the generator should start smoking.")]
     private Task valveTask;
 
-    [SerializeField]
+    [SerializeField, Tooltip("Particle effects.")]
     private GameObject smoke, explosion;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The animator component for the generator.")]
     private Animator generatorAnimator;
 
     private void OnEnable()
@@ -33,12 +33,18 @@ public class Generator : MonoBehaviour
         EngineSequenceManager.OnShutdown -= Explode;
     }
 
+    /// <summary>
+    /// Emit smoke and speed up.
+    /// </summary>
     private void Smoke()
     {
         smoke.SetActive(true);
         generatorAnimator.SetTrigger("SpeedUp");
     }
 
+    /// <summary>
+    /// What the name says, baby.
+    /// </summary>
     private void Explode()
     {
         explosion.SetActive(true);
@@ -48,10 +54,14 @@ public class Generator : MonoBehaviour
 
         if (Exploded != null) Exploded.Invoke();
 
+        // After three seconds, stop exploding.
         Invoke("StopExploding", 3);
     }
 
-    void StopExploding()
+    /// <summary>
+    /// If this is not called, the animation will loop.
+    /// </summary>
+    private void StopExploding()
     {
         explosion.SetActive(false);
     }
