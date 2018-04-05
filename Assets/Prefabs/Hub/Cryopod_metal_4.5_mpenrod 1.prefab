@@ -53,7 +53,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4959956569820918}
-  - component: {fileID: 95801986507451086}
   m_Layer: 0
   m_Name: Cryopod_metal_4.5_mpenrod 1
   m_TagString: Untagged
@@ -472,20 +471,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069802675578332}
   m_Mesh: {fileID: 4300002, guid: ccf3f265091d7254ea0f42cb06590f24, type: 3}
---- !u!95 &95801986507451086
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1520976239959784}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ccf3f265091d7254ea0f42cb06590f24, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

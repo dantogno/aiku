@@ -21,8 +21,6 @@ GameObject:
   - component: {fileID: 4608320764591856}
   - component: {fileID: 33904021466590336}
   - component: {fileID: 23302867215109458}
-  - component: {fileID: 95072262180818446}
-  - component: {fileID: 65323270608465794}
   m_Layer: 0
   m_Name: Pipe_Dirty_Branch_T
   m_TagString: Untagged
@@ -84,32 +82,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640895989361368}
   m_Mesh: {fileID: 4300000, guid: 24448f78eeedb4a4b956af3b22b426fe, type: 3}
---- !u!65 &65323270608465794
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640895989361368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.027742209, y: 0.02036107, z: 0.013000001}
-  m_Center: {x: -0.013871, y: 0.0036804369, z: 0}
---- !u!95 &95072262180818446
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640895989361368}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 24448f78eeedb4a4b956af3b22b426fe, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

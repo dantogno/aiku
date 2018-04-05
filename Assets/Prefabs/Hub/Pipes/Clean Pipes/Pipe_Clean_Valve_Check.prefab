@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4263889964966692}
   - component: {fileID: 33730731838342342}
   - component: {fileID: 23394708913517530}
-  - component: {fileID: 95792211810434542}
   - component: {fileID: 65212860654538594}
   m_Layer: 0
   m_Name: Pipe_Clean_Valve_Check
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.031074738, y: 0.021064166, z: 0.0130017325}
   m_Center: {x: -0.015538265, y: 0.0040318286, z: -0.00000013248064}
---- !u!95 &95792211810434542
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1858155607818716}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 899e1e90ac830bc48a8d5b4c8b658b25, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

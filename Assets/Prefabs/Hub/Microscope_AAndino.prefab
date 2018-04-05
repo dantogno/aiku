@@ -662,7 +662,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4452066076161214}
-  - component: {fileID: 95384378809736800}
   m_Layer: 0
   m_Name: Microscope_AAndino
   m_TagString: Untagged
@@ -1903,20 +1902,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437504538127748}
   m_Mesh: {fileID: 4300004, guid: a468539d8f8d9cf459203387c8df8f44, type: 3}
---- !u!95 &95384378809736800
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949064847303336}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a468539d8f8d9cf459203387c8df8f44, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4257562137559588}
   - component: {fileID: 33875465394349182}
   - component: {fileID: 23121491955202796}
-  - component: {fileID: 95082044553293298}
   - component: {fileID: 65224981319944282}
   m_Layer: 0
   m_Name: Pipe_Clean_Elbow_45
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.021549061, y: 0.03167675, z: 0.013000002}
   m_Center: {x: -0.0042749546, y: 0.015840167, z: -6.9849193e-10}
---- !u!95 &95082044553293298
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223478304974016}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 32efe40d4bb70fe48a2b740a36caebe0, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
