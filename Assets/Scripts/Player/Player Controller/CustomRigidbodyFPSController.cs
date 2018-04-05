@@ -105,6 +105,17 @@ public class CustomRigidbodyFPSController : MonoBehaviour
 
             return q;
         }
+
+        /// <summary>
+        /// Rotates the camera and player character around the X-Axis (xRot) and Y-Axis (yRot)
+        /// </summary>
+        /// <param name="xRot"></param>
+        /// <param name="yRot"></param>
+        public void RotatePlayerTo(float xRot, float yRot)
+        {
+            m_CharacterTargetRot = Quaternion.Euler(0f, yRot, 0f);
+            m_CameraTargetRot = Quaternion.Euler(-xRot, 0f, 0f);
+        }
     }
 
     [Serializable]
@@ -145,6 +156,9 @@ public class CustomRigidbodyFPSController : MonoBehaviour
         m_Capsule = GetComponent<CapsuleCollider>();
         if (cam == null) cam = GetComponentInChildren<Camera>();
         mouseLook.Init(transform, cam.transform);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
