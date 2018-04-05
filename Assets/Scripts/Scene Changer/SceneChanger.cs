@@ -67,9 +67,6 @@ public class SceneChanger : MonoBehaviour, IInteractable
         // Make sure not to add the scene at start unless it's the first scene.
         if (firstScene == true)
         {
-            // DW:
-            EndingScreen.levelsEntered++;
-
             // The initial scene needs to be added to the list.
             Scene currentScene = gameObject.scene;
             loadedScenes.Add(currentScene);
@@ -184,9 +181,6 @@ public class SceneChanger : MonoBehaviour, IInteractable
     /// <param name="sceneName">The name of the new scene to load</param>
     private void LoadNewScene(string sceneName)
     {
-        // DW:
-        EndingScreen.levelsEntered++;
-
         // Start masking scene transition
         if (SceneChangeStarted != null)
         {
