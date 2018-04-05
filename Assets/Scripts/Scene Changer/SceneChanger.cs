@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This script goes on an object that can be interacted with. It switches 
+/// </summary>
 public class SceneChanger : MonoBehaviour, IInteractable
 {
     public event Action<string> ChoseACrewmember;   // DW: Called after all levels have been completed and player chooses a survivor.
@@ -25,8 +28,11 @@ public class SceneChanger : MonoBehaviour, IInteractable
 
     // List of scenes that have been loaded so far.
     private static List<Scene> loadedScenes;
+    // Data structre for keeping track of whether objects are disabled or enabled in a certain scene.
     private static Dictionary<string, Dictionary<GameObject, bool>> objectList;
+    // There are a few things that should only be initialized if the current scene is the first scene.
     private static bool firstScene = false;
+    // Check to see if a level load is already in progress before attempting to load a new one.
     private static bool loading = false;
 
     // Fields to keep track of whether the scenes have finished loading and unloading.
@@ -36,6 +42,7 @@ public class SceneChanger : MonoBehaviour, IInteractable
 
     private void Awake()
     {
+        // Only initialize the static stuff once.
         if(loadedScenes == null)
         {
             objectList = new Dictionary<string, Dictionary<GameObject, bool>>();
@@ -46,18 +53,21 @@ public class SceneChanger : MonoBehaviour, IInteractable
 
     private void OnEnable()
     {
+        // DW:
         EndingScreen.DoneWithLevels += SwitchInteractionModeToFinalChoice;
     }
     private void OnDisable()
     {
+        // DW:
         EndingScreen.DoneWithLevels -= SwitchInteractionModeToFinalChoice;
     }
 
-    // Make sure not to load the static List more than once.
     private void Start()
     {
+        // Make sure not to add the scene at start unless it's the first scene.
         if (firstScene == true)
         {
+            // DW:
             EndingScreen.levelsEntered++;
 
             // The initial scene needs to be added to the list.
@@ -79,6 +89,11 @@ public class SceneChanger : MonoBehaviour, IInteractable
         }
     }
 
+    /// <summary>
+    /// Saves information about whether each gameobject was enabled or disabled in the scene
+    /// before they are all disabled for the scene change.
+    /// </summary>
+    /// <param name="scene"></param>
     private void AddToObjectList(Scene scene)
     {
         string sceneName = scene.name;
@@ -96,6 +111,12 @@ public class SceneChanger : MonoBehaviour, IInteractable
         objectList.Add(sceneName, newObjectList);
     }
 
+    /// <summary>
+    /// Load information about whether object were disabled or enabled when the
+    /// scene was initially turned off (so that their state is preserved).
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <returns></returns>
     private Dictionary<GameObject, bool> LoadFromObjectList(Scene scene)
     {
         string sceneName = scene.name;
@@ -115,8 +136,8 @@ public class SceneChanger : MonoBehaviour, IInteractable
         {
             SceneChangeFinished.Invoke();
         }
-        // Disable this object last.
         loading = false;
+        // Disable this object last.
         transform.root.gameObject.SetActive(false);
     }
 
@@ -150,6 +171,7 @@ public class SceneChanger : MonoBehaviour, IInteractable
             // If the scene hasn't been loaded before, load it now.
             LoadNewScene(sceneToLoad);
         }
+        // DW:
         else if (readyToChooseSurvivors)
         {
             ChooseCrewmember();
@@ -162,6 +184,7 @@ public class SceneChanger : MonoBehaviour, IInteractable
     /// <param name="sceneName">The name of the new scene to load</param>
     private void LoadNewScene(string sceneName)
     {
+        // DW:
         EndingScreen.levelsEntered++;
 
         // Start masking scene transition
@@ -231,8 +254,8 @@ public class SceneChanger : MonoBehaviour, IInteractable
     /// <returns></returns>
     private IEnumerator EnableScene(Scene sceneToEnable)
     {
+        // Load the previous state of gameobjects from the object list.
         Dictionary<GameObject, bool> objectsToEnable = LoadFromObjectList(sceneToEnable);
-        //GameObject[] objectsToEnable = sceneToEnable.GetRootGameObjects();
         foreach (KeyValuePair<GameObject, bool> entry in objectsToEnable)
         {
             if(entry.Key != null)
@@ -241,11 +264,11 @@ public class SceneChanger : MonoBehaviour, IInteractable
                 {
                     if(entry.Key.tag == "Player")
                     {
+                        // Placeholder fix for a bug where the player would sometimes fall through the floor.
                         entry.Key.transform.position = new Vector3(entry.Key.transform.position.x, entry.Key.transform.position.y + 1, entry.Key.transform.position.z);
                     }
                     entry.Key.SetActive(true);
                 }
-                //thisObject.SetActive(true);
                 yield return null;
             }
         }
@@ -260,6 +283,7 @@ public class SceneChanger : MonoBehaviour, IInteractable
     /// <returns></returns>
     private IEnumerator DisableScene(Scene sceneToDisable)
     {
+        // Update the state of objects in the scene before disabling them.
         UpdateObjectList(sceneToDisable);
         GameObject[] objectsToDisable = sceneToDisable.GetRootGameObjects();
         foreach (GameObject thisObject in objectsToDisable)
@@ -273,6 +297,11 @@ public class SceneChanger : MonoBehaviour, IInteractable
         disabledFinished = true;
     }
 
+    /// <summary>
+    /// Update the state of every game object (whether they are enabled
+    /// or disabled) before disabling the scene.
+    /// </summary>
+    /// <param name="sceneToUpdate"></param>
     private void UpdateObjectList(Scene sceneToUpdate)
     {
         string sceneName = sceneToUpdate.name;
