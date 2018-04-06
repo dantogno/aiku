@@ -69,7 +69,7 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
 
     public void Interact(GameObject agentInteracting)
     {
-        if (isFocused == true)
+        if (isFocused == true && allowExit ==true)
         {
             //If already on focus, get out of lock      
             GetOutLock();  
@@ -91,6 +91,7 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
         gameObject.GetComponent<LockInteract>().enabled = true;
         ifCanceled = false;
         CameraSwitch();
+
         if (allowExit == true)
         {
             gameObject.GetComponent<LockInteract>().canMove = true;

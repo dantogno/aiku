@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 /// <summary>
-/// EnvironmentTransition changes the Fog of the Environment
+/// EnvironmentTransition changes the Fog of the Environment and triggers Animation Sequences after successfully solving the puzzles
 /// This requires the scene to have Fog enabled from the "Lighting" Settings with color black.
 /// This also requires the lock interact, interact camera switch and rotate world scripts to work
 /// </summary>
@@ -15,15 +15,20 @@ using UnityEngine.UI;
 public class EnvironmentTransition : MonoBehaviour {
 
     #region Private booleans and floats
-    private bool isSceneChange;
-    //Verifies that the scene is over
-    private bool finaleOnce;
+
+    //Checks to see if the transitions are active or not. Prevents the courotine from playing more than once. 
+    private bool isFadeTransitionPlaying = false;
+    //This is the final transition scene. Checks whether the scene is done.
+    private bool isFinalTransitionPlaying = false;
     //Changes the distance of the fog based on whether the player is in the lock or not.
-    private float PlayerInLock;
-    private float PlayerRoaming;
-    private float FogMaxLevel;
-    private float intervalChange;
-    private float limit;
+    private float PlayerInLock = 0.001f;
+    private float PlayerRoaming = 0f;
+    //Sets the max value for Fogs
+    private float FogMaxLevel = 50f;
+    //The total time elapsed the Fog Transition should take
+    private float totalTimeFogTransition = 1f;
+    //Distance between the player and the fog. Visibility altered whether player is in lock or exploring while fog is in effect
+    private float distanceBeforeFogStop;
     #endregion
 
     #region Orbits
@@ -113,91 +118,123 @@ public class EnvironmentTransition : MonoBehaviour {
 
 
     // Calls the other scripts to check if all booleans are in check and to hide/enable gameobjects
-    LockInteract interact;
-    InteractCamSwitch interactingwith;
-    RotateWorld rotate;
+    private LockInteract interact;
+    private InteractCamSwitch interactingwith;
+    private RotateWorld rotate;
+    private GlitchyEffect incorrectInputGlitch;
 
     void Start()
 	{
-        finaleOnce = false;
-        subtitleText.enabled = false;
-        isSceneChange = false;
-        confetti.SetActive(false);
+        InitilializeReferences();
+        SetFogDesity();
+        DisableConfetti();
+        DisableSubtitles();        
+	}
 
+    /// <summary>
+    /// Initializes each variable that depend on the lockInteraction, RotateWorld, Interact and Glitch Effect
+    /// </summary>
+    private void InitilializeReferences()
+    {
         interactingwith = GetComponent<InteractCamSwitch>();
         rotate = GetComponent<RotateWorld>();
         interact = GetComponent<LockInteract>();
+        incorrectInputGlitch = rotate.secondCamera.GetComponent<GlitchyEffect>();
 
-		RenderSettings.fogDensity = 50f;
-
-        PlayerInLock = 0.001f;
-		PlayerRoaming = 0f;
-		FogMaxLevel = 50f;
-		intervalChange = 1f;
-
+        //Assign the orbits from the once used in the RotateWorld Script
         orbitOne = rotate.RotatedFirst;
         orbitSecond = rotate.RotatedSecond;
         orbitThird = rotate.RotatedThird;
         orbitFourth = rotate.RotatedFourth;
 
-        
-	}
+    }
 
-	/// <summary>
-	/// Checks to see whther the puzzle is finished or not.
+
+    /// <summary>
+    /// Checks to see whther the puzzle is finished or not.
     /// This also prevents the player from leaving the lock mid-puzzle
-	/// </summary>
-	void FixedUpdate()
+    /// </summary>
+    void FixedUpdate()
 	{
-        rotate = GetComponent<RotateWorld>();
-        if (rotate.halfWay == true && isSceneChange == false)
+        if (rotate.halfWay == true && isFadeTransitionPlaying == false)
         {
             //if first half of the puzzle is solved, start the fade section and first animation sequence/text.
-            CheckFade();
+            StartFade();
         }
 
-        if (rotate.finished == true && finaleOnce == false)
+        if (rotate.finished == true && isFinalTransitionPlaying == false)
         {
             //if first second of the puzzle is solved, start the door opening section and end text.
 
             StartCoroutine("Finish"); 
         }
 
-
         if (interactingwith.allowExit == false)
         {
             if (Input.GetButtonDown("Interact"))
             {
-                //Activates teh Glitch effect to show the players what they are doing is wrong. 
+                //Activates the Glitch effect to show the players what they are doing is wrong. 
                 StartCoroutine("Glitch");
             }
-        }
-            
+        }          
     }
     /// <summary>
-    /// Checks to see if the first half of the puzzle is solved.
-    /// Activates the Fade Courotine if so
+    /// Calls the Courotine
     /// </summary>
 
-    private void CheckFade()
+    private void StartFade()
     {
         StartCoroutine("Fade");
-
     }
 
     /// <summary>
     ///  Fade changes the Fog level gradually
     ///  This comes after the first half of the puzzle is solved
-    ///  Includes the Tracks and Animation sequence
     /// </summary>
     IEnumerator Fade()
 	{
-        interact.canMove = false;
-        interactingwith.allowExit = false;
-        Crowd.GetComponent<Animator>().enabled = true;
+        isFadeTransitionPlaying = true;
+        PauseLockInteraction();
+        EnableCrowds();
+        EnableConfetti();
 
-        isSceneChange = true;
-        confetti.SetActive(true);
+        StartCoroutine("EnableFirstSubtitles");
+
+        if (interact.enabled == true)
+        {
+            distanceBeforeFogStop = PlayerInLock;
+        }
+        else
+        {
+            distanceBeforeFogStop = PlayerRoaming;
+        }
+
+        for (float FogTransitionReduction = FogMaxLevel; FogTransitionReduction > distanceBeforeFogStop; FogTransitionReduction -= totalTimeFogTransition)
+        {
+            RenderSettings.fogEndDistance = FogTransitionReduction;
+            yield return new WaitForSecondsRealtime(IntervalTime);
+        }
+
+        // Wait the defined time, defined by the designer
+        yield return new WaitForSecondsRealtime(IntermissionTime);
+  
+        // Increase the fog on a gradual interval
+        for (float FogTransitionAddition = distanceBeforeFogStop; FogTransitionAddition < FogMaxLevel; FogTransitionAddition += totalTimeFogTransition)
+        {
+            RenderSettings.fogEndDistance = FogTransitionAddition;
+            yield return new WaitForSecondsRealtime(IntervalTime);
+
+            DisableConfetti();
+            DisableCrowds();
+            EnableSecondEnvironment();
+            interactingwith.allowExit = true;
+        }
+    }
+    /// <summary>
+    /// Enables the first set of subtitles for the first fade sequence
+    /// </summary>
+    IEnumerator EnableFirstSubtitles()
+    {
         subtitleText.enabled = true;
         subtitleText.text = track1;
         yield return new WaitForSecondsRealtime(WaitTime);
@@ -209,75 +246,89 @@ public class EnvironmentTransition : MonoBehaviour {
         yield return new WaitForSecondsRealtime(WaitTime);
         subtitleText.text = track4;
 
-        yield return new WaitForSecondsRealtime(WaitTime/2);
+        yield return new WaitForSecondsRealtime(WaitTime / 2);
         subtitleText.text = "";
-
-
-
-        if (interact.enabled == true)
-        {
-            limit = PlayerInLock;
-        }
-        else
-        {
-            limit = PlayerRoaming;
-        }
-
-		for(float intervalReduction = FogMaxLevel; intervalReduction > limit; intervalReduction -= intervalChange)
-		{
-			RenderSettings.fogEndDistance = intervalReduction;
-			yield return new WaitForSecondsRealtime(IntervalTime);
-		}
-
-		// Wait the defined time, defined by the designer
-		yield return new WaitForSecondsRealtime(IntermissionTime);
-
-		// Increase the fog on a gradual interval
-		for(float intervalAddition = limit; intervalAddition < FogMaxLevel; intervalAddition += intervalChange)
-		{
-			RenderSettings.fogEndDistance = intervalAddition;
-			yield return new WaitForSecondsRealtime(IntervalTime);
-            confetti.SetActive(false);
-            Crowd.SetActive(false);
-            orbitOne.SetActive(false);
-            orbitSecond.SetActive(false);
-            Puzzle1Statics.SetActive(false);
-            orbitThird.SetActive(true);
-            orbitFourth.SetActive(true);
-            interactingwith.allowExit = true;
-        }
-
     }
 
     /// <summary>
-    ///  Activates the ending sequence.
-    ///  This includes the end text and the door opening sequence
+    /// The region below includes all the Methods that are seperated to enable or disable gameobjects/animations
     /// </summary>
+    #region Methods that enable and disable gameObjects
+    private void PauseLockInteraction()
+    {
+        interact.canMove = false;
+        interactingwith.allowExit = false;
+    }
 
+    private void EnableCrowds()
+    {
+        Crowd.GetComponent<Animator>().enabled = true;
+    }
+
+    private void DisableCrowds()
+    {
+        Crowd.SetActive(false);
+    }
+    private void DisableSubtitles()
+    {
+        subtitleText.enabled = false;
+    }
+    private void DisableConfetti()
+    {
+        confetti.SetActive(false);
+    }
+    private void EnableConfetti()
+    {
+        confetti.SetActive(true);
+    }
+    private void SetFogDesity()
+    {
+        RenderSettings.fogDensity = 50f;
+    }
+    private void BackToTheHub()
+    {
+        DoorOpen.SetTrigger("OpenDoor");
+        Colliders.SetActive(true);
+    }
+    private void EnableSecondEnvironment()
+    {
+        orbitOne.SetActive(false);
+        orbitSecond.SetActive(false);
+        Puzzle1Statics.SetActive(false);
+        orbitThird.SetActive(true);
+        orbitFourth.SetActive(true);
+    }
+
+    #endregion
+
+
+
+    /// <summary>
+    ///  Activates the ending sequence.
+    ///  This includes the subtitles
+    /// </summary>
     IEnumerator Finish()
     {
-        finaleOnce = true;
+        isFinalTransitionPlaying = true;
         subtitleText.text = track5;
         yield return new WaitForSecondsRealtime(WaitTime);
         subtitleText.text = track6;
         yield return new WaitForSecondsRealtime(WaitTime);
         subtitleText.text = "";
-        Colliders.SetActive(true);
-        DoorOpen.SetTrigger("OpenDoor");
-
+        
+        //Goes back to the hub. This enables the door animation and the ramp towards the computer
+        BackToTheHub();
     }
 
     /// <summary>
-    /// Glitch effect
+    /// Glitch effect that denots whether the input the user made is incorrect or not 
     /// </summary>
 
     IEnumerator Glitch()
     {
-        rotate.secondCamera.GetComponent<GlitchyEffect>().enabled = true;
+        incorrectInputGlitch.enabled = true;
         yield return new WaitForSecondsRealtime(.3f);
-        rotate.secondCamera.GetComponent<GlitchyEffect>().enabled = false;
+        incorrectInputGlitch.enabled = false;
 
     }
-
-
 }

@@ -164,10 +164,14 @@ public class LockInteract : MonoBehaviour
     /// </summary>
     private void CheckIfFinishedWithLock()
     {
-                if (passwordInput == "2817" && Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0 && knobPlacement == 0) // After it resets, call it a win
-                {
-                    FinishWithLock();                    
-                }
+
+        if (passwordInput == "2817" && Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0 && knobPlacement == 0) // After it resets, call it a win
+
+        {
+
+            FinishWithLock();
+
+        }
     }
 
     /// <summary>
