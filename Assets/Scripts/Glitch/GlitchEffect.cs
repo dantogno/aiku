@@ -1,34 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//[ExecuteInEditMode]
+/// <summary>
+/// 
+/// </summary>
 [RequireComponent(typeof(Camera))]
-	[AddComponentMenu("Distortion Glitch")]
+[AddComponentMenu("Distortion Glitch")]
 public class GlitchEffect : MonoBehaviour
-	{
+{
     [SerializeField]
+    [Tooltip("Glitch interval time (seconds)")]
     private float disableAfterSeconds = 0;
-	//"Glitch interval time [seconds]"
+
 	[SerializeField, Range(0, 1)]
+    [Tooltip("")]
 	float _GlitchInterval = .16f;
+
 	[SerializeField, Range(0, 1)]
-	float _DispProbability = 0.022f;
+    [Tooltip("")]
+    float _DispProbability = 0.022f;
+
 	[SerializeField, Range(0, 1)]
-	public float _DispIntensity = 0.09f;    // DW made public
+    [Tooltip("")]
+    public float _DispIntensity = 0.09f;    // DW made public
+
 	[SerializeField, Range(0, 1)]
-	float _ColorProbability = 0.02f;
+    [Tooltip("")]
+    float _ColorProbability = 0.02f;
+
 	[SerializeField, Range(0, 1)]
-	public float _ColorIntensity = 0.07f;   // DW made public
+    [Tooltip("")]
+    public float _ColorIntensity = 0.07f;   // DW made public
+
 	//[SerializeField, Range(0, 1)]
 	//	float _scanLineJitter = 0;
-	Texture2D tex;
-	Texture t;
-	Renderer t_rend;
-	Material m_tex;
+
+	private Texture2D tex;
+	private Texture t;
+	private Renderer t_rend;
+	private Material m_tex;
 
 	
-	[SerializeField] Shader _shader;
-		Material _material;
+	[SerializeField]
+    [Tooltip("")]
+    private Shader _shader;
+	private Material _material;
 
 
     private void Start()
@@ -38,14 +54,12 @@ public class GlitchEffect : MonoBehaviour
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
-		{
-	
+	{
 		if (_material == null)
 		{
 			_material = new Material(_shader);
 
 		}
-		
 
 		_material.SetFloat("_GlitchInterval", _GlitchInterval);
 		_material.SetFloat("_DispIntensity", _DispIntensity);
@@ -53,10 +67,8 @@ public class GlitchEffect : MonoBehaviour
 		_material.SetFloat("_ColorIntensity", _ColorIntensity);
 		_material.SetFloat("_ColorProbability", _GlitchInterval);
 
-		;
-
 		Graphics.Blit(source, destination, _material);
 		
-		}
 	}
+}
 
