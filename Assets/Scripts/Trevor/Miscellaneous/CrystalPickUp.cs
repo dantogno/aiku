@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script manages the behavior of crystals once they have been mined.
+/// </summary>
 public class CrystalPickUp : MonoBehaviour
 {
     [SerializeField] private GameObject portalToActivate;
@@ -21,18 +24,18 @@ public class CrystalPickUp : MonoBehaviour
         MoveCrystal();
     }
 
+    /// <summary>
+    /// Moves the crystal towards the GMD after playing
+    /// the jiggle animation and plays the colocted sound effect
+    /// before disabling it.
+    /// </summary>
     private void MoveCrystal()
     {
         if (animationPlayed && gameObject.transform.position != gmd.transform.position)
         {
-           
-            
-            //Debug.Log("Fuck off");
             float step = 4 * Time.deltaTime;
             transform.position = Vector3.MoveTowards(gameObject.transform.position, gmd.transform.position, step);
 
-            //gameObject.transform.Translate(gmd.transform.position);
-            //new WaitForSeconds(1);
             if (gameObject.transform.position == gmd.transform.position)
             {
                 GetComponentInChildren<MeshRenderer>().enabled = false;
@@ -60,15 +63,20 @@ public class CrystalPickUp : MonoBehaviour
     {
         GMD.MiningCrystal -= MineMinerals;
     }
+
+    /// <summary>
+    /// Plays the Jiggle animation and activates the corresponding
+    /// portal.
+    /// </summary>
+    /// <param name="i"></param>
     private void MineMinerals(int i)
     {
-        //Debug.Log("Suh Dud");
         animator.SetBool("playRotationJiggle", true);
         StartCoroutine(Jiggle());
         portalToActivate.SetActive(true);
     }
 
-    IEnumerator Jiggle()
+    private IEnumerator Jiggle()
     {
         yield return new WaitForSeconds(3);
         animationPlayed = true;

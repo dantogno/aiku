@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This Script manages when the Player walks over the breakable floor panels and enables
+/// the physics of said floor panels. 
+/// </summary>
 public class FloorBreaking : MonoBehaviour
 {
-    Rigidbody[] thisRigidbody;
+    private Rigidbody[] thisRigidbody;
 
     private AudioSource breakingFloorAudio;
     private bool hasPlayedAudio = false;
