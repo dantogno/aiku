@@ -107,18 +107,5 @@ public class MainElevatorTrigger : MonoBehaviour
     {
         myTrigger.enabled = false;
         elevatorInvisibleBarrierCollider.enabled = true;
-
-        //gateAnimator.SetTrigger("Close");
-    }
-
-    /// <summary>
-    /// The elevator's audio is timed to stop precisely when the animation does.
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator StopMakingSound()
-    {
-        yield return new WaitForSeconds(5);
-
-        GetComponent<AudioSource>().Stop();
     }
 }
