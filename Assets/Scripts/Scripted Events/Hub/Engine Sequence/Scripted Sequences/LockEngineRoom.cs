@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class exists to lock the player in the engine room during the generator-checking sequence,
+/// to prevent them from getting distracted by the opening door when they come near.
+/// The script is applied to a dedicated GameObject or the task on which it depends.
+/// </summary>
+
 public class LockEngineRoom : MonoBehaviour
 {
     [SerializeField, Tooltip("After what event do you want the door to lock?")]
