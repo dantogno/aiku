@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script rotates the scene. The environment transition, lock interact and interact cam switch
+/// Set the gameobjects for each orbit in the inspector
+/// </summary>
+
 public class RotateWorld : MonoBehaviour
 {
-    /// <summary>
-    /// This script rotates the scene. The environment transition, lock interact and interact cam switch
-    /// Set the gameobjects for each orbit in the inspector
-    /// </summary>
 
+    //For use with the new Norma Level
+    public static event Action FirstNormaAligned, SecondNormaAligned, ThirdNormaAligned, FourthNormaAligned;
 
     #region Orbits for the Puzzle Sequence
     [Header("Orbits for Puzzle")]
@@ -31,18 +34,18 @@ public class RotateWorld : MonoBehaviour
     public GameObject RotatedFourth;
     #endregion
 
+    public bool Halfway { get { return halfWay; } set { halfWay = value; } }
+    public bool Finished { get { return finished; } set { finished = value; } }
 
     //Set as public so that EnvironmentTransition can access these variables
     #region Hidden Public Variables for the EnvironmentTransition script
-    [HideInInspector]
-    public int knob;
-    [HideInInspector]
-    public bool halfWay;
-    [HideInInspector]
-    public bool finished;
+    private int knob;
+    private bool halfWay;
+    private bool finished;
+    #endregion
+
     [HideInInspector]
     public Camera secondCamera;
-    #endregion
 
     [Space(10)]
 
@@ -63,28 +66,80 @@ public class RotateWorld : MonoBehaviour
     #region Ints including the rotation angle and the password
 
     private int rotatedAngle = 36;
+
+    [SerializeField]
+    [Tooltip("The First correct number of the lock")]
     private int firstPass = 2;
+
+    [SerializeField]
+    [Tooltip("The second correct number of the lock")]
     private int secondPass = 8;
+
+    [SerializeField]
+    [Tooltip("The third correct number of the lock")]
     private int thirdPass = 1;
+
+    [SerializeField]
+    [Tooltip("The fourth correct number of the lock")]
     private int fourthPass = 7;
     private int currentNumber;
 
     #endregion
 
+    private Renderer MaterialForKnobOne;
+    private Renderer MaterialForKnobTwo;
+    private Renderer MaterialForKnobThree;
+    private Renderer MaterialForKnobFour;
+
     //Calls for the lock scripts 
-    LockInteract lockscript;
-    InteractCamSwitch interact;
+    private LockInteract lockscript;
+    private InteractCamSwitch interact;
+    private GlitchyEffect glitch;
 
 
     void Start()
     {
+        InitializeVariables();
+        AssignVariables();
+        TurnOffGLitch();
+
+        SolvedThePuzzleChecks();
+
+
+    }
+
+    private void SolvedThePuzzleChecks()
+    {
         halfWay = false;
         finished = false;
+
+
+    }
+
+    private void InitializeVariables()
+    {
         lockscript = GetComponent<LockInteract>();
         interact = GetComponent<InteractCamSwitch>();
         secondCamera = interact.lerpingCamera;
+        glitch = secondCamera.GetComponent<GlitchyEffect>();
+
+
+    }
+    /// <summary>
+    /// These assign the materials for the lock that will change based on the status of the puzzle (whether you have reached halfway or not)
+    /// </summary>
+    private void AssignVariables()
+    {
+        MaterialForKnobOne = gameObject.transform.GetChild(0).GetComponent<Renderer>();
+        MaterialForKnobTwo = gameObject.transform.GetChild(1).GetComponent<Renderer>();
+        MaterialForKnobThree = gameObject.transform.GetChild(2).GetComponent<Renderer>();
+        MaterialForKnobFour = gameObject.transform.GetChild(3).GetComponent<Renderer>();
+
+    }
+
+    private void TurnOffGLitch()
+    {
         secondCamera.GetComponent<GlitchyEffect>().enabled = false;
-        secondCamera = interact.lerpingCamera;
 
     }
 
@@ -126,13 +181,13 @@ public class RotateWorld : MonoBehaviour
             //Swap the materials out and override the rotation for the first two knobs 
             if (lockscript.enabled == true)
             {
-                LockInteract.UsingPuzzle += UsingPuzzle;
                 lockscript.lockNumber[0] = firstPass;
                 lockscript.lockNumber[1] = secondPass;
-                gameObject.transform.GetChild(0).GetComponent<Renderer>().material = RestrictedMaterial;
-                gameObject.transform.GetChild(1).GetComponent<Renderer>().material = RestrictedMaterial;
-                gameObject.transform.GetChild(2).GetComponent<Renderer>().material = originalMaterial;
-                gameObject.transform.GetChild(3).GetComponent<Renderer>().material = originalMaterial;
+
+                MaterialForKnobOne.material = RestrictedMaterial;
+                MaterialForKnobTwo.material = RestrictedMaterial;
+                MaterialForKnobThree.material = originalMaterial;
+                MaterialForKnobFour.material = originalMaterial;
 
             }
         }
@@ -140,8 +195,8 @@ public class RotateWorld : MonoBehaviour
         //By default, the last two knobs should be restricted
         if (halfWay == false && lockscript.enabled == true)
         {
-            gameObject.transform.GetChild(2).GetComponent<Renderer>().material = RestrictedMaterial;
-            gameObject.transform.GetChild(3).GetComponent<Renderer>().material = RestrictedMaterial;
+            MaterialForKnobThree.material = RestrictedMaterial;
+            MaterialForKnobFour.material = RestrictedMaterial;
 
         }
     }
@@ -156,7 +211,7 @@ public class RotateWorld : MonoBehaviour
             {
                 if (RotatedFirst != null)
                 {
-                    RotatedFirst.transform.localRotation = Quaternion.Lerp(RotatedFirst.transform.localRotation, Quaternion.Euler(0, 36 * (currentNumber - firstPass), 0), Time.deltaTime * 6f);
+                    RotatedFirst.transform.localRotation = Quaternion.Lerp(RotatedFirst.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - firstPass), 0), Time.deltaTime * 6f);
                     RotatedSecond.transform.localEulerAngles = new Vector3(0, 0 + rotatedAngle * (lockscript.lockNumber[1] - secondPass), 0); //In case the player doesnt wait for the lerp to finish
                 }
             }
@@ -166,7 +221,6 @@ public class RotateWorld : MonoBehaviour
                 {
 
                     RotatedFirst.transform.localEulerAngles = new Vector3(0, 0 + rotatedAngle * (lockscript.lockNumber[0] - firstPass), 0);  //In case the player doesnt wait for the lerp to finish
-
                     RotatedSecond.transform.localRotation = Quaternion.Lerp(RotatedSecond.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - secondPass), 0), Time.deltaTime * 6f);
 
                 }
@@ -176,7 +230,7 @@ public class RotateWorld : MonoBehaviour
             {
                 if (RotatedThird != null)
                 {
-                    RotatedThird.transform.localRotation = Quaternion.Lerp(RotatedThird.transform.localRotation, Quaternion.Euler(0, 36 * (currentNumber - thirdPass), 0), Time.deltaTime * 6f); 
+                    RotatedThird.transform.localRotation = Quaternion.Lerp(RotatedThird.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - thirdPass), 0), Time.deltaTime * 6f); 
                     RotatedFourth.transform.localEulerAngles = new Vector3(0, 0 + (rotatedAngle) * (lockscript.lockNumber[3] - fourthPass), 0);//In case the player doesnt wait for the lerp to finish
 
             }
@@ -233,10 +287,9 @@ public class RotateWorld : MonoBehaviour
 
         if (lockscript.passwordInput == "2817")
         {
-            if (Input.GetButtonDown("Interact"))
-            {
+
                 UsingPuzzle();
-            }
+            
         }
     }
     /// <summary>
@@ -245,8 +298,6 @@ public class RotateWorld : MonoBehaviour
     private void UsingPuzzle()
     {
         finished = true;
-        RotatedFourth.transform.localEulerAngles = new Vector3(0, 0 + rotatedAngle * (lockscript.lockNumber[3] - thirdPass), 0);
-        interact.enabled = false;
     }
 
     /// <summary>

@@ -126,6 +126,7 @@ public class EnvironmentTransition : MonoBehaviour {
     void Start()
 	{
         InitilializeReferences();
+        AssignVariables();
         SetFogDesity();
         DisableConfetti();
         DisableSubtitles();        
@@ -139,8 +140,12 @@ public class EnvironmentTransition : MonoBehaviour {
         interactingwith = GetComponent<InteractCamSwitch>();
         rotate = GetComponent<RotateWorld>();
         interact = GetComponent<LockInteract>();
-        incorrectInputGlitch = rotate.secondCamera.GetComponent<GlitchyEffect>();
 
+    }
+
+    private void AssignVariables()
+    {
+        incorrectInputGlitch = rotate.GetComponent<GlitchyEffect>();
         //Assign the orbits from the once used in the RotateWorld Script
         orbitOne = rotate.RotatedFirst;
         orbitSecond = rotate.RotatedSecond;
@@ -149,20 +154,19 @@ public class EnvironmentTransition : MonoBehaviour {
 
     }
 
-
     /// <summary>
     /// Checks to see whther the puzzle is finished or not.
     /// This also prevents the player from leaving the lock mid-puzzle
     /// </summary>
     void FixedUpdate()
 	{
-        if (rotate.halfWay == true && isFadeTransitionPlaying == false)
+        if (rotate.Halfway == true && isFadeTransitionPlaying == false)
         {
             //if first half of the puzzle is solved, start the fade section and first animation sequence/text.
             StartFade();
         }
 
-        if (rotate.finished == true && isFinalTransitionPlaying == false)
+        if (rotate.Finished == true && isFinalTransitionPlaying == false)
         {
             //if first second of the puzzle is solved, start the door opening section and end text.
 
@@ -198,8 +202,6 @@ public class EnvironmentTransition : MonoBehaviour {
         EnableCrowds();
         EnableConfetti();
 
-        StartCoroutine("EnableFirstSubtitles");
-
         if (interact.enabled == true)
         {
             distanceBeforeFogStop = PlayerInLock;
@@ -226,29 +228,11 @@ public class EnvironmentTransition : MonoBehaviour {
 
             DisableConfetti();
             DisableCrowds();
-            EnableSecondEnvironment();
             interactingwith.allowExit = true;
         }
+        EnableSecondEnvironment();
     }
-    /// <summary>
-    /// Enables the first set of subtitles for the first fade sequence
-    /// </summary>
-    IEnumerator EnableFirstSubtitles()
-    {
-        subtitleText.enabled = true;
-        subtitleText.text = track1;
-        yield return new WaitForSecondsRealtime(WaitTime);
-        subtitleText.text = track2;
 
-        yield return new WaitForSecondsRealtime(WaitTime);
-        subtitleText.text = track3;
-
-        yield return new WaitForSecondsRealtime(WaitTime);
-        subtitleText.text = track4;
-
-        yield return new WaitForSecondsRealtime(WaitTime / 2);
-        subtitleText.text = "";
-    }
 
     /// <summary>
     /// The region below includes all the Methods that are seperated to enable or disable gameobjects/animations
@@ -256,7 +240,7 @@ public class EnvironmentTransition : MonoBehaviour {
     #region Methods that enable and disable gameObjects
     private void PauseLockInteraction()
     {
-        interact.canMove = false;
+        interact.currentState = PlayerStates.UsingLock;
         interactingwith.allowExit = false;
     }
 
@@ -309,13 +293,7 @@ public class EnvironmentTransition : MonoBehaviour {
     /// </summary>
     IEnumerator Finish()
     {
-        isFinalTransitionPlaying = true;
-        subtitleText.text = track5;
-        yield return new WaitForSecondsRealtime(WaitTime);
-        subtitleText.text = track6;
-        yield return new WaitForSecondsRealtime(WaitTime);
-        subtitleText.text = "";
-        
+        yield return new WaitForSecondsRealtime(1);
         //Goes back to the hub. This enables the door animation and the ramp towards the computer
         BackToTheHub();
     }

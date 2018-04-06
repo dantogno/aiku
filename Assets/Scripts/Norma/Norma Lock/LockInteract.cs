@@ -12,14 +12,19 @@ public enum LockType {NormaPuzzle, HubLock }
 /// NOTE: You will also need interactCamSwitch for it to work
 /// I am using Delegates that enable a function when the lock is correctly guessed
 /// </summary>
+public enum PlayerStates { UsingLock, Roaming }
 
-public class LockInteract : MonoBehaviour
+
+public class LockInteract : MonoBehaviour, IInteractable
 {
+
     #region Unity events for when the lock is completed for Norma
-    public static event Action UsingPuzzle;
-    public static event Action OnHubUnlocked;
+    public static event Action UsedLock;
+    public static event Action Unlocked;
     #endregion
 
+
+    public PlayerStates currentState = PlayerStates.Roaming;
     private Transform currentSelection;
     private Material originalMaterial; 
     private Quaternion originalRotationValue; //remember the initial rotational value
@@ -34,6 +39,9 @@ public class LockInteract : MonoBehaviour
     [SerializeField]
     [Tooltip("Drag the Highlighted Material here")]
     private Material highlightedMaterial; //Drag the created highlighted material here
+    [SerializeField]
+    [Tooltip("Select whether the lock is being used in Norma or in Hub")]
+    private int ChosenPassword;
     #endregion    
 
     #region Hidden from Inspector but public for Norma Level Script
@@ -46,9 +54,7 @@ public class LockInteract : MonoBehaviour
     [HideInInspector]
     public string passwordInput;
 
-    [HideInInspector]
-    public bool canMove = false;
-
+    public bool LockisActive = false;
     #endregion
 
     public void Start()
@@ -62,12 +68,28 @@ public class LockInteract : MonoBehaviour
 
     private void Update()
     {
-        if (canMove == true)
+        switch (currentState)
         {
-            LockInteraction();
-            CheckIfFinishedWithLock();
+            case PlayerStates.UsingLock:
+                LockisActive = true;
+                break;
+            case PlayerStates.Roaming:
+                LockisActive = false;
+                break;
+            default:
+                break;
         }
+        LockInteraction();
+        CheckIfFinishedWithLock();
 
+
+
+    }
+
+    public void Interact(GameObject interactingAgent)
+    {
+        if (UsedLock != null) UsedLock.Invoke();
+      
     }
 
     /// <summary>
@@ -77,85 +99,87 @@ public class LockInteract : MonoBehaviour
     {
         knobPlacement = 0;
         currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
-        enabled = false;
     }
     /// <summary>
     ///The rotational input of each knob, as well which knob is interacted with and updating the passwordinput as we go
     /// </summary>
     private void LockInteraction()
     {
-        //Combine the arrays into one string to verify input at the end
-        passwordInput = "" + lockNumber[0] + lockNumber[1] + lockNumber[2] + lockNumber[3]; 
-        currentSelection = gameObject.transform.GetChild(knobPlacement);
-        currentSelection.gameObject.GetComponent<Renderer>().material = highlightedMaterial;
-
-        //Button Mapping and the math needed to know what number is currently being selected
-        if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") < 0)
+        if (LockisActive == true)
         {
-            currentSelection.transform.Rotate(0, -rotatedBy, 0);
-            if (selectedNumber < 10)
+            //Combine the arrays into one string to verify input at the end
+            passwordInput = "" + lockNumber[0] + lockNumber[1] + lockNumber[2] + lockNumber[3];
+            currentSelection = gameObject.transform.GetChild(knobPlacement);
+            currentSelection.gameObject.GetComponent<Renderer>().material = highlightedMaterial;
+
+            //Button Mapping and the math needed to know what number is currently being selected
+            if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") < 0)
             {
-                selectedNumber--;
-            }
-  
-            if (selectedNumber < 0)
-            {
-                selectedNumber = 9;
-            }
-
-            lockNumber[knobPlacement] = selectedNumber;
-
-        }
-        if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0)
-        {
-
-            currentSelection.transform.Rotate(0, rotatedBy, 0);
-            if (selectedNumber < 10)
-            {
-                selectedNumber++;
-            }
-            if (selectedNumber == 10)
-            {
-                selectedNumber = 0;
-            }
-            lockNumber[knobPlacement] = selectedNumber;
-
-        }
-
-        //Going up and down the knobs of the lock 
-        if (Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") != 0)
-        {
-
-            if (Input.GetAxis("Vertical") < 0)
-            {
-
-                if (knobPlacement < 3)
+                currentSelection.transform.Rotate(0, -rotatedBy, 0);
+                if (selectedNumber < 10)
                 {
-                    knobPlacement++;
+                    selectedNumber--;
                 }
 
-                else
+                if (selectedNumber < 0)
                 {
-                    knobPlacement = 0; //resets to the first lock knob
-                    currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
+                    selectedNumber = 9;
                 }
 
-                selectedNumber = lockNumber[knobPlacement]; //Calls back the value registered to that knob
+                lockNumber[knobPlacement] = selectedNumber;
+
             }
-            else if (Input.GetAxis("Vertical") > 0)
+            if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0)
             {
-                if (knobPlacement < 4 && knobPlacement > 0)
-                {
-                    knobPlacement--;
-                    selectedNumber = lockNumber[knobPlacement];
-                }
 
-                else
+                currentSelection.transform.Rotate(0, rotatedBy, 0);
+                if (selectedNumber < 10)
                 {
-                    currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
+                    selectedNumber++;
                 }
+                if (selectedNumber == 10)
+                {
+                    selectedNumber = 0;
+                }
+                lockNumber[knobPlacement] = selectedNumber;
+
             }
-            currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
+
+            //Going up and down the knobs of the lock 
+            if (Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") != 0)
+            {
+
+                if (Input.GetAxis("Vertical") < 0)
+                {
+
+                    if (knobPlacement < 3)
+                    {
+                        knobPlacement++;
+                    }
+
+                    else
+                    {
+                        knobPlacement = 0; //resets to the first lock knob
+                        currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
+                    }
+
+                    selectedNumber = lockNumber[knobPlacement]; //Calls back the value registered to that knob
+                }
+                else if (Input.GetAxis("Vertical") > 0)
+                {
+                    if (knobPlacement < 4 && knobPlacement > 0)
+                    {
+                        knobPlacement--;
+                        selectedNumber = lockNumber[knobPlacement];
+                    }
+
+                    else
+                    {
+                        currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
+                    }
+                }
+                currentSelection.gameObject.GetComponent<Renderer>().material = originalMaterial;
+            }
         }
     }
 
@@ -183,10 +207,10 @@ public class LockInteract : MonoBehaviour
         switch (thisLock)
         {
             case LockType.NormaPuzzle:
-                if (UsingPuzzle != null) UsingPuzzle.Invoke();
+                if (UsedLock != null) UsedLock.Invoke();
                 break;
             case LockType.HubLock:
-                if (OnHubUnlocked != null) OnHubUnlocked.Invoke();
+                if (Unlocked != null) Unlocked.Invoke();
                 break;
             default:
                 break;        
