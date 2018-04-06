@@ -14,11 +14,11 @@ public class GlitchEffect : MonoBehaviour
 
 	[SerializeField, Range(0, 1)]
     [Tooltip("")]
-	float _GlitchInterval = .16f;
+	private float _GlitchInterval = .16f;
 
 	[SerializeField, Range(0, 1)]
     [Tooltip("")]
-    float _DispProbability = 0.022f;
+    private float _DispProbability = 0.022f;
 
 	[SerializeField, Range(0, 1)]
     [Tooltip("")]
@@ -26,7 +26,7 @@ public class GlitchEffect : MonoBehaviour
 
 	[SerializeField, Range(0, 1)]
     [Tooltip("")]
-    float _ColorProbability = 0.02f;
+    private float _ColorProbability = 0.02f;
 
 	[SerializeField, Range(0, 1)]
     [Tooltip("")]
