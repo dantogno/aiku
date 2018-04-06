@@ -25,6 +25,7 @@ public class TextWriter : MonoBehaviour {
     private string[] textBlock1, textBlock2, textBlock3;
 
     [SerializeField]
+    [Tooltip("The component associated with the noise the text makes as it prints characters to the screen.")]
     private AudioSource myAudioSource;  // DW
 
     private string[][] textStrings;
@@ -105,7 +106,6 @@ public class TextWriter : MonoBehaviour {
         }
 
         uiText.text = text;
-        //blink = StartCoroutine(BlinkCursor(0.2f));        // commented out by DW
     }
 
     /// <summary>
@@ -150,8 +150,6 @@ public class TextWriter : MonoBehaviour {
         }
 
         uiText.text = previousLines;
-
-        //blink = StartCoroutine(BlinkCursor(0.2f));        // commented out by DW
     }
 
     /// <summary>
