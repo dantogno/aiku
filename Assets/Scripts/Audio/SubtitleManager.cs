@@ -18,7 +18,10 @@ public class SubtitleManager : MonoBehaviour
     [Tooltip("Text component the Subtitle Manager prints to")]
     [SerializeField] private Text SubtitleTextComponent;                   //Text object to print to
 
-	public static event Action<int> SubtitleFinished;                      //Event called when a subtitle is finished
+    /// <summary>
+    /// Event called when a subtitle is finished
+    /// </summary>
+	public static event Action<int> SubtitleFinished;                      
     private static SubtitleManager instance;
     private Coroutine coroutine;
 

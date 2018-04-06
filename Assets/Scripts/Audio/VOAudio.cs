@@ -13,7 +13,10 @@ public class VOAudio : MonoBehaviour
     [SerializeField, TextArea(3, 5)] public string Subtitle;
     private AudioSource audioSource;
 
-    public static event Action<string> VOAudioTriggered;   //Event called when VOAudio is triggered
+    /// <summary>
+    /// Event called when VOAudio is triggered
+    /// </summary>
+    public static event Action<string> VOAudioTriggered;   
 
 	// Use this for initialization
 	void Start ()
