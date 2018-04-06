@@ -13,9 +13,11 @@ public class GlitchyEffect : MonoBehaviour
     // Scan line jitter
     
     [SerializeField, Range(0, 1)]
-    float _scanLineJitter = 0;
+    public float _scanLineJitter = 0;   // DW made public
 
     public bool FullGlitch;                     //When true, glitch is fully on
+    [Range(0.1f, 1f)] public float Threshold;   
+    public bool OverThreshold;                  //True when _scanLineJitter is set Over Threshold by an Event
 
     public float ScanLineJitter
     {
@@ -89,5 +91,7 @@ public class GlitchyEffect : MonoBehaviour
     private void OnValueAboveZero(float i)
     {
         _scanLineJitter = i;
+
+        OverThreshold = (i >= Threshold);
     }
 }
