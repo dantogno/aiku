@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalNew : MonoBehaviour 
+public class PortalNew : MonoBehaviour
 {
-	[Tooltip("The player game object.")]
-	[SerializeField] private GameObject player;
+    [Tooltip("The player game object.")]
+    [SerializeField] private GameObject player;
 
-	[Tooltip("This is what the player will teleport too. Can use any empty game object.")]
-	[SerializeField] private GameObject portalBuddy;
+    [Tooltip("This is what the player will teleport too. Can use any empty game object.")]
+    [SerializeField] private GameObject portalBuddy;
 
-	[Tooltip("Glitchy effect script that is attached to the player camera.")]
-	[SerializeField] private GlitchyEffect glitchyEffectScript;
+    [Tooltip("Glitchy effect script that is attached to the player camera.")]
+    [SerializeField] private GlitchyEffect glitchyEffectScript;
 
-	[Tooltip("Angle that the player will face when teleported. Rotates on Y axis.")]
-	[Range(0.0f, 180.0f)] [SerializeField] private float lookAngle;
+    [Tooltip("Angle that the player will face when teleported. Rotates on Y axis.")]
+    [Range(0.0f, 180.0f)] [SerializeField] private float lookAngle;
+
+    [Tooltip("When true, player will be rotated to the values specified by RotateXAxis and RotateYAxis.")]
+    [SerializeField] private bool RotatePlayerOnArrival;
+
+    [Tooltip("Specifies the degree value to rotate the player/camera.")]
+    [SerializeField] private float RotateXAxis, RotateYAxis;
 
 	private CustomRigidbodyFPSController playerController;
 	public Camera playerCamera;
@@ -22,11 +28,10 @@ public class PortalNew : MonoBehaviour
     private AudioSource portalAudio;
     private bool hasPlayedAudio = false;
 
-	void Start()
+    void Start()
 	{
 		playerController = player.GetComponent<CustomRigidbodyFPSController> ();
         portalAudio = GetComponent<AudioSource>();
-		//playerCamera = player.GetComponentInChildren<Camera> ();
 	}
 
     private void Update()
@@ -46,30 +51,30 @@ public class PortalNew : MonoBehaviour
 	{
 		Scope.ScopedIn -= Teleport;
 	}
-
+    
+    /// <summary>
+    /// Teleports the player to a location specified by Portal Buddy.
+    /// </summary>
+    /// <param name="i"></param>
 	void Teleport(int i)
 	{
-		overThreshold = glitchyEffectScript.OverThreshold;
+        overThreshold = glitchyEffectScript.OverThreshold;
 
-		if (overThreshold) 
+        if (overThreshold) 
 		{
 			player.transform.position = portalBuddy.transform.position;
-			//player.transform.eulerAngles = new Vector3 (player.transform.rotation.x, lookAngle, player.transform.rotation.z);
-			//playerCamera.transform.eulerAngles = new Vector3 (playerCamera.transform.rotation.x, lookAngle, playerCamera.transform.rotation.z);
-			glitchyEffectScript.OverThreshold = false;
-            if(!portalAudio.isPlaying && !hasPlayedAudio)
+            glitchyEffectScript.OverThreshold = false;
+            if (!portalAudio.isPlaying && !hasPlayedAudio)
             {
                 portalAudio.Play();
                 hasPlayedAudio = true;
             }
+
+            //SHOULD BE UNCOMMENTED ONCE PLAYER ROTATION PR IS ACCEPTED
+            //if(RotatePlayerOnArrival)
+            //{
+            //    playerController.mouseLook.RotatePlayerTo(RotateXAxis, RotateYAxis);
+            //}
 		}
 	}
-
-	/*IEnumerator rotatePlayer()
-	{
-		playerController.enabled = false;
-		player.transform.eulerAngles = new Vector3 (player.transform.rotation.x, lookAngle, player.transform.rotation.z);
-		yield return new WaitForSeconds (1);
-		playerController.enabled = true;
-	}*/
 }
