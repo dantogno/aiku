@@ -12,11 +12,12 @@ using UnityEngine.SceneManagement;
 
 public class EndingScreen : MonoBehaviour
 {
-    static int crewmembersSaved;
-
     // Three Actions, one for when the functionality of the scene changer should change, one for the end of the game,
     // and one for when the player transfers their power - the player's final act in the game.
     public static event Action DoneWithLevels, GameOver, TransferredHalfPowerReserve, TransferredPlayerPowerReserve;
+
+    // The number of crewmembers the player has transferred power to.
+    private static int crewmembersSaved;
 
     [SerializeField, Tooltip("Lights above cryochamber.")]
     private GameObject myLightToEnable, myLightToDisable;
