@@ -91,6 +91,7 @@ public class GMD : MonoBehaviour
 	{
 		switch (currentState) 
 		{
+		//If the GMD is in the Grab state, calls the Grab function. Otherwise, switch to the Off state.
 		case GMDState.Grab:
 			
 			Grab ();
@@ -100,7 +101,8 @@ public class GMD : MonoBehaviour
 				SetCurrentState (GMDState.Off);
 			}
 			break;
-			
+
+		//If the player is looking at a grapple object and pressing the interact button, call the Grapple function. Otherwise, switch to the Off state.
 		case GMDState.Grapple:
 			
 			if (gmdRaycastHit && hit.transform.tag == "Grapple" && Input.GetButton ("Interact")) 
@@ -112,6 +114,8 @@ public class GMD : MonoBehaviour
 				SetCurrentState (GMDState.Off);
 			}
 			break;
+
+		//If the GMD is in the Mining state, calls the Mining function. Otherwise, switch to the Off state.
 		case GMDState.Mining:
 
 			Mine ();
@@ -121,6 +125,8 @@ public class GMD : MonoBehaviour
 				SetCurrentState (GMDState.Off);
 			}
 			break;	
+
+		//If the GMD is in the Off state, calls the Off function. Switches to other functions according to what the player is interacting with.
 		case GMDState.Off:
 			
 			Off ();
@@ -193,6 +199,9 @@ public class GMD : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Sends an event to start the process of mining the crystal (crystal pickup script)
+	/// </summary>
     private void Mine()
     {
         if (MiningCrystal != null)
