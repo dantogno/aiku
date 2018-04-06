@@ -9,20 +9,28 @@ using UnityEngine;
 
 public class HubLightingManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("When the generator shuts off, these lights dim or turn off.")]
-    private Renderer[] emissivesToDisableOnGeneratorShutdown;
+    [SerializeField, Tooltip("These are the lights we want to disable when the generator shuts down.")]
+    private GameObject[] lightsToDisable;
 
-    [SerializeField, Tooltip("When the generator shuts off, these lights turn on.")]
-    private Renderer[] emissivesToEnableOnGeneratorShutdown;
+    [SerializeField, Tooltip("These are the emergency lights we want to enable when the generator shuts down.")]
+    private GameObject[] lightsToEnable;
 
-    [SerializeField, Tooltip("When the generator shuts off, these lights change color.")]
-    private Renderer[] emissivesWhichChangeColorOnGeneratorShutdown;
+    [SerializeField, Tooltip("These are the lights we want to dim when the generator shuts down.")]
+    private GameObject[] lightsToDim;
 
     [SerializeField, Tooltip("This is the color of the emergency lights.")]
     private Color emergencyLightColor = new Color(0.7019608f, 0f, 0.3294118f);
 
     [SerializeField, Tooltip("These floats represent the brightness of the different lights around the ship after the generator shuts down.")]
-    private float disabledEmissiveIntensity = .5f, enabledEmissiveIntensity = 2, emergencyLightEmissiveIntensity = 5;
+    private float disabledEmissiveIntensity = .5f, enabledEmissiveIntensity = .5f, emergencyLightEmissiveIntensity = 5;
+
+    // Most walls have emissive strips. We want their emissive property to change dynamically during gameplay.
+    private Renderer[] wallRenderers;
+
+    private void Awake()
+    {
+        InitializeWallArray();
+    }
 
     private void OnEnable()
     {
@@ -33,33 +41,93 @@ public class HubLightingManager : MonoBehaviour
         EngineSequenceManager.OnShutdown -= SwitchToEmergencyLighting;
     }
 
-    /// <summary>
-    /// When the generator shuts down, dim some lights, brighten some lights, and change the color of some lights.
-    /// </summary>
-    private void SwitchToEmergencyLighting()
+    private void Start()
     {
-        foreach (Renderer r in emissivesToDisableOnGeneratorShutdown)
+        DisableWallEmissives();
+    }
+
+    /// <summary>
+    /// Find all walls in the scene and add their renderers to the array of wall renderers.
+    /// </summary>
+    private void InitializeWallArray()
+    {
+        // We are using FindGameObjectsWithTag because there are many walls scattered throughout the hierarchy, and we do not want to have to find and reference them all manually.
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+
+        // Initialize the wall renderer array to have the same number of elements as the array of walls.
+        wallRenderers = new Renderer[walls.Length];
+
+        // Each wall's renderer is added to the array.
+        for (int i = 0; i < walls.Length; i++)
+        {
+            wallRenderers[i] = walls[i].GetComponent<Renderer>();
+        }
+    }
+
+    /// <summary>
+    /// At the beginning of the game, the walls are not emissive.
+    /// </summary>
+    private void DisableWallEmissives()
+    {
+        foreach (Renderer r in wallRenderers)
         {
             // Change the color of the light's emission map to black, so that it looks like it has been turned off.
-            r.material.SetColor("_EmissionColor", Color.black);
+            r.material.SetColor("_EmissionColor", Color.clear);
 
             // Change the scene's dynamic lighting so that it looks like the lights have been turned down.
             DynamicGI.SetEmissive(r, r.material.GetColor("_EmissionColor") * disabledEmissiveIntensity);
         }
+    }
 
-        foreach (Renderer r in emissivesToEnableOnGeneratorShutdown)
+    /// <summary>
+    /// After the generator shuts down, the walls become emissive.
+    /// </summary>
+    private void EnableWallEmissives()
+    {
+        foreach (Renderer r in wallRenderers)
         {
+            // Change the color of the light's emission map to black, so that it looks like it has been turned off.
+            r.material.SetColor("_EmissionColor", Color.white);
+
             // Change the scene's dynamic lighting so that it looks like the lights have been turned on.
             DynamicGI.SetEmissive(r, r.material.GetColor("_EmissionColor") * enabledEmissiveIntensity);
         }
+    }
 
-        foreach (Renderer r in emissivesWhichChangeColorOnGeneratorShutdown)
+    /// <summary>
+    /// When the generator shuts down, dim some lights and brighten some lights.
+    /// </summary>
+    private void SwitchToEmergencyLighting()
+    {
+        EnableWallEmissives();
+
+        #region Disable non-emergency lights.
+
+        foreach (GameObject g in lightsToDisable)
         {
-            // Change the color of the light's emission map, so that it isn't a different color than the light it is emitting.
-            r.material.SetColor("_EmissionColor", emergencyLightColor);
-
-            // Change the scene's dynamic lighting so that it looks like the lights are emitting a different color.
-            DynamicGI.SetEmissive(r, emergencyLightColor * emergencyLightEmissiveIntensity);
+            g.GetComponentInChildren<Light>().intensity = 0;
+            g.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
         }
+
+        #endregion
+
+        #region Enable emergency lights.
+
+        foreach (GameObject g in lightsToEnable)
+        {
+            g.GetComponentInChildren<Light>().intensity = 1;
+        }
+
+        #endregion
+
+        #region Dim some non-emergency lights to "cheat" and give the impression that lights are off, while still allowing the player to see where they are going.
+
+        foreach (GameObject g in lightsToDim)
+        {
+            g.GetComponentInChildren<Light>().intensity = .75f;
+            g.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
+        }
+
+        #endregion
     }
 }
