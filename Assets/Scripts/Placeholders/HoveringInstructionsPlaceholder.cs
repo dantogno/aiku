@@ -42,7 +42,7 @@ public class HoveringInstructionsPlaceholder : MonoBehaviour
     /// <summary>
     /// Move the canvas to a new location.
     /// </summary>
-    private virtual void GoToNextDestination()
+    protected virtual void GoToNextDestination()
     {
         counter++;
 
