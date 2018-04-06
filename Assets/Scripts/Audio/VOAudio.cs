@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// Plays attached Audio Source and passes subtitles to the Subtitle Manager
+/// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class VOAudio : MonoBehaviour
 {
@@ -10,7 +13,7 @@ public class VOAudio : MonoBehaviour
     [SerializeField, TextArea(3, 5)] public string Subtitle;
     private AudioSource audioSource;
 
-    public static event Action<string> VOAudioTriggered;   
+    public static event Action<string> VOAudioTriggered;   //Event called when VOAudio is triggered
 
 	// Use this for initialization
 	void Start ()
