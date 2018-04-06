@@ -112,7 +112,14 @@ public class DetectInteractableObject : MonoBehaviour
 #if UNITY_EDITOR
             Debug.DrawRay(this.transform.position, toCheck.transform.position - this.transform.position);
 #endif
-            return toCheck.GetComponent<IInteractable>();
+            IInteractable componentToReturn = toCheck.GetComponent<IInteractable>();
+            // Check to make sure that the component is not disabled
+            if (componentToReturn != null && ((MonoBehaviour)componentToReturn).enabled == true)
+            {
+                return componentToReturn;
+            }
+            else
+                return null;
         }
         else
             return null;
@@ -140,7 +147,7 @@ public class DetectInteractableObject : MonoBehaviour
             return prevCandidate; // end the recursion. Return whatever was found. null if none was found
         #endregion end recursion
 
-        // try to get Interactable from current index if it's not blocked
+        // try to get Interactable from current index if it's not blocked or disabled
         IInteractable toCompare
             = GetSuitableInteract(allHits[index].collider.gameObject);
 

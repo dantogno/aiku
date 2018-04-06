@@ -14,7 +14,10 @@ public class PowerUI : MonoBehaviour
     private float fillTime = .5f;
 
     [SerializeField, Tooltip("These are the blue boxes representing the player's power units.")]
-    private Image[] powerUnits;
+    private Image[] powerUnits, emptyUnits, emptyUnits1, emptyUnits2;
+
+    [SerializeField, Tooltip("The scene changer scripts present in the scene. The power UI is changed when the player chooses a crewmember to save.")]
+    private SceneChanger[] sceneChangers;
 
     // The HUD displays the player's power.
     private PowerableObject playerPower;
@@ -25,19 +28,24 @@ public class PowerUI : MonoBehaviour
     private void OnEnable()
     {
         EngineSequenceManager.OnShutdown += EnablePowerUI;
+        foreach (SceneChanger sc in sceneChangers)
+        {
+            sc.ChoseACrewmember += DepleteHalfPlayerPower;
+        }
     }
     private void OnDisable()
     {
         EngineSequenceManager.OnShutdown -= EnablePowerUI;
+        foreach (SceneChanger sc in sceneChangers)
+        {
+            sc.ChoseACrewmember -= DepleteHalfPlayerPower;
+        }
     }
 
     private void Start()
     {
         // The Power UI Canvas must be a child of the Player.
         playerPower = GetComponentInParent<PowerableObject>();
-
-        // We start the game with the power UI hidden.
-        DisablePowerUI();
     }
 
     private void Update()
@@ -101,7 +109,7 @@ public class PowerUI : MonoBehaviour
     /// <summary>
     /// Disable all power images.
     /// </summary>
-    private void DisablePowerUI()
+    public void DisablePowerUI()
     {
         foreach (Image i in GetComponentsInChildren<Image>())
             i.enabled = false;
@@ -114,5 +122,27 @@ public class PowerUI : MonoBehaviour
     {
         foreach (Image i in GetComponentsInChildren<Image>())
             i.enabled = true;
+    }
+
+    /// <summary>
+    /// When the player transfers their power to a crewmember, the power units change, even if their power is empty.
+    /// </summary>
+    /// <param name="s"></param>
+    private void DepleteHalfPlayerPower(string s)
+    {
+        if (emptyUnits[0].fillAmount > 0)
+        {
+            for (int i = 0; i < emptyUnits1.Length; i++)
+            {
+                StartCoroutine(ChangePowerUnitFillAmount(emptyUnits1[i], false));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < emptyUnits2.Length; i++)
+            {
+                StartCoroutine(ChangePowerUnitFillAmount(emptyUnits2[i], false));
+            }
+        }
     }
 }

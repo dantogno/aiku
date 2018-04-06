@@ -25,8 +25,11 @@ public class Scope : MonoBehaviour
 	[Tooltip("Animator component of the GMD.")]
 	[SerializeField] private Animator zoomAnimator;
 
-	//Currently used by another script. Will be made private eventually.
-	public bool isEquipped;
+	[Tooltip("CustomRigidbodyFPSController component of the player")]
+	[SerializeField] private CustomRigidbodyFPSController character;
+
+    //Currently used by another script. Will be made private eventually.
+    public bool isEquipped;
 
 	public static event Action<int> ScopedIn;
 
@@ -35,6 +38,7 @@ public class Scope : MonoBehaviour
 	private GameObject[] goodOre;
     private bool hasWaitedForAnimation;
 	private bool hasSentEvent = false;
+	private bool hasFirstEventBeenSent = false;
 
 	Material metalObjectMaterial;
 	Material grappleObjectMaterial;
@@ -77,7 +81,9 @@ public class Scope : MonoBehaviour
             zoomAnimator.SetBool("UsingScope", true);
 			gmdCameraObject.SetActive(false);
 
-            if(hasWaitedForAnimation)
+			SlowDownPlayer ();
+
+            if (hasWaitedForAnimation)
             {
                 isEquipped = true;
                 lensMask.SetActive(true);
@@ -100,7 +106,9 @@ public class Scope : MonoBehaviour
 			overlay.SetActive(false);
 			gmdModel.SetActive(true);
 
-            if(hasWaitedForAnimation)
+			ResetPlayerMovementSpeed ();
+
+            if (hasWaitedForAnimation)
             {
 				gmdCameraObject.SetActive(true);
             }
@@ -115,6 +123,12 @@ public class Scope : MonoBehaviour
 	{
 		if (isEquipped && hasWaitedForAnimation && !hasSentEvent) 
 		{
+			if (!hasFirstEventBeenSent) 
+			{
+				gmdModel.GetComponent<VOAudio> ().TriggerVOAudio ();
+				hasFirstEventBeenSent = true;
+			}
+
 			if (ScopedIn != null) 
 			{
 				ScopedIn.Invoke(0);
@@ -187,6 +201,26 @@ public class Scope : MonoBehaviour
             }
         }
     }
+
+	/// <summary>
+	/// Slows down player
+	/// </summary>
+	private void SlowDownPlayer()
+	{
+		character.movementSettings.ForwardSpeed = 0.7f;
+		character.movementSettings.BackwardSpeed = 0.5f;
+		character.movementSettings.StrafeSpeed = 0.5f;
+	}
+
+	/// <summary>
+	/// Resets the player movement speed.
+	/// </summary>
+	private void ResetPlayerMovementSpeed()
+	{
+		character.movementSettings.ForwardSpeed = 5f;
+		character.movementSettings.BackwardSpeed = 3.5f;
+		character.movementSettings.StrafeSpeed = 3.5f;
+	}
 
 	/// <summary>
 	/// Waits for scope animations.

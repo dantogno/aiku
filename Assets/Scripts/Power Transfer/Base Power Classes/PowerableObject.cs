@@ -23,6 +23,9 @@ public class PowerableObject : MonoBehaviour, IPowerable
     // This bool should return true when the current power equals the required power.
     public bool IsFullyPowered { get; protected set; }
 
+    // This bool allows other scripts (namely PowerSwitch.cs) to modify their behavior when the generator shuts down.
+    public bool RetainsPowerAfterGeneratorShutdown { get { return retainsPowerAfterGeneratorShutdown; } }
+
     // If this powerable object is connected to a power switch, the number entered in this inspector field must match the number of emissive indicator lights in the power switch gameObject's children.
     [Tooltip("Amount of power required for an object to be fully powered.")]
     [SerializeField]
@@ -36,12 +39,19 @@ public class PowerableObject : MonoBehaviour, IPowerable
     [SerializeField]
     protected bool retainsPowerAfterGeneratorShutdown = false;
 
+    private void OnEnable()
+    {
+        EngineSequenceManager.OnShutdown += OnShutdownHandler;
+    }
+    private void OnDisable()
+    {
+        EngineSequenceManager.OnShutdown -= OnShutdownHandler;
+    }
+
     protected virtual void Start()
     {
         if (startsOn) PowerOn();
         else PowerOff();
-
-        EngineSequenceManager.OnShutdown += OnShutdownHandler;
     }
 
     /// <summary>

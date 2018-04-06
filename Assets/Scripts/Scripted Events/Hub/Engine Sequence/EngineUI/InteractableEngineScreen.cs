@@ -23,6 +23,11 @@ public class InteractableEngineScreen : MonoBehaviour, IInteractable
             {
                 OnInteracted.Invoke();
             }
+
+            GetComponent<Collider>().enabled = false;   // DW: this is a note from David about not allowing interaction once something doesn't need it anymore, implemented here as a hack
+
+            GetComponent<AudioSource>().pitch = Random.Range(.8f, 1.2f);
+            GetComponent<AudioSource>().Play();     // DW
         }
         else
         {

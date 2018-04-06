@@ -16,7 +16,7 @@ public abstract class PowerExchanger : MonoBehaviour, IInteractable
     protected PowerableObject connectedPowerable;
 
     // Power exchangers are only activated after the generator shuts down.
-    protected bool activated = false;
+    protected bool activated = true;
 
     protected virtual void Awake()
     {
@@ -56,6 +56,9 @@ public abstract class PowerExchanger : MonoBehaviour, IInteractable
     /// <param name="otherObject"></param>
     protected abstract void TransferPower(IPowerable otherObject);
 
+    /// <summary>
+    /// After the generator shuts down, power exchangers may exchange power.
+    /// </summary>
     protected virtual void Activate()
     {
         activated = true;

@@ -56,19 +56,22 @@ public class PowerSwitch : PowerExchanger
     private AudioClip blockedAudioClip;
 
     #endregion
-
+    
     [Tooltip("If this box is checked, the player cannot interact with the power switch.")]
     [SerializeField]
     private bool blocked = false;
 
     // Power indication renderers are the emissive materials used to indicate a powerable object's power state to the player.
-    private List<Renderer> powerIndicationRenderers = new List<Renderer>();
+    private List<Renderer> emissiveRenderers = new List<Renderer>();
 
     // The audio source component attached to the power switch, used to play sounds when the player interacts with the switch.
     private AudioSource myAudioSource;
 
     // The stored color of the power switch's emissive materials, which changes based on the connected powerable's power state.
     private Color currentColor;
+
+    // Pitch changes a little bit each interaction, for variety.
+    private float originalPitch;
 
     protected override void Awake()
     {
@@ -107,12 +110,14 @@ public class PowerSwitch : PowerExchanger
             if (connectedPowerable.IsFullyPowered && otherPowerableCanAcceptPower)
             {
                 AllowOtherPowerableToExtractAllPowerFromConnectedPowerable(otherPowerable);
+                TwistHandle();
             }
 
             // If the connected powerable needs more power and the interacting agent has enough power to fully power it...
             else if (!connectedPowerable.IsFullyPowered && otherPowerableHasEnoughPower)
             {
                 ReceivePowerFromOtherPowerable(otherPowerable);
+                TwistHandle();
             }
 
             // Edge case. No power is exchanged, and an error light blinks.
@@ -128,16 +133,41 @@ public class PowerSwitch : PowerExchanger
         // Play the appropriate sound effect for the power exchange.
         myAudioSource.Play();
     }
-    
+
+    protected override void Activate()
+    {
+        base.Activate();
+
+        if (!connectedPowerable.RetainsPowerAfterGeneratorShutdown) TwistHandle();
+    }
+
     /// <summary>
     /// Sets up references to power indicator child components and AudioSource component.
     /// </summary>
     private void InitializeReferences()
     {
-        foreach (Renderer r in GetComponentsInChildren<Renderer>())
-            powerIndicationRenderers.Add(r);
+        foreach (Renderer r in connectedPowerable.GetComponentsInChildren<Renderer>())
+        {
+            if (r.material.HasProperty("_EmissionColor"))
+                emissiveRenderers.Add(r);
+        }
 
         myAudioSource = GetComponent<AudioSource>();
+        originalPitch = myAudioSource.pitch;
+    }
+
+    /// <summary>
+    /// Play animation for twisting the power switch's handle.
+    /// </summary>
+    private void TwistHandle()
+    {
+        PowerSwitch[] siblingSwitches = connectedPowerable.GetComponentsInChildren<PowerSwitch>();
+
+        foreach (PowerSwitch p in siblingSwitches)
+        {
+            Animator switchAnim = p.GetComponent<Animator>();
+            switchAnim.SetTrigger("Twist");
+        }
     }
 
     /// <summary>
@@ -151,6 +181,9 @@ public class PowerSwitch : PowerExchanger
 
         // The next sound to play should be the power-off clip, since the connected powerable is powering off.
         myAudioSource.clip = powerOffAudioClip;
+
+        // Random pitching for variety.
+        myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
     }
 
     /// <summary>
@@ -164,6 +197,9 @@ public class PowerSwitch : PowerExchanger
 
         // The next sound to play should be the power-on clip, since the connected powerable is powering on.
         myAudioSource.clip = powerOnAudioClip;
+
+        // Random pitching for variety.
+        myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
     }
 
     /// <summary>
@@ -173,17 +209,30 @@ public class PowerSwitch : PowerExchanger
     private IEnumerator BlinkErrorColor()
     {
         // The next sound to play should be the error clip, since if this method was called, the user's interaction with the power switch has been unsuccessful.
-        myAudioSource.clip = blockedAudioClip;
+        if (blocked)
+        {
+            myAudioSource.clip = blockedAudioClip;
+
+            // We don't want bot voices to be randomly pitched, we want those to be consistent.
+            myAudioSource.pitch = originalPitch;
+        }
+        else
+        {
+            myAudioSource.clip = blockedAudioClip;
+
+            // Random pitching for variety.
+            myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
+        }
 
         Color originalColor = currentColor;
-        float blinkTime = .1f;
+        float blinkTime = .01f;
 
         #region Flash off and on.
 
         int numBlinks = 5;
         for (int i = 0; i < numBlinks; i++)
         {
-            SetPowerLightMaterialColor(offColor);
+            SetPowerLightMaterialColor(noColor);
             yield return new WaitForSeconds(blinkTime);
             SetPowerLightMaterialColor(noColor);
             yield return new WaitForSeconds(blinkTime);
@@ -194,14 +243,44 @@ public class PowerSwitch : PowerExchanger
         #endregion
     }
 
+    private void SetPowerLightMaterialColor(Color targetColor)
+    {
+        foreach (Renderer r in emissiveRenderers)
+        {
+            r.material.SetColor("_EmissionColor", targetColor);
+        }
+    }
+
     /// <summary>
     /// Sets each of the power indication materials to the appropriate color.
     /// </summary>
-    /// <param name="color"></param>
-    private void SetPowerLightMaterialColor(Color color)
+    /// <param name="targetColor"></param>
+    /// <returns></returns>
+    private void SetPowerLightMaterialColor(Color targetColor, float timer)
     {
-        foreach (Renderer r in powerIndicationRenderers)
-            r.material.SetColor("_EmissionColor", color);
+        foreach (Renderer r in emissiveRenderers)
+        {
+            //r.material.SetColor("_EmissionColor", targetColor);
+            StartCoroutine(LerpColor(r, targetColor, timer));
+        }
+    }
+
+    private IEnumerator LerpColor(Renderer r, Color targetColor, float timer)
+    {
+        Color originalColor = r.material.GetColor("_EmissionColor"),
+                newColor = originalColor;
+
+        float elapsedTime = 0;
+        while (elapsedTime < timer)
+        {
+            newColor = Color.Lerp(originalColor, targetColor, elapsedTime / timer);
+            r.material.SetColor("_EmissionColor", newColor);
+
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        r.material.SetColor("_EmissionColor", targetColor);
     }
 
     /// <summary>
@@ -215,7 +294,8 @@ public class PowerSwitch : PowerExchanger
         // If the switch cannot be interacted with, best not to draw attention to it with color.
         if (!activated) displayColor = noColor;
 
-        SetPowerLightMaterialColor(displayColor);
+        // The length of the emissive animation is the length of the sound clip.
+        SetPowerLightMaterialColor(displayColor, powerOnAudioClip.length);
         currentColor = displayColor;
     }
 
@@ -227,12 +307,17 @@ public class PowerSwitch : PowerExchanger
         // If the switch cannot be interacted with, best not to draw attention to it with color.
         Color displayColor = activated ? offColor : noColor;
 
-        SetPowerLightMaterialColor(offColor);
+        // The length of the emissive animation is the length of the sound clip.
+        SetPowerLightMaterialColor(offColor, powerOffAudioClip.length);
 
         if (connectedPowerable.IsFullyPowered) StartCoroutine(BlinkErrorColor());
         else
         {
             myAudioSource.clip = powerOffAudioClip;
+
+            // Random pitching for variety.
+            myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
+
             myAudioSource.Play();
         }
 

@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4157500051812178}
   - component: {fileID: 33058787309648664}
   - component: {fileID: 23087653730244304}
-  - component: {fileID: 95500055599613128}
   - component: {fileID: 65524472848618376}
   m_Layer: 0
   m_Name: Pipe_Clean_Valve_Pressure
@@ -169,20 +168,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027736168, y: 0.019081159, z: 0.013000001}
   m_Center: {x: -0.013868017, y: 0.0030410031, z: 0}
---- !u!95 &95500055599613128
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976447544742046}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1df7da7d9f5eea6459b656d2cfe0444e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

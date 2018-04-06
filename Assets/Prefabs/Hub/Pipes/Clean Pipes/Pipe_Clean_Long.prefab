@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4130479202598178}
   - component: {fileID: 33785113722347504}
   - component: {fileID: 23235044141154972}
-  - component: {fileID: 95541758619665264}
   - component: {fileID: 65690539767717196}
   m_Layer: 0
   m_Name: Pipe_Clean_Long
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012999992, y: 0.10274758, z: 0.013000002}
   m_Center: {x: 0, y: 0.051385853, z: -6.9849193e-10}
---- !u!95 &95541758619665264
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1612323381848702}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 360764abb3df65149b97d5b816749adc, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

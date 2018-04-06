@@ -11,23 +11,27 @@ using UnityEngine;
 
 public class MainElevatorTrigger : MonoBehaviour
 {
-    [Tooltip("Invisible collider to keep the player from falling out of the elevator while it's moving.")]
-    [SerializeField]
+    [SerializeField, Tooltip("Invisible collider to keep the player from falling out of the elevator while it's moving.")]
     private Collider elevatorInvisibleBarrierCollider;
 
+    [SerializeField, Tooltip("Animator component for the gate at the bottom of the elevator.")]
+    private Animator gateAnimator;
+
+    // The powerable elevator.
     private PowerableObject myPowerable;
+
     private Collider myTrigger;
     private Animator myAnimator;
 
     private void OnEnable()
     {
-        myPowerable.OnPoweredOn += EnableTrigger;
-        myPowerable.OnPoweredOff += DisableColliders;
+        myPowerable.OnPoweredOn += OnElevatorPoweredOn;
+        myPowerable.OnPoweredOff += OnElevatorPoweredOff;
     }
     private void OnDisable()
     {
-        myPowerable.OnPoweredOn -= EnableTrigger;
-        myPowerable.OnPoweredOff -= DisableColliders;
+        myPowerable.OnPoweredOn -= OnElevatorPoweredOn;
+        myPowerable.OnPoweredOff -= OnElevatorPoweredOff;
     }
 
     private void Awake()
@@ -35,9 +39,17 @@ public class MainElevatorTrigger : MonoBehaviour
         InitializeReferences();
     }
 
+    private void Start()
+    {
+        OnElevatorPoweredOff();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        ActivateElevator(other);
+        if (other.tag == "Player")
+        {
+            ActivateElevator(other);
+        }
     }
 
     /// <summary>
@@ -45,7 +57,7 @@ public class MainElevatorTrigger : MonoBehaviour
     /// </summary>
     private void InitializeReferences()
     {
-        myPowerable = GetComponent<PowerableObject>();
+        myPowerable = GetComponentInParent<PowerableObject>();
 
         foreach (Collider c in GetComponents<Collider>())
             if (c.isTrigger) myTrigger = c;
@@ -68,24 +80,32 @@ public class MainElevatorTrigger : MonoBehaviour
         // Activate invisible collider to prevent accidentally falling out of the elevator.
         elevatorInvisibleBarrierCollider.enabled = true;
 
+        gateAnimator.SetTrigger("Close");
+        gateAnimator.GetComponent<AudioSource>().Play();
+
         // The passenger becomes a child of the platform to prevent an unpleasant "bouncing" physics effect.
         passenger.transform.SetParent(transform);
+
+        GetComponent<AudioSource>().Play();
     }
 
     /// <summary>
     /// When the elevator is turned on, the trigger is activated.
     /// </summary>
-    private void EnableTrigger()
+    private void OnElevatorPoweredOn()
     {
         myTrigger.enabled = true;
+        elevatorInvisibleBarrierCollider.enabled = false;
+        gateAnimator.SetTrigger("Open");
+        gateAnimator.GetComponent<AudioSource>().Play();
     }
 
     /// <summary>
     /// When the elevator is turned off, the trigger and invisible collider are deactivated.
     /// </summary>
-    private void DisableColliders()
+    private void OnElevatorPoweredOff()
     {
         myTrigger.enabled = false;
-        elevatorInvisibleBarrierCollider.enabled = false;
+        elevatorInvisibleBarrierCollider.enabled = true;
     }
 }

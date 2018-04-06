@@ -369,7 +369,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4186072561071902}
-  - component: {fileID: 95068040546610222}
   m_Layer: 0
   m_Name: LockersV2
   m_TagString: Untagged
@@ -1353,20 +1352,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1080599622135920}
   m_Mesh: {fileID: 4300022, guid: 1f8f8ac00a47d18489e228fca8a4b49d, type: 3}
---- !u!95 &95068040546610222
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1851277394661810}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1f8f8ac00a47d18489e228fca8a4b49d, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

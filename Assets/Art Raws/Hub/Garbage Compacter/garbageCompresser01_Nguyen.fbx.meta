@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 2c592519b5958e542ab4b0647e468bf5
+timeCreated: 1520483627
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: cable1_01Nguyen
+    100002: cable2_01Nguyen
+    100004: //RootNode
+    100006: garbageCompressor1
+    100008: inbutton1_01Nguyen
+    100010: inbutton2_01Nguyen
+    100012: outbutton1_01Nguyen
+    100014: outbutton2_01Nguyen
+    100016: power
+    100018: powerBox
+    100020: powerbox
+    100022: vent1
+    100024: vent2
+    400000: cable1_01Nguyen
+    400002: cable2_01Nguyen
+    400004: //RootNode
+    400006: garbageCompressor1
+    400008: inbutton1_01Nguyen
+    400010: inbutton2_01Nguyen
+    400012: outbutton1_01Nguyen
+    400014: outbutton2_01Nguyen
+    400016: power
+    400018: powerBox
+    400020: powerbox
+    400022: vent1
+    400024: vent2
+    2100000: lambert1
+    2300000: cable1_01Nguyen
+    2300002: cable2_01Nguyen
+    2300004: garbageCompressor1
+    2300006: inbutton1_01Nguyen
+    2300008: inbutton2_01Nguyen
+    2300010: outbutton1_01Nguyen
+    2300012: outbutton2_01Nguyen
+    2300014: power
+    2300016: powerbox
+    2300018: vent1
+    2300020: vent2
+    3300000: cable1_01Nguyen
+    3300002: cable2_01Nguyen
+    3300004: garbageCompressor1
+    3300006: inbutton1_01Nguyen
+    3300008: inbutton2_01Nguyen
+    3300010: outbutton1_01Nguyen
+    3300012: outbutton2_01Nguyen
+    3300014: power
+    3300016: powerbox
+    3300018: vent1
+    3300020: vent2
+    4300000: cable1_01Nguyen
+    4300002: cable2_01Nguyen
+    4300004: outbutton1_01Nguyen
+    4300006: inbutton1_01Nguyen
+    4300008: inbutton2_01Nguyen
+    4300010: power
+    4300012: outbutton2_01Nguyen
+    4300014: powerbox
+    4300016: vent2
+    4300018: vent1
+    4300020: garbageCompressor1
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: a45169c2fcf394242acba59901cddf69, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4425418244612438}
   - component: {fileID: 33973175259726126}
   - component: {fileID: 23220980881038858}
-  - component: {fileID: 95265996615240220}
-  - component: {fileID: 65906814403755896}
+  - component: {fileID: 65721722676831680}
+  - component: {fileID: 114354520767390622}
   m_Layer: 0
   m_Name: Pipe_Dirty_Valve_Butterfly
   m_TagString: Untagged
@@ -53,22 +53,22 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427256929837764}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.651001, y: 0.1407001, z: 0.09835005}
+  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalPosition: {x: 7.31, y: -2.529, z: 36.31}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4673343380892184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4673343380892184
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1890895859156200}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013872029, y: 0.017258698, z: 5.9604643e-10}
+  m_LocalRotation: {x: -0, y: -0.00000032782555, z: -0, w: 1}
+  m_LocalPosition: {x: -0.013872147, y: 0.01725869, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4425418244612438}
@@ -156,7 +156,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427256929837764}
   m_Mesh: {fileID: 4300000, guid: c8dd2db9cacc7e142bf045c9d3c2aa4c, type: 3}
---- !u!65 &65906814403755896
+--- !u!65 &65721722676831680
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -166,22 +166,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.027734127, y: 0.027046423, z: 0.013000001}
-  m_Center: {x: -0.013867063, y: 0.007023217, z: 0}
---- !u!95 &95265996615240220
-Animator:
-  serializedVersion: 3
+  m_Size: {x: 0.055468254, y: 0.054092847, z: 0.026000002}
+  m_Center: {x: -0.027734127, y: 0.014046434, z: 0}
+--- !u!114 &114354520767390622
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427256929837764}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c8dd2db9cacc7e142bf045c9d3c2aa4c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca941a2f945e2f49992b31deaa860d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valveType: 0
