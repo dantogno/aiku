@@ -6,7 +6,9 @@ using System;
 public enum GMDState { Grab, Mining, Grapple, Scoped, Off };
 
 /// <summary>
-/// Functionality for the GMD. Should be attached to the GMD GameObject.
+/// Functionality for the GMD (Geological Manipulation Device). 
+/// The player can use this to interact with objects(Picking up objects, grappling to objects, mining objects, etc.). 
+/// Should be attached to the GMD GameObject.
 /// </summary>
 public class GMD : MonoBehaviour
 {
