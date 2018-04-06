@@ -23,6 +23,12 @@ public class TempTurnOffEngineScreens : MonoBehaviour {
         foreach(InteractableEngineScreen screen in screens)
         {
             screen.PowerOff();
+            screen.GetComponent<Collider>().enabled = false;    // DW
+
+            foreach (AudioSource a in screen.GetComponentsInChildren<AudioSource>())
+            {
+                a.volume = 0;
+            }
         }
     }
 }
