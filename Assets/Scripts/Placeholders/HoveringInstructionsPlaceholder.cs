@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 /// <summary>
 /// This script is for the hovering instructions text canvas, which has proven popular as a conveyance device.
+/// The script is applied to a dedicated Canvas in the hierarchy under "UI" named "Hovering instructions Canvas".
+/// There is a sibling GameObject next to it in the hierarchy called "Hovering Instructions Canvas Destinations".
+/// This GameObject's children are the empty RectTransforms spread around the ship which should be added to the destinations array.
 /// </summary>
 
 public class HoveringInstructionsPlaceholder : MonoBehaviour
@@ -12,10 +15,10 @@ public class HoveringInstructionsPlaceholder : MonoBehaviour
     [SerializeField, Tooltip("The text object which displays instruction text to the player.")]
     private Text instructions;
 
-    [SerializeField, Tooltip("The tasks which dictate where the canvas travels to.")]
+    [SerializeField, Tooltip("The tasks which dictate where the canvas travels to. You can find them under TASKS -> OPENING SEQUENCE TASKS.")]
     private Task[] tasks;
 
-    [SerializeField, Tooltip("The locations that the canvas travels as tasks are completed.")]
+    [SerializeField, Tooltip("The locations that the canvas travels as tasks are completed. This GameObject has a sibling with children which should be added to this array.")]
     private Transform[] destinations;
 
     [SerializeField, Tooltip("The instructions printed to the text component.")]
