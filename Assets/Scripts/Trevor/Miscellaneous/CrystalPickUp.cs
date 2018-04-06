@@ -7,8 +7,13 @@ using UnityEngine;
 /// </summary>
 public class CrystalPickUp : MonoBehaviour
 {
+    [Tooltip("The GameObject that you wish to be the portal goes here.")] 
     [SerializeField] private GameObject portalToActivate;
+
+    [Tooltip("The 'Quartz' Animator goes here.")]
     [SerializeField] private Animator animator;
+
+    [Tooltip("The 'GMD' GameObject goes here.")]
     [SerializeField] private GameObject gmd;
     public bool animationPlayed;
 
