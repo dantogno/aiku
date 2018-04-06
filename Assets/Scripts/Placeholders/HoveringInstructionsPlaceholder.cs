@@ -42,7 +42,7 @@ public class HoveringInstructionsPlaceholder : MonoBehaviour
     /// <summary>
     /// Move the canvas to a new location.
     /// </summary>
-    private void GoToNextDestination()
+    private virtual void GoToNextDestination()
     {
         counter++;
 
@@ -54,7 +54,7 @@ public class HoveringInstructionsPlaceholder : MonoBehaviour
         if (counter == 3 || counter == 4) GetComponentInChildren<Animator>().SetTrigger("SwitchModes");
 
         // Move the canvas.
-        if (counter <= destinations.Length) StartCoroutine(LerpToDestination(destinations[counter]));
+        if (counter < destinations.Length) StartCoroutine(LerpToDestination(destinations[counter]));
     }
 
     /// <summary>
