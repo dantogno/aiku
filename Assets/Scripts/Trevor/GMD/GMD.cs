@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public enum GMDState { Grab, Grapple, Scoped, Off };
+public enum GMDState { Grab, Mining, Grapple, Scoped, Off };
 
 /// <summary>
-/// Functionality for the GMD. Should be attached to the GMD GameObject.
+/// Functionality for the GMD (Geological Manipulation Device). 
+/// The player can use this to interact with objects(Picking up objects, grappling to objects, mining objects, etc.). 
+/// Should be attached to the GMD GameObject.
 /// </summary>
 public class GMD : MonoBehaviour
 {
@@ -34,10 +37,12 @@ public class GMD : MonoBehaviour
 	[SerializeField] private float grappleOffset = 0.75f;
 
 	public bool isGrabbingObject = false;
-	public bool hasOre = false;
 
-	//This allows the GMD to continue to hold the object while the interact button is down even when the raycast is not pointed at the object. 
-	private GameObject objectToGrab;
+	public static event Action<int> PickupObject;
+    public static event Action<int> MiningCrystal;
+
+    //This allows the GMD to continue to hold the object while the interact button is down even when the raycast is not pointed at the object. 
+    private GameObject objectToGrab;
 	
 	//Used in the grapple function to normalize the distance between the player and the grapple object and give distance percentage for moving the player.
 	private Vector3 offset;
@@ -54,11 +59,16 @@ public class GMD : MonoBehaviour
 	//Rigidbody of the player.
 	private Rigidbody playerRigidbody;
 
+	private bool hasSentEvent = false;
+    private AudioSource audioSource;
+
 	// Use this for initialization
 	private void Start ()
 	{
 		currentState = GMDState.Off;
 		playerRigidbody = playerGameObject.GetComponent<Rigidbody> ();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
 	}
 
 	private void FixedUpdate()
@@ -83,6 +93,7 @@ public class GMD : MonoBehaviour
 	{
 		switch (currentState) 
 		{
+		//If the GMD is in the Grab state, calls the Grab function. Otherwise, switch to the Off state.
 		case GMDState.Grab:
 			
 			Grab ();
@@ -92,7 +103,8 @@ public class GMD : MonoBehaviour
 				SetCurrentState (GMDState.Off);
 			}
 			break;
-			
+
+		//If the player is looking at a grapple object and pressing the interact button, call the Grapple function. Otherwise, switch to the Off state.
 		case GMDState.Grapple:
 			
 			if (gmdRaycastHit && hit.transform.tag == "Grapple" && Input.GetButton ("Interact")) 
@@ -104,7 +116,19 @@ public class GMD : MonoBehaviour
 				SetCurrentState (GMDState.Off);
 			}
 			break;
-			
+
+		//If the GMD is in the Mining state, calls the Mining function. Otherwise, switch to the Off state.
+		case GMDState.Mining:
+
+			Mine ();
+
+			if (!Input.GetButton ("Interact")) 
+			{
+				SetCurrentState (GMDState.Off);
+			}
+			break;	
+
+		//If the GMD is in the Off state, calls the Off function. Switches to other functions according to what the player is interacting with.
 		case GMDState.Off:
 			
 			Off ();
@@ -117,7 +141,7 @@ public class GMD : MonoBehaviour
 				} 
 				else if (hit.transform.tag == "Good Ore" && Input.GetButton ("Interact")) 
 				{
-					SetCurrentState (GMDState.Grab);
+					SetCurrentState (GMDState.Mining);
 				}
 				else if (hit.transform.tag == "Grapple" && Input.GetButton ("Interact")) 
 				{
@@ -161,22 +185,40 @@ public class GMD : MonoBehaviour
 				isGrabbingObject = true;
 				objectRigidbody.useGravity = false;
 				objectRigidbody.transform.position = smoothedPosition;
+				if (!hasSentEvent) 
+				{
+					if (PickupObject != null) 
+					{
+						PickupObject.Invoke (0);
+					}
+					hasSentEvent = true;
+				}
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
 			}
-		}
-
-		//This is a temporary way for the player to pick up ore. This will change.
-		if (hit.transform.tag == "Good Ore") 
-		{
-			hasOre = true;
-			Destroy (hit.transform.gameObject);
-			currentState = GMDState.Off;
 		}
 	}
 
 	/// <summary>
-	/// Turns off gravity on player rigidbody and uses Vector3.SmoothDamp to move player smoothly toward object tagged as 'Grapple'.
+	/// Sends an event to start the process of mining the crystal (crystal pickup script)
 	/// </summary>
-	private void Grapple()
+    private void Mine()
+    {
+        if (MiningCrystal != null)
+        {
+            MiningCrystal.Invoke(0);
+        }
+        if (hit.transform.tag == "Good Ore")
+        {
+            currentState = GMDState.Off;
+        }
+    }
+    /// <summary>
+    /// Turns off gravity on player rigidbody and uses Vector3.SmoothDamp to move player smoothly toward object tagged as 'Grapple'.
+    /// </summary>
+    private void Grapple()
 	{
 		playerRigidbody.useGravity = false;
 		if (!hasSetGrappleOffset) 
@@ -184,6 +226,10 @@ public class GMD : MonoBehaviour
 			offset = Vector3.Lerp (playerGameObject.transform.position, hit.transform.position, grappleOffset);
 			hasSetGrappleOffset = true;
 		}
+        if(!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
 
 		Vector3 velocity = Vector3.zero;
 		playerGameObject.transform.position = Vector3.SmoothDamp (playerGameObject.transform.position, offset, ref velocity, grappleSpeed * Time.deltaTime, 35f);
@@ -202,6 +248,8 @@ public class GMD : MonoBehaviour
 				objectRigidbody.velocity = Vector3.zero;
 				objectRigidbody.useGravity = true;
 				isGrabbingObject = false;
+				hasSentEvent = false;
+                audioSource.Stop();
 			}
 		}
 
@@ -209,6 +257,7 @@ public class GMD : MonoBehaviour
 		{
 			playerRigidbody.useGravity = true;
 			hasSetGrappleOffset = false;
+            audioSource.Stop();
 		}
 	}
 }
