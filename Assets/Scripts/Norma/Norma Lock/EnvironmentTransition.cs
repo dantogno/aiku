@@ -76,11 +76,11 @@ public class EnvironmentTransition : MonoBehaviour {
 
     [TooltipAttribute(" Set the wait time between decrease and increase of fog value")]
 	[SerializeField]
-	public float IntermissionTime;
+	private float IntermissionTime;
 
 	[TooltipAttribute(" Set the wait time between the decrease and increase loops")]
 	[SerializeField]
-	public float IntervalTime;
+	private float IntervalTime;
 
     #endregion
     [Space(10)]
@@ -170,7 +170,7 @@ public class EnvironmentTransition : MonoBehaviour {
         {
             //if first second of the puzzle is solved, start the door opening section and end text.
 
-            StartCoroutine("Finish"); 
+            StartCoroutine(Finish()); 
         }
 
         if (interactingwith.allowExit == false)
@@ -178,7 +178,7 @@ public class EnvironmentTransition : MonoBehaviour {
             if (Input.GetButtonDown("Interact"))
             {
                 //Activates the Glitch effect to show the players what they are doing is wrong. 
-                StartCoroutine("Glitch");
+                StartCoroutine(Glitch());
             }
         }          
     }
@@ -188,14 +188,14 @@ public class EnvironmentTransition : MonoBehaviour {
 
     private void StartFade()
     {
-        StartCoroutine("Fade");
+        StartCoroutine(Fade());
     }
 
     /// <summary>
     ///  Fade changes the Fog level gradually
     ///  This comes after the first half of the puzzle is solved
     /// </summary>
-    IEnumerator Fade()
+    private IEnumerator Fade()
 	{
         isFadeTransitionPlaying = true;
         PauseLockInteraction();
@@ -291,7 +291,7 @@ public class EnvironmentTransition : MonoBehaviour {
     ///  Activates the ending sequence.
     ///  This includes the subtitles
     /// </summary>
-    IEnumerator Finish()
+    private IEnumerator Finish()
     {
         yield return new WaitForSecondsRealtime(1);
         //Goes back to the hub. This enables the door animation and the ramp towards the computer
@@ -302,7 +302,7 @@ public class EnvironmentTransition : MonoBehaviour {
     /// Glitch effect that denots whether the input the user made is incorrect or not 
     /// </summary>
 
-    IEnumerator Glitch()
+    private IEnumerator Glitch()
     {
         incorrectInputGlitch.enabled = true;
         yield return new WaitForSecondsRealtime(.3f);

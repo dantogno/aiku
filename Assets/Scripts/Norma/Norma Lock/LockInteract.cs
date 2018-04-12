@@ -81,9 +81,6 @@ public class LockInteract : MonoBehaviour, IInteractable
         }
         LockInteraction();
         CheckIfFinishedWithLock();
-
-
-
     }
 
     public void Interact(GameObject interactingAgent)
@@ -198,18 +195,30 @@ public class LockInteract : MonoBehaviour, IInteractable
         }
     }
 
+    private void DisableLockInteraction()
+    {
+        this.GetComponent<LockInteract>().enabled = false;
+    }
+
     /// <summary>
     /// called when the player gets the number right. Subscribe to the event on your seperate script (for hub) 
     /// </summary>
     private void FinishWithLock()
     {
-    	// do something special, depending on which lock it is
+        /// <summary>
+        /// do something special, depending on which lock it is
+        /// calls player state if all the numbers are inputed. this disables the script so  users are not able to move the lock after completing all the numbers
+        /// 
+        /// </summary>
         switch (thisLock)
         {
             case LockType.NormaPuzzle:
+                currentState = PlayerStates.Roaming;
                 if (UsedLock != null) UsedLock.Invoke();
+                
                 break;
             case LockType.HubLock:
+                currentState = PlayerStates.Roaming;
                 if (Unlocked != null) Unlocked.Invoke();
                 break;
             default:

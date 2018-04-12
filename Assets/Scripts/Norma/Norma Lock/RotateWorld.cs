@@ -263,7 +263,7 @@ public class RotateWorld : MonoBehaviour
             {
                 if (halfWay == false)
                 {
-                    StartCoroutine("Glitch");
+                    StartCoroutine(Glitch());
                     lockscript.knobPlacement = 0;
                 }
                 else
@@ -281,7 +281,7 @@ public class RotateWorld : MonoBehaviour
 
         if (lockscript.knobPlacement == 3 && Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0 && lockscript.passwordInput != "2817")
         {
-            StartCoroutine("Glitch");
+            StartCoroutine(Glitch());
             lockscript.knobPlacement = 0;
         }
 
@@ -303,7 +303,7 @@ public class RotateWorld : MonoBehaviour
     /// <summary>
     /// Glitch animation sequence to express the notion that their action is wrong
     /// </summary>
-    IEnumerator Glitch()
+    private IEnumerator Glitch()
     {
         secondCamera.GetComponent<GlitchyEffect>().enabled = true;
         yield return new WaitForSecondsRealtime(.3f);
