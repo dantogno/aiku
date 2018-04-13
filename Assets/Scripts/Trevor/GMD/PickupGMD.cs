@@ -26,5 +26,7 @@ public class PickupGMD : MonoBehaviour, IInteractable
 		gmdObject.GetComponent<BoxCollider> ().enabled = false;
 		gmdObject.GetComponent<VOAudio> ().TriggerVOAudio ();
         Arrow.SetActive(false);
+
+        GameObject.Find("Scanning Camera").SetActive(false);
 	}
 }
