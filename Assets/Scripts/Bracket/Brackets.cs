@@ -30,6 +30,9 @@ public class Brackets : MonoBehaviour
     [Tooltip("Area to leave brackets when no object is being targeted")]
     private Rect defaultBracketArea;
     [SerializeField]
+    [Tooltip("Use the spinning center bracket?")]
+    private bool UseCenterBracket = false;
+    [SerializeField]
     private Image CenterBracket;   
     [SerializeField]
     float centerBracketRotationSpeed = 1f;
@@ -105,8 +108,7 @@ public class Brackets : MonoBehaviour
         // If there was a previous object on the scanning layer, return it to its old layer
         if (currentScanningLayerObject != null)
         {
-            currentScanningLayerObject.layer = currentObjectPreviousLayer;
-           
+            ChangeLayerRecursive(currentScanningLayerObject, currentObjectPreviousLayer);
         }
 
         // If there is a new object we want to select, move it to the scanning layer
@@ -114,7 +116,7 @@ public class Brackets : MonoBehaviour
         {
             // Save a reference to the previous layer
             currentObjectPreviousLayer = objectToMove.layer;
-            objectToMove.layer = scanningLayer;
+            ChangeLayerRecursive(objectToMove, scanningLayer);
         }
         else
         {
@@ -125,6 +127,16 @@ public class Brackets : MonoBehaviour
 
         // Remember the new object on the scanning layer so we can put it back later
         currentScanningLayerObject = objectToMove;
+    }
+
+    private void ChangeLayerRecursive(GameObject target, int layer)
+    {
+        target.layer = layer;
+        for(int i = 0; i < target.transform.childCount; i++)
+        {
+            GameObject child = target.transform.GetChild(i).gameObject;
+            ChangeLayerRecursive(child, layer);
+        }
     }
 
     /// <summary>
@@ -152,8 +164,11 @@ public class Brackets : MonoBehaviour
                     lowerBound = Mathf.Min(y, lowerBound);
                     upperBound = Mathf.Max(y, upperBound);
                     //Activate center bracket
-                    RotateCenterBracket();
-                    CenterBracketActive();
+                    if (UseCenterBracket)
+                    {
+                        RotateCenterBracket();
+                        CenterBracketActive();
+                    }
                 }
             }
         }
