@@ -18,8 +18,8 @@ public class GravityManager : MonoBehaviour
         // Hold a reference to the original gravity.
         originalGravity = Physics.gravity;
         // Subscribe to the events where scene changes happen.
-        SceneChanger.SceneChangeStarted += DisableGravity;
-        SceneChanger.SceneChangeFinished += EnableGravity;
+        SceneTransition.SceneChangeStarted += DisableGravity;
+        SceneTransition.SceneChangeFinished += EnableGravity;
     }
 
     /// <summary>

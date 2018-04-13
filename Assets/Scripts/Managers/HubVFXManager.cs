@@ -30,14 +30,14 @@ public class HubVFXManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneChanger.SceneChangeStarted += CallGlitchCoroutine;
-        SceneChanger.SceneChangeFinished += CallGlitchCoroutine;
+        SceneTransition.SceneChangeStarted += CallGlitchCoroutine;
+        SceneTransition.SceneChangeFinished += CallGlitchCoroutine;
         EndingScreen.TransferredPlayerPowerReserve += CallDeathCoroutine;
     }
     private void OnDisable()
     {
-        SceneChanger.SceneChangeStarted -= CallGlitchCoroutine;
-        SceneChanger.SceneChangeFinished -= CallGlitchCoroutine;
+        SceneTransition.SceneChangeStarted -= CallGlitchCoroutine;
+        SceneTransition.SceneChangeFinished -= CallGlitchCoroutine;
         EndingScreen.TransferredPlayerPowerReserve -= CallDeathCoroutine;
     }
 

@@ -26,7 +26,7 @@ public class EndingScreen : MonoBehaviour
     private string crewmemberName;
 
     // Scene changer attached to this GameObject.
-    private SceneChanger mySceneChanger;
+    private HubSceneChanger mySceneChanger;
 
     // We want to change what the text on the level transition canvasses say, so that the player knows what's up.
     private Text[] sceneChangerTexts;
@@ -39,17 +39,17 @@ public class EndingScreen : MonoBehaviour
     private void OnEnable()
     {
         mySceneChanger.ChoseACrewmember += OnChoseCrewmember;
-        SceneChanger.SceneChangeFinished += CheckScene;
+        SceneTransition.SceneChangeFinished += CheckScene;
     }
     private void OnDisable()
     {
         mySceneChanger.ChoseACrewmember -= OnChoseCrewmember;
-        SceneChanger.SceneChangeFinished -= CheckScene;
+        SceneTransition.SceneChangeFinished -= CheckScene;
     }
 
     private void InitializeReferences()
     {
-        mySceneChanger = GetComponent<SceneChanger>();
+        mySceneChanger = GetComponent<HubSceneChanger>();
         sceneChangerTexts = GetComponentsInChildren<Text>();
     }
 
