@@ -307,7 +307,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
+  - {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,7 +375,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
+  - {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -409,7 +409,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
+  - {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -443,7 +443,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
+  - {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -643,8 +643,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.4107995, y: 0.9999998, z: 1}
+  m_Center: {x: -0.2053997, y: 0, z: 0}
 --- !u!114 &114324820262125176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,13 +656,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab483525131783a439b42dd0c4657d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 1
   thisLock: 0
   highlightedMaterial: {fileID: 2100000, guid: 14ac35d52ae24394ebc904b57777d476, type: 2}
+  ChosenPassword: 0
   lockNumber: 
   knobPlacement: 0
   selectedNumber: 0
   passwordInput: 
-  canMove: 0
+  LockisActive: 0
 --- !u!114 &114500411449095202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -699,12 +701,13 @@ MonoBehaviour:
   RotatedSecond: {fileID: 0}
   RotatedThird: {fileID: 0}
   RotatedFourth: {fileID: 0}
-  knob: 0
-  halfWay: 0
-  finished: 0
   secondCamera: {fileID: 0}
   RestrictedMaterial: {fileID: 2100000, guid: bb776d757b0aeed489413a4160e68e2a, type: 2}
-  originalMaterial: {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
+  originalMaterial: {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
+  firstPass: 2
+  secondPass: 8
+  thirdPass: 1
+  fourthPass: 7
 --- !u!114 &114844148382049706
 MonoBehaviour:
   m_ObjectHideFlags: 1
