@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028502047, g: 0.059583828, b: 0.07651997, a: 1}
+  m_IndirectSpecularColor: {r: 0.0021744387, g: 0.0047774343, b: 0.0066589573, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -7404,7 +7404,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400034, guid: 9359f0cc936ea2448a4c47cca7c16c4e, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 259543314}
-  m_LocalRotation: {x: 0.2803274, y: -0.6902073, z: 0.5765506, w: 0.33558896}
+  m_LocalRotation: {x: 0.28032738, y: -0.69020724, z: 0.57655054, w: 0.33558893}
   m_LocalPosition: {x: -0.825, y: 0.67437613, z: 0.7897897}
   m_LocalScale: {x: 0.009461552, y: 0.0094403345, z: 0.009451752}
   m_Children: []
@@ -12376,31 +12376,6 @@ Prefab:
       propertyPath: RotatedFourth
       value: 
       objectReference: {fileID: 1158323579}
-    - target: {fileID: 114763667591128916, guid: 526c7114dca6c144bbdb8183bf150e81,
-        type: 2}
-      propertyPath: originalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
-    - target: {fileID: 23276747725343242, guid: 526c7114dca6c144bbdb8183bf150e81,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
-    - target: {fileID: 23242080417616656, guid: 526c7114dca6c144bbdb8183bf150e81,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
-    - target: {fileID: 23237289209057768, guid: 526c7114dca6c144bbdb8183bf150e81,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
-    - target: {fileID: 23056517584706862, guid: 526c7114dca6c144bbdb8183bf150e81,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a179ce4bdff250c4297ae7de68074455, type: 2}
     - target: {fileID: 114844148382049706, guid: 526c7114dca6c144bbdb8183bf150e81,
         type: 2}
       propertyPath: m_Enabled
@@ -12425,6 +12400,31 @@ Prefab:
       propertyPath: m_Center.x
       value: -0.2053997
       objectReference: {fileID: 0}
+    - target: {fileID: 23276747725343242, guid: 526c7114dca6c144bbdb8183bf150e81,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
+    - target: {fileID: 23242080417616656, guid: 526c7114dca6c144bbdb8183bf150e81,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
+    - target: {fileID: 23237289209057768, guid: 526c7114dca6c144bbdb8183bf150e81,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
+    - target: {fileID: 23056517584706862, guid: 526c7114dca6c144bbdb8183bf150e81,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
+    - target: {fileID: 114763667591128916, guid: 526c7114dca6c144bbdb8183bf150e81,
+        type: 2}
+      propertyPath: originalMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e2a655f15d74853419781875506fbb69, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 526c7114dca6c144bbdb8183bf150e81, type: 2}
   m_IsPrefabParent: 0
@@ -31856,7 +31856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965a985c01cd94141883326acb3df2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 
 --- !u!23 &846022924
 MeshRenderer:
   m_ObjectHideFlags: 0
