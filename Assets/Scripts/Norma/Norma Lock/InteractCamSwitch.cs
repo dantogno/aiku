@@ -9,21 +9,27 @@ using UnityEngine;
 /// This script is needed for the character to look at the lock object
 /// </summary>
 
-public class InteractCamSwitch : MonoBehaviour,IInteractable 
+public class InteractCamSwitch : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Drag your Character Here")]
     private MonoBehaviour Player;
+
+    [SerializeField]
+    [Tooltip("Drag the target for the lookAt function")]
+    Transform NewTarget;
+
     Transform Target;
     private float smooth = 5f;
 
+    private PlayerStates currentState;
     #region Camera declaration and initlization
     // Initialize the Main Camera in the IDE
     private Camera mainCamera;
 
     [SerializeField]
     [Tooltip("Place the Camera To View Lock Prefab as a child to your player and then drag it here")]
-    private Camera lerpingCamera;
+    public Camera lerpingCamera;
     [Space(15)]
     [Header("Camera Bounds")]
     [SerializeField]
@@ -31,23 +37,38 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
     bool RotationAllowed = false; //enables rotation for the level. Hub may not want rotation on
     [SerializeField]
     [Tooltip("How much you can view from the left")]
-    float MIN_X =-45f;
-	[SerializeField]
+    float MIN_X = -45f;
+    [SerializeField]
     [Tooltip("How much you can view from the right")]
     float MAX_X = 45;
-	[SerializeField]
+    [SerializeField]
     [Tooltip("How much you can view from the down")]
     float MIN_Y = -45;
-	[SerializeField]
+    [SerializeField]
     [Tooltip("How much you can view from the up")]
-    float MAX_Y =45;
+    float MAX_Y = 45;
     #endregion
 
-    private bool isFocused;
+
     private bool ifCanceled;
+    [HideInInspector]
+    public bool isFocused;
+    [HideInInspector]
+    public bool allowExit = true;
+
     private float v_Axis;
     private float h_Axis;
-    private float mouseSensitivy = 50.0f;
+    private float mouseSensitivy = 30.0f;
+
+    private LockInteract LockInteractable;
+    private void OnEnable()
+    {
+        LockInteract.UsedLock += OnPlayerInteractedWithLock;
+    }
+    private void OnDisable()
+    {
+        LockInteract.UsedLock -= OnPlayerInteractedWithLock;
+    }
 
     void Start()
     {
@@ -55,21 +76,26 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
         lerpingCamera.transform.position = mainCamera.transform.position;
         lerpingCamera.gameObject.SetActive(false);
         isFocused = false;
-        gameObject.GetComponent<LockInteract>().enabled = false;
+        LockInteractable = GetComponent<LockInteract>();
     }
 
-    public void Interact(GameObject agentInteracting)
+    private void OnPlayerInteractedWithLock()
     {
-        if (isFocused == true)
+        if (isFocused == true && allowExit == true)
         {
-            //If already on focus, get out of lock      
-            GetOutLock();  
+            LockInteractable.currentState = PlayerStates.Roaming;
+            //If already on focus, get out of lock
+            StopCoroutine("SecondCameraFlyThrough");
+            GetOutLock();
+            isFocused = false;
         }
 
         else
         {
+            LockInteractable.currentState = PlayerStates.UsingLock;
+
             //enables the boolean to verify the lock is on focus
-            isFocused = true; 
+            ViewLock();
         }
     }
 
@@ -79,9 +105,16 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
         Player.GetComponent<Rigidbody>().isKinematic = true; //Prevents character sliding
         lerpingCamera.gameObject.SetActive(true);
         Player.enabled = false;
-        gameObject.GetComponent<LockInteract>().enabled = true;
         ifCanceled = false;
         CameraSwitch();
+        isFocused = true;
+
+        if (allowExit == true)
+        {
+            LockInteractable.currentState = PlayerStates.UsingLock;
+
+
+        }
     }
 
     /// <summary>
@@ -90,13 +123,13 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
 
     public void GetOutLock()
     {
+        
         Player.GetComponent<Rigidbody>().isKinematic = false;
         Player.enabled = true;
         GetComponent<LockInteract>().Cancel();
-        GetComponent<LockInteract>().enabled = false;
         isFocused = false;
         ifCanceled = true;
-		CameraSwitch();
+        CameraSwitch();
         h_Axis = 0;
         v_Axis = 0;
     }
@@ -116,11 +149,11 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
     {
         if (ifCanceled == true)
         {
-			MainCameraActive();
+            MainCameraActive();
         }
         else
         {
-			SecondCameraActive();            
+            SecondCameraActive();
         }
     }
 
@@ -129,27 +162,46 @@ public class InteractCamSwitch : MonoBehaviour,IInteractable
     /// </summary>
 
     private void MainCameraActive()
-	{
+    {
         lerpingCamera.transform.position = mainCamera.transform.position;
-		lerpingCamera.gameObject.SetActive(false);
-	}
+        lerpingCamera.gameObject.SetActive(false);
+    }
 
     /// <summary>
     ///second camera gets priority, and checks whether rotation is allowed or not.
     /// </summary>
     private void SecondCameraActive()
-	{
+    {
+        StartCoroutine("SecondCameraFlyThrough");
+        
 
-        Target = this.gameObject.transform.GetChild(6);
+        //lerpingCamera.transform.position = Vector3.Lerp(lerpingCamera.transform.position, Target.position, Time.deltaTime * smooth);
+        //lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
 
-        lerpingCamera.transform.position = Vector3.Lerp(lerpingCamera.transform.position, Target.position, Time.deltaTime * smooth);
-        lerpingCamera.transform.LookAt(transform.transform); //Keeps the camera in the same spot, no matter how you look at it
 
-        if (lerpingCamera.transform.position == Target.transform.position && RotationAllowed == true) //Wait until the camera is in front of the object to allow rotation
-        {
-            SecondCameraInput();
-        }
     }
+    private IEnumerator SecondCameraFlyThrough()
+    {
+        Target = this.gameObject.transform.GetChild(6);
+        Vector3 originalCamPos = lerpingCamera.transform.position;
+
+        float elapsedTime = 0, timer = 0.2f;
+        while(elapsedTime < timer)
+        {
+            lerpingCamera.transform.position = Vector3.Lerp(originalCamPos, Target.position, elapsedTime / timer);
+            lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
+            if (lerpingCamera.transform.position == Target.transform.position && RotationAllowed == true) //Wait until the camera is in front of the object to allow rotation
+            {
+                SecondCameraInput();
+            }
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        lerpingCamera.transform.position = Target.position;
+        lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
+    }
+
 
     /// <summary>
     ///If rotation is allowed, call this function
