@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This class is used to switch between scenes.
+/// This script should be attached to a root gameobject.
+/// It works by disabling all object in a single scene and either
+/// loading a new scene, or enabling all objects in a scene that has been
+/// loaded before.
+/// </summary>
 public class SceneTransition : MonoBehaviour
 {
     /// <summary>
@@ -95,10 +102,28 @@ public class SceneTransition : MonoBehaviour
     private void Awake()
     {
         // Initialize what is needed
+        InitializeComponents();
+        // Add the first scene to the list.
+        AddFirstScene();
+        // Make the Scene Transition object a singleton.
+        EnsureSingleton();
+    }
+
+    /// <summary>
+    /// Initializes components that are necessary for this script.
+    /// </summary>
+    private void InitializeComponents()
+    {
         loadedScenes = new List<Scene>();
         objectList = new Dictionary<string, Dictionary<GameObject, bool>>();
         loadedSceneNames = new List<string>();
+    }
 
+    /// <summary>
+    /// Adds the first scene to the scene list.
+    /// </summary>
+    private void AddFirstScene()
+    {
         Scene currentScene = SceneManager.GetActiveScene();
         // Add the first scene to the scene list.
         loadedScenes.Add(currentScene);
@@ -108,8 +133,13 @@ public class SceneTransition : MonoBehaviour
         AddToObjectList(currentScene);
         // Set this scene as the current scene.
         CurrentScene = currentScene.name;
+    }
 
-        // Make the Scene Transition object a singleton.
+    /// <summary>
+    /// Ensures that this object will be a singleton.
+    /// </summary>
+    private void EnsureSingleton()
+    {
         if (instance == null)
         {
             instance = this;
@@ -123,7 +153,14 @@ public class SceneTransition : MonoBehaviour
 
     private void Update()
     {
-        // Only called after the player has initiated a scene switch.
+        // Check to see if the scene switch currently in progress has finished.
+        CheckIfSceneSwitchIsDone();
+    }
+
+    private void CheckIfSceneSwitchIsDone()
+    {
+        // Make sure that this class has finished disabling the old scene and
+        // enabling the new one.
         if (disabledFinished && enabledFinished)
         {
             disabledFinished = false;
@@ -133,7 +170,18 @@ public class SceneTransition : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads a new scene using the Scene Transition manager.
+    /// Loads a new scene by index using the Scene Transition manager.
+    /// Will not work if another load is currently in progress.
+    /// </summary>
+    /// <param name="buildIndex">Build index of the scene to load</param>
+    public static void LoadScene(int buildIndex)
+    {
+        string sceneName = SceneManager.GetSceneByBuildIndex(buildIndex).name;
+        LoadScene(sceneName);
+    }
+
+    /// <summary>
+    /// Loads a new scene by name using the Scene Transition manager.
     /// Will not work if another load is currently in progress.
     /// </summary>
     /// <param name="sceneName">The name of the scene to load.</param>
