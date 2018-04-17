@@ -28,7 +28,7 @@ public class PowerUI : MonoBehaviour
     private void OnEnable()
     {
         EngineSequenceManager.OnShutdown += EnablePowerUI;
-        foreach (SceneChanger sc in sceneChangers)
+        foreach (HubSceneChanger sc in sceneChangers)
         {
             sc.ChoseACrewmember += DepleteHalfPlayerPower;
         }
@@ -36,7 +36,7 @@ public class PowerUI : MonoBehaviour
     private void OnDisable()
     {
         EngineSequenceManager.OnShutdown -= EnablePowerUI;
-        foreach (SceneChanger sc in sceneChangers)
+        foreach (HubSceneChanger sc in sceneChangers)
         {
             sc.ChoseACrewmember -= DepleteHalfPlayerPower;
         }

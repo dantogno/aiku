@@ -14,11 +14,11 @@ public class HubAudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneChanger.SceneChangeStarted += DisableBotVoices;
+        SceneTransition.SceneChangeStarted += DisableBotVoices;
     }
     private void OnDisable()
     {
-        SceneChanger.SceneChangeStarted -= DisableBotVoices;
+        SceneTransition.SceneChangeStarted -= DisableBotVoices;
     }
 
     /// <summary>
