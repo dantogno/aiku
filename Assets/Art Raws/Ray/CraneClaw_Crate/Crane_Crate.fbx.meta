@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 88a0243037ccb2a49ae8cdc92c0f2e5a
+timeCreated: 1523221234
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CraneClawController_01_HermonM
+    100004: CraneClawController_01_HermonM1
+    100006: CraneClawController_01_HermonM2
+    100008: CraneClawController_01_HermonM3
+    100010: CraneClawController_02_HermonM
+    100012: CraneClawController_02_HermonM 1
+    100014: CraneClawController_02_HermonM 2
+    100016: CraneClawController_02_HermonM 3
+    100018: CraneDropController_HM
+    100020: ObjectPicker_HM
+    100022: ObjectPicker_HM 1
+    100024: ObjectPicker_HM 2
+    100026: ObjectPicker_HM 3
+    100028: polySurface829
+    100030: StechablePlastic
+    100032: StechablePlastic1
+    400000: //RootNode
+    400002: CraneClawController_01_HermonM
+    400004: CraneClawController_01_HermonM1
+    400006: CraneClawController_01_HermonM2
+    400008: CraneClawController_01_HermonM3
+    400010: CraneClawController_02_HermonM
+    400012: CraneClawController_02_HermonM 1
+    400014: CraneClawController_02_HermonM 2
+    400016: CraneClawController_02_HermonM 3
+    400018: CraneDropController_HM
+    400020: ObjectPicker_HM
+    400022: ObjectPicker_HM 1
+    400024: ObjectPicker_HM 2
+    400026: ObjectPicker_HM 3
+    400028: polySurface829
+    400030: StechablePlastic
+    400032: StechablePlastic1
+    2100000: CraneClaw
+    2100002: aiAmbientOcclusion1
+    2300000: CraneClawController_01_HermonM
+    2300002: CraneClawController_01_HermonM1
+    2300004: CraneClawController_01_HermonM2
+    2300006: CraneClawController_01_HermonM3
+    2300008: CraneClawController_02_HermonM
+    2300010: CraneClawController_02_HermonM 1
+    2300012: CraneClawController_02_HermonM 2
+    2300014: CraneClawController_02_HermonM 3
+    2300016: CraneDropController_HM
+    2300018: ObjectPicker_HM
+    2300020: ObjectPicker_HM 1
+    2300022: ObjectPicker_HM 2
+    2300024: ObjectPicker_HM 3
+    2300026: polySurface829
+    2300028: StechablePlastic
+    2300030: StechablePlastic1
+    3300000: CraneClawController_01_HermonM
+    3300002: CraneClawController_01_HermonM1
+    3300004: CraneClawController_01_HermonM2
+    3300006: CraneClawController_01_HermonM3
+    3300008: CraneClawController_02_HermonM
+    3300010: CraneClawController_02_HermonM 1
+    3300012: CraneClawController_02_HermonM 2
+    3300014: CraneClawController_02_HermonM 3
+    3300016: CraneDropController_HM
+    3300018: ObjectPicker_HM
+    3300020: ObjectPicker_HM 1
+    3300022: ObjectPicker_HM 2
+    3300024: ObjectPicker_HM 3
+    3300026: polySurface829
+    3300028: StechablePlastic
+    3300030: StechablePlastic1
+    4300000: StechablePlastic
+    4300002: CraneDropController_HM
+    4300004: CraneClawController_01_HermonM
+    4300006: CraneClawController_02_HermonM
+    4300008: ObjectPicker_HM
+    4300010: CraneClawController_01_HermonM1
+    4300012: CraneClawController_02_HermonM
+    4300014: ObjectPicker_HM
+    4300016: CraneClawController_01_HermonM2
+    4300018: CraneClawController_02_HermonM
+    4300020: ObjectPicker_HM
+    4300022: CraneClawController_01_HermonM3
+    4300024: CraneClawController_02_HermonM
+    4300026: ObjectPicker_HM
+    4300028: StechablePlastic1
+    4300030: polySurface829
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CraneClaw
+    second: {fileID: 2100000, guid: 08b278fbb20bbf14b8c63e7b990a0cba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiAmbientOcclusion1
+    second: {fileID: 2100000, guid: a80d9150aecd99942bd68e8a272b48f0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
