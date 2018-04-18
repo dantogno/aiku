@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -515,11 +515,11 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 3884f7a2d04ffe8409ad9200b275896f, type: 3}
   dirtIntensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1.68
 --- !u!114 &114737320706760696
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -579,7 +579,7 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 18
+    value: 10
   sampleCount:
     overrideState: 1
     value: 17
