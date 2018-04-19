@@ -32,13 +32,13 @@ public class HubVFXManager : MonoBehaviour
     {
         SceneTransition.SceneChangeStarted += CallGlitchCoroutine;
         SceneTransition.SceneChangeFinished += CallGlitchCoroutine;
-        EndingScreen.TransferredPlayerPowerReserve += CallDeathCoroutine;
+        PlayerPowerable.TransferredEntirePowerReserve += CallDeathCoroutine;
     }
     private void OnDisable()
     {
         SceneTransition.SceneChangeStarted -= CallGlitchCoroutine;
         SceneTransition.SceneChangeFinished -= CallGlitchCoroutine;
-        EndingScreen.TransferredPlayerPowerReserve -= CallDeathCoroutine;
+        PlayerPowerable.TransferredEntirePowerReserve -= CallDeathCoroutine;
     }
 
     private void Start()

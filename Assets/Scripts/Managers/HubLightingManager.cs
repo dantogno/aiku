@@ -22,7 +22,7 @@ public class HubLightingManager : MonoBehaviour
     private Color emergencyLightColor = new Color(0.7019608f, 0f, 0.3294118f);
 
     [SerializeField, Tooltip("These floats represent the brightness of the different lights around the ship after the generator shuts down.")]
-    private float disabledEmissiveIntensity = .5f, enabledEmissiveIntensity = .5f, emergencyLightEmissiveIntensity = 5;
+    private float disabledEmissiveIntensity = .5f, enabledEmissiveIntensity = .5f, emergencyLightIntensity = 1.5f, dimmedLightIntensity = .75f;
 
     // Most walls have emissive strips. We want their emissive property to change dynamically during gameplay.
     private Renderer[] wallRenderers;
@@ -115,7 +115,7 @@ public class HubLightingManager : MonoBehaviour
 
         foreach (GameObject g in lightsToEnable)
         {
-            g.GetComponentInChildren<Light>().intensity = 1;
+            g.GetComponentInChildren<Light>().intensity = emergencyLightIntensity;
         }
 
         #endregion
@@ -124,7 +124,7 @@ public class HubLightingManager : MonoBehaviour
 
         foreach (GameObject g in lightsToDim)
         {
-            g.GetComponentInChildren<Light>().intensity = .75f;
+            g.GetComponentInChildren<Light>().intensity = dimmedLightIntensity;
             g.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
         }
 
