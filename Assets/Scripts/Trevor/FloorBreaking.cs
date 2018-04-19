@@ -8,6 +8,10 @@ using UnityEngine;
 /// </summary>
 public class FloorBreaking : MonoBehaviour
 {
+    [Tooltip("An invisible cube made to prevent the player from skipping the floor breaking segment. Game Object in hierarchy is named TrevorInvisibleWall")]
+    [SerializeField]
+    private GameObject invisibleWall; 
+
     private Rigidbody[] thisRigidbody;
 
     private AudioSource breakingFloorAudio;
@@ -38,6 +42,7 @@ public class FloorBreaking : MonoBehaviour
     {
         if (plyrCol.gameObject.tag == "Player")
         {
+
             if(!hasPlayedAudio)
             {
                 breakingFloorAudio.Play();
@@ -52,6 +57,16 @@ public class FloorBreaking : MonoBehaviour
                     fTile.useGravity = true;
                 }
             }
+
+            StartCoroutine(TimerToMakeWallDisappear());
+
         }
+    }
+
+    //Timer makes the invisible wall dissappear after 3 seconds
+    private IEnumerator TimerToMakeWallDisappear() 
+    {
+        yield return new WaitForSeconds(3f);
+        invisibleWall.SetActive(false);
     }
 }
