@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4795658908580228}
   - component: {fileID: 33635046506560854}
   - component: {fileID: 23062905575225022}
+  - component: {fileID: 65171404413263104}
   m_Layer: 0
   m_Name: polySurface27
   m_TagString: Untagged
@@ -153,7 +154,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4900770712086786}
-  - component: {fileID: 95482721554905078}
   m_Layer: 0
   m_Name: DrillPress_Metal_02_MRodriguez
   m_TagString: Untagged
@@ -394,22 +394,6 @@ GameObject:
   - component: {fileID: 23522553446776148}
   m_Layer: 0
   m_Name: polySurface2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1637084665260280
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4214230617395712}
-  - component: {fileID: 20228542801060632}
-  m_Layer: 0
-  m_Name: persp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,19 +753,6 @@ Transform:
   m_Father: {fileID: 4013192988334134}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4214230617395712
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1637084665260280}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 8.659561e-17, w: 0.7071068}
-  m_LocalPosition: {x: -1000.12164, y: 5.647238, z: -0.35502017}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 4900770712086786}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4383743840903050
 Transform:
   m_ObjectHideFlags: 1
@@ -1061,15 +1032,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358127529630764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: 0.22, z: -0.77}
+  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 12.686, y: -7.42, z: 28.987}
   m_LocalScale: {x: 0.74757355, y: 0.74757355, z: 0.74757355}
   m_Children:
   - {fileID: 4013192988334134}
-  - {fileID: 4214230617395712}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!4 &4950671629863096
 Transform:
   m_ObjectHideFlags: 1
@@ -1122,42 +1092,6 @@ Transform:
   m_Father: {fileID: 4013192988334134}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20228542801060632
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1637084665260280}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 600000
-  field of view: 37.84922
-  orthographic: 1
-  orthographic size: 363.39407
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!23 &23026993373219284
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -2511,20 +2445,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704947408987496}
   m_Mesh: {fileID: 4300064, guid: c9f4466a6790cf74bac42fc535090115, type: 3}
---- !u!95 &95482721554905078
-Animator:
-  serializedVersion: 3
+--- !u!65 &65171404413263104
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1358127529630764}
+  m_GameObject: {fileID: 1290203192314394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c9f4466a6790cf74bac42fc535090115, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 297.94308, y: 500, z: 336.7443}
+  m_Center: {x: 0, y: 242.93, z: 15.469055}
