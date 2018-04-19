@@ -15,14 +15,20 @@ public class CrystalPickUp : MonoBehaviour
 
     [Tooltip("The 'GMD' GameObject goes here.")]
     [SerializeField] private GameObject gmd;
+
+    [Tooltip("The 'Rubble Object' GameObject goes here.")]
+    [SerializeField] private GameObject rubbleObject;
+
     public bool animationPlayed;
 
+    private Rigidbody[] rubble;
     private AudioSource crystalAudio;
     private bool hasPlayedAudio = false;
 
     private void Start()
     {
         crystalAudio = GetComponent<AudioSource>();
+        rubble = rubbleObject.GetComponentsInChildren<Rigidbody>();
     }
     private void Update()
     {
@@ -38,6 +44,8 @@ public class CrystalPickUp : MonoBehaviour
     {
         if (animationPlayed && gameObject.transform.position != gmd.transform.position)
         {
+            animator.SetBool("playRotationJiggle", false);
+            EnableRubblePhysics(rubble);
             float step = 4 * Time.deltaTime;
             transform.position = Vector3.MoveTowards(gameObject.transform.position, gmd.transform.position, step);
 
@@ -81,10 +89,27 @@ public class CrystalPickUp : MonoBehaviour
         portalToActivate.SetActive(true);
     }
 
+    /// <summary>
+    /// Makes the crystal wait for 3 seconds before moving toward the player.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Jiggle()
     {
         yield return new WaitForSeconds(3);
         animationPlayed = true;
+    }
+
+    /// <summary>
+    /// Enables physics on debries when the crystal is removed from the wall.
+    /// </summary>
+    /// <param name="rigidbodies"></param>
+    private void EnableRubblePhysics(Rigidbody[] rigidbodies)
+    {
+        foreach (Rigidbody rbl in rigidbodies)
+        {
+            rbl.isKinematic = false;
+            rbl.useGravity = true;
+        }
     }
    
 }
