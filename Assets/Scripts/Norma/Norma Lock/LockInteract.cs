@@ -18,8 +18,8 @@ public class LockInteract : MonoBehaviour, IInteractable
 {
 
     #region Unity events for when the lock is completed for Norma
-    public static event Action UsedLock;
-    public static event Action Unlocked;
+    public event Action UsedLock;
+    public event Action Unlocked;
     #endregion
 
     private Animator unlockAnimation;

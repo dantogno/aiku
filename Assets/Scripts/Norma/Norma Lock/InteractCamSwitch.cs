@@ -63,14 +63,14 @@ public class InteractCamSwitch : MonoBehaviour
     private LockInteract LockInteractable;
     private void OnEnable()
     {
-        LockInteract.UsedLock += OnPlayerInteractedWithLock;
+        LockInteractable.UsedLock += OnPlayerInteractedWithLock;
     }
     private void OnDisable()
     {
-        LockInteract.UsedLock -= OnPlayerInteractedWithLock;
+        LockInteractable.UsedLock -= OnPlayerInteractedWithLock;
     }
 
-    void Start()
+    void Awake()
     {
         mainCamera = Camera.main;
         lerpingCamera.transform.position = mainCamera.transform.position;
