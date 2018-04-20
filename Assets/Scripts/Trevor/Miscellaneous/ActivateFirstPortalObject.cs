@@ -22,7 +22,11 @@ public class ActivateFirstPortalObject : MonoBehaviour
 		GMD.PickupObject -= SetHasPickedUpCrateValue;
 		Scope.ScopedIn -= SetHasScopedInValue;
 	}
-		
+
+	/// <summary>
+	/// Sets the has picked up crate value to true when the player picks up an object.
+	/// </summary>
+	/// <param name="i">The index.</param>
 	private void SetHasPickedUpCrateValue(int i)
 	{
 		if (hasPickedUpCrate == false) 
@@ -32,6 +36,10 @@ public class ActivateFirstPortalObject : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Sets the has scoped in value to true when the player scopes in.
+	/// </summary>
+	/// <param name="i">The index.</param>
 	private void SetHasScopedInValue(int i)
 	{
 		if (hasScopedIn == false) 
@@ -41,7 +49,9 @@ public class ActivateFirstPortalObject : MonoBehaviour
 		}
 	}
 
-	//Check if all arguments for the portal to activate are satisfied. If they are, activate the necessary components.
+	/// <summary>
+	/// Check if all arguments for the portal to activate are satisfied. If they are, activate the necessary components.
+	/// </summary>
 	private void CheckIfPortalShouldActivate()
 	{
 		if (hasPickedUpCrate == true && hasScopedIn == true && portalHasBeenActivated == false) 
@@ -50,7 +60,9 @@ public class ActivateFirstPortalObject : MonoBehaviour
 		}
 	}
 
-	//Activate the necessary components for the portal to work.
+	/// <summary>
+	/// Activate the necessary components for the portal to work.
+	/// </summary>
 	private void ActivatePortalObject()
 	{
 		GetComponent<PortalNew> ().enabled = true;

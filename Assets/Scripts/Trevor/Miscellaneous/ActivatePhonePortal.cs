@@ -27,7 +27,10 @@ public class ActivatePhonePortal : MonoBehaviour
 		}
 	}
 
-	//Check if all arguments for the portal to activate are satisfied. If they are, activate the necessary components.
+	/// <summary>
+	/// Check if all arguments for the portal to activate are satisfied. If they are, activate the necessary components.
+	/// </summary>
+	/// <param name="i">The index.</param>
 	private void CheckIfPortalShouldActivate(int i)
 	{
 		if (hasPlayerTriggeredVO == true) 
@@ -36,7 +39,9 @@ public class ActivatePhonePortal : MonoBehaviour
 		}
 	}
 
-	//Activate the necessary components for the portal to work.
+	/// <summary>
+	/// Activate the necessary components for the portal to work.
+	/// </summary>
 	private void ActivatePortal()
 	{
 		foreach (MeshRenderer r in GetComponentsInChildren<MeshRenderer>()) 

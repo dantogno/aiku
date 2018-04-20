@@ -75,11 +75,10 @@ public class PortalNew : MonoBehaviour
 			if (PlayerTeleported != null)
 				PlayerTeleported.Invoke ();
 
-            //SHOULD BE UNCOMMENTED ONCE PLAYER ROTATION PR IS ACCEPTED
-            //if(RotatePlayerOnArrival)
-            //{
-            //    playerController.mouseLook.RotatePlayerTo(RotateXAxis, RotateYAxis);
-            //}
+            if(RotatePlayerOnArrival)
+            {
+                playerController.mouseLook.RotatePlayerTo(RotateXAxis, RotateYAxis);
+            }
 		}
 	}
 }

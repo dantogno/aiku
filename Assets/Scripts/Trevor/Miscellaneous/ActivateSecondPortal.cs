@@ -17,7 +17,9 @@ public class ActivateSecondPortal : MonoBehaviour
 		CrystalPickUp.ActivateSecondPortal -= ActivatePortal;
 	}
 
-	//Activates the necessary components in order for the player to use the portal.
+	/// <summary>
+	/// Activates the necessary components in order for the player to use the portal.
+	/// </summary>
 	private void ActivatePortal()
 	{
 		foreach (MeshRenderer r in GetComponentsInChildren<MeshRenderer>()) 

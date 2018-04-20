@@ -19,12 +19,18 @@ public class ActivateThirdPortal : MonoBehaviour
 		PortalNew.PlayerTeleported -= CheckIfPortalShouldActivate;
 	}
 
+	/// <summary>
+	/// Increments the times teleported every every time the player teleports.
+	/// </summary>
 	private void IncrementTimesTeleported()
 	{
 		timesTeleported++;
 		CheckIfPortalShouldActivate ();
 	}
 
+	/// <summary>
+	/// If player has teleported 3 times, call the ActivatePortal function.
+	/// </summary>
 	private void CheckIfPortalShouldActivate()
 	{
 		if (timesTeleported >= 3) 
@@ -33,7 +39,9 @@ public class ActivateThirdPortal : MonoBehaviour
 		}
 	}
 
-	//Activate necessary components for teleporter to work properly.
+	/// <summary>
+	/// Activate necessary components for teleporter to work properly.
+	/// </summary>
 	private void ActivatePortal()
 	{
 		GetComponent<PortalNew> ().enabled = true;

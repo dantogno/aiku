@@ -14,12 +14,18 @@ public class CaveWall : MonoBehaviour
 		PortalNew.PlayerTeleported += IncremementTimesTeleportedValue;
 	}
 
+	/// <summary>
+	/// Incremements the times teleported value when the player teleports.
+	/// </summary>
 	private void IncremementTimesTeleportedValue()
 	{
 		timesTeleported++;
 		CheckIfCaveWallShouldBeDisabled ();
 	}
 
+	/// <summary>
+	/// If player has teleported 3 times, call the DisableCaveWall function.
+	/// </summary>
 	private void CheckIfCaveWallShouldBeDisabled()
 	{
 		if (timesTeleported >= 3) 
@@ -28,6 +34,9 @@ public class CaveWall : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Disables the cave wall.
+	/// </summary>
 	private void DisableCaveWall()
 	{
 		this.gameObject.SetActive (false);
