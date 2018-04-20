@@ -63,14 +63,14 @@ public class InteractCamSwitch : MonoBehaviour
     private LockInteract LockInteractable;
     private void OnEnable()
     {
-        LockInteract.UsedLock += OnPlayerInteractedWithLock;
+        LockInteractable.UsedLock += OnPlayerInteractedWithLock;
     }
     private void OnDisable()
     {
-        LockInteract.UsedLock -= OnPlayerInteractedWithLock;
+        LockInteractable.UsedLock -= OnPlayerInteractedWithLock;
     }
 
-    void Start()
+    void Awake()
     {
         mainCamera = Camera.main;
         lerpingCamera.transform.position = mainCamera.transform.position;
@@ -123,15 +123,8 @@ public class InteractCamSwitch : MonoBehaviour
 
     public void GetOutLock()
     {
-        
-        Player.GetComponent<Rigidbody>().isKinematic = false;
-        Player.enabled = true;
-        GetComponent<LockInteract>().Cancel();
-        isFocused = false;
-        ifCanceled = true;
-        CameraSwitch();
-        h_Axis = 0;
-        v_Axis = 0;
+        StartCoroutine(CameraFlysBack());
+
     }
 
     void FixedUpdate()
@@ -172,7 +165,7 @@ public class InteractCamSwitch : MonoBehaviour
     /// </summary>
     private void SecondCameraActive()
     {
-        StartCoroutine("SecondCameraFlyThrough");
+        StartCoroutine(SecondCameraFlyThrough());
         
 
         //lerpingCamera.transform.position = Vector3.Lerp(lerpingCamera.transform.position, Target.position, Time.deltaTime * smooth);
@@ -180,6 +173,11 @@ public class InteractCamSwitch : MonoBehaviour
 
 
     }
+
+    /// <summary>
+    /// Camera flys back to the original position
+    /// After a few seconds, activates activates the original camera
+    /// </summary>
     private IEnumerator SecondCameraFlyThrough()
     {
         Target = this.gameObject.transform.GetChild(5);
@@ -201,7 +199,31 @@ public class InteractCamSwitch : MonoBehaviour
         lerpingCamera.transform.position = Target.position;
         lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
     }
+    private IEnumerator CameraFlysBack()
+    {
+        Vector3 originalCamPos = lerpingCamera.transform.position;
 
+        float elapsedTime = 0, timer = 0.1f;
+        while (elapsedTime < timer)
+        {
+            lerpingCamera.transform.position = Vector3.Lerp(originalCamPos, mainCamera.transform.position, elapsedTime / timer);
+            lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        lerpingCamera.transform.position = mainCamera.transform.position;
+        lerpingCamera.transform.LookAt(NewTarget); //Keeps the camera in the same spot, no matter how you look at it
+        Player.GetComponent<Rigidbody>().isKinematic = false;
+        Player.enabled = true;
+        GetComponent<LockInteract>().Cancel();
+        isFocused = false;
+        ifCanceled = true;
+        CameraSwitch();
+        h_Axis = 0;
+        v_Axis = 0;
+    }
 
     /// <summary>
     ///If rotation is allowed, call this function

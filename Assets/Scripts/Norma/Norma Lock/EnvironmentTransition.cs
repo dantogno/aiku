@@ -293,7 +293,7 @@ public class EnvironmentTransition : MonoBehaviour {
     /// </summary>
     private IEnumerator Finish()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(3f);
         //Goes back to the hub. This enables the door animation and the ramp towards the computer
         BackToTheHub();
     }
