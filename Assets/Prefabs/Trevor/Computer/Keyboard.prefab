@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4027021302570206}
   - component: {fileID: 33887713125056428}
   - component: {fileID: 23693636108855842}
+  - component: {fileID: 54126621985377550}
+  - component: {fileID: 65349433921400680}
   m_Layer: 0
   m_Name: Keyboard
-  m_TagString: Untagged
+  m_TagString: Metal Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,3 +84,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1828684855998850}
   m_Mesh: {fileID: 4300000, guid: 6036bee0d1d03224d956bff4ab34469e, type: 3}
+--- !u!54 &54126621985377550
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828684855998850}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65349433921400680
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828684855998850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0590972, y: 0.0028708365, z: 0.020621087}
+  m_Center: {x: 0, y: 0.0014354183, z: 0.000058565285}
