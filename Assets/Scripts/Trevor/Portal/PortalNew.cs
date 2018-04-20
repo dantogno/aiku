@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ public class PortalNew : MonoBehaviour
 
     [Tooltip("Specifies the degree value to rotate the player/camera.")]
     [SerializeField] private float RotateXAxis, RotateYAxis;
+
+	public static event Action PlayerTeleported;
 
 	private CustomRigidbodyFPSController playerController;
 	public Camera playerCamera;
@@ -69,12 +72,13 @@ public class PortalNew : MonoBehaviour
                 portalAudio.Play();
                 hasPlayedAudio = true;
             }
+			if (PlayerTeleported != null)
+				PlayerTeleported.Invoke ();
 
-            //SHOULD BE UNCOMMENTED ONCE PLAYER ROTATION PR IS ACCEPTED
-            //if(RotatePlayerOnArrival)
-            //{
-            //    playerController.mouseLook.RotatePlayerTo(RotateXAxis, RotateYAxis);
-            //}
+            if(RotatePlayerOnArrival)
+            {
+                playerController.mouseLook.RotatePlayerTo(RotateXAxis, RotateYAxis);
+            }
 		}
 	}
 }
