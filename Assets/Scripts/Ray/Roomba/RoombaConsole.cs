@@ -16,13 +16,16 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     // in order to swap between them, as well as if the roomba is active
 
     [Tooltip("Reference to the 'player' game object")]
-    [SerializeField] GameObject player;
+    [SerializeField]
+    GameObject player;
 
     [Tooltip("Reference to the 'roomba' game object")]
-    [SerializeField] GameObject roomba;
+    [SerializeField]
+    GameObject roomba;
 
     [Tooltip("If true, player starts as roomba. If false player starts as player")]
-    [SerializeField] bool roombaIsActive;
+    [SerializeField]
+    bool roombaIsActive;
     #endregion
 
 
@@ -37,6 +40,8 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
     private InteractWithSelectedObject playerInteractionBehavior;
     private InteractWithSelectedObject roombaInteractionBehavior;
+
+    private bool swapEnabled;
     #endregion
 
     #region Identifier Strings
@@ -46,7 +51,8 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     #endregion
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         #region Defining Private Fields
         // Defines Camera, fpscontroller, and InteractionBehavior for roomba and player objects
@@ -58,6 +64,8 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
         playerInteractionBehavior = player.GetComponentInChildren<InteractWithSelectedObject>();
         roombaInteractionBehavior = roomba.GetComponentInChildren<InteractWithSelectedObject>();
+
+        swapEnabled = false;
         #endregion
 
         // Sets the Roomba and player as active or inactive
@@ -69,23 +77,28 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         {
             DeactivateRoomba();
         }
-
+        roomba.GetComponentInChildren<Canvas>().enabled = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (roombaIsActive)
         {
             //This could be changed to use unity's input handler, but it is currently
             //not for the sake of time and it matches what the claw console does.
             //If changing this, claw console input needs to be changed
-            if(Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
-                SwitchControllers();
+                if (swapEnabled)
+                {
+                    SwitchControllers();
+                    roomba.GetComponentInChildren<Canvas>().enabled = false;
+                }
             }
         }
 
-	}
+    }
 
     /// <summary>
     /// When called it will either activate roomba or deactivate roomba
@@ -138,6 +151,14 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         roombaInteractionBehavior.enabled = false;
         playerInteractionBehavior.enabled = true;
 
+    }
+
+    /// <summary>
+    /// This allows enables pressing 'e' to swap once the roomba leaves the start room
+    /// </summary>
+    public void EnableSwap()
+    {
+        swapEnabled = true;
     }
 
     /// <summary>
