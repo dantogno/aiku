@@ -120,9 +120,6 @@ public class GMD : MonoBehaviour
 
 		//If the GMD is in the Mining state, calls the Mining function. Otherwise, switch to the Off state.
 		case GMDState.Mining:
-
-			//Mine ();
-
 			if (!Input.GetButton ("Interact")) 
 			{
 				if (MiningEnd != null)
@@ -205,21 +202,6 @@ public class GMD : MonoBehaviour
 			}
 		}
 	}
-
-	/// <summary>
-	/// Sends an event to start the process of mining the crystal (crystal pickup script)
-	/// </summary>
-    /*private void Mine()
-    {
-        if (MiningCrystal != null)
-        {
-            MiningCrystal.Invoke(0);
-        }
-        if (hit.transform.tag == "Good Ore")
-        {
-            currentState = GMDState.Off;
-        }
-    }*/
 
     /// <summary>
     /// Turns off gravity on player rigidbody and uses Vector3.SmoothDamp to move player smoothly toward object tagged as 'Grapple'.

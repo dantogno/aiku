@@ -8,11 +8,6 @@ using UnityEngine;
 /// </summary>
 public class CrystalPickUp : MonoBehaviour
 {
-	/*
-    [Tooltip("The GameObject that you wish to be the portal goes here.")] 
-    [SerializeField] private GameObject portalToActivate;
-    */
-
     [Tooltip("The 'Quartz' Animator goes here.")]
     [SerializeField] private Animator animator;
 
@@ -106,10 +101,6 @@ public class CrystalPickUp : MonoBehaviour
     /// <param name="i"></param>
     private void StartTimer()
     {
-        //animator.SetBool("playRotationJiggle", true);
-        //StartCoroutine(Jiggle());
-        //portalToActivate.SetActive(true);
-
 		isTimerRunning = true;
 		animator.SetBool ("playRotationJiggle", true);
     }
@@ -137,16 +128,6 @@ public class CrystalPickUp : MonoBehaviour
 			}
 		}
 	}
-
-    /// <summary>
-    /// Makes the crystal wait for 3 seconds before moving toward the player.
-    /// </summary>
-    /// <returns></returns>
-    /*private IEnumerator Jiggle()
-    {
-        yield return new WaitForSeconds(3);
-        animationPlayed = true;
-    }*/
 
     /// <summary>
     /// Enables physics on debries when the crystal is removed from the wall.
