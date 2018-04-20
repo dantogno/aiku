@@ -18,11 +18,19 @@ public class PlayerPowerable : PowerableObject
 
     private void OnEnable()
     {
-        EndingScreen.AllocatedAllShipboardPowerToCryochambers += SetTransferringOwnPower;
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers += WaitToSetTransferringOwnPower;
     }
     private void OnDisable()
     {
-        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= SetTransferringOwnPower;
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= WaitToSetTransferringOwnPower;
+    }
+
+    /// <summary>
+    /// Wait to change the bool until the player has finished transferring power.
+    /// </summary>
+    private void WaitToSetTransferringOwnPower()
+    {
+        Invoke("SetTransferringOwnPower", 1);
     }
 
     /// <summary>
