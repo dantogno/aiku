@@ -39,7 +39,8 @@ public class GMD : MonoBehaviour
 	public bool isGrabbingObject = false;
 
 	public static event Action<int> PickupObject;
-    public static event Action<int> MiningCrystal;
+    public static event Action MiningStart;
+	public static event Action MiningEnd;
 
     //This allows the GMD to continue to hold the object while the interact button is down even when the raycast is not pointed at the object. 
     private GameObject objectToGrab;
@@ -120,10 +121,12 @@ public class GMD : MonoBehaviour
 		//If the GMD is in the Mining state, calls the Mining function. Otherwise, switch to the Off state.
 		case GMDState.Mining:
 
-			Mine ();
+			//Mine ();
 
 			if (!Input.GetButton ("Interact")) 
 			{
+				if (MiningEnd != null)
+					MiningEnd.Invoke ();
 				SetCurrentState (GMDState.Off);
 			}
 			break;	
@@ -142,6 +145,8 @@ public class GMD : MonoBehaviour
 				else if (hit.transform.tag == "Good Ore" && Input.GetButton ("Interact")) 
 				{
 					SetCurrentState (GMDState.Mining);
+					if (MiningStart != null)
+						MiningStart.Invoke ();
 				}
 				else if (hit.transform.tag == "Grapple" && Input.GetButton ("Interact")) 
 				{
@@ -204,7 +209,7 @@ public class GMD : MonoBehaviour
 	/// <summary>
 	/// Sends an event to start the process of mining the crystal (crystal pickup script)
 	/// </summary>
-    private void Mine()
+    /*private void Mine()
     {
         if (MiningCrystal != null)
         {
@@ -214,7 +219,8 @@ public class GMD : MonoBehaviour
         {
             currentState = GMDState.Off;
         }
-    }
+    }*/
+
     /// <summary>
     /// Turns off gravity on player rigidbody and uses Vector3.SmoothDamp to move player smoothly toward object tagged as 'Grapple'.
     /// </summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,10 @@ using UnityEngine;
 /// </summary>
 public class CrystalPickUp : MonoBehaviour
 {
+	/*
     [Tooltip("The GameObject that you wish to be the portal goes here.")] 
     [SerializeField] private GameObject portalToActivate;
+    */
 
     [Tooltip("The 'Quartz' Animator goes here.")]
     [SerializeField] private Animator animator;
@@ -19,11 +22,21 @@ public class CrystalPickUp : MonoBehaviour
     [Tooltip("The 'Rubble Object' GameObject goes here.")]
     [SerializeField] private GameObject rubbleObject;
 
+	[Tooltip("The amount of time it takes to pull the crystal out of the wall")]
+	[SerializeField] private float pickupDelayTime = 3f;
+
+    [SerializeField] private GameObject player;
+
+	public static event Action ActivateSecondPortal;
+
     public bool animationPlayed;
 
     private Rigidbody[] rubble;
     private AudioSource crystalAudio;
     private bool hasPlayedAudio = false;
+	private bool isTimerRunning = false;
+	private float time = 0f;
+	private bool shouldMoveCrystal = false;
 
     private void Start()
     {
@@ -32,7 +45,8 @@ public class CrystalPickUp : MonoBehaviour
     }
     private void Update()
     {
-        MoveCrystal();
+		MoveCrystal ();
+		Timer ();
     }
 
     /// <summary>
@@ -42,17 +56,23 @@ public class CrystalPickUp : MonoBehaviour
     /// </summary>
     private void MoveCrystal()
     {
-        if (animationPlayed && gameObject.transform.position != gmd.transform.position)
+		if (shouldMoveCrystal)
         {
             animator.SetBool("playRotationJiggle", false);
             EnableRubblePhysics(rubble);
-            float step = 4 * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(gameObject.transform.position, gmd.transform.position, step);
+            float step =  15 * Time.deltaTime;
+            float scaleSpeed = 5f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, gmd.transform.position, step);
+            Vector3 tarScale = new Vector3(.5f, .5f, .5f);
+            transform.localScale = Vector3.Lerp(transform.localScale, tarScale, scaleSpeed);
 
             if (gameObject.transform.position == gmd.transform.position)
             {
                 GetComponentInChildren<MeshRenderer>().enabled = false;
                 GetComponentInChildren<BoxCollider>().enabled = false;
+
+				if (ActivateSecondPortal != null)
+					ActivateSecondPortal.Invoke ();
 
                 if (!crystalAudio.isPlaying && !hasPlayedAudio)
                 {
@@ -70,11 +90,13 @@ public class CrystalPickUp : MonoBehaviour
     private void OnEnable()
     {
         animationPlayed = false;
-        GMD.MiningCrystal += MineMinerals;
+		GMD.MiningStart += StartTimer;
+		GMD.MiningEnd += StopTimer;
     }
     private void OnDisable()
     {
-        GMD.MiningCrystal -= MineMinerals;
+		GMD.MiningStart -= StartTimer;
+		GMD.MiningEnd += StopTimer;
     }
 
     /// <summary>
@@ -82,22 +104,49 @@ public class CrystalPickUp : MonoBehaviour
     /// portal.
     /// </summary>
     /// <param name="i"></param>
-    private void MineMinerals(int i)
+    private void StartTimer()
     {
-        animator.SetBool("playRotationJiggle", true);
-        StartCoroutine(Jiggle());
-        portalToActivate.SetActive(true);
+        //animator.SetBool("playRotationJiggle", true);
+        //StartCoroutine(Jiggle());
+        //portalToActivate.SetActive(true);
+
+		isTimerRunning = true;
+		animator.SetBool ("playRotationJiggle", true);
     }
+
+	private void StopTimer()
+	{
+		isTimerRunning = false;
+		time = 0f;
+		animator.SetBool ("playRotationJiggle", false);
+	}
+
+	private void Timer()
+	{
+		if (isTimerRunning) 
+		{
+			if (time <= pickupDelayTime) 
+			{
+				time += Time.deltaTime;
+			} 
+			else if (time >= pickupDelayTime) 
+			{
+				animator.SetBool ("playRotationJiggle", false);
+				shouldMoveCrystal = true;
+				isTimerRunning = false;
+			}
+		}
+	}
 
     /// <summary>
     /// Makes the crystal wait for 3 seconds before moving toward the player.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator Jiggle()
+    /*private IEnumerator Jiggle()
     {
         yield return new WaitForSeconds(3);
         animationPlayed = true;
-    }
+    }*/
 
     /// <summary>
     /// Enables physics on debries when the crystal is removed from the wall.
