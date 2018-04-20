@@ -59,7 +59,6 @@ public class HissingPipe : MonoBehaviour
     /// <summary>
     /// After the audio source finishes playing its clip, loop the steam hissing clip.
     /// </summary>
-    /// <returns></returns>
     private IEnumerator WaitForAudioClipToFinishAndSwitchAudioClip()
     {
         while (myAudioSource.isPlaying) yield return null;
