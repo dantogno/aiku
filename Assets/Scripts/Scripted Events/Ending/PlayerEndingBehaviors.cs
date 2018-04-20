@@ -17,17 +17,17 @@ public class PlayerEndingBehaviors : MonoBehaviour
 
     private void OnEnable()
     {
-        EndingScreen.TransferredHalfPowerReserve += OnHalfPowerDrained;
+        PlayerPowerable.TransferredPartOfPowerReserve += OnPowerDrained;
     }
     private void OnDisable()
     {
-        EndingScreen.TransferredHalfPowerReserve -= OnHalfPowerDrained;
+        PlayerPowerable.TransferredPartOfPowerReserve -= OnPowerDrained;
     }
 
     /// <summary>
     /// Slow down the player and cause their UI to become glitchy.
     /// </summary>
-    private void OnHalfPowerDrained()
+    private void OnPowerDrained()
     {
         movementScript.movementSettings.ForwardSpeed /= 2;
         movementScript.movementSettings.BackwardSpeed /= 2;
@@ -35,5 +35,18 @@ public class PlayerEndingBehaviors : MonoBehaviour
 
         glitchEffect.enabled = true;
         glitchEffect._DispIntensity = .05f;
+    }
+
+    /// <summary>
+    /// Return the player's movement and UI to normal.
+    /// </summary>
+    private void OnPowerRestored()
+    {
+        movementScript.movementSettings.ForwardSpeed *= 2;
+        movementScript.movementSettings.BackwardSpeed *= 2;
+        movementScript.movementSettings.StrafeSpeed *= 2;
+
+        glitchEffect.enabled = false;
+        glitchEffect._DispIntensity = 0;
     }
 }

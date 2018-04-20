@@ -35,6 +35,32 @@ public class KeyCardTerminal : MonoBehaviour
     [SerializeField]
     private float timeToAutoClose;
 
+    [Tooltip("Material of the keycard scanner when it's locked")]
+    [SerializeField]
+    private Material lockedScannerMaterial;
+
+    [Tooltip("Material of the keycard scanner when it's locked")]
+    [SerializeField]
+    private Material unlockedScannerMaterial;
+
+    [Tooltip("The audio clip that will play when the keycard is scanned")]
+    [SerializeField]
+    private AudioClip unlockSound;
+
+    //This will be the audio source for unlockSound
+    private AudioSource audioSource;
+
+    //Prevents the unlock sound from being played multiple times
+    private bool unlockSoundPlayed;
+
+    public void Start()
+    {
+        audioSource = this.GetComponent<AudioSource>();
+        audioSource.clip = unlockSound;
+
+        unlockSoundPlayed = false;
+    }
+
     /// <summary>
     /// Update checks for booleans to notify when to perform a method. 
     /// </summary>
@@ -59,12 +85,16 @@ public class KeyCardTerminal : MonoBehaviour
     /// </summary>
     private void AutoCloseDoor()
     {
+        GetComponent<Renderer>().material = lockedScannerMaterial;
+
+        unlockSoundPlayed = false;
+
         timeToAutoClose -= Time.deltaTime;
         if (timeToAutoClose <= 0)
         {
             accessGranted = false;
             DenyAccess();
-        }    
+        }
     }
 
     /// <summary>
@@ -72,6 +102,8 @@ public class KeyCardTerminal : MonoBehaviour
     /// </summary>
     private void GrantAccess()
     {
+        GetComponent<Renderer>().material = unlockedScannerMaterial;
+
         countDownToDisappear -= Time.deltaTime;
         Vector3 startingPosition = new Vector3(door.transform.position.x, door.transform.position.y, door.transform.position.z);
         door.transform.position = Vector3.Lerp(startingPosition, doorEndPoint.transform.position, Time.deltaTime);
@@ -89,7 +121,7 @@ public class KeyCardTerminal : MonoBehaviour
     {
         door.SetActive(true);
         Vector3 startingPosition = new Vector3(door.transform.position.x, door.transform.position.y, door.transform.position.z);
-        door.transform.position = Vector3.Lerp(startingPosition, doorOriginPoint.transform.position, Time.deltaTime);   
+        door.transform.position = Vector3.Lerp(startingPosition, doorOriginPoint.transform.position, Time.deltaTime);
     }
 
     /// <summary>
@@ -103,8 +135,15 @@ public class KeyCardTerminal : MonoBehaviour
             timeToAutoClose = 5;
             accessGranted = true;
             countDownToDisappear = 3;
+
+            if (!unlockSoundPlayed) //Plays the unlock sound only if the door is unlocked
+            {
+                if (!audioSource.isPlaying)  // Inplace to ensure that our audio keeps looping and dosen't restart each frame input is held down.
+                {
+                    audioSource.Play();
+                    unlockSoundPlayed = true;
+                }
+            }
         }
     }
 }
-
-  

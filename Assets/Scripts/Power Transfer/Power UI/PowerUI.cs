@@ -14,13 +14,13 @@ public class PowerUI : MonoBehaviour
     private float fillTime = .5f;
 
     [SerializeField, Tooltip("These are the blue boxes representing the player's power units.")]
-    private Image[] powerUnits, emptyUnits, emptyUnits1, emptyUnits2;
+    private Image[] powerUnits, emptyUnits;
 
     [SerializeField, Tooltip("The scene changer scripts present in the scene. The power UI is changed when the player chooses a crewmember to save.")]
     private SceneChanger[] sceneChangers;
 
     // The HUD displays the player's power.
-    private PowerableObject playerPower;
+    private PowerableObject connectedPowerable;
 
     // This float is used to detect changes to the player's power in the Update method.
     private float previousPower;
@@ -28,29 +28,34 @@ public class PowerUI : MonoBehaviour
     private void OnEnable()
     {
         EngineSequenceManager.OnShutdown += EnablePowerUI;
-        foreach (HubSceneChanger sc in sceneChangers)
-        {
-            sc.ChoseACrewmember += DepleteHalfPlayerPower;
-        }
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers += SwitchUIToSparePower;
     }
     private void OnDisable()
     {
         EngineSequenceManager.OnShutdown -= EnablePowerUI;
-        foreach (HubSceneChanger sc in sceneChangers)
-        {
-            sc.ChoseACrewmember -= DepleteHalfPlayerPower;
-        }
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= SwitchUIToSparePower;
     }
 
     private void Start()
     {
         // The Power UI Canvas must be a child of the Player.
-        playerPower = GetComponentInParent<PowerableObject>();
+        connectedPowerable = GetComponentInParent<PowerableObject>();
     }
 
     private void Update()
     {
         UpdatePowerUI();
+    }
+
+    private void SwitchUIToSparePower()
+    {
+        if (connectedPowerable is PlayerPowerable)
+        {
+            for (int i = 0; i < powerUnits.Length; i++)
+            {
+                powerUnits[i] = emptyUnits[i];
+            }
+        }
     }
 
     /// <summary>
@@ -59,14 +64,14 @@ public class PowerUI : MonoBehaviour
     private void UpdatePowerUI()
     {
         // If the power level has changed since the last frame...
-        if (playerPower.CurrentPower != previousPower)
+        if (connectedPowerable.CurrentPower != previousPower)
         {
             // Cycle through each power unit...
             for (int i = 0; i < powerUnits.Length; i++)
             {
                 // Check the player's power level, and if a power unit is full or empty.
-                bool canFill = playerPower.CurrentPower > i && powerUnits[i].fillAmount == 0,
-                    canDeplete = playerPower.CurrentPower <= i && powerUnits[i].fillAmount == 1;
+                bool canFill = connectedPowerable.CurrentPower > i && powerUnits[i].fillAmount == 0,
+                    canDeplete = connectedPowerable.CurrentPower <= i && powerUnits[i].fillAmount == 1;
 
                 // If the fill/deplete conditions are met, fill or deplete the power unit.
                 if (canFill)
@@ -77,7 +82,7 @@ public class PowerUI : MonoBehaviour
         }
 
         // Set the previousPower variable, for checking in the next frame whether the player's power level has changed.
-        previousPower = playerPower.CurrentPower;
+        previousPower = connectedPowerable.CurrentPower;
     }
 
     /// <summary>
@@ -122,27 +127,5 @@ public class PowerUI : MonoBehaviour
     {
         foreach (Image i in GetComponentsInChildren<Image>())
             i.enabled = true;
-    }
-
-    /// <summary>
-    /// When the player transfers their power to a crewmember, the power units change, even if their power is empty.
-    /// </summary>
-    /// <param name="s"></param>
-    private void DepleteHalfPlayerPower(string s)
-    {
-        if (emptyUnits[0].fillAmount > 0)
-        {
-            for (int i = 0; i < emptyUnits1.Length; i++)
-            {
-                StartCoroutine(ChangePowerUnitFillAmount(emptyUnits1[i], false));
-            }
-        }
-        else
-        {
-            for (int i = 0; i < emptyUnits2.Length; i++)
-            {
-                StartCoroutine(ChangePowerUnitFillAmount(emptyUnits2[i], false));
-            }
-        }
     }
 }

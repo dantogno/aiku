@@ -13,93 +13,34 @@ using UnityEngine.SceneManagement;
 public class HubSceneChanger : SceneChanger
 {
     /// <summary>
-    /// This event is called after the player chooses a survivor.
-    /// It is invoked with the name of the survivor that was chosen.
+    /// This event is called after the player finishes playing through a level.
+    /// It is invoked with the name of the crewmember whose level was finished.
     /// </summary>
-    public event Action<string> ChoseACrewmember;
+    public static event Action<CrewmemberName> FinishedLevel;
 
-    // A variable to keep track of the current state of interaction.
-    // It dictates what happens when player interacts with the screen.
-    private bool readyToChooseSurvivors = false;
+    public enum CrewmemberName { Norma, Trevor, Ray }
+
+    [SerializeField, Tooltip("The name of the crewmember, since it's harder to slip up with enums than strings.")]
+    private CrewmemberName crewmemberName;
 
     private void OnEnable()
     {
-        // When the player has finished playing the levels, it changes the interaction
-        // functionality of this script.
-        EndingScreen.DoneWithLevels += SwitchInteractionModeToFinalChoice;
-    }
-    private void OnDisable()
-    {
-        EndingScreen.DoneWithLevels -= SwitchInteractionModeToFinalChoice;
+        // When the player finishes a level, find out which one and broadcast appropriate event.
+        // We are not unsubscribing from this event, just to make sure it's not accidentally skipped.
+        SceneTransition.SceneChangeFinished += CheckWhichLevelWasFinished;
     }
 
     /// <summary>
-    /// Transports the player to another level. If all of the levels have been
-    /// played, the player instead chooses a survivor.
+    /// When a level is exited, check which one it is and broadcast the corresponding event.
     /// </summary>
-    /// <param name="agentInteracting">The agent interacting with this object</param>
-    public override void Interact(GameObject agentInteracting)
+    private void CheckWhichLevelWasFinished()
     {
-        if (agentInteracting.GetComponent<PowerableObject>() != null)
+        foreach (string s in SceneTransition.LoadedSceneNames)
         {
-            // Remove all power from the agent if it is a powerable object.
-            agentInteracting.GetComponent<PowerableObject>().PowerOff();
-        }
-        if (!readyToChooseSurvivors)
-        {
-            // Default interaction switches levels.
-            base.Interact(agentInteracting);
-        }
-        else if (readyToChooseSurvivors)
-        {
-            // After interaction is switched, interacting with the screens
-            // should indicate which crewmember the player has chosen, instead
-            // of transporting them to another level.
-            ChooseCrewmember();
-        }
-    }
-
-    /// <summary>
-    /// After the player has played through all the levels,
-    /// their final act is to pick the two crewmembers who will live.
-    /// </summary>
-    private void SwitchInteractionModeToFinalChoice()
-    {
-        readyToChooseSurvivors = true;
-
-        // We don't want the vfx getting in the way of this important philosophical moment.
-        GlitchValueGenerator glitchValueGenerator = GetComponentInParent<GlitchValueGenerator>();
-        if (glitchValueGenerator != null)
-            glitchValueGenerator.enabled = false;
-    }
-
-    /// <summary>
-    /// The name of the scene tells GameManager.cs which crewmember the player has chosen.
-    /// </summary>
-    private void ChooseCrewmember()
-    {
-        // For the purposes of this script, the build index of the scenes
-        // need to be constant.
-        // We feel like this is more reliable than relying on the scene names, since
-        // they might change.
-        int buildIndex = SceneManager.GetSceneByName(sceneToLoad).buildIndex;
-
-        switch (buildIndex)
-        {
-            // Norma's build index = 2
-            case 2:
-                ChoseACrewmember.Invoke("Norma");
-                break;
-            // Trevor's build index = 3
-            case 3:
-                ChoseACrewmember.Invoke("Trevor");
-                break;
-            // Ray's build index = 4
-            case 4:
-                ChoseACrewmember.Invoke("Ray");
-                break;
-            default:
-                break;
+            if (s == sceneToLoad)
+            {
+                FinishedLevel.Invoke(crewmemberName);
+            }
         }
     }
 }

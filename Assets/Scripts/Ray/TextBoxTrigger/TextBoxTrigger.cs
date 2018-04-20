@@ -7,6 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// This script is used to print text to a canvas when the player enters a trigger box collider and remove 
 /// the text when the player exits the box collider. It is placed on an empty object with a box collider.
+/// It must have a canvas and roombaConsole assigned to it.
 /// </summary>
 public class TextBoxTrigger : MonoBehaviour
 {
@@ -15,34 +16,22 @@ public class TextBoxTrigger : MonoBehaviour
     [SerializeField]
     private Canvas canvas;
 
-    [Tooltip("This is the text that gets printed to the canvas")]
+    [Tooltip("Roomba Console that is enabled to swap once box is triggered")]
     [SerializeField]
-    private Text triggetText;
+    private RoombaConsole roombaConsole;
 
     void Start()
     {
-        triggetText.enabled = false;
+        canvas.enabled = false;
     }
 
     // Enables Canvas and Text when player enters trigger
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            canvas.enabled = true;
-            triggetText.enabled = true;      
-        }
-    }
-
-    // Disables Canvas and Text when player exits trigger
-    private void OnTriggerExit(Collider other)
-    {
         if (other.gameObject.tag == "Player")
         {
-            canvas.enabled = false;
-            triggetText.enabled = false;
-            triggetText.text = "";
+            canvas.enabled = true;
+            roombaConsole.EnableSwap();
         }
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 10, this.transform.position.z);
     }
 }

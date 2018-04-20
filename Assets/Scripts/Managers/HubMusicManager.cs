@@ -7,29 +7,76 @@ using UnityEngine;
 /// Apply this script to a dedicated GameObject alongside any other managers, so that it is easy to find.
 /// </summary>
 
-[RequireComponent(typeof(AudioSource))]
 public class HubMusicManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("This is the music track which will loop constantly as the player plays through the power transfer puzzles.")]
-    private AudioClip loopingClip;
+    [SerializeField, Tooltip("These are the audio source components playing the music.")]
+    private AudioSource ambientSource, ambientSource2, nonAmbientSource, titleSource;
 
-    // The AudioSource component attached to this GameObject.
-    private AudioSource musicSource;
+    [SerializeField, Tooltip("How long to wait until the song starts playing.")]
+    private float waitTime = 7;
 
     // The AudioSource's default audio clip.
     private AudioClip originalClip;
 
+    private float originalAmbienceVolume, originalNonAmbientVolume, originalTitleVolume;
+
+    private void Awake()
+    {
+        originalAmbienceVolume = ambientSource.volume;
+        originalNonAmbientVolume = nonAmbientSource.volume;
+        originalTitleVolume = titleSource.volume;
+
+        StartCoroutine(FadeInAmbience());
+    }
+
     private void OnEnable()
     {
         EngineSequenceManager.OnShutdown += PlayMusic;
-        EndingScreen.DoneWithLevels += StopMusic;
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers += StopMusicOnly;
         EndCredits.CreditsStarted += PlayEndCreditsMusic;
+        AudioTrigger.PlayerEnteredTrigger += StopAmbience;
+        SceneTransition.SceneChangeFinished += PlayAmbience;
     }
     private void OnDisable()
     {
         EngineSequenceManager.OnShutdown -= PlayMusic;
-        EndingScreen.DoneWithLevels -= StopMusic;
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= StopMusicOnly;
         EndCredits.CreditsStarted -= PlayEndCreditsMusic;
+    }
+
+    /// <summary>
+    /// Ambience fades in gradually.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FadeInAmbience()
+    {
+        ambientSource.volume = 0;
+
+        yield return new WaitForSeconds(4);
+
+        #region Lerp ambience to preferred volume.
+
+        float elapsedTime = 0, timer = 10;
+        while (elapsedTime < timer)
+        {
+            ambientSource.volume = Mathf.Lerp(0, originalAmbienceVolume, elapsedTime / timer);
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        #endregion
+
+        // Set final volume of ambience.
+        ambientSource.volume = originalAmbienceVolume;
+    }
+
+    /// <summary>
+    /// Call the coroutine which fades in the ambience track.
+    /// </summary>
+    private void PlayAmbience()
+    {
+        StartCoroutine(FadeInAmbience());
     }
 
     /// <summary>
@@ -37,14 +84,7 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void PlayMusic()
     {
-        musicSource = GetComponent<AudioSource>();
-
-        if (musicSource.clip == null) musicSource.clip = loopingClip;
-        
-        originalClip = musicSource.clip;
-        musicSource.Play();
-
-        StartCoroutine(WaitForSongToFinishThenSwitchSongs());
+        StartCoroutine(FadeAmbienceInAndThenStartMusic());
     }
 
     /// <summary>
@@ -52,16 +92,64 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void PlayEndCreditsMusic()
     {
-        musicSource.clip = originalClip;
-        musicSource.Play();
+        StartCoroutine(FadeAmbienceInAndThenStartMusic());
     }
 
     /// <summary>
-    /// Stop the music.
+    /// Stop all music and ambience.
     /// </summary>
-    private void StopMusic()
+    private void StopAmbience()
     {
-        musicSource.Stop();
+        StartCoroutine(FadeAmbienceOut());
+    }
+
+    /// <summary>
+    /// Stop the music, not the ambience.
+    /// </summary>
+    private void StopMusicOnly()
+    {
+        nonAmbientSource.Stop();
+        titleSource.Stop();
+    }
+
+    private IEnumerator FadeAmbienceInAndThenStartMusic()
+    {
+        /*
+        float elapsedTime = 0, timer = .5f;
+        while (elapsedTime < timer)
+        {
+            ambientSource.volume = Mathf.Lerp(0, originalAmbienceVolume, elapsedTime / timer);
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+        */
+        ambientSource.Stop();
+        ambientSource.volume = originalAmbienceVolume;
+        ambientSource.Play();
+
+        yield return new WaitForSeconds(waitTime);
+
+        ambientSource2.Play();
+        nonAmbientSource.Play();
+        titleSource.Play();
+
+        StartCoroutine(WaitForSongToFinishThenSwitchSongs());
+        StartCoroutine(FadeAmbienceOut());
+    }
+
+    private IEnumerator FadeAmbienceOut()
+    {
+        float elapsedTime = 0, timer = 3;
+        while (elapsedTime < timer)
+        {
+            ambientSource.volume = Mathf.Lerp(originalAmbienceVolume, 0, elapsedTime / timer);
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        ambientSource.volume = 0;
     }
 
     /// <summary>
@@ -71,15 +159,12 @@ public class HubMusicManager : MonoBehaviour
     private IEnumerator WaitForSongToFinishThenSwitchSongs()
     {
         // Wait until the music track has finished playing.
-        while (musicSource.isPlaying) yield return null;
-
-        // Set the AudioSource clip to the correct track, if it is not set already.
-        musicSource.clip = loopingClip;
-
-        // Set the music's AudioSource to loop.
-        musicSource.loop = true;
+        while (ambientSource2.isPlaying) yield return null;
 
         // Play the looping track.
-        musicSource.Play();
+        ambientSource2.Play();
+        nonAmbientSource.Play();
+
+        yield return null;
     }
 }

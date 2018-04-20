@@ -26,11 +26,11 @@ public class RaysClosingMessage : MonoBehaviour
 
     private void OnEnable()
     {
-        EndingScreen.DoneWithLevels += DisplayRaysMessage;
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers += DisplayRaysMessage;
     }
     private void OnDisable()
     {
-        EndingScreen.DoneWithLevels -= DisplayRaysMessage;
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= DisplayRaysMessage;
     }
 
     /// <summary>
