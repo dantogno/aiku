@@ -13,7 +13,7 @@ public class ElevatorMovesDown : IElevatorStates
 {
 
     // refrence to our elevator
-    ElevatorScript rayElevator;
+    private ElevatorScript rayElevator;
 
     // A "cut short" to ensure our elevator reaches a destination.
     private const float offset = 0.5f;

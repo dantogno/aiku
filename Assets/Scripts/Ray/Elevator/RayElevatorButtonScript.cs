@@ -8,15 +8,13 @@ using UnityEngine;
 /// </summary>
 public class RayElevatorButtonScript : MonoBehaviour , IInteractable
 {
-    ElevatorScript elevatorScript;
+    [SerializeField]
+    private ElevatorScript elevatorScript;
 
     Light buttonLight;
 
     [SerializeField]
     private bool isButtonPressed;
-
-    //[SerializeField]
-    //private GameObject buttonShell;
 
     [SerializeField]
     private Renderer buttonRenderer;
@@ -36,8 +34,6 @@ public class RayElevatorButtonScript : MonoBehaviour , IInteractable
         buttonRenderer = gameObject.GetComponent<Renderer>();
 
         buttonRenderer.material = darkMaterial;
-
-        //buttonShell.SetActive(false);
         buttonLight = GetComponent<Light>();
         buttonLight.enabled = true;
 
@@ -46,13 +42,6 @@ public class RayElevatorButtonScript : MonoBehaviour , IInteractable
     // Update is called once per frame
     void Update()
     {
-        //isButtonPressed = buttonShell.activeSelf;
-        //buttonLight.enabled = buttonShell.activeSelf;
-
-        //if (buttonShell.activeSelf)
-        //{
-        //    TurnLightOn();
-        //}
 
         if (timeToStayLit <= 0f)
         {
@@ -65,7 +54,6 @@ public class RayElevatorButtonScript : MonoBehaviour , IInteractable
     {
         //TODO, add click sound;
         timeToStayLit = 0.5f;
-       // buttonShell.SetActive(true);
         Debug.Log(this.gameObject.name);
         if (this.gameObject.name == "Elevator Button Up")
         {
@@ -85,7 +73,6 @@ public class RayElevatorButtonScript : MonoBehaviour , IInteractable
 
     private void TurnLightOff()
     {
-       // buttonShell.SetActive(false);
         buttonRenderer.material = darkMaterial;
     }
 

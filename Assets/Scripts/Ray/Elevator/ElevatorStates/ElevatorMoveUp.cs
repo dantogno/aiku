@@ -12,7 +12,7 @@ using UnityEngine;
 public class ElevatorMoveUp : IElevatorStates
 {
     // refrence to our elevator. 
-    ElevatorScript rayElevator;
+    private ElevatorScript rayElevator;
 
     // A "cut short" to ensure our elevator reaches a destination.
     private const float offset = 0.5f;
@@ -27,9 +27,6 @@ public class ElevatorMoveUp : IElevatorStates
     // When our elevator reaches it's destination, it moves on to platformHasReachedDestination();
     public void moveToDestination(ElevatorPlatformTrigger elevatorPlatform)
      {
-        // RaiseGuardRails();
-        // isOnFirstFloor = false;  
-        // Vector3 startingPosition = new Vector3(elevatorPlatform.transform.position.x, elevatorPlatform.transform.position.y, elevatorPlatform.transform.position.z);
         elevatorPlatform.gameObject.transform.position = Vector3.Lerp(elevatorPlatform.gameObject.transform.position, rayElevator.ElevatorEndPoint.position, rayElevator.ElevatorSpeed * Time.deltaTime);
 
         if (elevatorPlatform.IsPlayerOnElevator)
@@ -48,5 +45,4 @@ public class ElevatorMoveUp : IElevatorStates
     {
         rayElevator.setElevatorState(rayElevator.changeStateToStopped());
     }
-    //timeToGoDown = 7;
 }

@@ -25,12 +25,6 @@ public class ElevatorPlatformTrigger :MonoBehaviour
 
             // Gets a refrence of our player so we can move them with the elevator. 
             playerOnPlatform = other.gameObject;
-
-            //setElevatorState(elevatorIsOnTheFirstFloor);
-            //MoveElevatorUP();
-            //timeToLowerRail = 5;
-            //accessGranted = true;
-            //countDownToDisappear = 3;
         }
     }
 
@@ -39,13 +33,6 @@ public class ElevatorPlatformTrigger :MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isPlayerOnElevator = false;
-            //player = other.gameObject;
-
-            //setElevatorState(elevatorIsOnTheFirstFloor);
-            //MoveElevatorUP();
-            //timeToLowerRail = 5;
-            //accessGranted = true;
-            //countDownToDisappear = 3;
         }
     }
 }

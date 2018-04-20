@@ -64,11 +64,6 @@ public class ElevatorScript : MonoBehaviour
 
     [SerializeField] 
     private GameObject secondFloorElevatorCallTrigger;
-
-    //[SerializeField]
-    //private float timeToGoDown;
-
-
     #endregion
 
     #region ElevatorStates
@@ -92,7 +87,6 @@ public class ElevatorScript : MonoBehaviour
 
         // Our elevator starts in the stopped state;
         curentState = elevatorStopped;
-        //guardRails.transform.position = guardRailsOriginPoint.transform.position;
     }
     #region state Swap methods 
     // methods used to swap the elevator's state
@@ -116,54 +110,12 @@ public class ElevatorScript : MonoBehaviour
         return elevatorMovingDown;
     }
     #endregion
-    void Update () {
+    void Update ()
+    {
 
         // based on our curent state, the elevatior moves to a target location, check the state scripts for more information.
         curentState.moveToDestination(rayElevatorPlatform);
-        //if (!secondFloorElevatorCallTrigger.activeSelf && isOnFirstFloor == true)
-        //{
-        //    if (isOnFirstFloor)
-        //    {
-        //        MoveElevatorUP();
-        //    }       
-        //}
-        //if (!firstFloorElevatorCallTrigger.activeSelf)
-        //{         
-        //    if (isOnSecondFloor)
-        //    {
-        //        MoveElevatorDown();
-        //    }
-        //}
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        player = other.gameObject;
-            
-    //        //setElevatorState(elevatorIsOnTheFirstFloor);
-    //        //MoveElevatorUP();
-    //        //timeToLowerRail = 5;
-    //        //accessGranted = true;
-    //        //countDownToDisappear = 3;
-    //    }     
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        Debug.Log("We have exited");
-    //        //other.gameObject.transform.parent = null;
-            
-    //        //setElevatorState(elevatorIsOnTheFirstFloor);
-    //        //MoveElevatorUP();
-    //        //timeToLowerRail = 5;
-    //        //accessGranted = true;
-    //        //countDownToDisappear = 3;
-    //    }
-    //}
 
     // Checked to see which button is pressed, based on button pressed, our elevator changes state.
     public void Interact(GameObject agent)
@@ -178,61 +130,4 @@ public class ElevatorScript : MonoBehaviour
             }
         
     }
-
-    //public void AutoElevatorGoDown()
-    //{   
-    //    if (timeToGoDown <= 0)
-    //    {
-    //        //accessGranted = false;
-    //       // LowerGuardRails();
-    //    }
-    //}
-
-    //public void MoveElevatorDown()
-    //{
-    //    //RaiseGuardRails();
-    //   // isOnSecondFloor = false;
-    //    //Vector3 startingPosition = new Vector3(rayElevatorPlatform.transform.position.x, rayElevatorPlatform.transform.position.y, rayElevatorPlatform.transform.position.z);
-    //    //rayElevatorPlatform.transform.position = Vector3.Lerp(startingPosition, elevatorOriginPoint.position, Time.deltaTime);
-    //    //timeToLowerRail -= Time.deltaTime;    
-    //}
-
-    //public void MoveElevatorUP()
-    //{
-    //    // RaiseGuardRails();
-    //    // isOnFirstFloor = false;    
-    //    Vector3 startingPosition = new Vector3(rayElevatorPlatform.transform.position.x, rayElevatorPlatform.transform.position.y, rayElevatorPlatform.transform.position.z);
-    //    rayElevatorPlatform.transform.position = Vector3.Lerp(startingPosition, elevatorEndPoint.position, Time.deltaTime);
-    //    timeToGoDown = 7;
-    //}
-
-    //private void AutoLowerRail()
-    //{          
-    //    //timeToLowerRail-= Time.deltaTime;
-
-    //    //if (timeToLowerRail <= 0)
-    //    //{
-    //    //    accessGranted = false;
-    //    //    //LowerGuardRails();
-    //    //}
-    //}
-
-    //private void RaiseGuardRails()
-    //{  
-    //    guardRails.SetActive(true);
-    //    Vector3 startingPosition = new Vector3(guardRails.transform.position.x, guardRails.transform.position.y, guardRails.transform.position.z);
-    //    guardRails.transform.position = Vector3.Lerp(startingPosition, guardRailsEndPoint.transform.position, Time.deltaTime);
-
-    //}
-    //private void LowerGuardRails()
-    //{
-    //    countDownToDisappear -= Time.deltaTime;
-    //    Vector3 startingPosition = new Vector3(guardRails.transform.position.x, guardRails.transform.position.y, guardRails.transform.position.z);
-    //    guardRails.transform.position = Vector3.Lerp(startingPosition, elevatorOriginPoint.transform.position, Time.deltaTime);
-    //    if (countDownToDisappear <= 0)
-    //    {
-    //        guardRails.SetActive(false);
-    //    }
-    //}
-
 }

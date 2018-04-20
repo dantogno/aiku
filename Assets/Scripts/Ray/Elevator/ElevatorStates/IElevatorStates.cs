@@ -12,7 +12,8 @@ using UnityEngine;
 ///  and stopped.
 /// </summary>
 /// 
-public interface IElevatorStates {
+public interface IElevatorStates
+{
 
     void moveToDestination(ElevatorPlatformTrigger elevatorPlatform);
     void platformHasReachedDestination(ElevatorPlatformTrigger elevatorPlatform);
