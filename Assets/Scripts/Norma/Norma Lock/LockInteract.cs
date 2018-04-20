@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#region For Norma Only
+#region Lock Origin Settings 
 public enum LockType {NormaPuzzle, HubLock }
 #endregion
 /// <summary>
@@ -14,7 +14,6 @@ public enum LockType {NormaPuzzle, HubLock }
 /// </summary>
 public enum PlayerStates { UsingLock, Roaming }
 
-
 public class LockInteract : MonoBehaviour, IInteractable
 {
 
@@ -23,6 +22,7 @@ public class LockInteract : MonoBehaviour, IInteractable
     public static event Action Unlocked;
     #endregion
 
+    private Animator unlockAnimation;
 
     public PlayerStates currentState = PlayerStates.Roaming;
     private Transform currentSelection;
@@ -63,6 +63,9 @@ public class LockInteract : MonoBehaviour, IInteractable
         originalMaterial = currentSelection.GetComponent<Renderer>().material;
         originalRotationValue = transform.GetChild(0).localRotation;
         lockNumber = new int[4] { 0, 0, 0, 0 };
+
+        unlockAnimation = GetComponent<Animator>();
+        unlockAnimation.enabled = false;
     }
 
 
@@ -185,20 +188,27 @@ public class LockInteract : MonoBehaviour, IInteractable
     /// </summary>
     private void CheckIfFinishedWithLock()
     {
-
-        if (passwordInput == "2817" && Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0 && knobPlacement == 0) // After it resets, call it a win
-
+        switch (thisLock)
         {
 
-            FinishWithLock();
+
+            case LockType.HubLock:
+
+                if (passwordInput == "2817" && Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0 && knobPlacement == 0) // After it resets, call it a win
+
+                    FinishWithLock();
+                break;
+            case LockType.NormaPuzzle:
+                if (passwordInput == "2817" && LockisActive == true) // After it resets, call it a win
+
+                    FinishWithLock();
+                break;
+
 
         }
+
     }
 
-    private void DisableLockInteraction()
-    {
-        this.GetComponent<LockInteract>().enabled = false;
-    }
 
     /// <summary>
     /// called when the player gets the number right. Subscribe to the event on your seperate script (for hub) 
@@ -214,7 +224,7 @@ public class LockInteract : MonoBehaviour, IInteractable
         {
             case LockType.NormaPuzzle:
                 currentState = PlayerStates.Roaming;
-                if (UsedLock != null) UsedLock.Invoke();
+                if (Unlocked != null) Unlocked.Invoke();
                 
                 break;
             case LockType.HubLock:
@@ -224,11 +234,21 @@ public class LockInteract : MonoBehaviour, IInteractable
             default:
                 break;        
         }
-
+        LockisActive = false;
+        StartCoroutine(UnlockedCoroutine());
         //Gets out of the lock sequence
-        GetComponent<InteractCamSwitch>().GetOutLock(); 
+
+    }
+
+    private IEnumerator UnlockedCoroutine()
+    {
+        unlockAnimation.enabled = true;
+        yield return new WaitForSecondsRealtime(1f);
+
+        GetComponent<InteractCamSwitch>().GetOutLock();
         //Disables the script to go back to the lock
         GetComponent<InteractCamSwitch>().enabled = false;
+        yield return new WaitForSecondsRealtime(1f);
 
     }
 }
