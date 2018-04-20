@@ -173,6 +173,11 @@ public class InteractCamSwitch : MonoBehaviour
 
 
     }
+
+    /// <summary>
+    /// Camera flys back to the original position
+    /// After a few seconds, activates activates the original camera
+    /// </summary>
     private IEnumerator SecondCameraFlyThrough()
     {
         Target = this.gameObject.transform.GetChild(5);

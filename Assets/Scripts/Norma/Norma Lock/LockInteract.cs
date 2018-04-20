@@ -240,6 +240,10 @@ public class LockInteract : MonoBehaviour, IInteractable
 
     }
 
+    /// <summary>
+    /// After completing the lock, the animation sequence is enabled and plays.
+    /// This also activates the smooth fly back from the interact camera switch
+    /// </summary>
     private IEnumerator UnlockedCoroutine()
     {
         unlockAnimation.enabled = true;
