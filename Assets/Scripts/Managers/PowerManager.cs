@@ -19,7 +19,7 @@ public class PowerManager : MonoBehaviour
     private ScanInteractable scanner;
 
     // All power switches in the level.
-    private PowerSwitch[] switches;
+    private PowerExchanger[] exchangers;
 
     private void OnEnable()
     {
@@ -45,7 +45,7 @@ public class PowerManager : MonoBehaviour
 
     private void InitializeReferences()
     {
-        switches = FindObjectsOfType<PowerSwitch>();
+        exchangers = FindObjectsOfType<PowerExchanger>();
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class PowerManager : MonoBehaviour
     /// </summary>
     private void EnablePowerSwitches()
     {
-        foreach (PowerSwitch p in switches)
+        foreach (PowerExchanger p in exchangers)
         {
             p.GetComponent<Collider>().enabled = true;
         }
@@ -75,7 +75,7 @@ public class PowerManager : MonoBehaviour
     /// </summary>
     private void DisablePowerSwitches()
     {
-        foreach (PowerSwitch p in switches)
+        foreach (PowerExchanger p in exchangers)
         {
             p.GetComponent<Collider>().enabled = false;
 

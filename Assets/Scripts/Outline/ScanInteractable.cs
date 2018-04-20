@@ -34,7 +34,7 @@ public class ScanInteractable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PowerSwitch>() != null)
+        if (other.GetComponent<PowerExchanger>() != null)
         {
             powerSwitches.Add(other.gameObject);
         }

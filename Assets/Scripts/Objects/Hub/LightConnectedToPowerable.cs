@@ -13,7 +13,7 @@ public class LightConnectedToPowerable : MonoBehaviour
     private PowerableObject powerable;
 
     [SerializeField, Tooltip("The color of the light or lights.")]
-    private Color originalColor = Color.white;
+    private Color originalColor = Color.white, offColor = Color.black;
 
     [SerializeField, Tooltip("The starting intensity for the light or lights.")]
     private float originalIntensity = 1;
@@ -38,13 +38,14 @@ public class LightConnectedToPowerable : MonoBehaviour
         // Turn off emission if the light is emissive.
         foreach (Renderer r in GetComponentsInChildren<Renderer>())
         {
-            r.material.SetColor("_EmissionColor", Color.black);
+            r.material.SetColor("_EmissionColor", offColor);
         }
 
         // Turn the intensity down to zero if the light is a standard Unity light.
         foreach (Light l in GetComponentsInChildren<Light>())
         {
             l.intensity = 0;
+            l.color = offColor;
         }
     }
 
@@ -63,6 +64,7 @@ public class LightConnectedToPowerable : MonoBehaviour
         foreach (Light l in GetComponentsInChildren<Light>())
         {
             l.intensity = originalIntensity;
+            l.color = originalColor;
         }
     }
 }
