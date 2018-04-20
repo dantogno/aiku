@@ -182,7 +182,7 @@ public class InteractCamSwitch : MonoBehaviour
     }
     private IEnumerator SecondCameraFlyThrough()
     {
-        Target = this.gameObject.transform.GetChild(6);
+        Target = this.gameObject.transform.GetChild(5);
         Vector3 originalCamPos = lerpingCamera.transform.position;
 
         float elapsedTime = 0, timer = 0.2f;
