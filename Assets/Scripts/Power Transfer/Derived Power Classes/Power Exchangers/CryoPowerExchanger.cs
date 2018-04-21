@@ -11,6 +11,28 @@ using UnityEngine.UI;
 
 public class CryoPowerExchanger : PowerExchanger
 {
+    [Tooltip("Sound that plays when a power exchanger is activated.")]
+    [SerializeField]
+    private AudioClip powerOnAudioClip;
+
+    [Tooltip("Sound that plays when a power exchanger is deactivated.")]
+    [SerializeField]
+    private AudioClip powerOffAudioClip;
+
+    // The audio source component attached to the power exchanger, used to play sounds when the player interacts with the switch.
+    private AudioSource myAudioSource;
+
+    // Pitch changes a little bit each interaction, for variety.
+    private float originalPitch;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        myAudioSource = GetComponent<AudioSource>();
+        originalPitch = myAudioSource.pitch;
+    }
+
     /// <summary>
     /// Transfer power between an interacting agent (otherPowerable) and the power exchanger's connected powerable.
     /// </summary>
@@ -31,6 +53,9 @@ public class CryoPowerExchanger : PowerExchanger
         {
             AllowOtherPowerableToExtractPowerFromConnectedPowerable(otherPowerable);
         }
+
+        // Play the appropriate sound effect for the power exchange.
+        myAudioSource.Play();
     }
 
     /// <summary>
@@ -59,6 +84,12 @@ public class CryoPowerExchanger : PowerExchanger
             // Add connected powerable's power differential to connected powerable after subtracting it from otherPowerable.CurrentPower.
             connectedPowerable.AddPower(connectedPowerable.RequiredPower - connectedPowerable.CurrentPower);
         }
+
+        // The next sound to play should be the power-on clip, since the connected powerable is powering on.
+        myAudioSource.clip = powerOnAudioClip;
+
+        // Random pitching for variety.
+        myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
     }
 
     /// <summary>
@@ -87,5 +118,11 @@ public class CryoPowerExchanger : PowerExchanger
             // Deplete connectedPowerable.CurrentPower after adding it to the other powerable.
             connectedPowerable.SubtractPower(connectedPowerable.CurrentPower);
         }
+
+        // The next sound to play should be the power-off clip, since the connected powerable is powering off.
+        myAudioSource.clip = powerOffAudioClip;
+
+        // Random pitching for variety.
+        myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
     }
 }
