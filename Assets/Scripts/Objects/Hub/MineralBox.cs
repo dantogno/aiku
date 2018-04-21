@@ -14,6 +14,10 @@ public class MineralBox : MonoBehaviour
         // We are not unsubscribing from this, just in case the scene change prevents re-subscribing.
         HubSceneChanger.FinishedLevel += ActivatePickUpScript;
     }
+    private void OnDisable()
+    {
+        HubSceneChanger.FinishedLevel -= ActivatePickUpScript;
+    }
 
     /// <summary>
     /// When the player has finished the Trevor level, they may pick up the minerals.

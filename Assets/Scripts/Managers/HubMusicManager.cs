@@ -35,7 +35,7 @@ public class HubMusicManager : MonoBehaviour
         EndingScreen.AllocatedAllShipboardPowerToCryochambers += StopMusicOnly;
         EndCredits.CreditsStarted += PlayEndCreditsMusic;
         AudioTrigger.PlayerEnteredTrigger += StopAmbience;
-        SceneTransition.SceneChangeFinished += PlayAmbience;
+        //SceneTransition.SceneChangeFinished += PlayAmbience;
     }
     private void OnDisable()
     {

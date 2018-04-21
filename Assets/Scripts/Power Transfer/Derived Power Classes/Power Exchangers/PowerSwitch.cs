@@ -331,6 +331,6 @@ public class PowerSwitch : PowerExchanger
     {
         blocked = false;
 
-        DisplayOffColor();
+        DisplayOnColor();
     }
 }
