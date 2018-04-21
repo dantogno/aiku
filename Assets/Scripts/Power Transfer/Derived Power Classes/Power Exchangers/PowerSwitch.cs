@@ -15,7 +15,7 @@ using UnityEngine;
 public class PowerSwitch : PowerExchanger
 {
     // GameObjects cannot interact with a blocked power switch.
-    public bool Blocked { get { return blocked; } set { blocked = value; } }
+    public bool Blocked { get { return blocked; } }
 
     #region These are the different colors that indicate to the player whether a powerable object has power, and what its power level is. The color values are taken from the game's official color palette.
 
@@ -322,5 +322,15 @@ public class PowerSwitch : PowerExchanger
         }
 
         currentColor = offColor;
+    }
+
+    /// <summary>
+    /// Allow the player to take power.
+    /// </summary>
+    public void UnblockPowerSwitch()
+    {
+        blocked = false;
+
+        DisplayOffColor();
     }
 }

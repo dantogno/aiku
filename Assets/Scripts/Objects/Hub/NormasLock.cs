@@ -11,18 +11,28 @@ public class NormasLock : MonoBehaviour
 {
     [SerializeField, Tooltip("The door we want to unlock.")]
     private Door normasDoor;
-    
+
+    private LockInteract padlock;
+
+    private void Awake()
+    {
+        padlock = GetComponent<LockInteract>();
+    }
+
     private void OnEnable()
     {
-        // This line is commented out because the event should not be static (there are mutliple locks).
-        // This script will break if we subscribe to this event now.
-        //LockInteract.Unlocked += UnlockNormasDoor;
+        padlock.Unlocked += WaitToUnlockNormasDoor;
     }
     private void OnDisable()
     {
-        //LockInteract.Unlocked -= UnlockNormasDoor;
+        padlock.Unlocked -= WaitToUnlockNormasDoor;
     }
     
+    private void WaitToUnlockNormasDoor()
+    {
+        Invoke("UnlockNormasDoor", 1);
+    }
+
     private void UnlockNormasDoor()
     {
         normasDoor.UnlockDoor();

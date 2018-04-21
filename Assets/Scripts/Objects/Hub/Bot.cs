@@ -35,7 +35,7 @@ public class Bot : MonoBehaviour
     /// </summary>
     private void UnblockPowerSwitch()
     {
-        GetComponentInChildren<PowerSwitch>().Blocked = false;
+        GetComponentInChildren<PowerSwitch>().UnblockPowerSwitch();
     }
 
     /// <summary>

@@ -20,11 +20,14 @@ public class MineralProcessor : PowerableObject
 
     private void ProcessMinerals()
     {
-        // Destroy the minerals rather than deactivate them, to avoid forcing the player
-        // to carry around a useless deactivated GameObject.
-        Destroy(minerals.gameObject);
+        if (!IsFullyPowered)
+        {
+            // Destroy the minerals rather than deactivate them, to avoid forcing the player
+            // to carry around a useless deactivated GameObject.
+            Destroy(minerals.gameObject);
 
-        // Now that the minerals have been destroyed, generate power from their disintegration.
-        base.PowerOn();
+            // Now that the minerals have been destroyed, generate power from their disintegration.
+            base.PowerOn();
+        }
     }
 }
