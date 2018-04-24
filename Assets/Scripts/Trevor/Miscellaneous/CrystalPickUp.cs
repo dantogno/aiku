@@ -26,6 +26,7 @@ public class CrystalPickUp : MonoBehaviour
 
     public bool animationPlayed;
 
+    private Animator rubbleAni;
     private Rigidbody[] rubble;
     private AudioSource crystalAudio;
     private bool hasPlayedAudio = false;
@@ -37,6 +38,7 @@ public class CrystalPickUp : MonoBehaviour
     {
         crystalAudio = GetComponent<AudioSource>();
         rubble = rubbleObject.GetComponentsInChildren<Rigidbody>();
+        rubbleAni = rubbleObject.GetComponent<Animator>();
     }
     private void Update()
     {
@@ -53,28 +55,30 @@ public class CrystalPickUp : MonoBehaviour
     {
 		if (shouldMoveCrystal)
         {
-            animator.SetBool("playRotationJiggle", false);
+            
             EnableRubblePhysics(rubble);
-            float step =  15 * Time.deltaTime;
+            float step = 15 * Time.deltaTime;
             float scaleSpeed = 5f * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, gmd.transform.position, step);
-            Vector3 tarScale = new Vector3(.5f, .5f, .5f);
-            transform.localScale = Vector3.Lerp(transform.localScale, tarScale, scaleSpeed);
+            //Vector3 tarScale = new Vector3(.5f, .5f, .5f);
+            //transform.localScale = Vector3.Lerp(transform.localScale, tarScale, scaleSpeed);
 
             if (gameObject.transform.position == gmd.transform.position)
             {
                 GetComponentInChildren<MeshRenderer>().enabled = false;
                 GetComponentInChildren<BoxCollider>().enabled = false;
 
-				if (ActivateSecondPortal != null)
-					ActivateSecondPortal.Invoke ();
+                if (ActivateSecondPortal != null)
+                {
+                    ActivateSecondPortal.Invoke();
+                }
 
                 if (!crystalAudio.isPlaying && !hasPlayedAudio)
                 {
                     crystalAudio.Play();
                     hasPlayedAudio = true;
                 }
-                else if(!crystalAudio.isPlaying && hasPlayedAudio)
+                else if (!crystalAudio.isPlaying && hasPlayedAudio)
                 {
                     gameObject.SetActive(false);
                 }
@@ -103,6 +107,7 @@ public class CrystalPickUp : MonoBehaviour
     {
 		isTimerRunning = true;
 		animator.SetBool ("playRotationJiggle", true);
+        rubbleAni.SetBool("ShouldJiggle", true);
     }
 
 	private void StopTimer()
@@ -110,7 +115,8 @@ public class CrystalPickUp : MonoBehaviour
 		isTimerRunning = false;
 		time = 0f;
 		animator.SetBool ("playRotationJiggle", false);
-	}
+        rubbleAni.SetBool("ShouldJiggle", false);
+    }
 
 	private void Timer()
 	{
@@ -119,10 +125,13 @@ public class CrystalPickUp : MonoBehaviour
 			if (time <= pickupDelayTime) 
 			{
 				time += Time.deltaTime;
-			} 
+                
+            } 
 			else if (time >= pickupDelayTime) 
 			{
 				animator.SetBool ("playRotationJiggle", false);
+                rubbleAni.enabled = false;
+                
 				shouldMoveCrystal = true;
 				isTimerRunning = false;
 			}
@@ -141,5 +150,28 @@ public class CrystalPickUp : MonoBehaviour
             rbl.useGravity = true;
         }
     }
-   
+
+    private void JiggleRubble(Animator[] rubbleAnimators)
+    {
+        foreach (Animator ani in rubbleAnimators)
+        {
+            ani.SetBool("ShouldJiggle", true);
+        }
+    }
+
+    private void JiggleRubbleStop(Animator[] rubbleAnimators)
+    {
+        foreach (Animator ani in rubbleAnimators)
+        {
+            ani.SetBool("ShouldJiggle", false);
+        }
+    }
+
+    private void RubbleAnimatorExit(Animator[] rubbleAnimators)
+    {
+        foreach (Animator ani in rubbleAnimators)
+        {
+            ani.SetBool("Remove", true);
+        }
+    }
 }
