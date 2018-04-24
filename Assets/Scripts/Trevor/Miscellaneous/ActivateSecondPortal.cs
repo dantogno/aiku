@@ -9,12 +9,12 @@ public class ActivateSecondPortal : MonoBehaviour
 {
 	private void OnEnable()
 	{
-		//CrystalPickUp.ActivateSecondPortal += ActivatePortal;
+		CrystalPickUp.ActivateSecondPortal += ActivatePortal;
 	}
 
 	private void OnDisable()
 	{
-		//CrystalPickUp.ActivateSecondPortal -= ActivatePortal;
+		CrystalPickUp.ActivateSecondPortal -= ActivatePortal;
 	}
 
 	/// <summary>
