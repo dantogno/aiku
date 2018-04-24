@@ -12,6 +12,8 @@ public class MineralProcessor : PowerableObject
     [SerializeField, Tooltip("The minerals which can make power.")]
     private Collider minerals;
 
+    private AudioSource myAudioSource;
+
     private void OnTriggerEnter(Collider other)
     {
         // If minerals come near, gobble them up and make power out of them.
@@ -28,6 +30,9 @@ public class MineralProcessor : PowerableObject
 
             // Now that the minerals have been destroyed, generate power from their disintegration.
             base.PowerOn();
+
+            myAudioSource = GetComponent<AudioSource>();
+            myAudioSource.Play();
         }
     }
 }
