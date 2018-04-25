@@ -258,10 +258,12 @@ public class PowerSwitch : PowerExchanger
     /// <returns></returns>
     private void SetPowerLightMaterialColor(Color targetColor, float timer)
     {
-        foreach (Renderer r in emissiveRenderers)
+        if (gameObject.activeInHierarchy)
         {
-            //r.material.SetColor("_EmissionColor", targetColor);
-            StartCoroutine(LerpColor(r, targetColor, timer));
+            foreach (Renderer r in emissiveRenderers)
+            {
+                StartCoroutine(LerpColor(r, targetColor, timer));
+            }
         }
     }
 
