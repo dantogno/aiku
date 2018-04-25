@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ using UnityEngine;
 /// </summary>
 public class PickupGMD : MonoBehaviour, IInteractable
 {
+    public static event Action PickedUpGMD;
+
     [Tooltip("The canvas object of the pointer arrow that points to the GMD on the ground.")]
     [SerializeField] private GameObject Arrow;
 
@@ -28,5 +31,7 @@ public class PickupGMD : MonoBehaviour, IInteractable
         Arrow.SetActive(false);
 
         GameObject.Find("Scanning Camera").SetActive(false);
+
+        if (PickedUpGMD != null) PickedUpGMD.Invoke();
 	}
 }
