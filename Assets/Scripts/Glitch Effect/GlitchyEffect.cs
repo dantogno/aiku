@@ -56,7 +56,8 @@ public class GlitchyEffect : MonoBehaviour
         if (FullGlitch)
         {
             _scanLineJitter = 1;
-            audioSource.volume = 1;
+            if (audioSource != null)
+                audioSource.volume = 1;
         }
 
         //Creates scan line jitter - DO NOT TOUCH
@@ -66,7 +67,7 @@ public class GlitchyEffect : MonoBehaviour
 
         Graphics.Blit(source, destination, _material);
 
-        if (_scanLineJitter == 0)
+        if (_scanLineJitter == 0 && audioSource != null)
         {
             audioSource.volume = 0;
         }
@@ -77,8 +78,12 @@ public class GlitchyEffect : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0;
-        audioSource.loop = true;
+
+        if (audioSource != null)
+        {
+            audioSource.volume = 0;
+            audioSource.loop = true;
+        }
     }
 
     #endregion
@@ -106,10 +111,14 @@ public class GlitchyEffect : MonoBehaviour
     private void OnValueAboveZero(float i)
     {
         _scanLineJitter = i;
-        audioSource.volume = i;
 
-        if (!audioSource.isPlaying)
-            audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.volume = i;
+
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+        }
 
         OverThreshold = (i >= Threshold);
     }
