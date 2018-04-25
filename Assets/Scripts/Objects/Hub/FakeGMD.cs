@@ -27,7 +27,7 @@ public class FakeGMD : MonoBehaviour
     /// <param name="crewmember"></param>
     private void ActivateRealGMDAndDeactivateFakeGMD(HubSceneChanger.CrewmemberName crewmember)
     {
-        if (gmd != null)
+        if (gmd != null && crewmember == HubSceneChanger.CrewmemberName.Trevor)
         {
             gmd.SetActive(true);
             gameObject.SetActive(false);

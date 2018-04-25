@@ -17,7 +17,9 @@ public class PickupGMD : MonoBehaviour, IInteractable
     //Sets the GMD's parent object to be the player, moves the GMD to the correct position, and turns on/off the necessary components.
     void IInteractable.Interact(GameObject agent)
 	{
-		GameObject gmdObject = this.gameObject;
+        if (PickedUpGMD != null) PickedUpGMD.Invoke();
+
+        GameObject gmdObject = this.gameObject;
 		Transform gmdObjectTransform = gmdObject.transform;
 
 		gmdObjectTransform.SetParent (agent.transform.GetChild (0));
@@ -31,7 +33,5 @@ public class PickupGMD : MonoBehaviour, IInteractable
         Arrow.SetActive(false);
 
         GameObject.Find("Scanning Camera").SetActive(false);
-
-        if (PickedUpGMD != null) PickedUpGMD.Invoke();
 	}
 }
