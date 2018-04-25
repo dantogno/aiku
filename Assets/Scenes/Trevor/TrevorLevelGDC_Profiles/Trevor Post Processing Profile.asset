@@ -146,7 +146,7 @@ MonoBehaviour:
     value: {fileID: 2800000, guid: 42183971d24cfe443a346e7ec6e83bbb, type: 3}
   intensity:
     overrideState: 1
-    value: 0.498
+    value: 0.19
   fastMode:
     overrideState: 1
     value: 1
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -353,10 +353,10 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 1
-    value: 13
+    value: -14
   saturation:
     overrideState: 1
-    value: 42
+    value: 8
   brightness:
     overrideState: 1
     value: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
     value: 0.46
   contrast:
     overrideState: 1
-    value: 26
+    value: -16
   mixerRedOutRedIn:
     overrideState: 1
     value: 100
@@ -395,7 +395,7 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 0.7084449, y: 0.55733764, z: 1, w: -0.07162041}
+    value: {x: 0.7084449, y: 0.55733764, z: 1, w: -0.0416354}
   gamma:
     overrideState: 1
     value: {x: 0.86626714, y: 0.99601024, z: 1, w: 0.12533571}
