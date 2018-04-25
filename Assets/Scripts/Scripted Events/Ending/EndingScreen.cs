@@ -25,6 +25,8 @@ public class EndingScreen : MonoBehaviour
     [SerializeField, Tooltip("The name of the crewmember, to appear in a prompt in the text appearing next to the monitor.")]
     private string crewmemberName;
 
+    [SerializeField, Tooltip("Amount of time to wait after transferring power to check if all power has been collected.")]
+
     // Scene changer attached to this GameObject.
     private HubSceneChanger mySceneChanger;
 
@@ -35,11 +37,11 @@ public class EndingScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        Cryochamber.AddedPowerToCryochamber += CheckScene;
+        Cryochamber.AddedPowerToCryochamber += WaitToCheckScene;
     }
     private void OnDisable()
     {
-        Cryochamber.AddedPowerToCryochamber -= CheckScene;
+        Cryochamber.AddedPowerToCryochamber -= WaitToCheckScene;
     }
 
     private void InitializeReferences()
@@ -48,12 +50,20 @@ public class EndingScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Wait to check power for a little bit, because the other subscribing events get mixed-up while power is being transferred.
+    /// </summary>
+    private void WaitToCheckScene()
+    {
+        Invoke("CheckScene", 1);
+    }
+
+    /// <summary>
     /// Check if the player has collected all power on the ship.
     /// </summary>
     private void CheckScene()
     {
         Cryochamber[] cryochambers = FindObjectsOfType<Cryochamber>();
-
+                
         int totalPower = 0;
 
         // Add up all power in all cryochambers.

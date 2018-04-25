@@ -31,7 +31,7 @@ public class MineralProcessor : PowerableObject
             // Now that the minerals have been destroyed, generate power from their disintegration.
             base.PowerOn();
 
-            myAudioSource = GetComponent<AudioSource>();
+            myAudioSource = GetComponentInChildren<AudioSource>();
             myAudioSource.Play();
         }
     }

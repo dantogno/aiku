@@ -28,8 +28,8 @@ public class TriggerForPlayerToDropGMD : MonoBehaviour
     /// </summary>
     private void MakePlayerDropGMD()
     {
-        Destroy(gmd.gameObject);
-
         if (DroppedGMD != null) DroppedGMD.Invoke();
+
+        Destroy(gmd.gameObject);
     }
 }

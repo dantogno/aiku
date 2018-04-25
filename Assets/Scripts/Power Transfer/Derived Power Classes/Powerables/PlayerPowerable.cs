@@ -68,7 +68,10 @@ public class PlayerPowerable : PowerableObject
     {
         base.PowerOff();
 
-        if (transferringOwnPower && TransferredEntirePowerReserve != null)
+        // Player can die if they are transferring their own power, their power level is zero, and the death event is not null.
+        bool canDie = transferringOwnPower && CurrentPower == 0 && TransferredEntirePowerReserve != null;
+
+        if (canDie)
             TransferredEntirePowerReserve.Invoke();
     }
 }
