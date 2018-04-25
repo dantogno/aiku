@@ -26,7 +26,7 @@ public class CrystalPickUp : MonoBehaviour
 
     public bool animationPlayed;
 
-    private Animator rubbleAni;
+    private Animator rubbleAnimator;
     private Rigidbody[] rubble;
     private AudioSource crystalAudio;
     private bool hasPlayedAudio = false;
@@ -38,7 +38,7 @@ public class CrystalPickUp : MonoBehaviour
     {
         crystalAudio = GetComponent<AudioSource>();
         rubble = rubbleObject.GetComponentsInChildren<Rigidbody>();
-        rubbleAni = rubbleObject.GetComponent<Animator>();
+        rubbleAnimator  = rubbleObject.GetComponent<Animator>();
     }
     private void Update()
     {
@@ -105,7 +105,7 @@ public class CrystalPickUp : MonoBehaviour
     {
 		isTimerRunning = true;
 		animator.SetBool ("playRotationJiggle", true);
-        rubbleAni.SetBool("ShouldJiggle", true);
+        rubbleAnimator.SetBool("ShouldJiggle", true);
     }
 
 	private void StopTimer()
@@ -113,7 +113,7 @@ public class CrystalPickUp : MonoBehaviour
 		isTimerRunning = false;
 		time = 0f;
 		animator.SetBool ("playRotationJiggle", false);
-        rubbleAni.SetBool("ShouldJiggle", false);
+        rubbleAnimator.SetBool("ShouldJiggle", false);
     }
 
 	private void Timer()
@@ -128,7 +128,7 @@ public class CrystalPickUp : MonoBehaviour
 			else if (time >= pickupDelayTime) 
 			{
 				animator.SetBool ("playRotationJiggle", false);
-                rubbleAni.enabled = false;
+                rubbleAnimator.enabled = false;
                 
 				shouldMoveCrystal = true;
 				isTimerRunning = false;
