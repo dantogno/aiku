@@ -25,7 +25,7 @@ public class Bot : MonoBehaviour
     {
         if (crewmember == HubSceneChanger.CrewmemberName.Ray)
         {
-            UnblockPowerSwitch();
+            UnblockChildPowerSwitch();
             EnableAudioSources();
         }
     }
@@ -33,9 +33,10 @@ public class Bot : MonoBehaviour
     /// <summary>
     /// The player can now extract power from the power switch.
     /// </summary>
-    private void UnblockPowerSwitch()
+    private void UnblockChildPowerSwitch()
     {
-        GetComponentInChildren<PowerSwitch>().UnblockPowerSwitch();
+        if (GetComponentInChildren<PowerSwitch>() != null)
+            GetComponentInChildren<PowerSwitch>().UnblockPowerSwitch();
     }
 
     /// <summary>
