@@ -12,8 +12,11 @@ using UnityEngine;
 /// the camera will zoom focus on upon activating.
 /// </summary>
 
+
 public class Examination : MonoBehaviour, IInteractable
 {
+
+
     #region  Private Variables 
     private Camera mainCamera;
     //Sets the original position of the obect upon start.
@@ -92,6 +95,11 @@ public class Examination : MonoBehaviour, IInteractable
     [Range(0.0f, 1.0f)]
     [SerializeField]
     float ZoomMax = .2f;
+
+
+	//static variable that detects whether ANY object is currently being inspected or not. Applies to all the object with same script.
+	public static bool currentlyInspecting = false;
+
     #endregion
 
     /// <summary>
@@ -105,32 +113,42 @@ public class Examination : MonoBehaviour, IInteractable
         isInspecting = false;
         StartPos = gameObject.transform.position;
         originalRotationValue = gameObject.transform.rotation;
-
     }
 
     public void Interact(GameObject agentInteracting)
     {
-        if (isInspecting)
-        {
-            //Resets the player to Null after the leaving the inspection 
-            Player = null;
-            FinishInspect();
-        }
-        else
-        {
-            //Sets the player to the agentInteracting.
-            Player = agentInteracting;
-            //Calls for the player Controller script from the Player. 
-            playerController = Player.GetComponent<CustomRigidbodyFPSController>();
-            //Calls for the camera component from the player.
-            mainCamera = Player.GetComponentInChildren<Camera>();
-            //Set to true to enable the inspection sequence. 
-            isInspecting = true;
-        }
+		//Checks the timescale. Prevents interacting when one pause or about to pause
+		if (Time.timeScale == 1.0f) 
+		{
+			if (isInspecting) 
+			{
+				//Resets the player to Null after the leaving the inspection 
+				Player = null;
+				FinishInspect ();
+			} 
+			else 
+			{
+				//If there are no objects being inspected, then begin inspecting one
+				if (currentlyInspecting == false) 
+				{
+
+					//Sets the player to the agentInteracting.
+					Player = agentInteracting;
+					//Calls for the player Controller script from the Player. 
+					playerController = Player.GetComponent<CustomRigidbodyFPSController> ();
+					//Calls for the camera component from the player.
+					mainCamera = Player.GetComponentInChildren<Camera> ();
+					//Set to true to enable the inspection sequence. 
+					isInspecting = true;
+
+				}
+			}
+		}
 
     }
     void Inspecting()
     {
+		currentlyInspecting = true;
         //Lerps the gameobject to the main camera.
         transform.position = Vector3.Lerp(transform.position, mainCamera.transform.position + mainCamera.transform.forward * (distance + addedDistance), Time.deltaTime * smooth);
         //Since we do not want to move with the object, we disable the script.
@@ -163,7 +181,7 @@ public class Examination : MonoBehaviour, IInteractable
     }
     void FixedUpdate()
     {
-        if (isInspecting)
+		if (isInspecting)
         {
             Inspecting();
         }
@@ -174,6 +192,7 @@ public class Examination : MonoBehaviour, IInteractable
     ///</summary>
     public void FinishInspect()
     {
+		currentlyInspecting = false;
         isInspecting = false;
         //Disable Trigger to make it a collidable object. 
         GetComponent<Collider>().isTrigger = false;
@@ -183,6 +202,10 @@ public class Examination : MonoBehaviour, IInteractable
         //Sets the gameobject to go back to the original positon and rotation.
         gameObject.transform.position = StartPos;
         gameObject.transform.rotation = originalRotationValue;
+
+		//Resets the rotation when examining again
+		rotX = 0;
+		rotY = 0;
 
         if (GetComponent<Rigidbody>() != null)
         {
