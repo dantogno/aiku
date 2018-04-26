@@ -36,6 +36,9 @@ public class GMD : MonoBehaviour
 	[Tooltip("Percent value for how far a player will grapple. 0.75 = Player will go 75% of the way to the grapple object from where the player is standing.")]
 	[SerializeField] private float grappleOffset = 0.75f;
 
+    [Tooltip("Grab sound for the GMD located in Audio/Trevor/Sound Effects. It is called MagnetGunRough.")]
+    [SerializeField] private AudioClip grabSound;
+
 	public bool isGrabbingObject = false;
 
 	public static event Action<int> PickupObject;
@@ -70,7 +73,7 @@ public class GMD : MonoBehaviour
 		playerRigidbody = playerGameObject.GetComponent<Rigidbody> ();
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
-	}
+    }
 
 	private void FixedUpdate()
 	{
@@ -195,8 +198,9 @@ public class GMD : MonoBehaviour
 					}
 					hasSentEvent = true;
 				}
-                if (!audioSource.isPlaying)
+                if (grabSound != null && !audioSource.isPlaying)
                 {
+                    audioSource.clip = grabSound;
                     audioSource.Play();
                 }
 			}

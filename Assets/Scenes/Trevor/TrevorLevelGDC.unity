@@ -29528,7 +29528,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ed5c80a38452c324d854a11e2608c836, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d4f9ce6cdcd6bf24aae61fa2c23bf297, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -34134,7 +34134,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ed5c80a38452c324d854a11e2608c836, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d4f9ce6cdcd6bf24aae61fa2c23bf297, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -34589,6 +34589,11 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 82143569394964298, guid: 0967cb0faacc10f429e51819bb6412c9,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d4f9ce6cdcd6bf24aae61fa2c23bf297, type: 3}
     m_RemovedComponents:
     - {fileID: 54066208693385118, guid: 0967cb0faacc10f429e51819bb6412c9, type: 2}
     - {fileID: 114662014911986144, guid: 0967cb0faacc10f429e51819bb6412c9, type: 2}
@@ -56377,7 +56382,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh53586
+  m_Name: pb_Mesh29266
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -59838,7 +59843,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ed5c80a38452c324d854a11e2608c836, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d4f9ce6cdcd6bf24aae61fa2c23bf297, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -60307,6 +60312,7 @@ MonoBehaviour:
   rayCastDistance: 10
   grappleSpeed: 10
   grappleOffset: 0.9
+  grabSound: {fileID: 8300000, guid: d423195baf8a85b4abdd51703a4b229b, type: 3}
   isGrabbingObject: 0
 --- !u!114 &2017627887
 MonoBehaviour:
@@ -60326,6 +60332,8 @@ MonoBehaviour:
   gmdCameraObject: {fileID: 243996514}
   zoomAnimator: {fileID: 2017627883}
   character: {fileID: 1720201047}
+  zoomIn: {fileID: 8300000, guid: a0aa26f2bb47ea54fa83904d4a7c05a5, type: 3}
+  zoomOut: {fileID: 8300000, guid: b6089287bdc83e0479e3867200c0b7d9, type: 3}
   isEquipped: 0
 --- !u!82 &2017627888
 AudioSource:

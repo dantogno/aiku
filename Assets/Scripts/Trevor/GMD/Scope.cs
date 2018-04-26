@@ -28,11 +28,18 @@ public class Scope : MonoBehaviour
 	[Tooltip("CustomRigidbodyFPSController component of the player")]
 	[SerializeField] private CustomRigidbodyFPSController character;
 
+    [Tooltip("Zoom in sound for the GMD located in Audio/Trevor/Sound Effects. It is called magnetgunhandle_zoom.")]
+    [SerializeField] private AudioClip zoomIn;
+
+    [Tooltip("Zoom out sound for the GMD located in Audio/Trevor/Sound Effects. It is called zoomout_weapondown.")]
+    [SerializeField] private AudioClip zoomOut;
+
     //Currently used by another script. Will be made private eventually.
     public bool isEquipped;
 
 	public static event Action<int> ScopedIn;
 
+    private AudioSource audioSource;
 	private GameObject[] metalObjects;
 	private GameObject[] grappleObjects;
 	private GameObject[] goodOre;
@@ -49,6 +56,7 @@ public class Scope : MonoBehaviour
         isEquipped = false;
 		overlay.SetActive(false);
 		gmdModel.SetActive(true);
+        audioSource = GetComponent<AudioSource>();
     }
 
 	private void Update ()
@@ -56,12 +64,24 @@ public class Scope : MonoBehaviour
 		if (Input.GetButtonDown("Scope") && !isEquipped)
 		{
             isEquipped = true;
+
+            if (zoomIn != null && !audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(zoomIn);
+            }
+
             StartCoroutine(WaitForScopeAnimations());
         }
 
 		else if (Input.GetButtonDown("Scope") && isEquipped)
 		{
             isEquipped = false;
+
+            if (zoomOut != null && !audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(zoomOut);
+            }
+
             StartCoroutine(WaitForScopeAnimations());
         }
 
