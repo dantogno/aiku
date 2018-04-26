@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: RedEmissiveMat
+  m_Name: BlueEmissive
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.7647059, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 3.861, g: 0, b: 0.15976606, a: 1}
+    - _Color: {r: 0, g: 0.40431, b: 0.875, a: 1}
+    - _EmissionColor: {r: 0, g: 0.8203425, b: 9.15, a: 1}
