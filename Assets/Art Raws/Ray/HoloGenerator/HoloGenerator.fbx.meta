@@ -1,0 +1,230 @@
+fileFormatVersion: 2
+guid: 8761d1c5714788a4885c18c208512242
+timeCreated: 1524808435
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Button_Base_Shutdown
+    100002: Button_Base_Startup
+    100004: Button_Shutdown
+    100006: Button_Startup
+    100008: Cables
+    100010: Cables_Left_Bot
+    100012: Cables_Left_Top
+    100014: Cables_Right
+    100016: Dile_1
+    100018: Dile_1_Ring
+    100020: Dile_2
+    100022: Dile_2_Ring
+    100024: Dile_3
+    100026: Dile_3_Ring
+    100028: Diles
+    100030: Door_Holo_Bottom
+    100032: Door_Holo_Top
+    100034: Door_Shutdown_Left
+    100036: Door_Shutdown_Right
+    100038: Holo
+    100040: Holo_Projector_Left
+    100042: Holo_Projector_Right
+    100044: Holo_Ring_1
+    100046: Holo_Ring_2
+    100048: Holo_Ring_3
+    100050: //RootNode
+    100052: Hologram_Doors
+    100054: Hologram_Projectors
+    100056: Hologram_Rings
+    100058: Shutdown
+    100060: Shutdown_Doors
+    100062: Startup_Console
+    400000: Button_Base_Shutdown
+    400002: Button_Base_Startup
+    400004: Button_Shutdown
+    400006: Button_Startup
+    400008: Cables
+    400010: Cables_Left_Bot
+    400012: Cables_Left_Top
+    400014: Cables_Right
+    400016: Dile_1
+    400018: Dile_1_Ring
+    400020: Dile_2
+    400022: Dile_2_Ring
+    400024: Dile_3
+    400026: Dile_3_Ring
+    400028: Diles
+    400030: Door_Holo_Bottom
+    400032: Door_Holo_Top
+    400034: Door_Shutdown_Left
+    400036: Door_Shutdown_Right
+    400038: Holo
+    400040: Holo_Projector_Left
+    400042: Holo_Projector_Right
+    400044: Holo_Ring_1
+    400046: Holo_Ring_2
+    400048: Holo_Ring_3
+    400050: //RootNode
+    400052: Hologram_Doors
+    400054: Hologram_Projectors
+    400056: Hologram_Rings
+    400058: Shutdown
+    400060: Shutdown_Doors
+    400062: Startup_Console
+    2100000: HoloGenerator
+    2300000: Button_Base_Shutdown
+    2300002: Button_Base_Startup
+    2300004: Button_Shutdown
+    2300006: Button_Startup
+    2300008: Cables_Left_Bot
+    2300010: Cables_Left_Top
+    2300012: Cables_Right
+    2300014: Dile_1
+    2300016: Dile_1_Ring
+    2300018: Dile_2
+    2300020: Dile_2_Ring
+    2300022: Dile_3
+    2300024: Dile_3_Ring
+    2300026: Door_Holo_Bottom
+    2300028: Door_Holo_Top
+    2300030: Door_Shutdown_Left
+    2300032: Door_Shutdown_Right
+    2300034: Holo_Projector_Left
+    2300036: Holo_Projector_Right
+    2300038: Holo_Ring_1
+    2300040: Holo_Ring_2
+    2300042: Holo_Ring_3
+    2300044: //RootNode
+    2300046: Startup_Console
+    3300000: Button_Base_Shutdown
+    3300002: Button_Base_Startup
+    3300004: Button_Shutdown
+    3300006: Button_Startup
+    3300008: Cables_Left_Bot
+    3300010: Cables_Left_Top
+    3300012: Cables_Right
+    3300014: Dile_1
+    3300016: Dile_1_Ring
+    3300018: Dile_2
+    3300020: Dile_2_Ring
+    3300022: Dile_3
+    3300024: Dile_3_Ring
+    3300026: Door_Holo_Bottom
+    3300028: Door_Holo_Top
+    3300030: Door_Shutdown_Left
+    3300032: Door_Shutdown_Right
+    3300034: Holo_Projector_Left
+    3300036: Holo_Projector_Right
+    3300038: Holo_Ring_1
+    3300040: Holo_Ring_2
+    3300042: Holo_Ring_3
+    3300044: //RootNode
+    3300046: Startup_Console
+    4300000: Holo_Generator
+    4300002: Dile_1
+    4300004: Dile_1_Ring
+    4300006: Dile_2
+    4300008: Dile_2_Ring
+    4300010: Dile_3
+    4300012: Dile_3_Ring
+    4300014: Door_Holo_Bottom
+    4300016: Door_Holo_Top
+    4300018: Holo_Projector_Right
+    4300020: Holo_Projector_Left
+    4300022: Holo_Ring_3
+    4300024: Holo_Ring_2
+    4300026: Holo_Ring_1
+    4300028: Door_Shutdown_Left
+    4300030: Door_Shutdown_Right
+    4300032: Button_Base_Shutdown
+    4300034: Button_Shutdown
+    4300036: Cables_Left_Bot
+    4300038: Cables_Left_Top
+    4300040: Cables_Right
+    4300042: Startup_Console
+    4300044: Button_Base_Startup
+    4300046: Button_Startup
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HoloGenerator
+    second: {fileID: 2100000, guid: b07aaf3c6d81cb94b93a4d3bae7ec0bd, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
