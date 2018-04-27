@@ -44,8 +44,7 @@ public class RotateWorld : MonoBehaviour
     private bool finished;
     #endregion
 
-    [HideInInspector]
-    public Camera secondCamera;
+    private Camera secondCamera;
 
     [Space(10)]
 
@@ -96,6 +95,10 @@ public class RotateWorld : MonoBehaviour
     private InteractCamSwitch interact;
     private GlitchyEffect glitch;
 
+    [SerializeField] Animator orbit1;
+    [SerializeField] Animator orbit2;
+    
+    public bool isRotateActive = false;
 
     void Start()
     {
@@ -104,17 +107,13 @@ public class RotateWorld : MonoBehaviour
         TurnOffGLitch();
 
         SolvedThePuzzleChecks();
-
-
-    }
+   }
 
     private void SolvedThePuzzleChecks()
     {
         halfWay = false;
         finished = false;
-
-
-    }
+  }
 
     private void InitializeVariables()
     {
@@ -122,9 +121,7 @@ public class RotateWorld : MonoBehaviour
         interact = GetComponent<InteractCamSwitch>();
         secondCamera = interact.lerpingCamera;
         glitch = secondCamera.GetComponent<GlitchyEffect>();
-
-
-    }
+  }
     /// <summary>
     /// These assign the materials for the lock that will change based on the status of the puzzle (whether you have reached halfway or not)
     /// </summary>
@@ -140,7 +137,6 @@ public class RotateWorld : MonoBehaviour
     private void TurnOffGLitch()
     {
         secondCamera.GetComponent<GlitchyEffect>().enabled = false;
-
     }
 
     private void FixedUpdate()
@@ -148,10 +144,21 @@ public class RotateWorld : MonoBehaviour
 
         currentNumber = lockscript.selectedNumber;
         knob = lockscript.knobPlacement;
-        
+        CheckInteractStatus();
         CheckStatus();
         RestrictLock();
         RotateObject();
+    }
+
+    /// <summary>
+    /// Check are players Interact with a lock or roaming
+    /// </summary>
+    private void CheckInteractStatus()
+    {
+        if (lockscript.currentState == PlayerStates.UsingLock)
+        {
+            isRotateActive = true;
+        }
     }
 
     /// <summary>
@@ -206,6 +213,11 @@ public class RotateWorld : MonoBehaviour
     /// </summary>
     private void RotateObject()
     {
+        if (isRotateActive == true)
+        {
+            //triggers animations here.
+            orbit1.SetTrigger("TriggerAnimation");
+            orbit2.SetTrigger("TriggerAnimation");
 
             if (knob == 0)
             {
@@ -230,10 +242,10 @@ public class RotateWorld : MonoBehaviour
             {
                 if (RotatedThird != null)
                 {
-                    RotatedThird.transform.localRotation = Quaternion.Lerp(RotatedThird.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - thirdPass), 0), Time.deltaTime * 6f); 
+                    RotatedThird.transform.localRotation = Quaternion.Lerp(RotatedThird.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - thirdPass), 0), Time.deltaTime * 6f);
                     RotatedFourth.transform.localEulerAngles = new Vector3(0, 0 + (rotatedAngle) * (lockscript.lockNumber[3] - fourthPass), 0);//In case the player doesnt wait for the lerp to finish
 
-            }
+                }
             }
             if (knob == 3)
             {
@@ -244,7 +256,7 @@ public class RotateWorld : MonoBehaviour
                 }
             }
         }
-
+    }
     /// <summary>
     /// This sections restricts the lock from going up to the first two knobs if the first half is already correct
     /// In also calls to the courotine of the glitch animation in case to let the player know that they cannot access those knobs
