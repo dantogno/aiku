@@ -44,8 +44,7 @@ public class RotateWorld : MonoBehaviour
     private bool finished;
     #endregion
 
-    [HideInInspector]
-    public Camera secondCamera;
+    private Camera secondCamera;
 
     [Space(10)]
 
@@ -96,9 +95,9 @@ public class RotateWorld : MonoBehaviour
     private InteractCamSwitch interact;
     private GlitchyEffect glitch;
 
-    public Animator Orbit1;
-    public Animator Orbit2;
-
+    [SerializeField] Animator orbit1;
+    [SerializeField] Animator orbit2;
+    
     public bool isRotateActive = false;
 
     void Start()
@@ -108,17 +107,13 @@ public class RotateWorld : MonoBehaviour
         TurnOffGLitch();
 
         SolvedThePuzzleChecks();
-
-
-    }
+   }
 
     private void SolvedThePuzzleChecks()
     {
         halfWay = false;
         finished = false;
-
-
-    }
+  }
 
     private void InitializeVariables()
     {
@@ -126,9 +121,7 @@ public class RotateWorld : MonoBehaviour
         interact = GetComponent<InteractCamSwitch>();
         secondCamera = interact.lerpingCamera;
         glitch = secondCamera.GetComponent<GlitchyEffect>();
-
-
-    }
+  }
     /// <summary>
     /// These assign the materials for the lock that will change based on the status of the puzzle (whether you have reached halfway or not)
     /// </summary>
@@ -144,7 +137,6 @@ public class RotateWorld : MonoBehaviour
     private void TurnOffGLitch()
     {
         secondCamera.GetComponent<GlitchyEffect>().enabled = false;
-
     }
 
     private void FixedUpdate()
@@ -157,13 +149,16 @@ public class RotateWorld : MonoBehaviour
         RestrictLock();
         RotateObject();
     }
+
+    /// <summary>
+    /// Check are players Interact with a lock or roaming
+    /// </summary>
     private void CheckInteractStatus()
     {
         if (lockscript.currentState == PlayerStates.UsingLock)
         {
             isRotateActive = true;
         }
-
     }
 
     /// <summary>
@@ -221,8 +216,8 @@ public class RotateWorld : MonoBehaviour
         if (isRotateActive == true)
         {
             //triggers animations here.
-            Orbit1.SetTrigger("TriggerAnimation");
-            Orbit2.SetTrigger("TriggerAnimation");
+            orbit1.SetTrigger("TriggerAnimation");
+            orbit2.SetTrigger("TriggerAnimation");
 
             if (knob == 0)
             {
