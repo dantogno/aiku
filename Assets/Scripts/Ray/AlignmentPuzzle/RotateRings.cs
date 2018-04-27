@@ -37,7 +37,7 @@ public class RotateRings : MonoBehaviour, IInteractable
 	// Use this for initialization
 	private void Start ()
     {
-        amountToRotate = new Vector3(0, rotationAmount, 0);
+        amountToRotate = new Vector3(rotationAmount, 0, 0);
         RotateRingToInitialPosition();
 	}
 
@@ -50,7 +50,7 @@ public class RotateRings : MonoBehaviour, IInteractable
         if (instantRotation)
         {
             // ... rotate the ring instantly.
-            Vector3 initialAmountToRotate = new Vector3(0, initialRotation, 0);
+            Vector3 initialAmountToRotate = new Vector3(initialRotation, 0, 0);
             correspondingRing.Rotate(initialAmountToRotate);
         }
         // If we are using Lerp...
@@ -58,7 +58,7 @@ public class RotateRings : MonoBehaviour, IInteractable
         {
             // ...store the variables and take care of rotating in Update.
             currentRotation = correspondingRing.transform.localRotation.eulerAngles;
-            desiredRotation = currentRotation + new Vector3(0, initialRotation, 0);
+            desiredRotation = currentRotation + new Vector3(initialRotation, 0, 0);
         }
     }
 
