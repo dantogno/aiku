@@ -16,9 +16,6 @@ public class Ring : MonoBehaviour
     public event Action RingStateChanged;
 
     [SerializeField]
-    [Tooltip("A light that turns on when the object in in the correct position.")]
-    private Light correspondingLight;
-    [SerializeField]
     [Tooltip("The correct rotation in degrees for this object. So far this only works for the Y axis.")]
     [Range(0, 360)]
     private float correctRotation = 0;
@@ -36,11 +33,6 @@ public class Ring : MonoBehaviour
     /// </summary>
 	private void Start ()
     {
-        // Disable the light that indicates whether the object is in the correct place.
-        if(correspondingLight != null)
-        {
-            correspondingLight.enabled = false;
-        }
         // Set the current rotation to its initial value
         currentRotation = this.transform.localRotation.y;
         IsRotationCorrect = false;
@@ -53,7 +45,7 @@ public class Ring : MonoBehaviour
     public void Rotate(Vector3 amountToRotate)
     {
         // This script currently only cares about the y rotation of the object.
-        currentRotation += amountToRotate.y;
+        currentRotation += amountToRotate.x;
         // If the object has gone full circle or beyond, make sure to reset it.
         if(currentRotation > 360)
         {
@@ -77,14 +69,12 @@ public class Ring : MonoBehaviour
         {
             // ... enable the light and change the boolean accordingly.
             IsRotationCorrect = true;
-            correspondingLight.enabled = true;
         }
         // If not...
         else
         {
             // ... disable the light and change the boolean accordingly 
             IsRotationCorrect = false;
-            correspondingLight.enabled = false;
         }
     }
 }

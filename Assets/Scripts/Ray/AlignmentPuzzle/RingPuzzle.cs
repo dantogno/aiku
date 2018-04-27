@@ -59,13 +59,19 @@ public class RingPuzzle : MonoBehaviour
         // Only sent the moment the puzzle has been completed.
         if (puzzleComplete)
         {
-            PuzzleUnlocked.Invoke();
+            if(PuzzleUnlocked!= null)
+            {
+                PuzzleUnlocked.Invoke();
+            }
             hasSentLockedEvent = false;
         }
         // Only sent the moment the puzzle stops being completed.
         else if (hasSentLockedEvent == false)
         {
-            PuzzleLocked.Invoke();
+            if(PuzzleLocked != null)
+            {
+                PuzzleLocked.Invoke();
+            }
             hasSentLockedEvent = true;
         }
     }
