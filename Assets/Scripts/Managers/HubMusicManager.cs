@@ -35,7 +35,7 @@ public class HubMusicManager : MonoBehaviour
         EndingScreen.AllocatedAllShipboardPowerToCryochambers += StopMusicOnly;
         EndCredits.CreditsStarted += PlayEndCreditsMusic;
         AudioTrigger.PlayerEnteredTrigger += StopAmbience;
-        //SceneTransition.SceneChangeFinished += PlayAmbience;
+        SceneTransition.SceneChangeFinished += PlayAmbience;
     }
     private void OnDisable()
     {
@@ -92,7 +92,7 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void PlayEndCreditsMusic()
     {
-        StartCoroutine(FadeAmbienceInAndThenStartMusic());
+        StartCoroutine(FadeAmbienceInAndThenStartMusicAtEndOfGame());
     }
 
     /// <summary>
@@ -114,16 +114,34 @@ public class HubMusicManager : MonoBehaviour
 
     private IEnumerator FadeAmbienceInAndThenStartMusic()
     {
-        /*
-        float elapsedTime = 0, timer = .5f;
-        while (elapsedTime < timer)
-        {
-            ambientSource.volume = Mathf.Lerp(0, originalAmbienceVolume, elapsedTime / timer);
+        ambientSource.Stop();
+        ambientSource.volume = originalAmbienceVolume;
+        ambientSource.Play();
 
-            yield return new WaitForEndOfFrame();
-            elapsedTime += Time.deltaTime;
+        yield return new WaitForSeconds(waitTime);
+
+        ambientSource2.Play();
+        nonAmbientSource.Play();
+        titleSource.Play();
+
+        StartCoroutine(WaitForSongToFinishThenSwitchSongs());
+        StartCoroutine(FadeAmbienceOut());
+    }
+
+    /// <summary>
+    /// At the end of the game, stop all audio sources and play music.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FadeAmbienceInAndThenStartMusicAtEndOfGame()
+    {
+        // Stop absolutely every single audio source. We only want music now.
+        foreach (AudioSource source in FindObjectsOfType<AudioSource>())
+        {
+            source.Stop();
         }
-        */
+
+        yield return new WaitForSeconds(2);
+
         ambientSource.Stop();
         ambientSource.volume = originalAmbienceVolume;
         ambientSource.Play();

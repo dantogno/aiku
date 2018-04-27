@@ -12,6 +12,9 @@ public class MineralProcessor : PowerableObject
     [SerializeField, Tooltip("The minerals which can make power.")]
     private Collider minerals;
 
+    [SerializeField, Tooltip("This is the power-on sound, for the child power switch.")]
+    private AudioClip onClip;
+
     private AudioSource myAudioSource;
 
     private void OnTriggerEnter(Collider other)
@@ -24,16 +27,13 @@ public class MineralProcessor : PowerableObject
     {
         if (!IsFullyPowered)
         {
-            // Destroy the minerals rather than deactivate them, to avoid forcing the player
-            // to carry around a useless deactivated GameObject.
-            Destroy(minerals.gameObject);
-
             // Now that the minerals have been destroyed, generate power from their disintegration.
             base.PowerOn();
 
             if (GetComponentInChildren<AudioSource>() != null)
             {
                 myAudioSource = GetComponentInChildren<AudioSource>();
+                myAudioSource.clip = onClip;
                 myAudioSource.Play();
             }
         }
