@@ -169,6 +169,8 @@ public class EnvironmentTransition : MonoBehaviour {
         if (rotate.Finished == true && isFinalTransitionPlaying == false)
         {
             //if first second of the puzzle is solved, start the door opening section and end text.
+			interact.LockisActive = false;
+			interact.currentState = PlayerStates.Roaming;
 
             StartCoroutine(Finish()); 
         }
@@ -240,7 +242,8 @@ public class EnvironmentTransition : MonoBehaviour {
     #region Methods that enable and disable gameObjects
     private void PauseLockInteraction()
     {
-        interact.currentState = PlayerStates.UsingLock;
+		//During cutsscene, the player cannot interact with lock. Nor can they exit
+		interact.currentState = PlayerStates.Roaming;
         interactingwith.allowExit = false;
     }
 
