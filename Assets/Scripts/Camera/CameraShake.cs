@@ -65,7 +65,7 @@ public class CameraShake : MonoBehaviour
     }
 
     /// <summary>
-    /// Shake the camera when the generator explodes.
+    /// Shake the camera when the pipe bursts.
     /// </summary>
     private IEnumerator PipeShake()
     {
