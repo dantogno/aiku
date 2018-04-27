@@ -86,7 +86,7 @@ public class RotateRings : MonoBehaviour, IInteractable
     /// Rotate the corresponding ring object when this is interacted with.
     /// </summary>
     /// <param name="agentInteracting"></param>
-    public void Interact(GameObject agentInteracting)
+    public virtual void Interact(GameObject agentInteracting)
     {
         //TODO: Add rotating animation for this object
 
