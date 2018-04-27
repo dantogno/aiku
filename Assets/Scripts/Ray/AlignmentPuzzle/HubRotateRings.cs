@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script should go on the interactable portion of the Hub's version of
+/// the Ray alignment puzzle (the hologram rings).
+/// It replaces the classic rotation functionality with a dummy version until
+/// the Ray level has been completed.
+/// </summary>
 public class HubRotateRings : RotateRings
 {
     [SerializeField]
