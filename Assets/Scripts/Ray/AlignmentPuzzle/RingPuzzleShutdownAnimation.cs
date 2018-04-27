@@ -29,12 +29,12 @@ public class RingPuzzleShutdownAnimation : MonoBehaviour
     private void OnEnable()
     {
         RingPuzzle.PuzzleUnlocked += OpenDoor;
-        RingPuzzle.PuzzleUnlocked += CloseDoor;
+        RingPuzzle.PuzzleLocked += CloseDoor;
     }
     private void OnDisable()
     {
         RingPuzzle.PuzzleUnlocked -= OpenDoor;
-        RingPuzzle.PuzzleUnlocked -= CloseDoor;
+        RingPuzzle.PuzzleLocked -= CloseDoor;
     }
 
     /// <summary>
