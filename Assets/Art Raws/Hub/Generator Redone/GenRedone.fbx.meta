@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: d69ef1aa38e655648974c08bd0fd7321
+timeCreated: 1524812446
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cryst
+    100002: Cryst2
+    100004: Cryst3
+    100006: Cryst4
+    100008: Crysts
+    100010: DNA
+    100012: Gear1
+    100014: Gear2
+    100016: Gear3
+    100018: Gear4
+    100020: Gear5
+    100022: Gear6
+    100024: Gear7
+    100026: Gear8
+    100028: Gear9
+    100030: Gears
+    100032: //RootNode
+    100034: Glass
+    100036: MainGear
+    100038: OriginalNib
+    100040: UV1
+    100042: UV2
+    100044: UV3
+    100046: UV4_Gears
+    400000: Cryst
+    400002: Cryst2
+    400004: Cryst3
+    400006: Cryst4
+    400008: Crysts
+    400010: DNA
+    400012: Gear1
+    400014: Gear2
+    400016: Gear3
+    400018: Gear4
+    400020: Gear5
+    400022: Gear6
+    400024: Gear7
+    400026: Gear8
+    400028: Gear9
+    400030: Gears
+    400032: //RootNode
+    400034: Glass
+    400036: MainGear
+    400038: OriginalNib
+    400040: UV1
+    400042: UV2
+    400044: UV3
+    400046: UV4_Gears
+    2100000: gGlass
+    2100002: Gen_UV1
+    2100004: Gen_UV2
+    2100006: Gen_UV3
+    2100008: Gen_UV4
+    2100010: gCryst
+    2300000: Cryst
+    2300002: Cryst2
+    2300004: Cryst3
+    2300006: Cryst4
+    2300008: DNA
+    2300010: Gear1
+    2300012: Gear2
+    2300014: Gear3
+    2300016: Gear4
+    2300018: Gear5
+    2300020: Gear6
+    2300022: Gear7
+    2300024: Gear8
+    2300026: Gear9
+    2300028: Glass
+    2300030: MainGear
+    2300032: OriginalNib
+    2300034: UV1
+    2300036: UV2
+    2300038: UV3
+    3300000: Cryst
+    3300002: Cryst2
+    3300004: Cryst3
+    3300006: Cryst4
+    3300008: DNA
+    3300010: Gear1
+    3300012: Gear2
+    3300014: Gear3
+    3300016: Gear4
+    3300018: Gear5
+    3300020: Gear6
+    3300022: Gear7
+    3300024: Gear8
+    3300026: Gear9
+    3300028: Glass
+    3300030: MainGear
+    3300032: OriginalNib
+    3300034: UV1
+    3300036: UV2
+    3300038: UV3
+    4300000: Glass
+    4300002: UV1
+    4300004: UV2
+    4300006: UV3
+    4300008: MainGear
+    4300010: Gear1
+    4300012: Gear2
+    4300014: Gear4
+    4300016: Gear8
+    4300018: Gear7
+    4300020: Gear6
+    4300022: Gear5
+    4300024: Gear3
+    4300026: Gear9
+    4300028: DNA
+    4300030: OriginalNib
+    4300032: Cryst
+    4300034: Cryst2
+    4300036: Cryst3
+    4300038: Cryst4
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gen_UV1
+    second: {fileID: 2100000, guid: c9f16a1408de9174182e2661770ab5d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gen_UV2
+    second: {fileID: 2100000, guid: 65c6668a9898e0544a003b7daeb595f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gen_UV3
+    second: {fileID: 2100000, guid: 3712dc87bbb243744911d3351de8dbaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gen_UV4
+    second: {fileID: 2100000, guid: 2284f8997d23a9b4e90cace4674ca405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gCryst
+    second: {fileID: 2100000, guid: ec746906b58a87b4daa1e604fd5876bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gGlass
+    second: {fileID: 2100000, guid: 6e62eb67e2a48a74388b21a474848e47, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
