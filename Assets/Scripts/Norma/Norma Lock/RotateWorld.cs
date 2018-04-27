@@ -96,6 +96,10 @@ public class RotateWorld : MonoBehaviour
     private InteractCamSwitch interact;
     private GlitchyEffect glitch;
 
+    public Animator Orbit1;
+    public Animator Orbit2;
+
+    public bool isRotateActive = false;
 
     void Start()
     {
@@ -148,10 +152,18 @@ public class RotateWorld : MonoBehaviour
 
         currentNumber = lockscript.selectedNumber;
         knob = lockscript.knobPlacement;
-        
+        CheckInteractStatus();
         CheckStatus();
         RestrictLock();
         RotateObject();
+    }
+    private void CheckInteractStatus()
+    {
+        if (lockscript.currentState == PlayerStates.UsingLock)
+        {
+            isRotateActive = true;
+        }
+
     }
 
     /// <summary>
@@ -206,6 +218,11 @@ public class RotateWorld : MonoBehaviour
     /// </summary>
     private void RotateObject()
     {
+        if (isRotateActive == true)
+        {
+            //triggers animations here.
+            Orbit1.SetTrigger("TriggerAnimation");
+            Orbit2.SetTrigger("TriggerAnimation");
 
             if (knob == 0)
             {
@@ -230,10 +247,10 @@ public class RotateWorld : MonoBehaviour
             {
                 if (RotatedThird != null)
                 {
-                    RotatedThird.transform.localRotation = Quaternion.Lerp(RotatedThird.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - thirdPass), 0), Time.deltaTime * 6f); 
+                    RotatedThird.transform.localRotation = Quaternion.Lerp(RotatedThird.transform.localRotation, Quaternion.Euler(0, rotatedAngle * (currentNumber - thirdPass), 0), Time.deltaTime * 6f);
                     RotatedFourth.transform.localEulerAngles = new Vector3(0, 0 + (rotatedAngle) * (lockscript.lockNumber[3] - fourthPass), 0);//In case the player doesnt wait for the lerp to finish
 
-            }
+                }
             }
             if (knob == 3)
             {
@@ -244,7 +261,7 @@ public class RotateWorld : MonoBehaviour
                 }
             }
         }
-
+    }
     /// <summary>
     /// This sections restricts the lock from going up to the first two knobs if the first half is already correct
     /// In also calls to the courotine of the glitch animation in case to let the player know that they cannot access those knobs
