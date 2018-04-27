@@ -98,7 +98,7 @@ public class Examination : MonoBehaviour, IInteractable
 
 
 	//static variable that detects whether ANY object is currently being inspected or not. Applies to all the object with same script.
-	public static bool currentlyInspecting = false;
+	static bool currentlyInspecting = false;
 
     #endregion
 
