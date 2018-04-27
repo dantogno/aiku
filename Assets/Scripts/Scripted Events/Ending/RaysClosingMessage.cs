@@ -19,20 +19,38 @@ public class RaysClosingMessage : MonoBehaviour
     private string[] plumLines, endingLines, endingLines2;
 
     [SerializeField, Tooltip("The voice telling the player what they must do.")]
-    private AudioSource plumAudioSource;
+    private AudioSource plumAudioSource, rayAudioSource;
 
     [SerializeField, Tooltip("The text speed, which must match the speed of the audio clip.")]
-    private float textSpeedForPlumLine = 30;
+    private float textSpeedForPlumLine = 30, textSpeedForRayLine = 30;
 
     private void OnEnable()
     {
+        Cryochamber.AddedPowerToCryochamberForFirstTime += DisplayPlumMessage;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers += DisplayRaysMessage;
-        EndCredits.CreditsStarted += CutMessageShort;
     }
     private void OnDisable()
     {
+        Cryochamber.AddedPowerToCryochamberForFirstTime -= DisplayPlumMessage;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= DisplayRaysMessage;
-        EndCredits.CreditsStarted -= CutMessageShort;
+    }
+
+    /// <summary>
+    /// When the player transfers power to a cryochamber for the first time, Plum tells them to enter the simulations.
+    /// </summary>
+    private void DisplayPlumMessage()
+    {
+        // Clear text.
+        textWriter.DisplayText("");
+
+        // Adjust text speed to match audio clip.
+        textWriter.ChangeTypingSpeed(textSpeedForPlumLine);
+
+        // Play audio clip.
+        plumAudioSource.Play();
+
+        // print text while the audio clip is playing.
+        textWriter.DisplayText(plumLines);
     }
 
     /// <summary>
@@ -40,7 +58,7 @@ public class RaysClosingMessage : MonoBehaviour
     /// </summary>
     private void DisplayRaysMessage()
     {
-        StartCoroutine(TextSequence());
+        StartCoroutine(RayTextSequence());
     }
 
     /// <summary>
@@ -55,26 +73,19 @@ public class RaysClosingMessage : MonoBehaviour
     /// Play audio and display text.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator TextSequence()
+    private IEnumerator RayTextSequence()
     {
         // Clear text.
         textWriter.DisplayText("");
 
         // Adjust text speed to match audio clip.
-        textWriter.ChangeTypingSpeed(textSpeedForPlumLine);
+        textWriter.ChangeTypingSpeed(textSpeedForRayLine);
         
         // Play audio clip.
-        plumAudioSource.Play();
-
-        yield return new WaitForSeconds(2);
-
-        // print text while the audio clip is playing.
-        textWriter.DisplayText(plumLines);
-        while (plumAudioSource.isPlaying) yield return null;
+        rayAudioSource.Play();
 
         #region print Ray's sentimental message.  :(
-
-        yield return new WaitForSeconds(2);
+        
         textWriter.DisplayText(endingLines);
         yield return new WaitForSeconds(30);
         textWriter.DisplayText(endingLines2);

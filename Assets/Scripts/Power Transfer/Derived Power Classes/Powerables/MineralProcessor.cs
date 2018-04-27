@@ -20,15 +20,27 @@ public class MineralProcessor : PowerableObject
     private void OnTriggerEnter(Collider other)
     {
         // If minerals come near, gobble them up and make power out of them.
-        if (other == minerals) ProcessMinerals();
+        if (other == minerals)
+        {
+            ProcessMinerals();
+            Invoke("DestroyMinerals", .1f);
+        }
     }
 
+    /// <summary>
+    /// Allow power transfer and play sound.
+    /// </summary>
     private void ProcessMinerals()
     {
         if (!IsFullyPowered)
         {
             // Now that the minerals have been destroyed, generate power from their disintegration.
             base.PowerOn();
+
+            if (GetComponentInChildren<PowerSwitch>() != null)
+            {
+                GetComponentInChildren<PowerSwitch>().UnblockPowerSwitch();
+            }
 
             if (GetComponentInChildren<AudioSource>() != null)
             {
@@ -37,5 +49,13 @@ public class MineralProcessor : PowerableObject
                 myAudioSource.Play();
             }
         }
+    }
+
+    /// <summary>
+    /// The minerals aren't destroying themselves properly, so we do it for them.
+    /// </summary>
+    private void DestroyMinerals()
+    {
+        Destroy(minerals.gameObject);
     }
 }

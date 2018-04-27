@@ -17,7 +17,14 @@ public class EngineSequenceManager : MonoBehaviour {
 	void Start () {
         shutdownTask.OnTaskCompleted += Shutdown;
 	}
-	
+
+    private void Update()
+    {
+        // Developer shortcut, since this basically activates every feature in the game.
+        if (Application.isEditor && Input.GetKeyDown(KeyCode.Period))
+            Shutdown();
+    }
+
     private void Shutdown()
     {
         if(OnShutdown != null)
