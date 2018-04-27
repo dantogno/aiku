@@ -27,10 +27,12 @@ public class RaysClosingMessage : MonoBehaviour
     private void OnEnable()
     {
         EndingScreen.AllocatedAllShipboardPowerToCryochambers += DisplayRaysMessage;
+        EndCredits.CreditsStarted += CutMessageShort;
     }
     private void OnDisable()
     {
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= DisplayRaysMessage;
+        EndCredits.CreditsStarted -= CutMessageShort;
     }
 
     /// <summary>
@@ -39,6 +41,14 @@ public class RaysClosingMessage : MonoBehaviour
     private void DisplayRaysMessage()
     {
         StartCoroutine(TextSequence());
+    }
+
+    /// <summary>
+    /// If the ending happens, go silent.
+    /// </summary>
+    private void CutMessageShort()
+    {
+        StopAllCoroutines();
     }
 
     /// <summary>
@@ -52,9 +62,11 @@ public class RaysClosingMessage : MonoBehaviour
 
         // Adjust text speed to match audio clip.
         textWriter.ChangeTypingSpeed(textSpeedForPlumLine);
-
+        
         // Play audio clip.
         plumAudioSource.Play();
+
+        yield return new WaitForSeconds(2);
 
         // print text while the audio clip is playing.
         textWriter.DisplayText(plumLines);
