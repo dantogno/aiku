@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4933347714361964}
   - component: {fileID: 33044326297752504}
   - component: {fileID: 23629232701225532}
-  - component: {fileID: 114973487794122352}
   m_Layer: 0
   m_Name: Dile_1
   m_TagString: Untagged
@@ -123,7 +122,6 @@ GameObject:
   - component: {fileID: 4271574640767222}
   - component: {fileID: 33328791235261406}
   - component: {fileID: 23709450295984174}
-  - component: {fileID: 114747563888562628}
   m_Layer: 0
   m_Name: Dile_3
   m_TagString: Untagged
@@ -191,6 +189,7 @@ GameObject:
   - component: {fileID: 4465557361399324}
   - component: {fileID: 33951056757564612}
   - component: {fileID: 23361476106716268}
+  - component: {fileID: 114963611969856808}
   m_Layer: 0
   m_Name: Dile_3_Ring
   m_TagString: Untagged
@@ -328,6 +327,7 @@ GameObject:
   - component: {fileID: 4393103967024872}
   - component: {fileID: 33830218951194774}
   - component: {fileID: 23646221450607522}
+  - component: {fileID: 114677876203308162}
   m_Layer: 0
   m_Name: Dile_1_Ring
   m_TagString: Untagged
@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 4916634394114264}
   - component: {fileID: 33084164962972736}
   - component: {fileID: 23180844565920766}
+  - component: {fileID: 114566016024940946}
   m_Layer: 0
   m_Name: Dile_2_Ring
   m_TagString: Untagged
@@ -546,7 +547,6 @@ GameObject:
   - component: {fileID: 4639035793700096}
   - component: {fileID: 33799812739101452}
   - component: {fileID: 23944698297747474}
-  - component: {fileID: 114912041152374928}
   m_Layer: 0
   m_Name: Dile_2
   m_TagString: Untagged
@@ -2078,7 +2078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baadebe3f7c3a3f4cb91f7fe93aa2306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondingRing: {fileID: 114912041152374928}
+  correspondingRing: {fileID: 114566016024940946}
   initialRotation: 0
   rotationAmount: 45
   instantRotation: 1
@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baadebe3f7c3a3f4cb91f7fe93aa2306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondingRing: {fileID: 114973487794122352}
+  correspondingRing: {fileID: 114677876203308162}
   initialRotation: 0
   rotationAmount: 45
   instantRotation: 1
@@ -2137,7 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baadebe3f7c3a3f4cb91f7fe93aa2306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondingRing: {fileID: 114747563888562628}
+  correspondingRing: {fileID: 114963611969856808}
   initialRotation: 0
   rotationAmount: 45
   instantRotation: 1
@@ -2153,42 +2153,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringsToUnlock:
-  - {fileID: 114973487794122352}
-  - {fileID: 114912041152374928}
-  - {fileID: 114747563888562628}
---- !u!114 &114747563888562628
+  - {fileID: 114677876203308162}
+  - {fileID: 114566016024940946}
+  - {fileID: 114963611969856808}
+--- !u!114 &114566016024940946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1236332868754788}
+  m_GameObject: {fileID: 1797907066073158}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   correctRotation: 90
---- !u!114 &114912041152374928
+  emissiveMaterial: {fileID: 2100000, guid: 99672eade2e4b3d4ea28feebac037b46, type: 2}
+--- !u!114 &114677876203308162
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988688989946822}
+  m_GameObject: {fileID: 1588190499458552}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   correctRotation: 90
---- !u!114 &114973487794122352
+  emissiveMaterial: {fileID: 2100000, guid: 99672eade2e4b3d4ea28feebac037b46, type: 2}
+--- !u!114 &114963611969856808
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1059592058424478}
+  m_GameObject: {fileID: 1360208585591848}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   correctRotation: 90
+  emissiveMaterial: {fileID: 2100000, guid: 99672eade2e4b3d4ea28feebac037b46, type: 2}

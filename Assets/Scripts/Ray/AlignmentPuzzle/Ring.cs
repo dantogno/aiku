@@ -23,6 +23,12 @@ public class Ring : MonoBehaviour
     // This is the current Y axis rotation of the object.
     private float currentRotation;
 
+    private MeshRenderer meshRenderer;
+    private Material nonEmissiveMaterial;
+    [SerializeField]
+    [Tooltip("The emissive material replacement for when the dial is in the correct spot.")]
+    private Material emissiveMaterial;
+
     /// <summary>
     /// Is the object in the correct rotational position?
     /// </summary>
@@ -33,6 +39,11 @@ public class Ring : MonoBehaviour
     /// </summary>
 	private void Start ()
     {
+        meshRenderer = GetComponent<MeshRenderer>();
+        if(meshRenderer != null)
+        {
+            nonEmissiveMaterial = meshRenderer.material;
+        }
         // Set the current rotation to its initial value
         currentRotation = this.transform.localRotation.y;
         IsRotationCorrect = false;
@@ -67,14 +78,22 @@ public class Ring : MonoBehaviour
         // If the object is in the correct place...
         if (currentRotation == correctRotation)
         {
-            // ... enable the light and change the boolean accordingly.
+            // ... turn on the emissive and change the boolean accordingly.
             IsRotationCorrect = true;
+            if(meshRenderer != null)
+            {
+                meshRenderer.material = emissiveMaterial;
+            }
         }
         // If not...
         else
         {
-            // ... disable the light and change the boolean accordingly 
+            // ... turn on the emissive and change the boolean accordingly 
             IsRotationCorrect = false;
+            if(meshRenderer != null)
+            {
+                meshRenderer.material = nonEmissiveMaterial;
+            }
         }
     }
 }

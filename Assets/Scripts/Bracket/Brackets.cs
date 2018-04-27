@@ -206,7 +206,7 @@ public class Brackets : MonoBehaviour
     {
 
         // The camera creating the scanningImage clears every pixel to a = 0, so if alpha is 1 something is there
-        if (scanningImage.GetPixelBilinear(x, y).a == 1f)
+        if (scanningImage.GetPixelBilinear(x, y).a > 0f)
         {
             return true;
         }
