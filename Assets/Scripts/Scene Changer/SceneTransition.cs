@@ -101,12 +101,16 @@ public class SceneTransition : MonoBehaviour
 
     private void Awake()
     {
+        // Make the Scene Transition object a singleton.
+        bool singletonExists = CheckIfAlreadyExists();
+        if(singletonExists)
+        {
+            return;
+        }
         // Initialize what is needed
         InitializeComponents();
         // Add the first scene to the list.
         AddFirstScene();
-        // Make the Scene Transition object a singleton.
-        EnsureSingleton();
     }
 
     /// <summary>
@@ -138,16 +142,18 @@ public class SceneTransition : MonoBehaviour
     /// <summary>
     /// Ensures that this object will be a singleton.
     /// </summary>
-    private void EnsureSingleton()
+    private bool CheckIfAlreadyExists()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            return false;
         }
         else
         {
             Destroy(this.gameObject);
+            return true;
         }
     }
 
@@ -269,16 +275,16 @@ public class SceneTransition : MonoBehaviour
         Scene newScene = SceneManager.GetSceneByName(sceneName);
         // Make sure to set it active for future transitions.
         SceneManager.SetActiveScene(newScene);
-        // Let anyone who cares know that the scene transition is finished.
-        if (SceneChangeFinished != null)
-        {
-            SceneChangeFinished.Invoke();
-        }
         // Set the name of the current scene as the new scene that was loaded.
         CurrentScene = sceneToLoad;
         sceneToLoad = "";
         // Now that everything is done, another scene can be loaded again.
         isLoading = false;
+        // Let anyone who cares know that the scene transition is finished.
+        if (SceneChangeFinished != null)
+        {
+            SceneChangeFinished.Invoke();
+        }
     }
 
     /// <summary>
