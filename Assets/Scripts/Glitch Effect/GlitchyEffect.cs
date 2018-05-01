@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 /// <summary>
 /// Attach to the Player camera.
 /// Creates a scan line jitter effect over top the games normal rendering.
@@ -32,6 +33,7 @@ public class GlitchyEffect : MonoBehaviour
     [SerializeField] Shader _shader;
 
     private Material _material;
+    private AudioSource audioSource;
 
     #endregion
 
@@ -54,6 +56,8 @@ public class GlitchyEffect : MonoBehaviour
         if (FullGlitch)
         {
             _scanLineJitter = 1;
+            if (audioSource != null)
+                audioSource.volume = 1;
         }
 
         //Creates scan line jitter - DO NOT TOUCH
@@ -63,7 +67,23 @@ public class GlitchyEffect : MonoBehaviour
 
         Graphics.Blit(source, destination, _material);
 
+        if (_scanLineJitter == 0 && audioSource != null)
+        {
+            audioSource.volume = 0;
+        }
+
         _scanLineJitter = 0;
+    }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource != null)
+        {
+            audioSource.volume = 0;
+            audioSource.loop = true;
+        }
     }
 
     #endregion
@@ -91,6 +111,14 @@ public class GlitchyEffect : MonoBehaviour
     private void OnValueAboveZero(float i)
     {
         _scanLineJitter = i;
+
+        if (audioSource != null)
+        {
+            audioSource.volume = i;
+
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+        }
 
         OverThreshold = (i >= Threshold);
     }
