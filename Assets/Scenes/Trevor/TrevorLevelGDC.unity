@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0021918043, g: 0.0047978703, b: 0.006652072, a: 1}
+  m_IndirectSpecularColor: {r: 0.0021744387, g: 0.0047774343, b: 0.0066589573, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1521,7 +1521,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4538816783540384, guid: 0dd17e1b2f5077e4ab7e5e12e3f9fa59, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4538816783540384, guid: 0dd17e1b2f5077e4ab7e5e12e3f9fa59, type: 2}
       propertyPath: m_LocalScale.x
@@ -1838,36 +1838,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e94a65680b0a54dafa5277fb2f613f31, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &66840256
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1325684933586052, guid: 0967cb0faacc10f429e51819bb6412c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 66840257}
-  m_Layer: 0
-  m_Name: Phone Buddy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &66840257
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4936868418992648, guid: 0967cb0faacc10f429e51819bb6412c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 66840256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 83.61, y: -73.34, z: -55.213}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 710870910}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &66858198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,7 +2406,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4589395834299750, guid: 48ab74bc242f56a419a89e9464b65ae6, type: 2}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4589395834299750, guid: 48ab74bc242f56a419a89e9464b65ae6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2820,7 +2790,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34268
+  m_Name: pb_Mesh-474262
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2950,19 +2920,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 525587864}
     m_Modifications:
     - target: {fileID: 4661844335516246, guid: fc0c5718782a24e46bf74e5576d60ee0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 119.1
+      value: 32.629974
       objectReference: {fileID: 0}
     - target: {fileID: 4661844335516246, guid: fc0c5718782a24e46bf74e5576d60ee0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 170.9
+      value: 83.62018
       objectReference: {fileID: 0}
     - target: {fileID: 4661844335516246, guid: fc0c5718782a24e46bf74e5576d60ee0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -266.05
+      value: 40.877136
       objectReference: {fileID: 0}
     - target: {fileID: 4661844335516246, guid: fc0c5718782a24e46bf74e5576d60ee0, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2982,7 +2952,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4661844335516246, guid: fc0c5718782a24e46bf74e5576d60ee0, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 64553508319586024, guid: fc0c5718782a24e46bf74e5576d60ee0,
         type: 2}
@@ -3382,10 +3352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subtitle: 'Norma: Okay, Trevor, let''s go over the mission one more time.~ You''ll
-    be extracting Helium-3 from the astroid below.~ Before you go down there, you''ll
-    need to calibrate the Geological Manipulation Device.~ Go pick up the GMD from
-    the rear of the ship.'
+  Subtitle: "Norma: One quick rundown, just to humor me.~\nTrevor: I will be extracting
+    ore samples.~ \nTrevor: When I am finished, I will place the samples in the ship's
+    lab, where I can analyze them during my next watch.~\nNorma: Alright, good. Perfect.
+    The GMD is at the back of the dropship.~"
 --- !u!82 &87329174
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3395,7 +3365,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 58b73d0b2782b55479d5d1be47740bfe, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4084,11 +4054,8 @@ GameObject:
   - component: {fileID: 1809609743}
   - component: {fileID: 103244361}
   - component: {fileID: 103244360}
-  - component: {fileID: 103244362}
   - component: {fileID: 103244359}
-  - component: {fileID: 103244364}
   - component: {fileID: 103244358}
-  - component: {fileID: 103244363}
   m_Layer: 0
   m_Name: crate
   m_TagString: Metal Object
@@ -4170,111 +4137,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 103244357}
   m_Mesh: {fileID: 4300000, guid: 86db4619e0752d841827126d0c7afd5a, type: 3}
---- !u!114 &103244362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 103244357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad203db6d9ea4f67bfcb4aefcb37ae6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!82 &103244363
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 103244357}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &103244364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 103244357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Subtitle: 'Norma: Okay, let''s go through the safety checks.~ One..(static).. NEVER
-    TU-..(static)...~ -revor? Tre--r, can you hea- (static) me?~ Something''s-..(static)..
-    cockpit!~ ....(static)....'
 --- !u!1 &113611897
 GameObject:
   m_ObjectHideFlags: 0
@@ -5281,7 +5143,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34264
+  m_Name: pb_Mesh-474156
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -7061,7 +6923,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34310
+  m_Name: pb_Mesh-474170
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -9679,7 +9541,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34130
+  m_Name: pb_Mesh-474206
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -10980,6 +10842,7 @@ GameObject:
   - component: {fileID: 325108650}
   - component: {fileID: 325108649}
   - component: {fileID: 325108648}
+  - component: {fileID: 325108652}
   m_Layer: 5
   m_Name: Level Transition Canvas (1)
   m_TagString: Untagged
@@ -11067,6 +10930,17 @@ RectTransform:
   m_AnchoredPosition: {x: -0.52233887, y: 0.54976654}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &325108652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325108647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf691505b7faac40adfa9c20ed21a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &329248619
 GameObject:
   m_ObjectHideFlags: 0
@@ -11290,7 +11164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_RootOrder
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -12512,7 +12386,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34222
+  m_Name: pb_Mesh-474172
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13097,7 +12971,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34276
+  m_Name: pb_Mesh-474268
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13415,7 +13289,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773999223235474, guid: d9a1832af0ffc45458caae03050117df, type: 2}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4773999223235474, guid: d9a1832af0ffc45458caae03050117df, type: 2}
       propertyPath: m_LocalScale.x
@@ -14165,7 +14039,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
@@ -15949,7 +15823,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34228
+  m_Name: pb_Mesh-474166
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16871,9 +16745,10 @@ Transform:
   - {fileID: 353081896}
   - {fileID: 369121885}
   - {fileID: 2068488205}
+  - {fileID: 86743077}
   - {fileID: 557516266}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &528508427
 GameObject:
@@ -17374,7 +17249,6 @@ GameObject:
   - component: {fileID: 543179711}
   - component: {fileID: 543179710}
   - component: {fileID: 543179709}
-  - component: {fileID: 543179712}
   - component: {fileID: 543179708}
   m_Layer: 0
   m_Name: Tableau VO Trigger
@@ -17394,9 +17268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subtitle: 'Trevor: I can''t believe it! I got the internship! They want me on the
-    crew!~ Where''s my phone? I have to call my parents.~ I swear I left it by my
-    bed...'
+  Subtitle: 'Trevor''s Father: Hey Trev, while you were out, someone called looking
+    for you. They said it had to do with endo-geology on top of the Minerva.    ~'
 --- !u!82 &543179709
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17406,8 +17279,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 4961176a5765bdd498525b38d33480de, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -17498,21 +17371,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.689003, y: 1.25, z: -1.8779907}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1338867675}
   m_Father: {fileID: 2068488205}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &543179712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 543179707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7df3c9675fe49bc8959b7bfc219bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &550094829
 Prefab:
   m_ObjectHideFlags: 0
@@ -17946,7 +17809,7 @@ Transform:
   - {fileID: 518833011}
   - {fileID: 654900263}
   m_Father: {fileID: 525587864}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &559825088
 GameObject:
@@ -18262,7 +18125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -18723,7 +18586,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34176
+  m_Name: pb_Mesh-473934
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -20917,7 +20780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_RootOrder
-      value: 39
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -21648,7 +21511,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-145136
+  m_Name: pb_Mesh232684
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -22328,7 +22191,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-23074
+  m_Name: pb_Mesh-476396
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -22635,50 +22498,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 710456328}
   m_Mesh: {fileID: 4300116, guid: 1ae7f7cf446666044923dffd8eb4b70e, type: 3}
---- !u!1 &710870909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1252658541217702, guid: 0967cb0faacc10f429e51819bb6412c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 710870910}
-  - component: {fileID: 710870911}
-  m_Layer: 0
-  m_Name: Portal (Phone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &710870910
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4305027717291806, guid: 0967cb0faacc10f429e51819bb6412c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 710870909}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8882904, y: 1.9494553, z: -1.222641}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 66840257}
-  m_Father: {fileID: 2068488205}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710870911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114662014911986144, guid: 0967cb0faacc10f429e51819bb6412c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 710870909}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &714256461
 Prefab:
   m_ObjectHideFlags: 0
@@ -22716,7 +22535,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4063486806270324, guid: 007e0d531ad180643949cb3c7ee4b21e, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 4063486806270324, guid: 007e0d531ad180643949cb3c7ee4b21e, type: 2}
       propertyPath: m_LocalScale.x
@@ -23221,6 +23040,159 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 732384324}
   m_Mesh: {fileID: 4300068, guid: 1ae7f7cf446666044923dffd8eb4b70e, type: 3}
+--- !u!1 &734885338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 734885339}
+  - component: {fileID: 734885342}
+  - component: {fileID: 734885341}
+  - component: {fileID: 734885340}
+  m_Layer: 9
+  m_Name: Audio Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &734885339
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734885338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 814631897}
+  - {fileID: 1600044975}
+  m_Father: {fileID: 1421851554}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &734885340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734885338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c015da5e2e0bb4a8331837621b1f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &734885341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734885338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subtitle: "Norma: The Geological Manipulation Device utilizes a small portable tractor
+    beam to move objects up to thirty kilograms.\n     ~\nNorma: The scope can be
+    calibrated for any element or compound which is-~\nNorma: we can skip all this,
+    you probably already read that stuff. Give me a minute.~\nNorma: Okay, safety...Hold
+    on...Okay. Trevor?\n            ~\nTrevor: Yep. Waiting.~\nNorma: Do you remember
+    what types of deposits you're collecting?~\nTrevor: Helium 3.~\nNorma: Helium
+    is a-?~\nTrevor: Yes, on an asteroid, in space, helium is trapped within ore.
+    The ore contains helium. I am collecting helium.~\nNorma: Alright, alright. Hold
+    on...Okay, it says that if calibrated incorrectly for a noble gas, the targeting
+    can become erratic within four meters. Is helium-         ~\nTrevor: Yes. Helium
+    is a noble gas.~\nTrevor: With respect, I read-~\nNorma: Hold on. The precautions
+    are different for different elements.~\nNorma: This thing cost a lot of money,
+    and I want to make sure we-~\nTrevor: Norma, I read the manual. I know how to
+    use the GMD.~\nNorma: I know you're anxious, Trevor. But I had to jump through
+    a lot of hoops to get you this tool. Just give me a second here.~\nNorma: Let's
+    just go through the safety checks. One is straightforward enough, never touch
+    the little red button.~\nNorma: Trevor? Trevor can you hear me?~\nNorma: Something
+    is wrong, go to the cockpit.~"
+--- !u!82 &734885342
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734885338}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bdb44a4e60d25c44fbc8e0f8ece1f614, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &738034072
 GameObject:
   m_ObjectHideFlags: 0
@@ -24600,7 +24572,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -25118,6 +25090,140 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &814631896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 814631897}
+  - component: {fileID: 814631900}
+  - component: {fileID: 814631899}
+  - component: {fileID: 814631898}
+  m_Layer: 9
+  m_Name: Scope Instructions Subtitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &814631897
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814631896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 734885339}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &814631898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814631896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f569759cd24bb8946bdeb7bb23bc1cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &814631899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814631896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subtitle: "     ~\n[Right click to use the GMD scope.]\n     ~"
+--- !u!82 &814631900
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814631896}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!4 &815118524 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4682687448827592, guid: f9034fa82cdfe14478211cb3495c9a85,
@@ -26016,7 +26122,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34236
+  m_Name: pb_Mesh-474202
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -28942,7 +29048,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4960bae0570d8394a91f456fc5069bff, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4960bae0570d8394a91f456fc5069bff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -31518,7 +31624,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -31639,7 +31745,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4452255782849860, guid: 2b107e4ad69e15d4d898b1e21d3c5225, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4452255782849860, guid: 2b107e4ad69e15d4d898b1e21d3c5225, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -33457,7 +33563,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4980906541451296, guid: 19379c44bad32de41904edf6a676facd, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4980906541451296, guid: 19379c44bad32de41904edf6a676facd, type: 2}
       propertyPath: m_LocalScale.x
@@ -34248,7 +34354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1124650743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34639,7 +34745,7 @@ Transform:
   - {fileID: 965033116}
   - {fileID: 139673700}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163896777
 GameObject:
@@ -35189,7 +35295,7 @@ RectTransform:
   - {fileID: 209612772}
   - {fileID: 400579056}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -35324,7 +35430,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4009925289980452, guid: 05e955cc533e8154aa9ef45cb480f86b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4009925289980452, guid: 05e955cc533e8154aa9ef45cb480f86b, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -37223,7 +37329,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4063965597216466, guid: 3cacdcbff9ad8dc4a8fe58e890566820, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4063965597216466, guid: 3cacdcbff9ad8dc4a8fe58e890566820, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -37800,6 +37906,148 @@ Transform:
   m_Father: {fileID: 2068488205}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1338867674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1338867675}
+  - component: {fileID: 1338867678}
+  - component: {fileID: 1338867677}
+  - component: {fileID: 1338867676}
+  m_Layer: 0
+  m_Name: Trevor Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1338867675
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338867674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 543179711}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1338867676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338867674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed29ea3867795b64f8166f96f7746592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1338867677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338867674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subtitle: 'Trevor: Exo-geology, Dad. Exogeology on...the...Minerva! Minerva!                   ~
+
+    Trevor: The spaceship; the predictive sediment analyst internship! I must have
+    got it!   ~
+
+    Trevor: Me, my work, my computer...my phone! I need my phone! I have to call them
+    back!    ~
+
+    Trevor: Phone, phone, phone....     ~'
+--- !u!82 &1338867678
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338867674}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: fcb4670f286ac3f4396839acf3e1fe88, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1339047111
 GameObject:
   m_ObjectHideFlags: 0
@@ -38753,7 +39001,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34094
+  m_Name: pb_Mesh-474148
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -40549,6 +40797,7 @@ Transform:
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_Children:
   - {fileID: 1005206843}
+  - {fileID: 734885339}
   m_Father: {fileID: 1955123400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.125, y: 90.00001, z: 0}
@@ -41011,7 +41260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subtitlePadding: 0.5
-  TextSpeed: 0.46
+  TextSpeed: 0.23
   SubtitleTextComponent: {fileID: 404955851}
 --- !u!4 &1444367826
 Transform:
@@ -41024,7 +41273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451907227
 GameObject:
@@ -43932,7 +44181,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34104
+  m_Name: pb_Mesh-474232
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -45624,7 +45873,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34202
+  m_Name: pb_Mesh-474154
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -45749,130 +45998,6 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
---- !u!1 &1585640643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1585640647}
-  - component: {fileID: 1585640645}
-  - component: {fileID: 1585640644}
-  m_Layer: 0
-  m_Name: Grapple VO Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1585640644
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1585640643}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &1585640645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1585640643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Subtitle: 'Norma: (STATIC)...revor? Can you...me? Oh, thank goodness.~ Listen, I
-    forgot to tell you that you can grapple to objects that are highlighted blue in
-    the scope.~ Also, you should never, ever...(STATIC)'
---- !u!4 &1585640647
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1585640643}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1948935841}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1585986855
 Mesh:
   m_ObjectHideFlags: 0
@@ -46714,6 +46839,140 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1600044974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1600044975}
+  - component: {fileID: 1600044978}
+  - component: {fileID: 1600044977}
+  - component: {fileID: 1600044976}
+  m_Layer: 9
+  m_Name: Pickup Instructions Subtitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1600044975
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600044974}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0019073485, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 734885339}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600044976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600044974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c357f733a035d4db3ab5d68ccec575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1600044977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600044974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subtitle: '[Left click to interact with objects highlighted in the scope]~'
+--- !u!82 &1600044978
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600044974}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!4 &1603156209 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 4960bae0570d8394a91f456fc5069bff, type: 3}
@@ -46755,7 +47014,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4751639125367276, guid: ddf53c5344df7f24d9254ddbf757e963, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4751639125367276, guid: ddf53c5344df7f24d9254ddbf757e963, type: 2}
       propertyPath: m_LocalScale.x
@@ -47780,7 +48039,7 @@ Prefab:
     - target: {fileID: 114018748990196402, guid: d6a8d0c088d544743b4b8b5b357f265e,
         type: 2}
       propertyPath: pickupDelayTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4573611512526482, guid: d6a8d0c088d544743b4b8b5b357f265e, type: 2}
       propertyPath: m_RootOrder
@@ -48560,7 +48819,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_RootOrder
-      value: 38
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -50261,7 +50520,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34086
+  m_Name: pb_Mesh-474174
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -51547,7 +51806,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4780856440794808, guid: 6b7fe1cc47a21e94cbb20212480b4157, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4780856440794808, guid: 6b7fe1cc47a21e94cbb20212480b4157, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -52011,7 +52270,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34250
+  m_Name: pb_Mesh-474168
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -52488,7 +52747,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34284
+  m_Name: pb_Mesh-474192
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -52798,7 +53057,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-23046
+  m_Name: pb_Mesh-476446
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -53270,7 +53529,7 @@ Transform:
   - {fileID: 929366652}
   - {fileID: 2110365176}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1798772404
 GameObject:
@@ -58246,7 +58505,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34072
+  m_Name: pb_Mesh-474160
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -58564,7 +58823,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh129542
+  m_Name: pb_Mesh236176
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -59202,7 +59461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_RootOrder
-      value: 35
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4992955001558488, guid: 54a4b543e258c474aae73eafc20e784a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -59452,7 +59711,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4996362545494826, guid: 334c56bfc92f2a1489d18862fb41bfeb, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4996362545494826, guid: 334c56bfc92f2a1489d18862fb41bfeb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -59507,6 +59766,130 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 686834f31449bab4caa6f3c8ed7985a0, type: 3}
+--- !u!1 &1880216459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1880216460}
+  - component: {fileID: 1880216462}
+  - component: {fileID: 1880216461}
+  m_Layer: 0
+  m_Name: Grapple VO Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1880216460
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880216459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1948935841}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880216461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880216459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subtitle: "Norma: [T]revor? Can you [hear] me? Oh, thank god.\n   ~\nNorma: Listen,
+    I forgot to tell you that you can grapple to objects highlighted blue in the scope.\n
+    ~\nNorma: Also, you should never, ever- (STATIC)       ~"
+--- !u!82 &1880216462
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880216459}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e3b4bca1f3574c041ae1056f45b3feaf, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1881157741
 GameObject:
   m_ObjectHideFlags: 0
@@ -60145,7 +60528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925292189 stripped
 GameObject:
@@ -60326,7 +60709,7 @@ Transform:
   m_LocalPosition: {x: 6.9860077, y: 75.03576, z: 59.656616}
   m_LocalScale: {x: 1.0004554, y: 1, z: 1.0004551}
   m_Children:
-  - {fileID: 1585640647}
+  - {fileID: 1880216460}
   m_Father: {fileID: 1955123400}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62479,12 +62862,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2017627882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f67502b0adae7a44cbcddba6044107c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arrow: {fileID: 325108647}
 --- !u!114 &2017627886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62616,11 +62998,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2017627882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c8826a134ba17a46b64b7ece14cd185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subtitle: 'Norma: Your new GMD has a scope you can use to inspect the things around
-    you.~ Give it a shot! (Right-Click)'
 --- !u!1 &2018133449
 GameObject:
   m_ObjectHideFlags: 0
@@ -62845,7 +63225,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4512302205084172, guid: 6163e46752a51274ebb391e0b2e3e880, type: 2}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4512302205084172, guid: 6163e46752a51274ebb391e0b2e3e880, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -63287,7 +63667,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34232
+  m_Name: pb_Mesh-474264
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -63508,7 +63888,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-34120
+  m_Name: pb_Mesh-474190
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -63987,7 +64367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4027021302570206, guid: c83ec85966c6c164995257a356dc0976, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4027021302570206, guid: c83ec85966c6c164995257a356dc0976, type: 2}
       propertyPath: m_LocalScale.x
@@ -64132,7 +64512,6 @@ Transform:
   - {fileID: 194462772}
   - {fileID: 2098272769}
   - {fileID: 1848601332}
-  - {fileID: 710870910}
   - {fileID: 1493066345}
   - {fileID: 8952468}
   - {fileID: 1611221841}
@@ -66403,7 +66782,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4448999072490818, guid: 2599758af3176b54bbaf973dabf02947, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1621984103180718, guid: 2599758af3176b54bbaf973dabf02947, type: 2}
       propertyPath: m_IsActive
@@ -66465,6 +66844,11 @@ Prefab:
     - target: {fileID: 4180020237852750, guid: 2599758af3176b54bbaf973dabf02947, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -3.6480002
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647997365658018, guid: 2599758af3176b54bbaf973dabf02947,
+        type: 2}
+      propertyPath: UseCenterBracket
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2599758af3176b54bbaf973dabf02947, type: 2}

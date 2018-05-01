@@ -45,7 +45,6 @@ public class Scope : MonoBehaviour
 	private GameObject[] goodOre;
     private bool hasWaitedForAnimation;
 	private bool hasSentEvent = false;
-	private bool hasFirstEventBeenSent = false;
 
 	Material metalObjectMaterial;
 	Material grappleObjectMaterial;
@@ -143,12 +142,6 @@ public class Scope : MonoBehaviour
 	{
 		if (isEquipped && hasWaitedForAnimation && !hasSentEvent) 
 		{
-			if (!hasFirstEventBeenSent) 
-			{
-				gmdModel.GetComponent<VOAudio> ().TriggerVOAudio ();
-				hasFirstEventBeenSent = true;
-			}
-
 			if (ScopedIn != null) 
 			{
 				ScopedIn.Invoke(0);
