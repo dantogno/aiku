@@ -27,11 +27,13 @@ public class PowerUI : MonoBehaviour
 
     private void OnEnable()
     {
+        PowerSwitch.FailedToExchangePower += CallFlashCoroutine;
         EngineSequenceManager.OnShutdown += EnablePowerUI;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers += SwitchUIToSparePower;
     }
     private void OnDisable()
     {
+        PowerSwitch.FailedToExchangePower -= CallFlashCoroutine;
         EngineSequenceManager.OnShutdown -= EnablePowerUI;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= SwitchUIToSparePower;
     }
@@ -109,6 +111,37 @@ public class PowerUI : MonoBehaviour
 
         // Make sure the Image is completely full or completely empty.
         powerUnit.fillAmount = targetValue;
+    }
+
+    /// <summary>
+    /// When the player tries to transfer power and fails, the UI flashes.
+    /// </summary>
+    private void CallFlashCoroutine()
+    {
+        StartCoroutine(FlashUI());
+    }
+
+    /// <summary>
+    /// When the player can't take power from a powerable object because they don't have enough room, flash color.
+    /// </summary>
+    private IEnumerator FlashUI()
+    {
+        float blinkTime = .2f;
+
+        #region Flash off and on.
+
+        int numBlinks = 5;
+        for (int i = 0; i < numBlinks; i++)
+        {
+            foreach (Image image in powerUnits) image.color = Color.clear;
+            yield return new WaitForSeconds(blinkTime);
+            foreach (Image image in powerUnits) image.color = Color.white;
+            yield return new WaitForSeconds(blinkTime);
+        }
+
+        foreach (Image image in powerUnits) image.color = Color.white;
+
+        #endregion
     }
 
     /// <summary>
