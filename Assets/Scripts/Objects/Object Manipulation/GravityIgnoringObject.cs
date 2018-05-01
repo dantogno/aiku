@@ -12,27 +12,29 @@ using UnityEngine;
 
 public class GravityIgnoringObject : MonoBehaviour
 {
-
-    
+    // This Objects Rigidbody.
     private Rigidbody thisObjectsRigidbody;
 
     private void Start()
     {
         thisObjectsRigidbody = this.GetComponent<Rigidbody>();
+        SceneTransition.SceneChangeStarted += PreventGravityFromMovingObject;
+        SceneTransition.SceneChangeFinished += AllowGravityToMoveObject;
     }
-    void Update ()
-    {
-        CheckForGravityChange();
-	}
 
-    private void CheckForGravityChange()
+    // Prevents gravity from moving this object. 
+    private void PreventGravityFromMovingObject()
     {
         if (Physics.gravity == Vector3.zero)
         {
             thisObjectsRigidbody.isKinematic = true;
         }
+    }
 
-        else
+    // Allows gravity and all other forces to move this object. 
+    private void AllowGravityToMoveObject()
+    {
+        if (Physics.gravity != Vector3.zero)
         {
             thisObjectsRigidbody.isKinematic = false;
         }
