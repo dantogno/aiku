@@ -33,7 +33,11 @@ public class ActivateGrappleVO : MonoBehaviour
 	/// </summary>
 	private void ActivateVO()
 	{
-		GetComponentInChildren<VOAudio> ().TriggerVOAudio ();
+        if(GetComponentInChildren<VOAudio>() != null)
+            GetComponentInChildren<VOAudio> ().TriggerVOAudio ();
+        if(GetComponent<BoxCollider>() != null)
+            GetComponent<BoxCollider>().enabled = false;
+        this.enabled = false;
 	}
 
 	/// <summary>
@@ -47,7 +51,7 @@ public class ActivateGrappleVO : MonoBehaviour
 			hasEnteredTrigger = true;
 		}
 
-		if (timesTeleported > 1 && hasEnteredTrigger) 
+		if (timesTeleported == 3 && hasEnteredTrigger) 
 		{
 			ActivateVO ();
 		}

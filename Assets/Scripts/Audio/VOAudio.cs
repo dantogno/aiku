@@ -16,7 +16,12 @@ public class VOAudio : MonoBehaviour
     /// <summary>
     /// Event called when VOAudio is triggered
     /// </summary>
-    public static event Action<string> VOAudioTriggered;   
+    public static event Action<string> VOAudioTriggered;
+
+    /// <summary>
+    /// Event called when VOAudio has finished playing
+    /// </summary>
+    public static event Action VOAudioFinished;
 
 	// Use this for initialization
 	void Start ()
@@ -31,7 +36,16 @@ public class VOAudio : MonoBehaviour
     {
         audioSource.Play();
         if (VOAudioTriggered != null)
-            VOAudioTriggered.Invoke(Subtitle); 
+            VOAudioTriggered.Invoke(Subtitle);
+
+        if(audioSource.clip != null)
+            Invoke("SendFinishedEvent", audioSource.clip.length);
+    }
+
+    private void SendFinishedEvent()
+    {
+        if (VOAudioFinished != null)
+            VOAudioFinished.Invoke();
     }
 
     /// <summary>
