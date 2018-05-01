@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ using UnityEngine;
 
 public class PowerSwitch : PowerExchanger
 {
+    public static event Action FailedToExchangePower;
+
     // GameObjects cannot interact with a blocked power switch.
     public bool Blocked { get { return blocked; } }
 
@@ -124,6 +127,7 @@ public class PowerSwitch : PowerExchanger
             else
             {
                 StartCoroutine(BlinkErrorColor());
+                if (FailedToExchangePower != null) FailedToExchangePower.Invoke();
             }
         }
 
@@ -183,7 +187,7 @@ public class PowerSwitch : PowerExchanger
         myAudioSource.clip = powerOffAudioClip;
 
         // Random pitching for variety.
-        myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
+        myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
     }
 
     /// <summary>
@@ -199,7 +203,7 @@ public class PowerSwitch : PowerExchanger
         myAudioSource.clip = powerOnAudioClip;
 
         // Random pitching for variety.
-        myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
+        myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
     }
 
     /// <summary>
@@ -221,11 +225,11 @@ public class PowerSwitch : PowerExchanger
             myAudioSource.clip = blockedAudioClip;
 
             // Random pitching for variety.
-            myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
+            myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
         }
 
         Color originalColor = currentColor;
-        float blinkTime = .01f;
+        float blinkTime = .2f;
 
         #region Flash off and on.
 
@@ -234,7 +238,7 @@ public class PowerSwitch : PowerExchanger
         {
             SetPowerLightMaterialColor(noColor);
             yield return new WaitForSeconds(blinkTime);
-            SetPowerLightMaterialColor(noColor);
+            SetPowerLightMaterialColor(originalColor);
             yield return new WaitForSeconds(blinkTime);
         }
 
@@ -318,7 +322,7 @@ public class PowerSwitch : PowerExchanger
             myAudioSource.clip = powerOffAudioClip;
 
             // Random pitching for variety.
-            myAudioSource.pitch = Random.Range(originalPitch - .1f, originalPitch + .1f);
+            myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
 
             myAudioSource.Play();
         }
