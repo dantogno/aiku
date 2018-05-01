@@ -37,6 +37,7 @@ public class ActivateTrevorTableauVO : MonoBehaviour
     /// </summary>
     private void ActivateVO()
     {
-        GetComponent<VOAudio>().TriggerVOAudio();
+        if(GetComponent<VOAudio>() != null)
+            GetComponent<VOAudio>().TriggerVOAudio();
     }
 }

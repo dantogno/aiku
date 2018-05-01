@@ -58,7 +58,8 @@ public class ManageGMDPickup : MonoBehaviour
     /// </summary>
     private void TurnOnGMDPickupScript()
     {
-        GetComponent<PickupGMD>().enabled = true;
+        if (GetComponent<PickupGMD>() != null)
+            GetComponent<PickupGMD>().enabled = true;
     }
 
     /// <summary>
@@ -66,8 +67,10 @@ public class ManageGMDPickup : MonoBehaviour
     /// </summary>
     private void TurnOnGMDScopeFunctionality()
     {
-        GetComponent<Scope>().enabled = true;
-        GetComponent<Animator>().enabled = true;
+        if (GetComponent<Scope>() != null)
+            GetComponent<Scope>().enabled = true;
+        if (GetComponent<Animator>() != null)
+            GetComponent<Animator>().enabled = true;
     }
 
     /// <summary>
@@ -75,7 +78,8 @@ public class ManageGMDPickup : MonoBehaviour
     /// </summary>
     private void TurnOnGMDScript()
     {
-        GetComponent<GMD>().enabled = true;
+        if(GetComponent<GMD>() != null)
+            GetComponent<GMD>().enabled = true;
         this.enabled = false;
     }
 

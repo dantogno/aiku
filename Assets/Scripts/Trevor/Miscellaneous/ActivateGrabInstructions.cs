@@ -23,7 +23,8 @@ public class ActivateGrabInstructions : MonoBehaviour
     /// <param name="i"></param>
     private void ActivateInstructions(int i)
     {
-        GetComponent<VOAudio>().TriggerVOAudio();
+        if(GetComponent<VOAudio>() != null)
+            GetComponent<VOAudio>().TriggerVOAudio();
         this.enabled = false;
     }
 }

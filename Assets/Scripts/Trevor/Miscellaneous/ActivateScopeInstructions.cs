@@ -37,7 +37,8 @@ public class ActivateScopeInstructions : MonoBehaviour
     /// </summary>
     private void ActivateInstructions()
     {
-        GetComponent<VOAudio>().TriggerVOAudio();
+        if(GetComponent<VOAudio>() != null)
+            GetComponent<VOAudio>().TriggerVOAudio();
         this.enabled = false;
     }
 }

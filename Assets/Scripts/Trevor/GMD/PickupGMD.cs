@@ -30,7 +30,8 @@ public class PickupGMD : MonoBehaviour, IInteractable
 		gmdObjectTransform.SetParent (agent.transform.GetChild (0));
 		gmdObjectTransform.localPosition = new Vector3 (0.6003374f, -0.55f, 0.8120064f);
 		gmdObjectTransform.localRotation = Quaternion.Euler (0, 0, 0);
-		gmdObject.GetComponent<BoxCollider> ().enabled = false;
+        if(gmdObject.GetComponent<BoxCollider>() != null)
+            gmdObject.GetComponent<BoxCollider> ().enabled = false;
 
         GameObject.Find("Scanning Camera").SetActive(false);
 	}

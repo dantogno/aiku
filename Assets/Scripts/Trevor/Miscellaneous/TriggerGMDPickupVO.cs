@@ -22,7 +22,8 @@ public class TriggerGMDPickupVO : MonoBehaviour
     /// </summary>
     private void TriggerPickupVO()
     {
-        GetComponent<VOAudio>().TriggerVOAudio();
+        if(GetComponent<VOAudio>() != null)
+            GetComponent<VOAudio>().TriggerVOAudio();
         this.enabled = false;
     }
 }

@@ -33,6 +33,7 @@ public class ManageGMDArrow : MonoBehaviour
     /// </summary>
     private void EnableArrow()
     {
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        if(this.gameObject.transform.GetChild(0).gameObject != null)
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 }
