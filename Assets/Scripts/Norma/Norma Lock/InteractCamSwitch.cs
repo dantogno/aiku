@@ -25,6 +25,8 @@ public class InteractCamSwitch : MonoBehaviour
     private PlayerStates currentState;
     #region Camera declaration and initlization
     // Initialize the Main Camera in the IDE
+    [SerializeField]
+    [Tooltip("Drag the main Camera from the current player in the scene")]
     private Camera mainCamera;
 
     [SerializeField]
@@ -72,7 +74,6 @@ public class InteractCamSwitch : MonoBehaviour
 
     void Awake()
     {
-        mainCamera = Camera.main;
         lerpingCamera.transform.position = mainCamera.transform.position;
         lerpingCamera.gameObject.SetActive(false);
         isFocused = false;

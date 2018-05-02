@@ -88,8 +88,35 @@ public class LockInteract : MonoBehaviour, IInteractable
 
     public void Interact(GameObject interactingAgent)
     {
-        if (UsedLock != null) UsedLock.Invoke();
+        if (Time.timeScale == 1.0f)
+        {
+            if (UsedLock != null) UsedLock.Invoke();
+            CheckBracketEnabled(interactingAgent);
+        }
+
       
+    }
+
+    /// <summary>
+    /// Disables the canvas renderer when interacting with the lock
+    /// </summary>
+    private void CheckBracketEnabled(GameObject player)
+    {
+
+        switch (currentState)
+        {
+            case PlayerStates.UsingLock:
+                player.GetComponentInChildren<Canvas>().enabled = false;
+                break;
+            case PlayerStates.Roaming:
+                player.GetComponentInChildren<Canvas>().enabled = true;
+                break;
+            default:
+                break;
+        }
+
+
+
     }
 
     /// <summary>

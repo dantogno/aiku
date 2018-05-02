@@ -123,8 +123,8 @@ public class Examination : MonoBehaviour, IInteractable
 			if (isInspecting) 
 			{
 				//Resets the player to Null after the leaving the inspection 
-				Player = null;
-				FinishInspect ();
+                Player.GetComponentInChildren<Canvas>().enabled = true;
+                FinishInspect();
 			} 
 			else 
 			{
@@ -138,8 +138,10 @@ public class Examination : MonoBehaviour, IInteractable
 					playerController = Player.GetComponent<CustomRigidbodyFPSController> ();
 					//Calls for the camera component from the player.
 					mainCamera = Player.GetComponentInChildren<Camera> ();
-					//Set to true to enable the inspection sequence. 
-					isInspecting = true;
+                    //Disables The Brackets
+                    Player.GetComponentInChildren<Canvas>().enabled = false;
+                    //Set to true to enable the inspection sequence. 
+                    isInspecting = true;
 
 				}
 			}
@@ -192,7 +194,8 @@ public class Examination : MonoBehaviour, IInteractable
     ///</summary>
     public void FinishInspect()
     {
-		currentlyInspecting = false;
+        Player = null;
+        currentlyInspecting = false;
         isInspecting = false;
         //Disable Trigger to make it a collidable object. 
         GetComponent<Collider>().isTrigger = false;
