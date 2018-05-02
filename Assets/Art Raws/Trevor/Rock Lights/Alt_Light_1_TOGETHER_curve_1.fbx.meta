@@ -26,6 +26,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Emissive
     second: {fileID: 2100000, guid: d46af2ae1597dc24db9e920f06dc8546, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock
+    second: {fileID: 2100000, guid: 33658847873569140a6afb98c4ca4d2e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
