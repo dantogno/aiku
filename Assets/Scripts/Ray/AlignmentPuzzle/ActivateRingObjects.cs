@@ -23,7 +23,7 @@ public class ActivateRingObjects : ActivateObjects
     /// </summary>
     protected override void Start()
     {
-        // Disable the light at the start.
+        // Set the animation state to closed.
         if (doorAnimator != null)
         {
             doorAnimator.SetBool("isOpen", false);
@@ -43,7 +43,7 @@ public class ActivateRingObjects : ActivateObjects
         {
             soundToPlay.Play();
         }
-        // Turn on the light.
+        // Set the animation state to open.
         if (doorAnimator != null)
         {
             doorAnimator.SetBool("isOpen", true);

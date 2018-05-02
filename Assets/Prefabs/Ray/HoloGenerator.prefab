@@ -275,6 +275,8 @@ GameObject:
   - component: {fileID: 4692357150280470}
   - component: {fileID: 33105260197194842}
   - component: {fileID: 23371531360773392}
+  - component: {fileID: 65437630709720558}
+  - component: {fileID: 114035605211691230}
   m_Layer: 0
   m_Name: Button_Shutdown
   m_TagString: Untagged
@@ -909,7 +911,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1248983250200168}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -87.07094, y: 11.780655, z: 27.431993}
+  m_LocalPosition: {x: -87.07094, y: 11.825, z: 27.431993}
   m_LocalScale: {x: 3.8472059, y: 3.847206, z: 3.847206}
   m_Children:
   - {fileID: 4175086840285344}
@@ -2009,6 +2011,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04421898, y: 0.056764826, z: 0.044219047}
   m_Center: {x: -0.0028981091, y: -0.00000044889748, z: -0.0029000218}
+--- !u!65 &65437630709720558
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522847738199630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014036845, y: 0.07470636, z: 0.075858854}
+  m_Center: {x: -0.0000019057188, y: -0.0000000018626456, z: -0.000000022351747}
 --- !u!65 &65660583275226058
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2082,6 +2096,18 @@ MonoBehaviour:
   initialRotation: 0
   rotationAmount: 45
   instantRotation: 1
+--- !u!114 &114035605211691230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522847738199630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5033cebf4d432624cb61a9475d3d933a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 114282228934133886}
 --- !u!114 &114124882256086536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2094,6 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shutdownAnimator: {fileID: 95073220204767132}
+  puzzle: {fileID: 114282228934133886}
 --- !u!114 &114142802426747054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2167,7 +2194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotation: 90
+  correctRotation: 135
   emissiveMaterial: {fileID: 2100000, guid: 99672eade2e4b3d4ea28feebac037b46, type: 2}
 --- !u!114 &114677876203308162
 MonoBehaviour:
@@ -2180,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotation: 90
+  correctRotation: 315
   emissiveMaterial: {fileID: 2100000, guid: 99672eade2e4b3d4ea28feebac037b46, type: 2}
 --- !u!114 &114963611969856808
 MonoBehaviour:
@@ -2193,5 +2220,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotation: 90
+  correctRotation: 225
   emissiveMaterial: {fileID: 2100000, guid: 99672eade2e4b3d4ea28feebac037b46, type: 2}

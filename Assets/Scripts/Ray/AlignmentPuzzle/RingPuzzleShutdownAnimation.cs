@@ -12,6 +12,9 @@ public class RingPuzzleShutdownAnimation : MonoBehaviour
     [SerializeField]
     [Tooltip("The animator for the generator shutdown doors.")]
     private Animator shutdownAnimator;
+    [SerializeField]
+    [Tooltip("The puzzle which, upon completion, affects this object.")]
+    private RingPuzzle puzzle;
 
     /// <summary>
     /// Set the door to closed at the beginning.
@@ -28,13 +31,13 @@ public class RingPuzzleShutdownAnimation : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        RingPuzzle.PuzzleUnlocked += OpenDoor;
-        RingPuzzle.PuzzleLocked += CloseDoor;
+        puzzle.PuzzleUnlocked += OpenDoor;
+        puzzle.PuzzleLocked += CloseDoor;
     }
     private void OnDisable()
     {
-        RingPuzzle.PuzzleUnlocked -= OpenDoor;
-        RingPuzzle.PuzzleLocked -= CloseDoor;
+        puzzle.PuzzleUnlocked -= OpenDoor;
+        puzzle.PuzzleLocked -= CloseDoor;
     }
 
     /// <summary>
