@@ -32,7 +32,23 @@ public class PickupGMD : MonoBehaviour, IInteractable
 		gmdObjectTransform.localRotation = Quaternion.Euler (0, 0, 0);
         if(gmdObject.GetComponent<BoxCollider>() != null)
             gmdObject.GetComponent<BoxCollider> ().enabled = false;
-
         GameObject.Find("Scanning Camera").SetActive(false);
+        GameObject.Find("GMD Camera").GetComponent<Camera>().enabled = true;
+        ChangeLayerRecursive(gmdObject, LayerMask.NameToLayer("GMD"));
 	}
+
+    /// <summary>
+    /// Changes an object and its children's layer to the one specified (I got this code from the brackets script)
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="layer"></param>
+    private void ChangeLayerRecursive(GameObject target, int layer)
+    {
+        target.layer = layer;
+        for (int i = 0; i < target.transform.childCount; i++)
+        {
+            GameObject child = target.transform.GetChild(i).gameObject;
+            ChangeLayerRecursive(child, layer);
+        }
+    }
 }
