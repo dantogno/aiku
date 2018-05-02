@@ -25,7 +25,7 @@ public class GravityIgnoringObject : MonoBehaviour
     // Allows gravity and all other forces to move this object. 
     private void AllowGravityToMoveObject()
     {
-        if (Physics.gravity != Vector3.zero && this.gameObject.GetComponent<Rigidbody>() != null)
+        if (Physics.gravity != Vector3.zero && thisObjectsRigidbody != null)
         {
             thisObjectsRigidbody.isKinematic = false;
         }
