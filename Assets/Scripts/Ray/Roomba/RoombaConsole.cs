@@ -19,17 +19,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     [SerializeField]
     GameObject player;
 
-    [Tooltip("Canvas on Player Prefab, child to the scanning camera")]
-    [SerializeField]
-    Canvas playerCanvas;
-
     [Tooltip("Reference to the 'roomba' game object")]
     [SerializeField]
     GameObject roomba;
-
-    [Tooltip("Canvas on Roomba Prefab, child to the scanning camera")]
-    [SerializeField]
-    Canvas roombaCanvas;
 
     [Tooltip("Roomba Canvas on Roomba Prefab, the canvas not attached to the camera")]
     [SerializeField]
@@ -52,6 +44,13 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
     private InteractWithSelectedObject playerInteractionBehavior;
     private InteractWithSelectedObject roombaInteractionBehavior;
+
+    private Canvas playerCanvas;
+    private Canvas roombaCanvas;
+
+    private Brackets playerBrackets;
+    private Brackets roombaBrackets;
+
 
     private bool swapEnabled;
     #endregion
@@ -79,6 +78,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
         playerCanvas = player.GetComponentInChildren<Canvas>();
         roombaCanvas = roomba.GetComponentInChildren<Canvas>();
+
+        playerBrackets = player.GetComponentInChildren<Brackets>();
+        roombaBrackets = roomba.GetComponentInChildren<Brackets>();
 
         swapEnabled = false;
         #endregion
@@ -145,6 +147,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         roombaCanvas.enabled = true;
         playerCanvas.enabled = false;
 
+        roombaBrackets.enabled = true;
+        playerBrackets.enabled = false;
+
         roombaController.enabled = true;
         playerController.enabled = false;
 
@@ -165,6 +170,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
         roombaCanvas.enabled = false;
         playerCanvas.enabled = true;
+
+        roombaBrackets.enabled = false;
+        playerBrackets.enabled = true;
 
         roombaController.enabled = false;
         playerController.enabled = true;
