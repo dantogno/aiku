@@ -101,6 +101,7 @@ public class Examination : MonoBehaviour, IInteractable
 	private static bool currentlyInspecting = false;
 
     #endregion
+    private GameObject Brackets;
 
     /// <summary>
     /// Sets the starting position and rotational value of the object upon start.
@@ -113,6 +114,8 @@ public class Examination : MonoBehaviour, IInteractable
         isInspecting = false;
         StartPos = gameObject.transform.position;
         originalRotationValue = gameObject.transform.rotation;
+        Brackets = GameObject.FindGameObjectWithTag("BracketArea");
+
     }
 
     public void Interact(GameObject agentInteracting)
@@ -122,8 +125,8 @@ public class Examination : MonoBehaviour, IInteractable
 		{
 			if (isInspecting) 
 			{
-				//Resets the player to Null after the leaving the inspection 
-                Player.GetComponentInChildren<Canvas>().enabled = true;
+                //Resets the player to Null after the leaving the inspection  Activates the Brackets 
+                Brackets.SetActive(true);
                 FinishInspect();
 			} 
 			else 
@@ -139,7 +142,7 @@ public class Examination : MonoBehaviour, IInteractable
 					//Calls for the camera component from the player.
 					mainCamera = Player.GetComponentInChildren<Camera> ();
                     //Disables The Brackets
-                    Player.GetComponentInChildren<Canvas>().enabled = false;
+                    Brackets.SetActive(false);
                     //Set to true to enable the inspection sequence. 
                     isInspecting = true;
 

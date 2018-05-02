@@ -30,6 +30,9 @@ public class LockInteract : MonoBehaviour, IInteractable
     private Quaternion originalRotationValue; //remember the initial rotational value
     private int rotatedBy = 36;
 
+    private GameObject Brackets;
+
+
     #region Public Variables in Inspector
     [Header("Type of Lock")]
     [SerializeField]
@@ -66,6 +69,8 @@ public class LockInteract : MonoBehaviour, IInteractable
 
         unlockAnimation = GetComponent<Animator>();
         unlockAnimation.enabled = false;
+
+        Brackets = GameObject.FindGameObjectWithTag("BracketArea");
     }
 
 
@@ -106,10 +111,10 @@ public class LockInteract : MonoBehaviour, IInteractable
         switch (currentState)
         {
             case PlayerStates.UsingLock:
-                player.GetComponentInChildren<Canvas>().enabled = false;
+                Brackets.SetActive(false);
                 break;
             case PlayerStates.Roaming:
-                player.GetComponentInChildren<Canvas>().enabled = true;
+                Brackets.SetActive(true);
                 break;
             default:
                 break;
