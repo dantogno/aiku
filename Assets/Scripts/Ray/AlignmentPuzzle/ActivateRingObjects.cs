@@ -6,7 +6,7 @@ using UnityEngine;
 /// This script can go on any object that can be interacted with.
 /// This is a specialized version of ActivateObjects which
 /// enables a number of objects. This script also plays a sound
-/// and turns on a light when it is interacted with.
+/// and animates the door when it is interacted with.
 /// </summary>
 public class ActivateRingObjects : ActivateObjects
 {
@@ -15,18 +15,18 @@ public class ActivateRingObjects : ActivateObjects
     private AudioSource soundToPlay;
 
     [SerializeField]
-    [Tooltip("The light to turn on when this object is interacted with.")]
-    private Light terminalLight;
+    [Tooltip("The animator that opens the hologram door.")]
+    private Animator doorAnimator;
 
     /// <summary>
     /// Disable the connected light and GameObjects.
     /// </summary>
     protected override void Start()
     {
-        // Disable the light at the start.
-        if (terminalLight != null)
+        // Set the animation state to closed.
+        if (doorAnimator != null)
         {
-            terminalLight.enabled = false;
+            doorAnimator.SetBool("isOpen", false);
         }
         // Defer other functionality to parent class.
         base.Start();
@@ -43,12 +43,12 @@ public class ActivateRingObjects : ActivateObjects
         {
             soundToPlay.Play();
         }
-        // Turn on the light.
-        if(terminalLight != null)
+        // Set the animation state to open.
+        if (doorAnimator != null)
         {
-            terminalLight.enabled = true;
+            doorAnimator.SetBool("isOpen", true);
         }
-        // Defer othehr interact functionality to parent class.
+        // Defer other interact functionality to parent class.
         base.Interact(agentInteracting);
     }
 }

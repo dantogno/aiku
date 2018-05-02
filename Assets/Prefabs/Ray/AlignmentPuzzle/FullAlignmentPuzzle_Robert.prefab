@@ -16851,8 +16851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondingLight: {fileID: 108631188587305656}
   correctRotation: 180
+  emissiveMaterial: {fileID: 0}
 --- !u!114 &114111119498245768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17830,8 +17830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondingLight: {fileID: 108062958816710424}
   correctRotation: 135
+  emissiveMaterial: {fileID: 0}
 --- !u!114 &114130562879681952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17882,8 +17882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondingLight: {fileID: 108024828481334680}
   correctRotation: 315
+  emissiveMaterial: {fileID: 0}
 --- !u!114 &114169266732754690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18198,7 +18198,7 @@ MonoBehaviour:
   - {fileID: 1076668151939940}
   - {fileID: 1438708485086194}
   soundToPlay: {fileID: 82560532624399650}
-  terminalLight: {fileID: 108984389044464612}
+  doorAnimator: {fileID: 0}
 --- !u!114 &114273263915372444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82403,6 +82403,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bridgeOriginPoint: {fileID: 1024741358534972}
   bridgeEndPoint: {fileID: 1849030029034270}
+  puzzle: {fileID: 114273263915372444}
+  timeToAnimate: 2
 --- !u!114 &114508966765548826
 MonoBehaviour:
   m_ObjectHideFlags: 1

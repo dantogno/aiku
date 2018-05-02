@@ -16,15 +16,18 @@ public class Ring : MonoBehaviour
     public event Action RingStateChanged;
 
     [SerializeField]
-    [Tooltip("A light that turns on when the object in in the correct position.")]
-    private Light correspondingLight;
-    [SerializeField]
     [Tooltip("The correct rotation in degrees for this object. So far this only works for the Y axis.")]
     [Range(0, 360)]
     private float correctRotation = 0;
 
     // This is the current Y axis rotation of the object.
     private float currentRotation;
+
+    private MeshRenderer meshRenderer;
+    private Material nonEmissiveMaterial;
+    [SerializeField]
+    [Tooltip("The emissive material replacement for when the dial is in the correct spot.")]
+    private Material emissiveMaterial;
 
     /// <summary>
     /// Is the object in the correct rotational position?
@@ -36,10 +39,10 @@ public class Ring : MonoBehaviour
     /// </summary>
 	private void Start ()
     {
-        // Disable the light that indicates whether the object is in the correct place.
-        if(correspondingLight != null)
+        meshRenderer = GetComponent<MeshRenderer>();
+        if(meshRenderer != null)
         {
-            correspondingLight.enabled = false;
+            nonEmissiveMaterial = meshRenderer.material;
         }
         // Set the current rotation to its initial value
         currentRotation = this.transform.localRotation.y;
@@ -53,7 +56,7 @@ public class Ring : MonoBehaviour
     public void Rotate(Vector3 amountToRotate)
     {
         // This script currently only cares about the y rotation of the object.
-        currentRotation += amountToRotate.y;
+        currentRotation += amountToRotate.x;
         // If the object has gone full circle or beyond, make sure to reset it.
         if(currentRotation > 360)
         {
@@ -75,16 +78,22 @@ public class Ring : MonoBehaviour
         // If the object is in the correct place...
         if (currentRotation == correctRotation)
         {
-            // ... enable the light and change the boolean accordingly.
+            // ... turn on the emissive and change the boolean accordingly.
             IsRotationCorrect = true;
-            correspondingLight.enabled = true;
+            if(meshRenderer != null)
+            {
+                meshRenderer.material = emissiveMaterial;
+            }
         }
         // If not...
         else
         {
-            // ... disable the light and change the boolean accordingly 
+            // ... turn on the emissive and change the boolean accordingly 
             IsRotationCorrect = false;
-            correspondingLight.enabled = false;
+            if(meshRenderer != null)
+            {
+                meshRenderer.material = nonEmissiveMaterial;
+            }
         }
     }
 }

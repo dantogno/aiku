@@ -16,6 +16,9 @@ public class RingPuzzleDoor : MonoBehaviour
     [SerializeField]
     [Tooltip("The end point of this door. This is where it goes when it is open. Used for psuedo-animation")]
     private GameObject bridgeEndPoint;
+    [SerializeField]
+    [Tooltip("The puzzle which, upon completion, affects this object.")]
+    private RingPuzzle puzzle;
 
     [SerializeField]
     [Tooltip("How long should it take the door to open/close?")]
@@ -29,16 +32,16 @@ public class RingPuzzleDoor : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        RingPuzzle.PuzzleUnlocked += OnPuzzleUnlocked;
-        RingPuzzle.PuzzleLocked += OnPuzzleLocked; ;
+        puzzle.PuzzleUnlocked += OnPuzzleUnlocked;
+        puzzle.PuzzleLocked += OnPuzzleLocked; ;
     }
     /// <summary>
     /// Unsubscribe to when the puzzle is completed or uncompleted.
     /// </summary>
     private void OnDisable()
     {
-        RingPuzzle.PuzzleUnlocked -= OnPuzzleUnlocked;
-        RingPuzzle.PuzzleLocked -= OnPuzzleLocked; ;
+        puzzle.PuzzleUnlocked -= OnPuzzleUnlocked;
+        puzzle.PuzzleLocked -= OnPuzzleLocked; ;
     }
 
     /// <summary>

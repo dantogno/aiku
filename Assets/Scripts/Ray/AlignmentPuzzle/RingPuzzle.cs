@@ -13,11 +13,11 @@ public class RingPuzzle : MonoBehaviour
     /// <summary>
     /// Invoked when the puzzle is solved.
     /// </summary>
-    public static event Action PuzzleUnlocked;
+    public event Action PuzzleUnlocked;
     /// <summary>
     /// Invoked when the puzzle is unsolved.
     /// </summary>
-    public static event Action PuzzleLocked;
+    public event Action PuzzleLocked;
 
     [SerializeField]
     [Tooltip("When all of these rings are in the correct position, the puzzle is completed.")]
@@ -59,13 +59,19 @@ public class RingPuzzle : MonoBehaviour
         // Only sent the moment the puzzle has been completed.
         if (puzzleComplete)
         {
-            PuzzleUnlocked.Invoke();
+            if(PuzzleUnlocked!= null)
+            {
+                PuzzleUnlocked.Invoke();
+            }
             hasSentLockedEvent = false;
         }
         // Only sent the moment the puzzle stops being completed.
         else if (hasSentLockedEvent == false)
         {
-            PuzzleLocked.Invoke();
+            if(PuzzleLocked != null)
+            {
+                PuzzleLocked.Invoke();
+            }
             hasSentLockedEvent = true;
         }
     }
