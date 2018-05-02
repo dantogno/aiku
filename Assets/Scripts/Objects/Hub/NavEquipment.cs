@@ -63,13 +63,13 @@ public class NavEquipment : MonoBehaviour
     {
         Color targetColor = fadeIn ? Color.white : Color.black,
             originalColor = m.color,
-            newColor = originalColor;
+            currentColor = originalColor;
 
         float elapsedTime = 0;
         while (elapsedTime < fadeTime)
         {
-            newColor = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
-            m.SetColor("_EmissionColor", newColor);
+            currentColor = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
+            m.SetColor("_EmissionColor", currentColor);
 
             yield return new WaitForEndOfFrame();
             elapsedTime += Time.deltaTime;

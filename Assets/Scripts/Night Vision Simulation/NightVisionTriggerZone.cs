@@ -19,7 +19,7 @@ public class NightVisionTriggerZone : MonoBehaviour
 
     private enum ZoneType { Trigger, Switch }
 
-    private bool generatorBlewUp = false;
+    private bool generatorBlewUp = false, nightVisionIsOn = false;
 
     private void Awake()
     {
@@ -43,13 +43,13 @@ public class NightVisionTriggerZone : MonoBehaviour
         if (connectedPowerable != null) connectedPowerable.OnPoweredOff -= TurnOnNightVision;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         bool canActivateNightVision =
             other.tag == "Player" && generatorBlewUp && zoneType == ZoneType.Trigger;
 
-        // When the player enters a trigger, activate night vision.
-        if (canActivateNightVision)
+        // When the player is inside a trigger, activate night vision.
+        if (canActivateNightVision && !nightVisionIsOn)
         {
             TurnOnNightVision();
         }
@@ -97,6 +97,8 @@ public class NightVisionTriggerZone : MonoBehaviour
             nightVision.enabled = true;
 
             nightVision.StartScanning();
+
+            nightVisionIsOn = true;
         }
     }
 
@@ -114,6 +116,8 @@ public class NightVisionTriggerZone : MonoBehaviour
 
             // We are not using night vision anymore, so we 
             glitchEffect.enabled = true;
+
+            nightVisionIsOn = false;
         }
     }
 }
