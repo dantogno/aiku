@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class Cryochamber : PowerableObject
 {
-    public static event Action AddedPowerToCryochamber;
+    public static event Action AddedPowerToCryochamber, AddedPowerToCryochamberForFirstTime;
 
     [SerializeField, Tooltip("Light to toggle based on power level.")]
     private GameObject poweredLight, emergencyLight;
@@ -20,7 +20,7 @@ public class Cryochamber : PowerableObject
     private GameObject sceneChanger, ordinaryMonitor;
 
     // The player can only enter levels after the generator explodes and before they have transferred all available power to the cryochambers.
-    private bool canEnterLevels = true;
+    private bool canEnterLevels = true, addedPowerForFirstTime = false;
 
     private void OnEnable()
     {
@@ -69,6 +69,12 @@ public class Cryochamber : PowerableObject
             ordinaryMonitor.SetActive(false);
 
             if (AddedPowerToCryochamber != null) AddedPowerToCryochamber.Invoke();
+
+            if (!addedPowerForFirstTime && AddedPowerToCryochamberForFirstTime != null)
+            {
+                AddedPowerToCryochamberForFirstTime.Invoke();
+                addedPowerForFirstTime = true;
+            }
         }
     }
 

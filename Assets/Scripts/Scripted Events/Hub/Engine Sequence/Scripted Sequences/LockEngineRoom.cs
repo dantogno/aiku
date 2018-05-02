@@ -11,7 +11,7 @@ using UnityEngine;
 public class LockEngineRoom : MonoBehaviour
 {
     [SerializeField, Tooltip("After what event do you want the door to lock?")]
-    private Task task;
+    private Task task, sosTask;
 
     [SerializeField, Tooltip("Cargo Hold or Engine Room Door - the actual L_Door Object.")]
     private Door door1;
@@ -22,18 +22,29 @@ public class LockEngineRoom : MonoBehaviour
     private void OnEnable()
     {
         task.OnTaskCompleted += LockDoors;
+        sosTask.OnTaskCompleted += UnlockDoors;
     }
     private void OnDisable()
     {
         task.OnTaskCompleted -= LockDoors;
+        sosTask.OnTaskCompleted -= UnlockDoors;
     }
 
     /// <summary>
-    /// Currently, these doors will stay locked for the rest of the game.
+    /// Lock the doors when the player enters the engine room for the generator sequence.
     /// </summary>
     private void LockDoors()
     {
         door1.LockDoor();
         door2.LockDoor();
+    }
+
+    /// <summary>
+    /// Unlock the doors when the player gets out of the elevator.
+    /// </summary>
+    private void UnlockDoors()
+    {
+        door1.UnlockDoor();
+        door2.UnlockDoor();
     }
 }

@@ -70,7 +70,7 @@ public class CameraShake : MonoBehaviour
     private IEnumerator PipeShake()
     {
         // The pipe bursting shouldn't be a big shake, so we split the generator shake values in half.
-        explosionShakeTimer /= 2;
+        explosionShakeTimer /= 4;
         explosionShakeMagnitude /= 2;
 
         Vector3 originalCamPos = Camera.main.transform.localPosition;
@@ -95,7 +95,7 @@ public class CameraShake : MonoBehaviour
         Camera.main.transform.localPosition = originalCamPos;
 
         // We return the explosion variables to their original values.
-        explosionShakeTimer *= 2;
+        explosionShakeTimer *= 4;
         explosionShakeMagnitude *= 2;
     }
 }

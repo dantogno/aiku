@@ -14,15 +14,19 @@ public class NavEquipment : MonoBehaviour
 
     private MeshRenderer myRenderer;
     private PowerableObject myPowerable;
-    private Material computerMaterial;
+    private List<Material> computerMaterials;
 
     private void Awake()
     {
         myRenderer = GetComponent<MeshRenderer>();
         myPowerable = GetComponent<PowerableObject>();
 
-        // The third material in this mesh renderer's material array is the one for the computer monitors.
-        computerMaterial = myRenderer.materials[2];
+        computerMaterials = new List<Material>();
+        
+        foreach (Material m in myRenderer.materials)
+        {
+            computerMaterials.Add(m);
+        }
     }
 
     private void OnEnable()
@@ -41,7 +45,7 @@ public class NavEquipment : MonoBehaviour
     /// </summary>
     private void TurnOffScreens()
     {
-        StartCoroutine(FadeScreens(false));
+        foreach (Material m in computerMaterials) StartCoroutine(FadeScreens(m, false));
     }
 
     /// <summary>
@@ -49,26 +53,28 @@ public class NavEquipment : MonoBehaviour
     /// </summary>
     private void TurnOnScreens()
     {
-        StartCoroutine(FadeScreens(true));
+        foreach (Material m in computerMaterials) StartCoroutine(FadeScreens(m, true));
     }
 
     /// <summary>
     /// Gradually change the color of the screens.
     /// </summary>
-    private IEnumerator FadeScreens(bool fadeIn)
+    private IEnumerator FadeScreens(Material m, bool fadeIn)
     {
         Color targetColor = fadeIn ? Color.white : Color.black,
-            originalColor = computerMaterial.color;
+            originalColor = m.color,
+            currentColor = originalColor;
 
         float elapsedTime = 0;
         while (elapsedTime < fadeTime)
         {
-            computerMaterial.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
+            currentColor = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
+            m.SetColor("_EmissionColor", currentColor);
 
             yield return new WaitForEndOfFrame();
             elapsedTime += Time.deltaTime;
         }
 
-        computerMaterial.color = targetColor;
+        m.SetColor("_EmissionColor", targetColor);
     }
 }
