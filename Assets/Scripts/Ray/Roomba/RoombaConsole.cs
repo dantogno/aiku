@@ -19,9 +19,21 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     [SerializeField]
     GameObject player;
 
+    [Tooltip("Canvas on Player Prefab, child to the scanning camera")]
+    [SerializeField]
+    Canvas playerCanvas;
+
     [Tooltip("Reference to the 'roomba' game object")]
     [SerializeField]
     GameObject roomba;
+
+    [Tooltip("Canvas on Roomba Prefab, child to the scanning camera")]
+    [SerializeField]
+    Canvas roombaCanvas;
+
+    [Tooltip("Roomba Canvas on Roomba Prefab, the canvas not attached to the camera")]
+    [SerializeField]
+    Canvas swapCanvas;
 
     [Tooltip("If true, player starts as roomba. If false player starts as player")]
     [SerializeField]
@@ -65,6 +77,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         playerInteractionBehavior = player.GetComponentInChildren<InteractWithSelectedObject>();
         roombaInteractionBehavior = roomba.GetComponentInChildren<InteractWithSelectedObject>();
 
+        playerCanvas = player.GetComponentInChildren<Canvas>();
+        roombaCanvas = roomba.GetComponentInChildren<Canvas>();
+
         swapEnabled = false;
         #endregion
 
@@ -77,7 +92,7 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         {
             DeactivateRoomba();
         }
-        roomba.GetComponentInChildren<Canvas>().enabled = false;
+        swapCanvas.enabled = false;
     }
 
     // Update is called once per frame
@@ -93,7 +108,7 @@ public class RoombaConsole : MonoBehaviour, IInteractable
                 if (swapEnabled)
                 {
                     SwitchControllers();
-                    roomba.GetComponentInChildren<Canvas>().enabled = false;
+                    swapCanvas.enabled = false;
                 }
             }
         }
@@ -127,6 +142,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         roombaCam.enabled = true;
         playerCam.enabled = false;
 
+        roombaCanvas.enabled = true;
+        playerCanvas.enabled = false;
+
         roombaController.enabled = true;
         playerController.enabled = false;
 
@@ -144,6 +162,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
         roombaCam.enabled = false;
         playerCam.enabled = true;
+
+        roombaCanvas.enabled = false;
+        playerCanvas.enabled = true;
 
         roombaController.enabled = false;
         playerController.enabled = true;
