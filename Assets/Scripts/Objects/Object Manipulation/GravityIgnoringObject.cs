@@ -18,23 +18,14 @@ public class GravityIgnoringObject : MonoBehaviour
     private void Start()
     {
         thisObjectsRigidbody = this.GetComponent<Rigidbody>();
-        SceneTransition.SceneChangeStarted += PreventGravityFromMovingObject;
+        thisObjectsRigidbody.isKinematic = true;
         SceneTransition.SceneChangeFinished += AllowGravityToMoveObject;
-    }
-
-    // Prevents gravity from moving this object. 
-    private void PreventGravityFromMovingObject()
-    {
-        if (Physics.gravity == Vector3.zero)
-        {
-            thisObjectsRigidbody.isKinematic = true;
-        }
     }
 
     // Allows gravity and all other forces to move this object. 
     private void AllowGravityToMoveObject()
     {
-        if (Physics.gravity != Vector3.zero)
+        if (Physics.gravity != Vector3.zero && this.gameObject.GetComponent<Rigidbody>() != null)
         {
             thisObjectsRigidbody.isKinematic = false;
         }
