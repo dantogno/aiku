@@ -83,38 +83,6 @@ public class EnvironmentTransition : MonoBehaviour {
 	private float IntervalTime;
 
     #endregion
-    [Space(10)]
-
-    #region Subtitle Track
-    [Header("Subtitles Track")]
-
-    [SerializeField]
-    [Tooltip("Time between track 1 and track 2")]
-    private int WaitTime;
-
-    [SerializeField]
-    [Tooltip("Drag the text field from the canvas here")]
-    private Text subtitleText;
-    [SerializeField]
-    [Tooltip("First Track to Play goes here")]
-    private string track1;
-    [SerializeField]
-    [Tooltip("Second Track to Play goes here")]
-    private string track2;
-    [SerializeField]
-    [Tooltip("Third Track to Play goes here")]
-    private string track3;
-    [SerializeField]
-    [Tooltip("Fourth Track to Play goes here")]
-    private string track4;
-    [SerializeField]
-    [Tooltip("Fifth Track to Play goes here")]
-    private string track5;
-    [SerializeField]
-    [Tooltip("Sixth Track to Play goes here")]
-    private string track6;
-
-    #endregion
 
 
     // Calls the other scripts to check if all booleans are in check and to hide/enable gameobjects
@@ -129,7 +97,6 @@ public class EnvironmentTransition : MonoBehaviour {
         AssignVariables();
         SetFogDesity();
         DisableConfetti();
-        DisableSubtitles();        
 	}
 
     /// <summary>
@@ -255,10 +222,6 @@ public class EnvironmentTransition : MonoBehaviour {
     private void DisableCrowds()
     {
         Crowd.SetActive(false);
-    }
-    private void DisableSubtitles()
-    {
-        subtitleText.enabled = false;
     }
     private void DisableConfetti()
     {
