@@ -12,6 +12,12 @@ public class PickupGMD : MonoBehaviour, IInteractable
 {
     public static event Action PickedUpGMD;
 
+    [SerializeField, Tooltip("Name of Trevor scene. Only applicable for GMD functionality in Trevor level.")]
+    private string trevorLevelName = "TrevorLevelGDC";
+
+    [SerializeField, Tooltip("The GMD's camera.")]
+    private Camera gmdCam;
+
     /// <summary>
     /// Update is needed to enable/disable script
     /// </summary>
@@ -39,9 +45,14 @@ public class PickupGMD : MonoBehaviour, IInteractable
             GetComponent<Animator>().enabled = true;
         if (GetComponent<GMD>() != null)
             GetComponent<GMD>().enabled = true;
-        if(SceneManager.GetActiveScene().name == "TrevorLevelGDC")
-            GameObject.Find("Scanning Camera").SetActive(false);
-        GameObject.Find("GMD Camera").GetComponent<Camera>().enabled = true;
+
+        GameObject brackets = GameObject.FindGameObjectWithTag("BracketArea");
+
+        if (SceneManager.GetActiveScene().name == trevorLevelName && brackets != null)
+            brackets.SetActive(false);
+        if (gmdCam != null)
+            gmdCam.enabled = true;
+
         ChangeLayerRecursive(gmdObject, LayerMask.NameToLayer("GMD"));
 	}
 

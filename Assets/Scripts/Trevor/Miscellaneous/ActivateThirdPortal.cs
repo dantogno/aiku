@@ -15,11 +15,13 @@ public class ActivateThirdPortal : MonoBehaviour
 	private void OnEnable()
 	{
 		PortalNew.PlayerTeleported += IncrementTimesTeleported;
-	}
+		PortalNew.PlayerTeleported += CheckIfPortalShouldActivate;
+    }
 
 	private void OnDisable()
 	{
-		PortalNew.PlayerTeleported -= CheckIfPortalShouldActivate;
+		PortalNew.PlayerTeleported -= IncrementTimesTeleported;
+        PortalNew.PlayerTeleported -= CheckIfPortalShouldActivate;
 	}
 
 	/// <summary>
@@ -47,8 +49,14 @@ public class ActivateThirdPortal : MonoBehaviour
 	/// </summary>
 	private void ActivatePortal()
 	{
-		GetComponent<PortalNew> ().enabled = true;
-		GetComponent<GlitchValueGenerator> ().enabled = true;
-        fuelCleaner.SetActive(true);
+        PortalNew portal = GetComponent<PortalNew>();
+        GlitchValueGenerator glitch = GetComponent<GlitchValueGenerator>();
+
+        if (portal != null)
+            portal.enabled = true;
+        if (glitch != null)
+            glitch.enabled = true;
+        if (fuelCleaner != null)
+            fuelCleaner.SetActive(true);
 	}
 }

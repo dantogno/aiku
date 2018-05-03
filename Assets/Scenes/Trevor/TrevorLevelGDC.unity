@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0021744387, g: 0.0047774343, b: 0.0066589573, a: 1}
+  m_IndirectSpecularColor: {r: 0.0021918043, g: 0.0047978703, b: 0.006652072, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -28520,6 +28520,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114977302996583322, guid: f8c4d6d5cd2e642869cd83743ae80145,
+        type: 2}
+      propertyPath: gmdCam
+      value: 
+      objectReference: {fileID: 243996516}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8c4d6d5cd2e642869cd83743ae80145, type: 2}
   m_IsPrefabParent: 0
@@ -60399,7 +60404,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh642654
+  m_Name: pb_Mesh2289096
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -68460,6 +68465,10 @@ Prefab:
         type: 2}
       propertyPath: UseCenterBracket
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621984103180718, guid: 2599758af3176b54bbaf973dabf02947, type: 2}
+      propertyPath: m_TagString
+      value: BracketArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2599758af3176b54bbaf973dabf02947, type: 2}
