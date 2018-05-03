@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1546561527220404}
   m_IsPrefabParent: 1
+--- !u!1 &1071483444063366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4793355115007046}
+  m_Layer: 11
+  m_Name: GMD Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1136055247119808
 GameObject:
   m_ObjectHideFlags: 1
@@ -45,23 +60,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1546336337276984
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4415708134055162}
-  - component: {fileID: 114765734850359410}
-  - component: {fileID: 82806117420325548}
-  m_Layer: 11
-  m_Name: GMD Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1546561527220404
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,20 +68,38 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4633774183962648}
-  - component: {fileID: 114738393075721906}
-  - component: {fileID: 114366455084744224}
-  - component: {fileID: 114021672600867850}
-  - component: {fileID: 114651867991178566}
-  - component: {fileID: 65195673789760330}
-  - component: {fileID: 95228220714354620}
-  - component: {fileID: 82121407700967246}
-  m_Layer: 9
+  - component: {fileID: 114832743008455266}
+  - component: {fileID: 114383487994101754}
+  - component: {fileID: 114977302996583322}
+  - component: {fileID: 114301410496164042}
+  - component: {fileID: 65633393607256034}
+  - component: {fileID: 95459847009163890}
+  - component: {fileID: 82741403408597624}
+  m_Layer: 11
   m_Name: GMD Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1743805890586568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4623169897449650}
+  - component: {fileID: 82639313711586864}
+  - component: {fileID: 114581848584954172}
+  - component: {fileID: 114553446365689290}
+  m_Layer: 11
+  m_Name: Audio Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4109588470656834
 Transform:
   m_ObjectHideFlags: 1
@@ -94,7 +110,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4415708134055162}
+  m_Father: {fileID: 4793355115007046}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4341314735559258
@@ -107,23 +123,21 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4415708134055162}
+  m_Father: {fileID: 4793355115007046}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4415708134055162
+--- !u!4 &4623169897449650
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546336337276984}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1743805890586568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4341314735559258}
-  - {fileID: 4109588470656834}
+  m_Children: []
   m_Father: {fileID: 4633774183962648}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4633774183962648
 Transform:
@@ -135,10 +149,26 @@ Transform:
   m_LocalPosition: {x: -37.2965, y: 27.147, z: 81.186}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_Children:
-  - {fileID: 4415708134055162}
+  - {fileID: 4793355115007046}
+  - {fileID: 4623169897449650}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.125, y: 90.00001, z: 0}
+--- !u!4 &4793355115007046
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071483444063366}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4341314735559258}
+  - {fileID: 4109588470656834}
+  m_Father: {fileID: 4633774183962648}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23023218130662200
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -221,7 +251,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136055247119808}
   m_Mesh: {fileID: 4300000, guid: 3c52475a397789f44b57d64a9aaa9592, type: 3}
---- !u!65 &65195673789760330
+--- !u!65 &65633393607256034
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -233,7 +263,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 86.1282, y: 176.59746, z: 463.5639}
   m_Center: {x: -0.56674516, y: 3.3149047, z: 16.59274}
---- !u!82 &82121407700967246
+--- !u!82 &82639313711586864
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743805890586568}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bdb44a4e60d25c44fbc8e0f8ece1f614, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82741403408597624
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -244,7 +354,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d423195baf8a85b4abdd51703a4b229b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -313,87 +423,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82806117420325548
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546336337276984}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!95 &95228220714354620
+--- !u!95 &95459847009163890
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -410,19 +440,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114021672600867850
+--- !u!114 &114301410496164042
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546561527220404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f67502b0adae7a44cbcddba6044107c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c8826a134ba17a46b64b7ece14cd185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arrow: {fileID: 0}
---- !u!114 &114366455084744224
+--- !u!114 &114383487994101754
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -441,21 +470,49 @@ MonoBehaviour:
   rayCastDistance: 10
   grappleSpeed: 10
   grappleOffset: 0.9
+  grabSound: {fileID: 8300000, guid: d423195baf8a85b4abdd51703a4b229b, type: 3}
   isGrabbingObject: 0
---- !u!114 &114651867991178566
+--- !u!114 &114553446365689290
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546561527220404}
+  m_GameObject: {fileID: 1743805890586568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c015da5e2e0bb4a8331837621b1f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114581848584954172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743805890586568}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subtitle: 'Norma: Your new GMD has a scope you can use to inspect the things around
-    you.~ Give it a shot! (Right-Click)'
---- !u!114 &114738393075721906
+  Subtitle: "Norma: The Geological Manipulation Device utilizes a small portable tractor
+    beam to move objects up to thirty kilograms.\n     ~\nNorma: The scope can be
+    calibrated for any element or compound which is-~\nNorma: we can skip all this,
+    you probably already read that stuff. Give me a minute.~\nNorma: Okay, safety...Hold
+    on...Okay. Trevor?\n            ~\nTrevor: Yep. Waiting.~\nNorma: Do you remember
+    what types of deposits you're collecting?~\nTrevor: Helium 3.~\nNorma: Helium
+    is a-?~\nTrevor: Yes, on an asteroid, in space, helium is trapped within ore.
+    The ore contains helium. I am collecting helium.~\nNorma: Alright, alright. Hold
+    on...Okay, it says that if calibrated incorrectly for a noble gas, the targeting
+    can become erratic within four meters. Is helium-         ~\nTrevor: Yes. Helium
+    is a noble gas.~\nTrevor: With respect, I read-~\nNorma: Hold on. The precautions
+    are different for different elements.~\nNorma: This thing cost a lot of money,
+    and I want to make sure we-~\nTrevor: Norma, I read the manual. I know how to
+    use the GMD.~\nNorma: I know you're anxious, Trevor. But I had to jump through
+    a lot of hoops to get you this tool. Just give me a second here.~\nNorma: Let's
+    just go through the safety checks. One is straightforward enough, never touch
+    the little red button.~\nNorma: Trevor? Trevor can you hear me?\n     ~\nNorma:
+    Something is wrong, go to the cockpit.\n  ~"
+--- !u!114 &114832743008455266
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -468,22 +525,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lensMask: {fileID: 0}
   overlay: {fileID: 0}
-  gmdModel: {fileID: 1546336337276984}
+  gmdModel: {fileID: 1071483444063366}
   gmdCameraObject: {fileID: 0}
-  zoomAnimator: {fileID: 95228220714354620}
+  zoomAnimator: {fileID: 95459847009163890}
   character: {fileID: 0}
+  zoomIn: {fileID: 8300000, guid: a0aa26f2bb47ea54fa83904d4a7c05a5, type: 3}
+  zoomOut: {fileID: 8300000, guid: b6089287bdc83e0479e3867200c0b7d9, type: 3}
   isEquipped: 0
---- !u!114 &114765734850359410
+--- !u!114 &114977302996583322
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546336337276984}
+  m_GameObject: {fileID: 1546561527220404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ca3cedc607145469afccba6ce81236, type: 3}
+  m_Script: {fileID: 11500000, guid: f67502b0adae7a44cbcddba6044107c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subtitle: 'Norma: The GMD''s scope will highlight certain objects for you.~ Yellow
-    objects can be mined for resources - like the Helium-3 you''ll be mining today.~
-    And red objects can be picked up and moved around.~ '

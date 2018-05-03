@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -32,7 +33,14 @@ public class PickupGMD : MonoBehaviour, IInteractable
 		gmdObjectTransform.localRotation = Quaternion.Euler (0, 0, 0);
         if(gmdObject.GetComponent<BoxCollider>() != null)
             gmdObject.GetComponent<BoxCollider> ().enabled = false;
-        GameObject.Find("Scanning Camera").SetActive(false);
+        if (GetComponent<Scope>() != null)
+            GetComponent<Scope>().enabled = true;
+        if (GetComponent<Animator>() != null)
+            GetComponent<Animator>().enabled = true;
+        if (GetComponent<GMD>() != null)
+            GetComponent<GMD>().enabled = true;
+        if(SceneManager.GetActiveScene().name == "TrevorLevelGDC")
+            GameObject.Find("Scanning Camera").SetActive(false);
         GameObject.Find("GMD Camera").GetComponent<Camera>().enabled = true;
         ChangeLayerRecursive(gmdObject, LayerMask.NameToLayer("GMD"));
 	}

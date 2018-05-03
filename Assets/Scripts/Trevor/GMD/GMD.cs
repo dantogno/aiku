@@ -189,6 +189,7 @@ public class GMD : MonoBehaviour
 			{
 				isGrabbingObject = true;
 				objectRigidbody.useGravity = false;
+                objectRigidbody.isKinematic = false;
 				objectRigidbody.transform.position = smoothedPosition;
 				if (!hasSentEvent) 
 				{

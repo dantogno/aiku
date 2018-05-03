@@ -20,7 +20,11 @@ public class CrystalPickUp : MonoBehaviour
 	[Tooltip("The amount of time it takes to pull the crystal out of the wall")]
 	[SerializeField] private float pickupDelayTime = 3f;
 
+    [Tooltip("The player game object")]
     [SerializeField] private GameObject player;
+
+    [Tooltip("An audio source with the rumble sound attached")]
+    [SerializeField] private AudioSource rumbleSound;
 
 	public static event Action ActivateSecondPortal;
 
@@ -55,7 +59,7 @@ public class CrystalPickUp : MonoBehaviour
     {
 		if (shouldMoveCrystal)
         {
-            
+            rumbleSound.Stop();
             EnableRubblePhysics(rubble);
             float step = 15 * Time.deltaTime;
             float scaleSpeed = 5f * Time.deltaTime;
@@ -106,6 +110,7 @@ public class CrystalPickUp : MonoBehaviour
 		isTimerRunning = true;
 		animator.SetBool ("playRotationJiggle", true);
         rubbleAnimator.SetBool("ShouldJiggle", true);
+        rumbleSound.Play();
     }
 
 	private void StopTimer()
@@ -114,6 +119,7 @@ public class CrystalPickUp : MonoBehaviour
 		time = 0f;
 		animator.SetBool ("playRotationJiggle", false);
         rubbleAnimator.SetBool("ShouldJiggle", false);
+        rumbleSound.Stop();
     }
 
 	private void Timer()

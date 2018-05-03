@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class ActivateThirdPortal : MonoBehaviour 
 {
+    [Tooltip("The fuel cleaner object from Trevor's lab")]
+    [SerializeField] private GameObject fuelCleaner;
+
 	private int timesTeleported;
 
 	private void OnEnable()
@@ -46,7 +49,6 @@ public class ActivateThirdPortal : MonoBehaviour
 	{
 		GetComponent<PortalNew> ().enabled = true;
 		GetComponent<GlitchValueGenerator> ().enabled = true;
-		GetComponentInChildren<MeshRenderer> ().enabled = true;
-		GetComponentInChildren<BoxCollider> ().enabled = true;
+        fuelCleaner.SetActive(true);
 	}
 }
