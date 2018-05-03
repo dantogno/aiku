@@ -7,16 +7,21 @@ using UnityEngine;
 /// </summary>
 public class ActivateThirdPortal : MonoBehaviour 
 {
+    [Tooltip("The fuel cleaner object from Trevor's lab")]
+    [SerializeField] private GameObject fuelCleaner;
+
 	private int timesTeleported;
 
 	private void OnEnable()
 	{
 		PortalNew.PlayerTeleported += IncrementTimesTeleported;
-	}
+		PortalNew.PlayerTeleported += CheckIfPortalShouldActivate;
+    }
 
 	private void OnDisable()
 	{
-		PortalNew.PlayerTeleported -= CheckIfPortalShouldActivate;
+		PortalNew.PlayerTeleported -= IncrementTimesTeleported;
+        PortalNew.PlayerTeleported -= CheckIfPortalShouldActivate;
 	}
 
 	/// <summary>
@@ -44,9 +49,14 @@ public class ActivateThirdPortal : MonoBehaviour
 	/// </summary>
 	private void ActivatePortal()
 	{
-		GetComponent<PortalNew> ().enabled = true;
-		GetComponent<GlitchValueGenerator> ().enabled = true;
-		GetComponentInChildren<MeshRenderer> ().enabled = true;
-		GetComponentInChildren<BoxCollider> ().enabled = true;
+        PortalNew portal = GetComponent<PortalNew>();
+        GlitchValueGenerator glitch = GetComponent<GlitchValueGenerator>();
+
+        if (portal != null)
+            portal.enabled = true;
+        if (glitch != null)
+            glitch.enabled = true;
+        if (fuelCleaner != null)
+            fuelCleaner.SetActive(true);
 	}
 }

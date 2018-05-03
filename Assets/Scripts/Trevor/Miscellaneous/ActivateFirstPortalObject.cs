@@ -7,67 +7,39 @@ using UnityEngine;
 /// </summary>
 public class ActivateFirstPortalObject : MonoBehaviour 
 {
-	private bool hasPickedUpCrate = false;
-	private bool hasScopedIn = false;
-	private bool portalHasBeenActivated = false;
+    private int timesVOFinished = 0;
 
 	private void OnEnable()
 	{
-		GMD.PickupObject += SetHasPickedUpCrateValue;
-		Scope.ScopedIn += SetHasScopedInValue;
+        VOAudio.VOAudioFinished += IncrementTimesVOFinished;
 	}
 
 	private void OnDisable()
 	{
-		GMD.PickupObject -= SetHasPickedUpCrateValue;
-		Scope.ScopedIn -= SetHasScopedInValue;
+        VOAudio.VOAudioFinished -= IncrementTimesVOFinished;
 	}
 
-	/// <summary>
-	/// Sets the has picked up crate value to true when the player picks up an object.
-	/// </summary>
-	/// <param name="i">The index.</param>
-	private void SetHasPickedUpCrateValue(int i)
-	{
-		if (hasPickedUpCrate == false) 
-		{
-			hasPickedUpCrate = true;
-			CheckIfPortalShouldActivate ();
-		}
-	}
+    /// <summary>
+    /// Counts how many times a VO has played. It has played enough times, activate the portal.
+    /// </summary>
+    private void IncrementTimesVOFinished()
+    {
+        timesVOFinished++;
+
+        if(timesVOFinished >= 2)
+        {
+            ActivatePortalObject();
+        }
+    }
 
 	/// <summary>
-	/// Sets the has scoped in value to true when the player scopes in.
-	/// </summary>
-	/// <param name="i">The index.</param>
-	private void SetHasScopedInValue(int i)
-	{
-		if (hasScopedIn == false) 
-		{
-			hasScopedIn = true;
-			CheckIfPortalShouldActivate ();
-		}
-	}
-
-	/// <summary>
-	/// Check if all arguments for the portal to activate are satisfied. If they are, activate the necessary components.
-	/// </summary>
-	private void CheckIfPortalShouldActivate()
-	{
-		if (hasPickedUpCrate == true && hasScopedIn == true && portalHasBeenActivated == false) 
-		{
-			ActivatePortalObject ();
-		}
-	}
-
-	/// <summary>
-	/// Activate the necessary components for the portal to work.
+	/// Activate the necessary components for the portal to work. Disables this script
 	/// </summary>
 	private void ActivatePortalObject()
 	{
 		GetComponent<PortalNew> ().enabled = true;
 		GetComponent<GlitchValueGenerator> ().enabled = true;
 		GetComponentInChildren<MeshRenderer> ().enabled = true;
-		portalHasBeenActivated = true;
+        this.enabled = false;
 	}
 }

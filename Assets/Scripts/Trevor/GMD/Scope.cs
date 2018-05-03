@@ -98,7 +98,6 @@ public class Scope : MonoBehaviour
         if(isEquipped)
         {
             zoomAnimator.SetBool("UsingScope", true);
-			gmdCameraObject.SetActive(false);
 
 			SlowDownPlayer ();
 
@@ -126,11 +125,6 @@ public class Scope : MonoBehaviour
 			gmdModel.SetActive(true);
 
 			ResetPlayerMovementSpeed ();
-
-            if (hasWaitedForAnimation)
-            {
-				gmdCameraObject.SetActive(true);
-            }
         }
 		
 	}

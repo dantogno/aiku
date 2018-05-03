@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -10,6 +11,12 @@ using UnityEngine;
 public class PickupGMD : MonoBehaviour, IInteractable
 {
     public static event Action PickedUpGMD;
+
+    [SerializeField, Tooltip("Name of Trevor scene. Only applicable for GMD functionality in Trevor level.")]
+    private string trevorLevelName = "TrevorLevelGDC";
+
+    [SerializeField, Tooltip("The GMD's camera.")]
+    private Camera gmdCam;
 
     /// <summary>
     /// Update is needed to enable/disable script
@@ -32,7 +39,35 @@ public class PickupGMD : MonoBehaviour, IInteractable
 		gmdObjectTransform.localRotation = Quaternion.Euler (0, 0, 0);
         if(gmdObject.GetComponent<BoxCollider>() != null)
             gmdObject.GetComponent<BoxCollider> ().enabled = false;
+        if (GetComponent<Scope>() != null)
+            GetComponent<Scope>().enabled = true;
+        if (GetComponent<Animator>() != null)
+            GetComponent<Animator>().enabled = true;
+        if (GetComponent<GMD>() != null)
+            GetComponent<GMD>().enabled = true;
 
-        GameObject.Find("Scanning Camera").SetActive(false);
+        GameObject brackets = GameObject.FindGameObjectWithTag("BracketArea");
+
+        if (SceneManager.GetActiveScene().name == trevorLevelName && brackets != null)
+            brackets.SetActive(false);
+        if (gmdCam != null)
+            gmdCam.enabled = true;
+
+        ChangeLayerRecursive(gmdObject, LayerMask.NameToLayer("GMD"));
 	}
+
+    /// <summary>
+    /// Changes an object and its children's layer to the one specified (I got this code from the brackets script)
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="layer"></param>
+    private void ChangeLayerRecursive(GameObject target, int layer)
+    {
+        target.layer = layer;
+        for (int i = 0; i < target.transform.childCount; i++)
+        {
+            GameObject child = target.transform.GetChild(i).gameObject;
+            ChangeLayerRecursive(child, layer);
+        }
+    }
 }
