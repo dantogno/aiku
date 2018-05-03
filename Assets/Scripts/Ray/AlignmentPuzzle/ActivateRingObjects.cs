@@ -33,22 +33,51 @@ public class ActivateRingObjects : ActivateObjects
     }
 
     /// <summary>
+    /// Set this to the correct animation state when it is enabled.
+    /// </summary>
+    private void OnEnable()
+    {
+        PlayAnimation();
+    }
+
+    /// <summary>
     /// Enable the light, play a sound, and enable the connected GameObjects.
     /// </summary>
     /// <param name="agentInteracting"></param>
     public override void Interact(GameObject agentInteracting)
     {
+        // Defer basic interact functionality to parent class.
+        base.Interact(agentInteracting);
+
         // Play the sound
         if (soundToPlay != null)
         {
             soundToPlay.Play();
         }
-        // Set the animation state to open.
-        if (doorAnimator != null)
+        // Play the correct animation.
+        PlayAnimation();
+    }
+
+    /// <summary>
+    /// Plays an animation based on the current state.
+    /// </summary>
+    private void PlayAnimation()
+    {
+        if (active)
         {
-            doorAnimator.SetBool("isOpen", true);
+            // Set the animation state to open.
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool("isOpen", true);
+            }
         }
-        // Defer other interact functionality to parent class.
-        base.Interact(agentInteracting);
+        else
+        {
+            // Set the animation state to closed.
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool("isOpen", false);
+            }
+        }
     }
 }

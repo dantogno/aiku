@@ -13,6 +13,9 @@ public class Cryochamber : PowerableObject
 {
     public static event Action AddedPowerToCryochamber, AddedPowerToCryochamberForFirstTime;
 
+    // Static, because we only want this to change the first time the player interacts with ANY cryochamber, not THIS cryochamber.
+    private static bool addedPowerForFirstTime = false;
+
     [SerializeField, Tooltip("Light to toggle based on power level.")]
     private GameObject poweredLight, emergencyLight;
 
@@ -20,7 +23,7 @@ public class Cryochamber : PowerableObject
     private GameObject sceneChanger, ordinaryMonitor;
 
     // The player can only enter levels after the generator explodes and before they have transferred all available power to the cryochambers.
-    private bool canEnterLevels = true, addedPowerForFirstTime = false;
+    private bool canEnterLevels = true;
 
     private void OnEnable()
     {

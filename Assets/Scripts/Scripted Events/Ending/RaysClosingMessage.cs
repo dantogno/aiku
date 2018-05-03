@@ -16,13 +16,16 @@ public class RaysClosingMessage : MonoBehaviour
     private TextWriter textWriter;
 
     [SerializeField, Tooltip("text lines to print to the screen.")]
-    private string[] plumLines, endingLines, endingLines2;
+    private string[] plumLines, endingLines, endingLines2, endingLines3;
 
     [SerializeField, Tooltip("The voice telling the player what they must do.")]
     private AudioSource plumAudioSource, rayAudioSource;
 
     [SerializeField, Tooltip("The text speed, which must match the speed of the audio clip.")]
-    private float textSpeedForPlumLine = 30, textSpeedForRayLine = 30;
+    private float textSpeedForPlumLine = 30;
+
+    [SerializeField, Tooltip("The brackets which appear over interactable objects.")]
+    private GameObject scanningCam;
 
     private void OnEnable()
     {
@@ -75,22 +78,47 @@ public class RaysClosingMessage : MonoBehaviour
     /// <returns></returns>
     private IEnumerator RayTextSequence()
     {
+        // Disable interaction until Ray has left the player a puddle of emotions.
+        InteractWithSelectedObject interactionScript = GetComponentInParent<InteractWithSelectedObject>();
+        if (interactionScript != null)
+        {
+            interactionScript.enabled = false;
+            scanningCam.SetActive(false);
+        }
+
         // Clear text.
         textWriter.DisplayText("");
-
-        // Adjust text speed to match audio clip.
-        textWriter.ChangeTypingSpeed(textSpeedForRayLine);
         
         // Play audio clip.
         rayAudioSource.Play();
 
         #region print Ray's sentimental message.  :(
-        
+
+        // Adjust text speed to match audio clip (we are hardcoding this because Becca's talking speed changes from line to line).
+        textWriter.ChangeTypingSpeed(17);
+
         textWriter.DisplayText(endingLines);
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(18);
+
+        // Adjust text speed to match audio clip (we are hardcoding this because Becca's talking speed changes from line to line).
+        textWriter.ChangeTypingSpeed(18);
+
         textWriter.DisplayText(endingLines2);
+        yield return new WaitForSeconds(17);
+
+        // Adjust text speed to match audio clip (we are hardcoding this because Becca's talking speed changes from line to line).
+        textWriter.ChangeTypingSpeed(20);
+
+        textWriter.DisplayText(endingLines3);
 
         #endregion
+
+        // Enable interaction, so that the player can kill themself.
+        if (interactionScript != null)
+        {
+            interactionScript.enabled = true;
+            scanningCam.SetActive(true);
+        }
 
         if (FinishedMessage != null) FinishedMessage.Invoke();
     }
