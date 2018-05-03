@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0021918043, g: 0.0047978703, b: 0.006652072, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -40684,6 +40684,41 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1401109401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1401109398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aca22793495ea443a34e628f2a51333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1401109402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1401109398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993f57c60b53c8c4ab68fb80fb406362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intensity: 0.3
+  cameraBackgroundMatchesBaseColor: 1
+  _MidColor:
+    serializedVersion: 2
+    rgba: 436161575
+  _ScannerOrigin: {fileID: 1720201046}
+  _playerPos: {fileID: 1720201046}
+  _material: {fileID: 2100000, guid: 61b5951411bfc7c4191951fc7fcf3851, type: 2}
+  scanDistance: 5.8
+  ScanWidth: 6.7
+  scanningDistanceMax: 17.5
+  speed: 2.3
+  isScanning: 1
 --- !u!43 &1406232943
 Mesh:
   m_ObjectHideFlags: 0
@@ -52209,6 +52244,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1854916868898076, guid: 2599758af3176b54bbaf973dabf02947,
     type: 2}
   m_PrefabInternal: {fileID: 2109759977}
+--- !u!4 &1720201046 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4448999072490818, guid: 2599758af3176b54bbaf973dabf02947,
+    type: 2}
+  m_PrefabInternal: {fileID: 2109759977}
 --- !u!114 &1720201047 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114110365726969506, guid: 2599758af3176b54bbaf973dabf02947,
@@ -60404,7 +60444,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh2289096
+  m_Name: pb_Mesh100602
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
