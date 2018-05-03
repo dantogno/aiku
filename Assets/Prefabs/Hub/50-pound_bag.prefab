@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23482052973016882}
   - component: {fileID: 95411503064544402}
   - component: {fileID: 65931884633979558}
+  - component: {fileID: 114743280192873230}
   m_Layer: 0
   m_Name: 50-pound_bag
   m_TagString: Untagged
@@ -36,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1375087482793954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.594, y: 0.604, z: 3.41}
-  m_LocalScale: {x: 0.0044749863, y: 0.004474987, z: 0.004474987}
+  m_LocalRotation: {x: -0.678537, y: -0, z: -0, w: 0.7345663}
+  m_LocalPosition: {x: -4.6029735, y: -0.09000015, z: -15.033}
+  m_LocalScale: {x: 0.0034880107, y: 0.003488013, z: 0.003488013}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -85.45901, y: 0, z: 0}
 --- !u!23 &23482052973016882
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -113,3 +114,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114743280192873230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375087482793954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a61221826b2f724a8ad3c501812941b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0.3
+  smooth: 10
+  isRotationAllowed: 1
+  mouseSensitivity: 0.5
+  isZoomEnabled: 1
+  scrollSensitivity: -2
+  MIN_X: -180
+  MAX_X: 180
+  MIN_Y: -180
+  MAX_Y: 180
+  ZoomMin: -0.2
+  ZoomMax: 0.2
