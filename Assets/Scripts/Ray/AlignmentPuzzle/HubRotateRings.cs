@@ -62,7 +62,7 @@ public class HubRotateRings : RotateRings
     {
         for(int i = 0; i < Mathf.Min(dummyRings.Length, dummyRotation.Length); i++)
         {
-            Vector3 rotation = new Vector3(0, dummyRotation[i], 0);
+            Vector3 rotation = new Vector3(dummyRotation[i], 0, 0);
             dummyRings[i].Rotate(rotation);
         }
     }

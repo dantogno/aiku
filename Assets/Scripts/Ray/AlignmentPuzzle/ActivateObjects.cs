@@ -13,6 +13,8 @@ public class ActivateObjects : MonoBehaviour, IInteractable
     [Tooltip("The GameObjects that should be enabled when the player interacts with this object.")]
     private GameObject[] objectsToActivate;
 
+    // Keeps track of whether the objects are active or inactive.
+    protected bool active;
 
     /// <summary>
     /// Disables all GameObjects as specified in the editor.
@@ -24,6 +26,7 @@ public class ActivateObjects : MonoBehaviour, IInteractable
         {
             gameObject.SetActive(false);
         }
+        active = false;
     }
 
     /// <summary>
@@ -32,10 +35,23 @@ public class ActivateObjects : MonoBehaviour, IInteractable
     /// <param name="agentInteracting"></param>
     public virtual void Interact(GameObject agentInteracting)
     {
-        // Enable all of the objects
-        foreach(GameObject gameObject in objectsToActivate)
+        if(active)
         {
-            gameObject.SetActive(true);
+            // Disable all of the objects
+            foreach (GameObject gameObject in objectsToActivate)
+            {
+                gameObject.SetActive(false);
+            }
+            active = false;
+        }
+        else
+        {
+            // Enable all of the objects
+            foreach (GameObject gameObject in objectsToActivate)
+            {
+                gameObject.SetActive(true);
+            }
+            active = true;
         }
     }
 }

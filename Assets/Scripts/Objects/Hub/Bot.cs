@@ -9,11 +9,15 @@ using UnityEngine;
 
 public class Bot : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("The button that unlocks this power supply when pressed.")]
+    private RingPuzzleButton button;
+
     private void OnEnable()
     {
         // Allow player to grab bot power if they have finished Ray's level.
         // We are not unsubscribing from this, just in case the scene change prevents re-subscribing.
-        HubSceneChanger.FinishedLevel += UnblockPowerSwitchAndEnableAudioSources;
+        button.ButtonPressed += UnblockPowerSwitchAndEnableAudioSources;
     }
 
     /// <summary>
@@ -21,13 +25,10 @@ public class Bot : MonoBehaviour
     /// We are also enabling its audio sources, since we disabled those earlier as a workaround for a bug.
     /// </summary>
     /// <param name="crewmember"></param>
-    private void UnblockPowerSwitchAndEnableAudioSources(HubSceneChanger.CrewmemberName crewmember)
+    private void UnblockPowerSwitchAndEnableAudioSources()
     {
-        if (crewmember == HubSceneChanger.CrewmemberName.Ray)
-        {
-            UnblockChildPowerSwitch();
-            EnableAudioSources();
-        }
+        UnblockChildPowerSwitch();
+        EnableAudioSources();
     }
 
     /// <summary>
