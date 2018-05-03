@@ -99,7 +99,7 @@ public class RotateWorld : MonoBehaviour
     [SerializeField] Animator orbit2;
     
     public bool isRotateActive = false;
-
+    private bool hasAnimationPlayed = false;
     void Start()
     {
         InitializeVariables();
@@ -107,7 +107,18 @@ public class RotateWorld : MonoBehaviour
         TurnOffGLitch();
 
         SolvedThePuzzleChecks();
+
+
    }
+
+    private void TestKey()
+    {
+        if (lockscript.passwordInput == "2800")
+        {
+            if (SecondNormaAligned != null) SecondNormaAligned.Invoke();
+
+        }
+    }
 
     private void SolvedThePuzzleChecks()
     {
@@ -148,6 +159,11 @@ public class RotateWorld : MonoBehaviour
         CheckStatus();
         RestrictLock();
         RotateObject();
+
+
+
+        //TestKey();
+
     }
 
     /// <summary>
@@ -168,7 +184,9 @@ public class RotateWorld : MonoBehaviour
     {
         //If the lock is finished, default the second half of the orbits to the correct position 
         if (finished == true)
-        {
+		{			
+			if (SecondNormaAligned != null) SecondNormaAligned.Invoke();
+			
             if (RotatedThird != null && RotatedFourth != null)
             {
                 RotatedThird.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -179,6 +197,8 @@ public class RotateWorld : MonoBehaviour
         //If the first two numbers are correct, then set the first two orbits to the correct position
         if (halfWay == true)
         {
+			if (FirstNormaAligned != null) FirstNormaAligned.Invoke();
+
             RotatedFirst.transform.localRotation = Quaternion.Euler(0, 0, 0);
             RotatedSecond.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
@@ -215,9 +235,13 @@ public class RotateWorld : MonoBehaviour
     {
         if (isRotateActive == true)
         {
-            //triggers animations here.
-            orbit1.SetTrigger("TriggerAnimation");
-            orbit2.SetTrigger("TriggerAnimation");
+            if (hasAnimationPlayed == false)
+            {
+                orbit1.SetTrigger("TriggerAnimation");
+                orbit2.SetTrigger("TriggerAnimation");
+                hasAnimationPlayed = true;
+
+            }
 
             if (knob == 0)
             {
