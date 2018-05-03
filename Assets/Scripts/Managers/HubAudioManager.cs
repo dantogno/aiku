@@ -28,7 +28,10 @@ public class HubAudioManager : MonoBehaviour
     {
         foreach(AudioSource a in botVoices)
         {
-            a.enabled = false;
+            if(a != null)
+            {
+                a.enabled = false;
+            }
         }
     }
 }
