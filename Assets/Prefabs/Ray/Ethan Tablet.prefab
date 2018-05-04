@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 23431034014137368}
   - component: {fileID: 65956382485138622}
   - component: {fileID: 114074805765740780}
+  - component: {fileID: 82782730219753384}
+  - component: {fileID: 114405014179641144}
   m_Layer: 0
   m_Name: tablet01JNguyen
   m_TagString: Untagged
@@ -236,6 +238,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 600.00024, y: 900.0004, z: 39.37178}
   m_Center: {x: -2.728484e-12, y: -0.000030517585, z: 0.0009765625}
+--- !u!82 &82782730219753384
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969805961093848}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ebb0ed57bcf6af44fbf523fb2b2a25bb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114074805765740780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,6 +381,20 @@ MonoBehaviour:
     up so much lately. Well, I\u2019ll try not to keep you for too long with this
     letter. Good luck!\r\n\r\n-Ethan\n\nP.S., Hope you didn\u2019t forget your key
     card on your desk again before we came in the panel control room together. Hah.\r\n"
+--- !u!114 &114405014179641144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969805961093848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce56e48f33a22746a988364edcab6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 82782730219753384}
+  player: {fileID: 0}
+  roomba: {fileID: 0}
 --- !u!114 &114445355846714216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,7 +535,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1266698350516416}
   m_LocalRotation: {x: -0.5963679, y: -0.37992835, z: -0.37992832, w: 0.59636766}
-  m_LocalPosition: {x: 0, y: 0, z: 45.403}
+  m_LocalPosition: {x: 0, y: 0, z: 94.037}
   m_LocalScale: {x: 0.0006502603, y: 0.00065025996, z: 0.0006502597}
   m_Children:
   - {fileID: 4332582452227732}
@@ -448,7 +544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 295}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -41.792, y: 5.971}
+  m_AnchoredPosition: {x: -40.84, y: 5.979}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224761134722700700

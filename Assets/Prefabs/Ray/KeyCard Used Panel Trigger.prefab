@@ -35,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247925107023450}
-  m_LocalRotation: {x: 3.1401875e-16, y: -0.0000005364418, z: 3.1401825e-16, w: 1}
-  m_LocalPosition: {x: -58.85, y: 6.43, z: 89.287}
+  m_LocalRotation: {x: 9.926167e-22, y: -0.7071062, z: 4.4408926e-16, w: 0.7071074}
+  m_LocalPosition: {x: -90.099, y: 209.16614, z: 73.64}
   m_LocalScale: {x: 3.1451802, y: 3.2188027, z: 1.5687989}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!65 &65456612912866310
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -63,7 +63,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9887fed4db420cc459a23f476ea9cfcb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2b88c94856c30f64b924b5fe18eaf830, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb2fe42b0001e4c95802a8e7338f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  willTriggerOnExit: 0
   willTriggerOnEnter: 1
+  willTriggeronExit: 0

@@ -13,9 +13,20 @@ public class SwitchToHub : MonoBehaviour
     [Tooltip("The button that should initiate the scene change.")]
     private RingPuzzleButton button;
 
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
-        button.ButtonPressed += SwitchToHubScene;
+        audioSource.Play();
+
+        if (!audioSource.isPlaying)
+        {
+            button.ButtonPressed += SwitchToHubScene;
+        }
     }
     private void OnDisable()
     {
