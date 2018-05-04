@@ -42,6 +42,14 @@ public class WorldManager : MonoBehaviour {
 	[Tooltip("Drag the teleporting door here")]
 	private GameObject teleportingDoor;
 
+	[SerializeField]
+	[Tooltip("Drag the rampCollider door here")]
+	private GameObject rampCollider;
+
+	[SerializeField]
+	[Tooltip("Drag the rampCollider door here")]
+	private Animator FlyingDoor;
+
 
     #endregion
 
@@ -139,6 +147,8 @@ public class WorldManager : MonoBehaviour {
         brackets.SetActive(true);
         normaCrying.SetActive(true);
 		teleportingDoor.SetActive (true);
+		rampCollider.SetActive (true);
+		FlyingDoor.enabled = true;
 
         if (StartedCutscene != null) StartedCutscene.Invoke();
     }
