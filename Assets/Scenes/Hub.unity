@@ -14882,6 +14882,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dba8b071fc52d934787dd71a4c7f1a3d, type: 2}
+    - target: {fileID: 114913934913607896, guid: bd955833d271a334bb9ad872f24ede5e,
+        type: 2}
+      propertyPath: gmd
+      value: 
+      objectReference: {fileID: 1449072719}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd955833d271a334bb9ad872f24ede5e, type: 2}
   m_IsPrefabParent: 0
@@ -21795,6 +21800,23 @@ Prefab:
         type: 2}
       propertyPath: waitTime
       value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151109219861144, guid: 300cd00cfd9ae0847bd25535dbf9038a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 13.472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151109219861144, guid: 300cd00cfd9ae0847bd25535dbf9038a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 30.973
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151109219861144, guid: 300cd00cfd9ae0847bd25535dbf9038a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.428
+      objectReference: {fileID: 0}
+    - target: {fileID: 82401348010318932, guid: 300cd00cfd9ae0847bd25535dbf9038a,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 300cd00cfd9ae0847bd25535dbf9038a, type: 2}
@@ -34667,6 +34689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementScript: {fileID: 1399490944}
   glitchEffect: {fileID: 782401747}
+  halfChargeSpeed: 4
 --- !u!43 &1404408089
 Mesh:
   m_ObjectHideFlags: 0
@@ -36102,6 +36125,11 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &1449072719 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1598471057160878, guid: bd955833d271a334bb9ad872f24ede5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 493225132}
 --- !u!43 &1450286540
 Mesh:
   m_ObjectHideFlags: 0
