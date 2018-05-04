@@ -24,11 +24,11 @@ public class Brackets : MonoBehaviour
     private float bracketScreenBuffer;
     [SerializeField]
     [Tooltip("time in seconds brackets will take to move")]
-    private float bracketSmoothTiming = 0.1f; 
+    private float bracketMoveTime = 0.1f; 
     [SerializeField]
     [Tooltip("max speed in pixels/sec brackets move")]
     [Range(100, 1000)]
-    private float bracketLerpSpeed = 1000;
+    private float bracketMaxSpeed = 1000;
     [SerializeField]
     [Tooltip("Area to leave brackets when no object is being targeted")]
     private Rect defaultBracketArea;
@@ -201,9 +201,9 @@ public class Brackets : MonoBehaviour
     /// <param name="rect">The area surrounding the current object</param>
     private void DrawBrackets(Rect rect)
     {
-        bracketArea.anchorMin = Vector2.SmoothDamp(bracketArea.anchorMin, new Vector2(rect.min.x - bracketScreenBuffer, rect.min.y - bracketScreenBuffer), ref bracketAnchorMinVelocity, bracketSmoothTiming, bracketLerpSpeed, Time.deltaTime);
+        bracketArea.anchorMin = Vector2.SmoothDamp(bracketArea.anchorMin, new Vector2(rect.min.x - bracketScreenBuffer, rect.min.y - bracketScreenBuffer), ref bracketAnchorMinVelocity, bracketMoveTime, bracketMaxSpeed, Time.deltaTime);
 
-        bracketArea.anchorMax = Vector2.SmoothDamp(bracketArea.anchorMax, new Vector2(rect.max.x + bracketScreenBuffer, rect.max.y + bracketScreenBuffer), ref bracketAnchorMaxVelocity, bracketSmoothTiming, bracketLerpSpeed, Time.deltaTime);
+        bracketArea.anchorMax = Vector2.SmoothDamp(bracketArea.anchorMax, new Vector2(rect.max.x + bracketScreenBuffer, rect.max.y + bracketScreenBuffer), ref bracketAnchorMaxVelocity, bracketMoveTime, bracketMaxSpeed, Time.deltaTime);
     }
 
     /// <summary>
