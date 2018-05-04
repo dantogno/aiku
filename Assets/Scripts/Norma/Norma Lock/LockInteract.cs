@@ -19,6 +19,7 @@ public class LockInteract : MonoBehaviour, IInteractable
 
     #region Unity events for when the lock is completed for Norma
     public event Action UsedLock;
+    public event Action<int> MovedDial;
     public event Action Unlocked;
     #endregion
 
@@ -160,6 +161,7 @@ public class LockInteract : MonoBehaviour, IInteractable
 
                 lockNumber[knobPlacement] = selectedNumber;
 
+                if (MovedDial != null) MovedDial.Invoke(lockNumber[0]);
             }
             if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0)
             {
@@ -175,6 +177,7 @@ public class LockInteract : MonoBehaviour, IInteractable
                 }
                 lockNumber[knobPlacement] = selectedNumber;
 
+                if (MovedDial != null) MovedDial.Invoke(lockNumber[0]);
             }
 
             //Going up and down the knobs of the lock 
