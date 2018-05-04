@@ -30,6 +30,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     [Tooltip("If true, player starts as roomba. If false player starts as player")]
     [SerializeField]
     private bool roombaIsActive;
+
+    [SerializeField]
+    private RoombaVORandomizer voRandomizer;
     #endregion
 
 
@@ -130,6 +133,7 @@ public class RoombaConsole : MonoBehaviour, IInteractable
         else // Switch while roomba is inactive, activates roomba, deactivates player
         {
             ActivateRoomba();
+            voRandomizer.PlayAudio();
         }
     }
 
