@@ -14,8 +14,11 @@ public class PortalNew : MonoBehaviour
     [Tooltip("Glitchy effect script that is attached to the player camera.")]
     [SerializeField] private GlitchyEffect glitchyEffectScript;
 
-    [Tooltip("Angle that the player will face when teleported. Rotates on Y axis.")]
-    [Range(0.0f, 180.0f)] [SerializeField] private float lookAngle;
+    [Tooltip("The sound effect for teleporting.")]
+    [SerializeField] private AudioClip teleportSound;
+
+    [Tooltip("The sound effect for the glitch.")]
+    [SerializeField] private AudioClip glitchSound;
 
     [Tooltip("When true, player will be rotated to the values specified by RotateXAxis and RotateYAxis.")]
     [SerializeField] private bool RotatePlayerOnArrival;
@@ -25,24 +28,31 @@ public class PortalNew : MonoBehaviour
 
 	public static event Action PlayerTeleported;
 
+    private GlitchValueGenerator glitchValueGeneratorScript;
 	private CustomRigidbodyFPSController playerController;
 	public Camera playerCamera;
 	private bool overThreshold;
     private AudioSource portalAudio;
-    private bool hasPlayedAudio = false;
+    private bool hasPlayedTeleportSound = false;
+    private bool hasPlayedGlitchSound = false;
 
     void Start()
 	{
 		playerController = player.GetComponent<CustomRigidbodyFPSController> ();
         portalAudio = GetComponent<AudioSource>();
+        glitchValueGeneratorScript = GetComponent<GlitchValueGenerator>();
+        portalAudio.clip = glitchSound;
+        portalAudio.loop = true;
 	}
 
     private void Update()
     {
-        if (!portalAudio.isPlaying && hasPlayedAudio)
+        if (!portalAudio.isPlaying && hasPlayedTeleportSound)
         {
             this.gameObject.SetActive(false);
         }
+
+        ManageGlitchSound();
     }
 
     void OnEnable()
@@ -67,10 +77,13 @@ public class PortalNew : MonoBehaviour
 		{
 			player.transform.position = portalBuddy.transform.position;
             glitchyEffectScript.OverThreshold = false;
-            if (!portalAudio.isPlaying && !hasPlayedAudio)
+            if (!hasPlayedTeleportSound)
             {
+                portalAudio.clip = teleportSound;
+                portalAudio.volume = 1;
+                portalAudio.loop = false;
                 portalAudio.Play();
-                hasPlayedAudio = true;
+                hasPlayedTeleportSound = true;
             }
 			if (PlayerTeleported != null)
 				PlayerTeleported.Invoke ();
@@ -81,4 +94,22 @@ public class PortalNew : MonoBehaviour
             }
 		}
 	}
+
+    private void ManageGlitchSound()
+    {
+        if (glitchValueGeneratorScript.Value > 0 && !hasPlayedTeleportSound)
+        {
+            portalAudio.volume = glitchValueGeneratorScript.Value;
+            if (!hasPlayedGlitchSound)
+            {
+                portalAudio.Play();
+                hasPlayedGlitchSound = true;
+            }
+        }
+        //else if (glitchValueGeneratorScript.Value <= 0)
+        //{
+        //    portalAudio.Stop();
+        //    hasPlayedGlitchSound = false;
+        //}
+    }
 }

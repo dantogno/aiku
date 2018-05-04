@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WorldManager : MonoBehaviour {
 
+    public static event Action StartedCutscene;
 
     #region Orbits and Puzzle Dependancies
 
@@ -104,6 +105,7 @@ public class WorldManager : MonoBehaviour {
             hasScenePlayed = true;
             StartCoroutine(FlyTheLock());
 
+            if (StartedCutscene != null) StartedCutscene.Invoke();
         }
     }
 
@@ -138,6 +140,7 @@ public class WorldManager : MonoBehaviour {
         normaCrying.SetActive(true);
 		teleportingDoor.SetActive (true);
 
+        if (StartedCutscene != null) StartedCutscene.Invoke();
     }
-		
+
 }
