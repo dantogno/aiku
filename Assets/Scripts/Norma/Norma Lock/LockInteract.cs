@@ -32,7 +32,7 @@ public class LockInteract : MonoBehaviour, IInteractable
     private int rotatedBy = 36;
 
     private GameObject Brackets;
-
+	private AudioSource source;
 
     #region Public Variables in Inspector
     [Header("Type of Lock")]
@@ -72,6 +72,7 @@ public class LockInteract : MonoBehaviour, IInteractable
         unlockAnimation.enabled = false;
 
         Brackets = GameObject.FindGameObjectWithTag("BracketArea");
+		source = GetComponent<AudioSource> ();
     }
 
 
@@ -148,6 +149,8 @@ public class LockInteract : MonoBehaviour, IInteractable
             //Button Mapping and the math needed to know what number is currently being selected
             if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") < 0)
             {
+				
+				source.Play ();
                 currentSelection.transform.Rotate(0, -rotatedBy, 0);
                 if (selectedNumber < 10)
                 {
@@ -165,6 +168,8 @@ public class LockInteract : MonoBehaviour, IInteractable
             }
             if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0)
             {
+				
+				source.Play ();
 
                 currentSelection.transform.Rotate(0, rotatedBy, 0);
                 if (selectedNumber < 10)
@@ -183,6 +188,8 @@ public class LockInteract : MonoBehaviour, IInteractable
             //Going up and down the knobs of the lock 
             if (Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") != 0)
             {
+				source.Play ();
+
 
                 if (Input.GetAxis("Vertical") < 0)
                 {
