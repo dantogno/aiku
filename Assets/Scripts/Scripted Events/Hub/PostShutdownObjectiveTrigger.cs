@@ -16,7 +16,7 @@ public class PostShutdownObjectiveTrigger : MonoBehaviour
     [SerializeField, Tooltip("The player's new objective")]
     private string[] objective;
 
-    private bool generatorExploded, hasChangedText;
+    private bool generatorExploded = false, hasChangedText = false;
 
     private void OnEnable()
     {
