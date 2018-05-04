@@ -192,19 +192,19 @@ public class Scope : MonoBehaviour
             {
                 metalObjectMaterial = item.GetComponent<Renderer>().material;
                 metalObjectMaterial.EnableKeyword("_EMISSION");
-                metalObjectMaterial.SetColor("_EmissionColor", new Color(0, 0, 0, 0.000001f));
+                metalObjectMaterial.SetColor("_EmissionColor", Color.black);
             }
             foreach (GameObject item in grappleObjects)
             {
                 grappleObjectMaterial = item.GetComponent<Renderer>().material;
                 grappleObjectMaterial.EnableKeyword("_EMISSION");
-                grappleObjectMaterial.SetColor("_EmissionColor", new Color(0, 0, 0, 0.000001f));
+                grappleObjectMaterial.SetColor("_EmissionColor", Color.black);
             }
             foreach (GameObject item in goodOre)
             {
                 goodOreMaterial = item.GetComponent<Renderer>().material;
                 goodOreMaterial.EnableKeyword("_EMISSION");
-                goodOreMaterial.SetColor("_EmissionColor", new Color(0, 0, 0, 0.000001f));
+                goodOreMaterial.SetColor("_EmissionColor", Color.black);
             }
         }
     }
