@@ -20,6 +20,9 @@ public class PlaceMinerals : MonoBehaviour, IInteractable
     [Tooltip("The box collider that allows the player to make the scene transition. This should be turned off at start.")]
     [SerializeField] private BoxCollider transitionCollider;
 
+    [Tooltip("This is a sound effect that plays when you place the minerals.")]
+    [SerializeField] private AudioSource placeSoundeffect;
+
 	public static event Action PlacedMinerals;
 
     /// <summary>
@@ -31,6 +34,7 @@ public class PlaceMinerals : MonoBehaviour, IInteractable
     {
         crystal.SetActive(true);
         arrow.SetActive(false);
+        placeSoundeffect.Play();
 		monitorArrow.SetActive (true);
         transitionCollider.enabled = true;
     }
