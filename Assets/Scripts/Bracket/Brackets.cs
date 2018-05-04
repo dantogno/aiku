@@ -23,9 +23,12 @@ public class Brackets : MonoBehaviour
     [SerializeField]
     private float bracketScreenBuffer;
     [SerializeField]
-    [Tooltip("Speed brackets move")]
-    [Range(0.1f, 1)]
-    private float bracketLerpSpeed = 0.3f;
+    [Tooltip("time in seconds brackets will take to move")]
+    private float bracketSmoothTiming = 0.1f; 
+    [SerializeField]
+    [Tooltip("max speed in pixels/sec brackets move")]
+    [Range(100, 1000)]
+    private float bracketLerpSpeed = 1000;
     [SerializeField]
     [Tooltip("Area to leave brackets when no object is being targeted")]
     private Rect defaultBracketArea;
@@ -39,8 +42,8 @@ public class Brackets : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private Vector2 bracketVelocity = Vector3.zero;
-    private float bracketSmoothTiming = 0.4f; 
+    private Vector2 bracketAnchorMinVelocity = Vector3.zero;
+    private Vector2 bracketAnchorMaxVelocity = Vector3.zero;
     // GameObject that has been sent to the shadow realm, so that we can return it when a new target is selected
     private GameObject currentScanningLayerObject = null;
     // Holds a reference to the current object's previous layer (so that it can be restored later)
@@ -135,7 +138,13 @@ public class Brackets : MonoBehaviour
         for(int i = 0; i < target.transform.childCount; i++)
         {
             GameObject child = target.transform.GetChild(i).gameObject;
-            ChangeLayerRecursive(child, layer);
+
+            //ignore world-space Canvas, all other objects are fine
+            Canvas childIsCanvas = child.GetComponent<Canvas>();
+            if (childIsCanvas == null)
+            {
+                ChangeLayerRecursive(child, layer);
+            }
         }
     }
 
@@ -192,8 +201,9 @@ public class Brackets : MonoBehaviour
     /// <param name="rect">The area surrounding the current object</param>
     private void DrawBrackets(Rect rect)
     {
-        bracketArea.anchorMin = Vector2.SmoothDamp(bracketArea.anchorMin, new Vector2(rect.min.x - bracketScreenBuffer, rect.min.y - bracketScreenBuffer), ref bracketVelocity, bracketSmoothTiming, bracketLerpSpeed, bracketLerpSpeed);
-        bracketArea.anchorMax = Vector2.SmoothDamp(bracketArea.anchorMax, new Vector2(rect.max.x + bracketScreenBuffer, rect.max.y + bracketScreenBuffer), ref bracketVelocity, bracketSmoothTiming, bracketLerpSpeed, bracketLerpSpeed);
+        bracketArea.anchorMin = Vector2.SmoothDamp(bracketArea.anchorMin, new Vector2(rect.min.x - bracketScreenBuffer, rect.min.y - bracketScreenBuffer), ref bracketAnchorMinVelocity, bracketSmoothTiming, bracketLerpSpeed, Time.deltaTime);
+
+        bracketArea.anchorMax = Vector2.SmoothDamp(bracketArea.anchorMax, new Vector2(rect.max.x + bracketScreenBuffer, rect.max.y + bracketScreenBuffer), ref bracketAnchorMaxVelocity, bracketSmoothTiming, bracketLerpSpeed, Time.deltaTime);
     }
 
     /// <summary>
@@ -205,7 +215,7 @@ public class Brackets : MonoBehaviour
     private bool PixelIsObject(float x, float y)
     {
 
-        // The camera creating the scanningImage clears every pixel to a = 0, so if alpha is 1 something is there
+        // The camera creating the scanningImage clears every pixel to a = 0, so if alpha > 0 something is there
         if (scanningImage.GetPixelBilinear(x, y).a > 0f)
         {
             return true;
