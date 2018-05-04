@@ -32,8 +32,6 @@ GameObject:
   - component: {fileID: 114950900199986742}
   - component: {fileID: 114480283181926018}
   - component: {fileID: 114363211528041288}
-  - component: {fileID: 114845223683304446}
-  - component: {fileID: 114323361343735360}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -55,29 +53,10 @@ GameObject:
   - component: {fileID: 82778693778992092}
   - component: {fileID: 114654793388369062}
   - component: {fileID: 114428197893185612}
-  - component: {fileID: 114085521619959468}
   m_Layer: 0
   m_Name: Hub Player
   m_TagString: Player
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1068227689075254
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224625343824419502}
-  - component: {fileID: 222090136020428978}
-  - component: {fileID: 114768018240698434}
-  - component: {fileID: 114409902685844608}
-  m_Layer: 0
-  m_Name: Lock Combo Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -248,22 +227,6 @@ GameObject:
   - component: {fileID: 114943907898972500}
   m_Layer: 0
   m_Name: White Power Unit Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1265521556856112
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224171160790941732}
-  - component: {fileID: 82417255308836652}
-  m_Layer: 0
-  m_Name: Ray Voice Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,7 +453,7 @@ GameObject:
   - component: {fileID: 224671394379222278}
   - component: {fileID: 82764884507871706}
   m_Layer: 0
-  m_Name: Plum Voice Line
+  m_Name: Final Plum Voice Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,7 +625,7 @@ GameObject:
   - component: {fileID: 114262741675411772}
   m_Layer: 0
   m_Name: Scanning Camera
-  m_TagString: BracketArea
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1088,86 +1051,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020433581080924}
   m_Enabled: 1
---- !u!82 &82417255308836652
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1265521556856112}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f868ebb994d4f2145ba6c597fa511721, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!82 &82630688181953930
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1257,7 +1140,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eef4e7f87bdec504f840e9bbd08d2f71, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9e469c5fddfacba43916bc7410fdc8ed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1516,20 +1399,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114085521619959468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1058342990886418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a14982c28e3cd642b81db12ad083125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementScript: {fileID: 114581146556146746}
-  glitchEffect: {fileID: 114849675931713950}
-  halfChargeSpeed: 4
 --- !u!114 &114124296446111364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1759,8 +1628,7 @@ MonoBehaviour:
   resolution: 0.01
   bracketArea: {fileID: 224948267215316184}
   bracketScreenBuffer: 0
-  bracketSmoothTiming: 0.1
-  bracketLerpSpeed: 1000
+  bracketLerpSpeed: 0.3
   defaultBracketArea:
     serializedVersion: 2
     x: 0.02
@@ -1797,39 +1665,6 @@ MonoBehaviour:
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114323361343735360
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1020433581080924}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 824d5742a7ed58c4cbebaabd6db8c132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mode: 0
-  _MidColorIntensity: 0.5
-  _TrailColorIntensity: 0.1
-  _MidColor:
-    serializedVersion: 2
-    rgba: 4294962207
-  _TrailColor:
-    serializedVersion: 2
-    rgba: 4294962207
-  _GlitchInterval: 0.16
-  _DispProbability: 0.022
-  _DispIntensity: 0.09
-  _ColorProbability: 0
-  _ColorIntensity: 0
-  _ScannerOrigin: {fileID: 4399536198570458}
-  _playerPos: {fileID: 4399536198570458}
-  scanDistance: 10
-  ScanWidth: 1
-  scanningDistanceMax: 15
-  speed: 5
-  isScanning: 0
-  _material: {fileID: 2100000, guid: c30b58e322f99e84c893701d73fe960e, type: 2}
 --- !u!114 &114325440917328842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1895,21 +1730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28d71b5d848bdc4f87f71bbc936841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionShakeMagnitude: 1.25
-  explosionShakeTimer: 1
-  pipeBurstTask: {fileID: 0}
---- !u!114 &114409902685844608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068227689075254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82e2d30f73e75954b9913c2928fb45d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  padlock: {fileID: 0}
+  explosionShakeMagnitude: 1
+  explosionShakeTimer: 1.5
 --- !u!114 &114415489627739128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1977,66 +1799,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textWriter: {fileID: 114785738732115952}
   plumLines:
-  - SOME SHIPBOARD POWER
-  - RESERVOIRS MAY BE
-  - INACCESSIBLE. PLEASE USE
-  - CRYOCHAMBER TERMINALS TO
-  - SEARCH FOR INFORMATION
-  - WHICH COULD BE OF USE.
+  - THERE IS ONLY ENOUGH POWER
+  - ON THE SHIP TO KEEP TWO
+  - CREWMEMBERS ALIVE UNTIL
+  - THE ESTIMATED RESCUE DATE.
+  - ONE CREWMEMBER WILL LIKELY
+  - 'NOT SURVIVE. '
   - 
-  - ALL POWER ON THE SHIP
-  - MUST BE RECOVERED.
+  - MA'AT, YOU MUST CHOOSE
+  - WHICH TWO CREWMEMBERS
+  - TO ALLOCATE YOUR OWN
+  - REMAINING POWER TO.
+  - 
+  - WE ARE COUNTING ON YOU.
   endingLines:
   - Ma'at,
   - 
-  - Thanks for helping out with
-  - the whole power situation.
-  - I wish I could see how you
-  - fixed up the ship again, but
-  - I'm probably in cryo.
-  - (*will be* in cryo)
+  - Thanks for helping move power
+  - around. Aiku sucks, they need to
+  - work out an emergency power
+  - system where users don't have to
+  - run around a big dead ship
+  - bumping their knees in the dark.
   - 
-  - Right now, we're about to start
-  - the last leg of the trip. Since
-  - I'm supposed to be taking over
-  - for Norma when she
+  - Honestly, I am glad I will never
+  - know what the simulations were
+  - like, because (A) it's probably
+  - embarrassing, (B) I know I could
+  - never stack up to Norma or
+  - Trevor, but mostly (C) because
+  - everyone knows THERE'S NO
+  - REAL WAY TO JUDGE HOW MUCH
+  - SOMEONE'S LIFE IS WORTH.
   endingLines2:
-  - I need to try to be responsible
-  - for these kinds of things.
+  - But still, we need to have some
+  - kind of system in place.
+  - Just in case something happens
+  - and there's somehow not enough
+  - power for everyone. Extremely
+  - unlikely, extremely creepy to
+  - think about. There's no way
+  - we're leaving this to RNG or
+  - something. It's our lives!
   - 
-  - I don't know if I can do what
-  - she does. And Trevor - I'd
-  - never tell him, but he's
-  - incredible. This ship would have
-  - lost power three weeks into the
-  - trip without Trevor.
+  - All three of us (even Trevor)
+  - have faith that you will make the
+  - best choice - whatever "best"
+  - means. It's an ugly decision.
+  - But if any bot knows us, you do.
+  - We love you, and we trust you.
   - 
-  - Speaking of power, there's
-  - something I should tell you.
-  endingLines3:
-  - It's unlikely, but if the ship loses
-  - power, there may not be enough
-  - left to keep all of us in cryosleep.
-  - 
-  - I've been doing my best to keep
-  - these old Aiku reservoirs up and
-  - running, but they're old tech.
-  - If that does happen, I've given
-  - you an extra power reservoir.
-  - It should be enough for you to at
-  - least save one of us. Maybe two.
-  - 
-  - If it comes to that, Ma'at,
-  - I trust you to make the right
-  - decision. We all do.
-  - 
-  - Make me proud, little buddy.
-  - 
-  - ~Ray
+  - Your engineer/mama,
+  - Ray
   plumAudioSource: {fileID: 82764884507871706}
-  rayAudioSource: {fileID: 82417255308836652}
   textSpeedForPlumLine: 20
-  scanningCam: {fileID: 1950179377579398}
 --- !u!114 &114428197893185612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2346,14 +2162,14 @@ MonoBehaviour:
     - Networking
     - Snowball ML
     - Snowball Lib
-    - '::UNRECOGNIZED:: ~ custom'
+    - '::UNRECOGNIED:: ~ custom'
     - Sensory (all tertiary)
-    - '::UNRECOGNIZED:: ~ custom'
-    - '::UNRECOGNIZED:: ~ custom'
-    - '::UNRECOGNIZED:: ~ custom/ray'
+    - '::UNRECOGNIED:: ~ custom'
+    - '::UNRECOGNIED:: ~ custom'
+    - '::UNRECOGNIED:: ~ custom/ray'
     - Aiku Interface
     - Motor (all secondary)
-    - '::UNRECOGNIZED:: ~ custom/RayStuff'
+    - '::UNRECOGNIED:: ~ custom/RayStuff'
     - //////////
     - Misc. Sensory (Loco-Motions)
     - Misc.
@@ -2616,41 +2432,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114768018240698434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068227689075254}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 26dc516ef4d2eb343b54d3e6eb26438f, type: 3}
-    m_FontSize: 18
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'PADLOCK COMBINATION
-
-    2817'
 --- !u!114 &114785738732115952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2696,17 +2477,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114845223683304446
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1020433581080924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aca22793495ea443a34e628f2a51333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114848290740833938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2978,12 +2748,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422986549293434}
---- !u!222 &222090136020428978
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068227689075254}
 --- !u!222 &222125980947379622
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -3250,24 +3014,6 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: -75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224171160790941732
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1265521556856112}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000519818}
-  m_LocalScale: {x: 0.99286354, y: 0.99286526, z: 0.99286354}
-  m_Children: []
-  m_Father: {fileID: 224572375784965346}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00055265427, y: 0.004553318}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224207776002216394
 RectTransform:
   m_ObjectHideFlags: 1
@@ -3496,8 +3242,6 @@ RectTransform:
   m_Children:
   - {fileID: 224546278476047886}
   - {fileID: 224671394379222278}
-  - {fileID: 224171160790941732}
-  - {fileID: 224625343824419502}
   m_Father: {fileID: 4064409901028480}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3543,24 +3287,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!224 &224625343824419502
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068227689075254}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224572375784965346}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -500}
-  m_SizeDelta: {x: 350, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224645880182763618
 RectTransform:
   m_ObjectHideFlags: 1
