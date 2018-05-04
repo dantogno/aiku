@@ -155,7 +155,7 @@
 			//this works as long as the functions it has is called in its CGPROGRAM - ENDCG
         {
 			//Blending the image so it shows on the different aplha
-		Blend One One
+		Blend One OneMinusSrcAlpha
 			//	Cull Off
 			Tags
 			{///making it see through
