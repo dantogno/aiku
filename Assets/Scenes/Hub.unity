@@ -2804,6 +2804,69 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1692919586}
+    - target: {fileID: 23565294445844212, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23990241430205824, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23495506459460684, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23950016369680934, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23119555054165932, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23224387847682900, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23914323346951262, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 23096462460273800, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37722c2b46afd9e4baa9b15ff47424f3, type: 2}
+    - target: {fileID: 4815023194988922, guid: e55283213fbb20946b77e29f036e692d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.892
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815023194988922, guid: e55283213fbb20946b77e29f036e692d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 114780626283537304, guid: e55283213fbb20946b77e29f036e692d,
+        type: 2}
+      propertyPath: m_Text
+      value: "I\u2019m starting to go crazy. My condition gets worse the more I move
+        around so Trevor and Ray have gone to 12 hours on and 12 hours off. I know
+        the bots have tried to help as best they can, especially Plum, but I\u2019m
+        going crazy here. \r\n\r\nI\u2019ve tried to stay off my feet and Dalton had
+        tried to provide me some good reading material but there remains the underlying
+        issue that I can\u2019t do anything to help and it\u2019s driving me crazy.
+        Ray has been sending me some small things I can help with. Even Trevor has
+        been sending me a few things to try and help, but it isn\u2019t helping. \r\n\r\nFor
+        once in my life, I\u2019m looking forward to cryostasis. At least I can be
+        as useless as the rest of the crew during that time. I just wish there was
+        more I could do.\r\n"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e55283213fbb20946b77e29f036e692d, type: 2}
   m_IsPrefabParent: 0
@@ -8201,7 +8264,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-579310
+  m_Name: pb_Mesh-11850052
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -28485,6 +28548,39 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1709888844}
+    - target: {fileID: 224351752273388872, guid: c1250cd289f42d44390379204bcf3211,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 224351752273388872, guid: c1250cd289f42d44390379204bcf3211,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 65.399994
+      objectReference: {fileID: 0}
+    - target: {fileID: 114945188622961104, guid: c1250cd289f42d44390379204bcf3211,
+        type: 2}
+      propertyPath: m_Text
+      value: "I\u2019ll say one thing about Liberty Robotics, they make adaptable
+        bots. I\u2019ve lost track of the number of modifications I\u2019ve made to
+        this bot. Considering that it is almost a fourth crew member at this point,
+        we\u2019ve come to rely on it a lot. With the long cryo trip coming up, I\u2019ve
+        decided to give Ma\u2019at one last look over before we lost everything. Plum
+        can at least fly the ship to the jump point while I do this. \r\n\r\nI\u2019ve
+        kept the bot mostly stock, but small upgrades here and there. I\u2019ve made
+        him so much more power efficient compared to when he arrived. I admit I\u2019ve
+        probably gone overboard but I just can\u2019t stop for some reason. I\u2019ve
+        improved just about everything about this bot and everything somehow still
+        works. I\u2019ve modified the legs, arms, joints, and everything else. I\u2019ve
+        used extra space in the torso for additional power supplies, a small toolkit,
+        and for processing power.  \r\n\r\nIn addition, I put on that Aiku power transfer
+        module, man that was expensive. I\u2019ve also given him a master code that
+        will allow him to get into just about everything. I\u2019m keeping the cooling
+        system restricted, and the bot power supplies semi-restricted. I probably
+        should give him the code but I\u2019ll keep that to myself for now. Hopefully
+        nothing bad will happen, but this is space, the Minerva is old, and you never
+        know. \r\n\r\nNow what was I doing, oh yeah tune up.\r\n"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1250cd289f42d44390379204bcf3211, type: 2}
   m_IsPrefabParent: 0
@@ -37081,7 +37177,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-12354
+  m_Name: pb_Mesh-11842574
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -50134,6 +50230,180 @@ Prefab:
     - target: {fileID: 1933501144787724, guid: 0b07883a28da7b44fb4ee46743d2ea30, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468516236880038, guid: 0b07883a28da7b44fb4ee46743d2ea30, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 198702220226753658, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198684669607628122, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1832483854
+      objectReference: {fileID: 0}
+    - target: {fileID: 198684669607628122, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198842353018475742, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: randomSeed
+      value: 573586713
+      objectReference: {fileID: 0}
+    - target: {fileID: 198842353018475742, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198015324479831274, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1924844924
+      objectReference: {fileID: 0}
+    - target: {fileID: 198015324479831274, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198879459091299814, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198340175349667944, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: randomSeed
+      value: 195002780
+      objectReference: {fileID: 0}
+    - target: {fileID: 198340175349667944, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198702220226753658, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198684669607628122, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198842353018475742, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198015324479831274, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198879459091299814, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198340175349667944, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198702220226753658, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198684669607628122, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198842353018475742, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198015324479831274, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198879459091299814, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198340175349667944, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198702220226753658, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198684669607628122, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198842353018475742, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198015324479831274, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198879459091299814, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198340175349667944, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198702220226753658, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198684669607628122, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198842353018475742, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198015324479831274, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198879459091299814, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198340175349667944, guid: 0b07883a28da7b44fb4ee46743d2ea30,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b07883a28da7b44fb4ee46743d2ea30, type: 2}
