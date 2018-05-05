@@ -62,7 +62,7 @@ public class CrystalPickUp : MonoBehaviour
             rumbleSound.Stop();
             EnableRubblePhysics(rubble);
             float step = 15 * Time.deltaTime;
-            float scaleSpeed = 5f * Time.deltaTime;
+            
             transform.position = Vector3.MoveTowards(transform.position, gmd.transform.position, step);
 
             if (gameObject.transform.position == gmd.transform.position)

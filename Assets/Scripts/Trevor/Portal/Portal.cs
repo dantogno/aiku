@@ -28,11 +28,6 @@ public class Portal : MonoBehaviour, IInteractable
         {
             Debug.LogError("All Portals must have a \"Portal Buddy\" to send the interacting GameObject to.");
         }
-
-        if (DefaultPlacement == null)
-        {
-            Debug.LogError("All Portals must have a Default Placement value to indicate the default location to place the acting GameObject.");
-        }
     }
 	
 	// Update is called once per frame

@@ -24,9 +24,11 @@ public class PortalNew : MonoBehaviour
     [SerializeField] private bool RotatePlayerOnArrival;
 
     [Tooltip("Specifies the degree value to rotate the player/camera.")]
-    [SerializeField] private float RotateXAxis, RotateYAxis;
+    [SerializeField] private float RotateXAxis;
 
-	public static event Action PlayerTeleported;
+    [SerializeField] private float RotateYAxis;
+
+    public static event Action PlayerTeleported;
 
     private GlitchValueGenerator glitchValueGeneratorScript;
 	private CustomRigidbodyFPSController playerController;
@@ -37,7 +39,7 @@ public class PortalNew : MonoBehaviour
     private bool hasPlayedGlitchSound = false;
 
     void Start()
-	{
+    { 
 		playerController = player.GetComponent<CustomRigidbodyFPSController> ();
         portalAudio = GetComponent<AudioSource>();
         glitchValueGeneratorScript = GetComponent<GlitchValueGenerator>();

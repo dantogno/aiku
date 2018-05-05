@@ -48,9 +48,21 @@ public class ActivatePhonePortal : MonoBehaviour
 		{
 			r.enabled = true;
 		}
-		GetComponentInChildren<PortalNew> ().enabled = true;
-		GetComponentInChildren<GlitchValueGenerator> ().enabled = true;
-		GetComponentInChildren<BoxCollider> ().enabled = true;
-		GetComponentInChildren<MeshCollider> ().enabled = true; 
+        if (GetComponentInChildren<PortalNew>() != null)
+        {
+            GetComponentInChildren<PortalNew>().enabled = true;
+        }
+        if (GetComponentInChildren<GlitchValueGenerator>() != null)
+        {
+            GetComponentInChildren<GlitchValueGenerator>().enabled = true;
+        }
+		if(GetComponentInChildren<BoxCollider>() != null)
+        {
+            GetComponentInChildren<BoxCollider>().enabled = true;
+        }
+        if (GetComponentInChildren<MeshCollider>() != null)
+        {
+            GetComponentInChildren<MeshCollider>().enabled = true;
+        }
 	}
 }
