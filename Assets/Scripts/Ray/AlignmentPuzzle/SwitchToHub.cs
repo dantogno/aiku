@@ -21,12 +21,7 @@ public class SwitchToHub : MonoBehaviour
     }
     private void OnEnable()
     {
-        audioSource.Play();
-
-        if (!audioSource.isPlaying)
-        {
-            button.ButtonPressed += SwitchToHubScene;
-        }
+        button.ButtonPressed += SwitchToHubScene;
     }
     private void OnDisable()
     {
