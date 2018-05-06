@@ -63,15 +63,7 @@ public class ActivateRingObjects : ActivateObjects
     /// </summary>
     private void PlayAnimation()
     {
-        if (active)
-        {
-            // Set the animation state to open.
-            if (doorAnimator != null)
-            {
-                doorAnimator.SetBool("isOpen", true);
-            }
-        }
-        else
+        if (!active)
         {
             // Set the animation state to closed.
             if (doorAnimator != null)

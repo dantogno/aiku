@@ -22,6 +22,15 @@ public class Cryochamber : PowerableObject
     [SerializeField, Tooltip("When the cryochamber is fully powered, activate the scene changer and deactivate the ordinary monitor.")]
     private GameObject sceneChanger, ordinaryMonitor;
 
+    [SerializeField, Tooltip("The material to be set when the cryochamber isn't powered.")]
+    private Material warningMaterial;
+
+    [SerializeField, Tooltip("The material to be set when the cryochamber is powered.")]
+    private Material poweredMaterial;
+
+    [SerializeField, Tooltip("The monitor renderer which will change with power level.")]
+    private Renderer monitorRenderer;
+
     // The player can only enter levels after the generator explodes and before they have transferred all available power to the cryochambers.
     private bool canEnterLevels = true;
 
@@ -93,6 +102,7 @@ public class Cryochamber : PowerableObject
 
         poweredLight.SetActive(false);
         emergencyLight.SetActive(true);
+        monitorRenderer.material = warningMaterial;
     }
 
     /// <summary>
@@ -107,6 +117,7 @@ public class Cryochamber : PowerableObject
 
         poweredLight.SetActive(true);
         emergencyLight.SetActive(false);
+        monitorRenderer.material = poweredMaterial;
     }
 
     /// <summary>
@@ -123,5 +134,6 @@ public class Cryochamber : PowerableObject
         ordinaryMonitor.SetActive(true);
         poweredLight.SetActive(false);
         emergencyLight.SetActive(true);
+        monitorRenderer.material = warningMaterial;
     }
 }

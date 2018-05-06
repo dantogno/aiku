@@ -18,7 +18,7 @@ public class BridgePowerSwitch : PowerSwitch
     {
         base.TransferPower(otherPowerable);
 
-        PlayPlumLine();
+        Invoke("PlayPlumLine", 5);
     }
 
     /// <summary>

@@ -52,6 +52,9 @@ public class HubRotateRings : RotateRings
         {
             // Rotate all of the rings instead of just the correct one.
             RotateAllRings();
+
+            // Spin the hologram ring (not to be confused with the "dial" ring).
+            StartCoroutine(RotateHologramRing());
         }
     }
 
