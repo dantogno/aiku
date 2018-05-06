@@ -24,9 +24,10 @@ public class PortalNew : MonoBehaviour
     [SerializeField] private bool RotatePlayerOnArrival;
 
     [Tooltip("Specifies the degree value to rotate the player/camera.")]
+    #region Rotate Axis
     [SerializeField] private float RotateXAxis;
-
     [SerializeField] private float RotateYAxis;
+    #endregion
 
     public static event Action PlayerTeleported;
 
