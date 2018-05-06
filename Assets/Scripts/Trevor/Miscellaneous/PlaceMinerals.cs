@@ -23,8 +23,6 @@ public class PlaceMinerals : MonoBehaviour, IInteractable
     [Tooltip("This is a sound effect that plays when you place the minerals.")]
     [SerializeField] private AudioSource placeSoundeffect;
 
-	public static event Action PlacedMinerals;
-
     /// <summary>
     /// When the player clicks on the container, activate the mineral object inside the container to 'place' it.
     /// Activate the necessary components to allow the player to change scenes.
