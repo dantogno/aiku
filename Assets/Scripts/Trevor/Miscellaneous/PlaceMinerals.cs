@@ -18,7 +18,10 @@ public class PlaceMinerals : MonoBehaviour, IInteractable
 	[SerializeField] private GameObject monitorArrow;
 
     [Tooltip("The box collider that allows the player to make the scene transition. This should be turned off at start.")]
-    [SerializeField] private BoxCollider transitionCollider;
+    [SerializeField] private MeshCollider transitionCollider;
+
+    [Tooltip("Glitch Value Generator Script on the Level Transition Object")]
+    [SerializeField] private GlitchValueGenerator glitchValueGeneratorMonitor;
 
     [Tooltip("This is a sound effect that plays when you place the minerals.")]
     [SerializeField] private AudioSource placeSoundeffect;
@@ -35,5 +38,6 @@ public class PlaceMinerals : MonoBehaviour, IInteractable
         placeSoundeffect.Play();
 		monitorArrow.SetActive (true);
         transitionCollider.enabled = true;
+        glitchValueGeneratorMonitor.enabled = true;
     }
 }

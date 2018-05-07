@@ -22,7 +22,7 @@ public class GMD : MonoBehaviour
 	[SerializeField] private GMDState currentState;
 
 	[Tooltip("Determines how quickly an object that is picked up with the GMD follows the player's camera.")]
-	[SerializeField] private float smoothSpeed = 0.125f;
+	[SerializeField] private float grabSpeed = 250f;
 
 	[Tooltip("Object's distance from player when picked up by the GMD.")]
 	[SerializeField] private float grabDistance = 3.0f;
@@ -183,14 +183,13 @@ public class GMD : MonoBehaviour
 			objectToGrab = hit.transform.gameObject;
 			Rigidbody objectRigidbody = objectToGrab.GetComponent<Rigidbody> ();
 			Vector3 desiredPosition = playerCamera.transform.position + playerCamera.transform.forward * grabDistance;
-			Vector3 smoothedPosition = Vector3.Lerp (objectToGrab.transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 
 			if (objectToGrab != null) 
 			{
 				isGrabbingObject = true;
 				objectRigidbody.useGravity = false;
                 objectRigidbody.isKinematic = false;
-				objectRigidbody.transform.position = smoothedPosition;
+                objectRigidbody.velocity = (desiredPosition - objectToGrab.transform.position) * (grabSpeed * Time.deltaTime);
 				if (!hasSentEvent) 
 				{
 					if (PickupObject != null) 
@@ -238,7 +237,6 @@ public class GMD : MonoBehaviour
 			if (objectToGrab != null) 
 			{
 				Rigidbody objectRigidbody = objectToGrab.GetComponent<Rigidbody> ();
-				objectRigidbody.velocity = Vector3.zero;
 				objectRigidbody.useGravity = true;
 				isGrabbingObject = false;
 				hasSentEvent = false;
