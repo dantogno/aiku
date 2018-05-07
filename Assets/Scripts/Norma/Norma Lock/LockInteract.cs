@@ -31,7 +31,10 @@ public class LockInteract : MonoBehaviour, IInteractable
     private Quaternion originalRotationValue; //remember the initial rotational value
     private int rotatedBy = 36;
 
+    [SerializeField]
+    [Tooltip("If doesnt find the brackets, enable via inspector")]
     private GameObject Brackets;
+
 	private AudioSource source;
 
     #region Public Variables in Inspector
@@ -71,7 +74,11 @@ public class LockInteract : MonoBehaviour, IInteractable
         unlockAnimation = GetComponent<Animator>();
         unlockAnimation.enabled = false;
 
-        Brackets = GameObject.FindGameObjectWithTag("BracketArea");
+
+            Brackets = GameObject.FindGameObjectWithTag("BracketArea");
+        
+
+
 		source = GetComponent<AudioSource> ();
     }
 
@@ -164,7 +171,7 @@ public class LockInteract : MonoBehaviour, IInteractable
 
                 lockNumber[knobPlacement] = selectedNumber;
 
-                if (MovedDial != null) MovedDial.Invoke(lockNumber[0]);
+                if (MovedDial != null) MovedDial.Invoke(lockNumber[knobPlacement]);
             }
             if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0)
             {
@@ -182,7 +189,7 @@ public class LockInteract : MonoBehaviour, IInteractable
                 }
                 lockNumber[knobPlacement] = selectedNumber;
 
-                if (MovedDial != null) MovedDial.Invoke(lockNumber[0]);
+                if (MovedDial != null) MovedDial.Invoke(lockNumber[knobPlacement]);
             }
 
             //Going up and down the knobs of the lock 
@@ -260,8 +267,11 @@ public class LockInteract : MonoBehaviour, IInteractable
         /// <summary>
         /// do something special, depending on which lock it is
         /// calls player state if all the numbers are inputed. this disables the script so  users are not able to move the lock after completing all the numbers
-        /// 
         /// </summary>
+
+
+        Brackets.SetActive(true);
+
         switch (thisLock)
         {
             case LockType.NormaPuzzle:
@@ -276,6 +286,9 @@ public class LockInteract : MonoBehaviour, IInteractable
             default:
                 break;        
         }
+
+        //Should disable the lock now after completing it
+        enabled = false;
         LockisActive = false;
         StartCoroutine(UnlockedCoroutine());
         //Gets out of the lock sequence

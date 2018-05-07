@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class SecondaryAudioManager_DW : MonoBehaviour
 {
+
     [SerializeField, Tooltip("The padlock.")]
     private LockInteract puzzleLockUpdated;
 
@@ -21,7 +22,7 @@ public class SecondaryAudioManager_DW : MonoBehaviour
     private float maxVOVolume = .5f;
 
     [SerializeField, Tooltip("The max volume level of the distorted voices.")]
-    private float maxMusicVolume = .25f;
+    private float maxMusicVolume = .05f;
 
     [SerializeField, Tooltip("The amount of time it takes to fade audio in and out.")]
     private float fadeTime = .5f;
@@ -85,6 +86,34 @@ public class SecondaryAudioManager_DW : MonoBehaviour
         EnableSecondScene.enteredSecondScene -= TransitionToSecondArea;
     }
 
+    private void Update()
+    { 
+        ChangeCorrectNumber();
+    }
+
+    private void ChangeCorrectNumber()
+    {
+
+        if (puzzleLockUpdated.knobPlacement == 0)
+        {
+            militaryOfficialFirstDigit = 2;
+        }
+
+        if (puzzleLockUpdated.knobPlacement == 1)
+        {
+            militaryOfficialFirstDigit = 8;
+        }
+        if (puzzleLockUpdated.knobPlacement == 2)
+        {
+            legalGuardianFirstDigit = 1;
+        }
+        if (puzzleLockUpdated.knobPlacement == 3)
+        {
+            legalGuardianFirstDigit = 7;
+        }
+
+    }
+
     /// <summary>
     /// When the player interacts with a lock, call the appropriate method.
     /// </summary>
@@ -123,6 +152,7 @@ public class SecondaryAudioManager_DW : MonoBehaviour
                     if (foundFirstNumber)
                     {
                         OnMilitaryOfficialLostFirstNumber();
+
                     }
                     foundFirstNumber = false;
                 }
@@ -132,12 +162,14 @@ public class SecondaryAudioManager_DW : MonoBehaviour
                 {
                     if (!foundFirstNumber) OnLegalGuardianFoundFirstNumber();
                     foundFirstNumber = true;
+
                 }
                 else
                 {
                     if (foundFirstNumber)
                     {
                         OnLegalGuardianLostFirstNumber();
+
                     }
                     foundFirstNumber = false;
                 }
