@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -102,6 +103,8 @@ public class Examination : MonoBehaviour, IInteractable
 
     #endregion
     private GameObject Brackets;
+    private GameObject InteractionUI;
+    private Image scrollImage;
 
     /// <summary>
     /// Sets the starting position and rotational value of the object upon start.
@@ -115,7 +118,10 @@ public class Examination : MonoBehaviour, IInteractable
         StartPos = gameObject.transform.position;
         originalRotationValue = gameObject.transform.rotation;
         Brackets = GameObject.FindGameObjectWithTag("BracketArea");
+        InteractionUI = GameObject.FindGameObjectWithTag("InteractionUI");
 
+        scrollImage = InteractionUI.GetComponentInChildren<Image>();
+        scrollImage.enabled = false;
     }
 
     public void Interact(GameObject agentInteracting)
@@ -126,8 +132,18 @@ public class Examination : MonoBehaviour, IInteractable
 			if (isInspecting) 
 			{
                 //Resets the player to Null after the leaving the inspection  Activates the Brackets 
-                Brackets.SetActive(true);
+
+                if (Brackets != null)
+                {
+                    Brackets.SetActive(true);
+                }
+                
                 FinishInspect();
+
+                if (InteractionUI != null)
+                {
+                    scrollImage.enabled = false;
+                }
 			} 
 			else 
 			{
@@ -142,11 +158,15 @@ public class Examination : MonoBehaviour, IInteractable
 					//Calls for the camera component from the player.
 					mainCamera = Player.GetComponentInChildren<Camera> ();
                     //Disables The Brackets
-                    Brackets.SetActive(false);
+                    if (Brackets != null)
+                    {
+                        Brackets.SetActive(false);
+                    }
+                    
                     //Set to true to enable the inspection sequence. 
                     isInspecting = true;
 
-				}
+                }
 			}
 		}
 
@@ -178,6 +198,10 @@ public class Examination : MonoBehaviour, IInteractable
         //If zoom is enabled, set a value for Added Distance. I added clamps to be set by the user. 
         if (isZoomEnabled == true)
         {
+            if (InteractionUI != null)
+            {
+                scrollImage.enabled = true;
+            }
             addedDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
             addedDistance = Mathf.Clamp(addedDistance, ZoomMin, ZoomMax);
 
