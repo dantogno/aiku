@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// This script goes on an object that can be interacted with.
 /// When interacted with, it rotates a corresponding Ring object 
@@ -9,7 +10,8 @@ using UnityEngine;
 /// </summary>
 public class RotateRings : MonoBehaviour, IInteractable
 {
-    [SerializeField]
+	public static event Action RotatedRings;
+	[SerializeField]
     [Tooltip("The Ring objects that should be rotated.")]
     private Ring correspondingRing;
 
@@ -49,8 +51,9 @@ public class RotateRings : MonoBehaviour, IInteractable
         // If we're not using Lerp...
         if (instantRotation)
         {
-            // ... rotate the ring instantly.
-            Vector3 initialAmountToRotate = new Vector3(initialRotation, 0, 0);
+			// ... rotate the ring instantly.
+			
+			Vector3 initialAmountToRotate = new Vector3(initialRotation, 0, 0);
             correspondingRing.Rotate(initialAmountToRotate);
         }
         // If we are using Lerp...
@@ -62,11 +65,13 @@ public class RotateRings : MonoBehaviour, IInteractable
         }
     }
 
-    /// <summary>
-    /// Rotate the ring incrementally if we are using Lerp rotation.
-    /// </summary>
-    private void Update()
+	/// <summary>
+	/// Rotate the ring incrementally if we are using Lerp rotation.
+	/// </summary>
+	/// 
+	private void Update()
     {
+
         // Update is only needed when the ring is lerping.
         if(instantRotation == false)
         {
@@ -88,13 +93,15 @@ public class RotateRings : MonoBehaviour, IInteractable
     /// <param name="agentInteracting"></param>
     public virtual void Interact(GameObject agentInteracting)
     {
-        //TODO: Add rotating animation for this object
+		//TODO: Add rotating animation for this object
+		if (RotatedRings != null) RotatedRings.Invoke();
 
-        // If we're not using Lerp...
-        if (instantRotation)
+		// If we're not using Lerp...
+		if (instantRotation)
         {
-            // ... rotate the ring instantly.
-            correspondingRing.Rotate(amountToRotate);
+			// ... rotate the ring instantly.
+			
+			correspondingRing.Rotate(amountToRotate);
         }
         // If we are using Lerp...
         else
