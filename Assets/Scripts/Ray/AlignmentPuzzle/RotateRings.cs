@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ using UnityEngine;
 /// </summary>
 public class RotateRings : MonoBehaviour, IInteractable
 {
+    public static event Action RotatedRings;
+
     [SerializeField]
     [Tooltip("The Ring objects that should be rotated.")]
     private Ring correspondingRing;
@@ -97,6 +100,8 @@ public class RotateRings : MonoBehaviour, IInteractable
     /// <param name="agentInteracting"></param>
     public virtual void Interact(GameObject agentInteracting)
     {
+        if (RotatedRings != null) RotatedRings.Invoke();
+
         // Spin the hologram ring (not to be confused with the "dial" ring).
         StartCoroutine(RotateHologramRing());
 
