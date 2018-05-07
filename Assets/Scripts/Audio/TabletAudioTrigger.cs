@@ -23,7 +23,7 @@ public class TabletAudioTrigger : MonoBehaviour, IInteractable {
     }
     private void Start ()
     {
-        audioSource = GetComponent<AudioSource>();           
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         canPlaySound = false;
 	}
     private void Update ()

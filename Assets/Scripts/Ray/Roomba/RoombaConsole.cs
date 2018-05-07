@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ using UnityEngine;
 /// </summary>
 public class RoombaConsole : MonoBehaviour, IInteractable
 {
+    public static event Action SwitchedControllers;
+
     #region Editor fields
     // Editor Fields used for a reference to player and roomba objects
     // in order to swap between them, as well as if the roomba is active
@@ -135,6 +138,8 @@ public class RoombaConsole : MonoBehaviour, IInteractable
             ActivateRoomba();
             voRandomizer.PlayAudio();
         }
+
+        if (SwitchedControllers != null) SwitchedControllers.Invoke();
     }
 
     /// <summary>
