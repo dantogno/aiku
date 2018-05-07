@@ -237,6 +237,11 @@ public class Examination : MonoBehaviour, IInteractable
 		rotX = 0;
 		rotY = 0;
 
+        if (Brackets != null)
+        {
+            Brackets.SetActive(true);
+        }
+
         if (GetComponent<Rigidbody>() != null)
         {
             GetComponent<Rigidbody>().useGravity = true;

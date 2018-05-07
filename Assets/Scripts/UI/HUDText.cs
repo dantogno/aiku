@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class displays the player's current objective on the screen.
@@ -30,23 +30,33 @@ public class HUDText : MonoBehaviour
     [SerializeField, Tooltip("The HUD text for the second objective of the game.")]
     private Lines[] secondObjectiveLines;
 
+    [SerializeField, Tooltip("The bulleted HUD text for after the player finishes a level.")]
+    private Lines[] postLevelObjectiveLines;
+
     #endregion
+
+    [SerializeField, Tooltip("We are writing directly to the Text component, because we want it to be additive.")]
+    private Text computerText;
 
     [Header("Tasks Which Trigger HUD Text Changes")]
     [SerializeField]
     private Task firstCheckingTask, elevatorButtonTask, SOSTask;
+    
+    private bool enteredFirstLevel = false;
 
     private void OnEnable()
     {
         firstCheckingTask.OnTaskCompleted += ClearText;
         elevatorButtonTask.OnTaskCompleted += SetSOSText;
         SOSTask.OnTaskCompleted += SetKeepCrewAliveText;
+        HubSceneChanger.FinishedLevel += SetFinishedLevelText;
     }
     private void OnDisable()
     {
         firstCheckingTask.OnTaskCompleted -= ClearText;
         elevatorButtonTask.OnTaskCompleted -= SetSOSText;
         SOSTask.OnTaskCompleted -= SetKeepCrewAliveText;
+        HubSceneChanger.FinishedLevel -= SetFinishedLevelText;
     }
 
     private void Start()
@@ -76,6 +86,50 @@ public class HUDText : MonoBehaviour
     private void SetKeepCrewAliveText()
     {
         StartCoroutine(WaitToDisplayKeepCrewAliveText());
+    }
+
+    /// <summary>
+    /// Add some text each time the player completes a level.
+    /// </summary>
+    private void SetFinishedLevelText(HubSceneChanger.CrewmemberName crewmember)
+    {
+        if (!enteredFirstLevel)
+        {
+            computerText.text = "";
+
+            foreach (string s in postLevelObjectiveLines[0].lines)
+            {
+                computerText.text += s + "\n";
+            }
+            computerText.text += "\n";
+            enteredFirstLevel = true;
+        }
+
+        if (crewmember == HubSceneChanger.CrewmemberName.Norma)
+        {
+            foreach (string s in postLevelObjectiveLines[1].lines)
+            {
+                computerText.text += s + "\n";
+            }
+            computerText.text += "\n";
+        }
+
+        else if (crewmember == HubSceneChanger.CrewmemberName.Trevor)
+        {
+            foreach (string s in postLevelObjectiveLines[2].lines)
+            {
+                computerText.text += s + "\n";
+            }
+            computerText.text += "\n";
+        }
+        else if (crewmember == HubSceneChanger.CrewmemberName.Ray)
+        {
+            foreach (string s in postLevelObjectiveLines[3].lines)
+            {
+                computerText.text += s + "\n";
+            }
+            computerText.text += "\n";
+        }
     }
 
     /// <summary>

@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.SceneManagement;
+
 /// <summary>
 /// This script goes on an object that can be interacted with.
 /// When interacted with, it rotates a corresponding Ring object 
@@ -10,8 +9,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class RotateRings : MonoBehaviour, IInteractable
 {
-	public static event Action RotatedRings;
-	[SerializeField]
+    [SerializeField]
     [Tooltip("The Ring objects that should be rotated.")]
     private Ring correspondingRing;
 
@@ -27,6 +25,15 @@ public class RotateRings : MonoBehaviour, IInteractable
     [SerializeField]
     [Tooltip("Governs whether the Ring moves instantly, or Lerps to its destination.")]
     private bool instantRotation = false;
+
+    [SerializeField, Tooltip("The hologram ring's original Euler angles before rotating.")]
+    private Vector3 originalEulers = new Vector3(0, 0, 0);
+
+    [SerializeField, Tooltip("The hologram ring's destination Euler angles after rotating.")]
+    private Vector3 destinationEulers = new Vector3(0, 0, 360);
+
+    [SerializeField, Tooltip("How long, in seconds, it takes for a hologram ring to spin around.")]
+    private float spinTimer = .5f;
 
     // A variable to hold the current rotation of the object.
     private Vector3 currentRotation;
@@ -51,9 +58,8 @@ public class RotateRings : MonoBehaviour, IInteractable
         // If we're not using Lerp...
         if (instantRotation)
         {
-			// ... rotate the ring instantly.
-			
-			Vector3 initialAmountToRotate = new Vector3(initialRotation, 0, 0);
+            // ... rotate the ring instantly.
+            Vector3 initialAmountToRotate = new Vector3(initialRotation, 0, 0);
             correspondingRing.Rotate(initialAmountToRotate);
         }
         // If we are using Lerp...
@@ -65,13 +71,11 @@ public class RotateRings : MonoBehaviour, IInteractable
         }
     }
 
-	/// <summary>
-	/// Rotate the ring incrementally if we are using Lerp rotation.
-	/// </summary>
-	/// 
-	private void Update()
+    /// <summary>
+    /// Rotate the ring incrementally if we are using Lerp rotation.
+    /// </summary>
+    private void Update()
     {
-
         // Update is only needed when the ring is lerping.
         if(instantRotation == false)
         {
@@ -93,15 +97,14 @@ public class RotateRings : MonoBehaviour, IInteractable
     /// <param name="agentInteracting"></param>
     public virtual void Interact(GameObject agentInteracting)
     {
-		//TODO: Add rotating animation for this object
-		if (RotatedRings != null) RotatedRings.Invoke();
+        // Spin the hologram ring (not to be confused with the "dial" ring).
+        StartCoroutine(RotateHologramRing());
 
-		// If we're not using Lerp...
-		if (instantRotation)
+        // If we're not using Lerp...
+        if (instantRotation)
         {
-			// ... rotate the ring instantly.
-			
-			correspondingRing.Rotate(amountToRotate);
+            // ... rotate the ring instantly.
+            correspondingRing.Rotate(amountToRotate);
         }
         // If we are using Lerp...
         else
@@ -114,5 +117,22 @@ public class RotateRings : MonoBehaviour, IInteractable
                 desiredRotation += amountToRotate;
             }
         }
+    }
+
+    /// <summary>
+    /// Spins the hologram ring to give some player feedback during interaction.
+    /// </summary>
+    protected IEnumerator RotateHologramRing()
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < spinTimer)
+        {
+            transform.localEulerAngles = Vector3.Lerp(originalEulers, destinationEulers, elapsedTime / spinTimer);
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        transform.localEulerAngles = originalEulers;
     }
 }

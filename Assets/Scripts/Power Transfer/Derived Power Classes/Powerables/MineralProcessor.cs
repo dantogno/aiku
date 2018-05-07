@@ -15,6 +15,9 @@ public class MineralProcessor : PowerableObject
     [SerializeField, Tooltip("This is the power-on sound, for the child power switch.")]
     private AudioClip onClip;
 
+    [SerializeField, Tooltip("Floating arrow pointing at mineral processor.")]
+    GameObject arrow;
+
     private AudioSource myAudioSource;
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +55,9 @@ public class MineralProcessor : PowerableObject
                 myAudioSource.Play();
             }
         }
+
+        // Get this annoying thing out of my face.
+        arrow.SetActive(false);
     }
 
     /// <summary>
