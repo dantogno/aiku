@@ -218,7 +218,7 @@ public class ClawConsole : MonoBehaviour, IInteractable
         //if the clawConsole is off
         if (!isActive) 
         {
-            Debug.Log(playerCam);
+
             //move the flyCam to the player cam
             flyCam.transform.position = playerCam.transform.position;
             //Rotate the flyCam to the player cam
@@ -245,7 +245,6 @@ public class ClawConsole : MonoBehaviour, IInteractable
 
    private void setFPSControllerAndCamera(CustomRigidbodyFPSController FPSController)
     {
-        Debug.Log("Hit");
         this.fpsController = FPSController;
         playerCam = fpsController.GetComponentInChildren<Camera>();
 

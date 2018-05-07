@@ -23,6 +23,5 @@ public class RoombaVORandomizer : MonoBehaviour {
     {
         RandomizeAudioSource();
         audioSource.Play();
-        Debug.Log("Play Audio");
     }
 }

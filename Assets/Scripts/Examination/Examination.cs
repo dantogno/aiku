@@ -120,8 +120,11 @@ public class Examination : MonoBehaviour, IInteractable
         Brackets = GameObject.FindGameObjectWithTag("BracketArea");
         InteractionUI = GameObject.FindGameObjectWithTag("InteractionUI");
 
-        scrollImage = InteractionUI.GetComponentInChildren<Image>();
-        scrollImage.enabled = false;
+        if (InteractionUI != null)
+        {
+            scrollImage = InteractionUI.GetComponentInChildren<Image>();
+            scrollImage.enabled = false;
+        }
     }
 
     public void Interact(GameObject agentInteracting)

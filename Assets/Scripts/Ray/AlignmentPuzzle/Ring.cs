@@ -43,6 +43,7 @@ public class Ring : MonoBehaviour
         if(meshRenderer != null)
         {
             nonEmissiveMaterial = meshRenderer.material;
+
         }
         // Set the current rotation to its initial value
         currentRotation = this.transform.localRotation.y;
