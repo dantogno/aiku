@@ -40,7 +40,10 @@ public class TransitionCanvas : MonoBehaviour
 
     private void EnableThis()
     {
-        this.gameObject.SetActive(true);
+        if(SceneTransition.CurrentScene == "Hub")
+        {
+            this.gameObject.SetActive(true);
+        }
     }
 
     private void DisableThis()
