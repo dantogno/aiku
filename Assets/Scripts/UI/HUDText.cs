@@ -93,10 +93,10 @@ public class HUDText : MonoBehaviour
     /// </summary>
     private void SetFinishedLevelText(HubSceneChanger.CrewmemberName crewmember)
     {
-        computerText.text = "";
-
         if (!enteredFirstLevel)
         {
+            computerText.text = "";
+
             foreach (string s in postLevelObjectiveLines[0].lines)
             {
                 computerText.text += s + "\n";
