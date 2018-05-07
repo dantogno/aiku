@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// This class displays the player's power units onscreen as a HUD element.
-/// It is applied to the Power UI Canvas prefab, which must be a child object of the Player.
+/// It is applied to the Power UI Canvas prefab.
 /// </summary>
 
 public class PowerUI : MonoBehaviour
@@ -19,8 +19,17 @@ public class PowerUI : MonoBehaviour
     [SerializeField, Tooltip("The scene changer scripts present in the scene. The power UI is changed when the player chooses a crewmember to save.")]
     private SceneChanger[] sceneChangers;
 
-    // The HUD displays the player's power.
+    [SerializeField, Tooltip("The HUD displays the player's power.")]
     private PowerableObject connectedPowerable;
+
+    [SerializeField, Tooltip("The li'l lightning bolt image on the player's HUD.")]
+    private RectTransform lightningBolt;
+
+    [SerializeField, Tooltip("What the lightning bolt should look like at the end.")]
+    private Transform endingLightningBoltTarget;
+
+    [SerializeField, Tooltip("How long it should take the lightning bolt to move into position.")]
+    private float lightningBoltLerpTime = 3;
 
     // This float is used to detect changes to the player's power in the Update method.
     private float previousPower;
@@ -38,12 +47,6 @@ public class PowerUI : MonoBehaviour
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= SwitchUIToSparePower;
     }
 
-    private void Start()
-    {
-        // The Power UI Canvas must be a child of the Player.
-        connectedPowerable = GetComponentInParent<PowerableObject>();
-    }
-
     private void Update()
     {
         UpdatePowerUI();
@@ -57,6 +60,8 @@ public class PowerUI : MonoBehaviour
             {
                 powerUnits[i] = emptyUnits[i];
             }
+
+            StartCoroutine(MoveLightningBolt());
         }
     }
 
@@ -142,6 +147,25 @@ public class PowerUI : MonoBehaviour
         foreach (Image image in powerUnits) image.color = Color.white;
 
         #endregion
+    }
+
+
+    private IEnumerator MoveLightningBolt()
+    {
+        Vector3 originalPosition = lightningBolt.position, originalScale = lightningBolt.localScale;
+
+        float elapsedTime = 0;
+        while (elapsedTime < lightningBoltLerpTime)
+        {
+            lightningBolt.position = Vector3.Lerp(originalPosition, endingLightningBoltTarget.position, elapsedTime / lightningBoltLerpTime);
+            lightningBolt.localScale = Vector3.Lerp(originalScale, endingLightningBoltTarget.localScale, elapsedTime / lightningBoltLerpTime);
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        lightningBolt.position = endingLightningBoltTarget.position;
+        lightningBolt.localScale = endingLightningBoltTarget.localScale;
     }
 
     /// <summary>

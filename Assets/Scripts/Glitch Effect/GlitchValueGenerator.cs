@@ -127,7 +127,7 @@ public class GlitchValueGenerator : MonoBehaviour {
 
         if(i > 0)
         {
-            ValueAboveZero(i);
+            if(ValueAboveZero != null) ValueAboveZero.Invoke(i);
         }
     }
 
