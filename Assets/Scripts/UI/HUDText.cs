@@ -109,7 +109,8 @@ public class HUDText : MonoBehaviour
         {
             foreach (string s in postLevelObjectiveLines[1].lines)
             {
-                computerText.text += s + "\n";
+                if (!computerText.text.Contains(s))
+                    computerText.text += s + "\n";
             }
             computerText.text += "\n";
         }
@@ -118,7 +119,8 @@ public class HUDText : MonoBehaviour
         {
             foreach (string s in postLevelObjectiveLines[2].lines)
             {
-                computerText.text += s + "\n";
+                if (!computerText.text.Contains(s))
+                    computerText.text += s + "\n";
             }
             computerText.text += "\n";
         }
@@ -126,7 +128,8 @@ public class HUDText : MonoBehaviour
         {
             foreach (string s in postLevelObjectiveLines[3].lines)
             {
-                computerText.text += s + "\n";
+                if (!computerText.text.Contains(s))
+                    computerText.text += s + "\n";
             }
             computerText.text += "\n";
         }
