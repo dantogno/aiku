@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class RayVoTrigger : MonoBehaviour
 {
+    private static bool hasPlayedOnce = false;
+
 	private void OnEnable()
 	{
 		RotateRings.RotatedRings += TriggerPickupVO;
@@ -22,8 +24,12 @@ public class RayVoTrigger : MonoBehaviour
 	/// </summary>
 	private void TriggerPickupVO()
 	{
-		if (GetComponent<RingVO>() != null)
-			GetComponent<RingVO>().TriggerVOAudio();
-		this.enabled = false;
+        if (!hasPlayedOnce)
+        {
+            if (GetComponent<RingVO>() != null)
+                GetComponent<RingVO>().TriggerVOAudio();
+
+            hasPlayedOnce = true;
+        }
 	}
 }

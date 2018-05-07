@@ -28,7 +28,7 @@ public class RingVO : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		audioSource = this.GetComponent<AudioSource>();
+		if (audioSource == null) audioSource = this.GetComponent<AudioSource>();
 	}
 
 	/// <summary>
@@ -59,7 +59,7 @@ public class RingVO : MonoBehaviour
 		if (other.gameObject.tag == "Player")
 		{
 			TriggerVOAudio();
-			this.GetComponent<BoxCollider>().enabled = true;
+			this.GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 }
