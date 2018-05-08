@@ -38,13 +38,13 @@ public class PowerUI : MonoBehaviour
     {
         PowerSwitch.FailedToExchangePower += CallFlashCoroutine;
         EngineSequenceManager.OnShutdown += EnablePowerUI;
-        EndingScreen.AllocatedAllShipboardPowerToCryochambers += SwitchUIToSparePower;
+        RaysClosingMessage.FinishedMessage += SwitchUIToSparePower;
     }
     private void OnDisable()
     {
         PowerSwitch.FailedToExchangePower -= CallFlashCoroutine;
         EngineSequenceManager.OnShutdown -= EnablePowerUI;
-        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= SwitchUIToSparePower;
+        RaysClosingMessage.FinishedMessage -= SwitchUIToSparePower;
     }
 
     private void Update()

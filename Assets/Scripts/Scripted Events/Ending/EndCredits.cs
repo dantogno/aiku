@@ -106,7 +106,7 @@ public class EndCredits : MonoBehaviour
 
         endCreditsPanel.color = Color.black;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         StartCoroutine(FadeTitleImage());
 
