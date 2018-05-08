@@ -107,5 +107,7 @@ public class MainElevatorTrigger : MonoBehaviour
     {
         myTrigger.enabled = false;
         elevatorInvisibleBarrierCollider.enabled = true;
+
+        GetComponent<AudioSource>().Stop();
     }
 }
