@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ using UnityEngine;
 /// </summary>
 public class HubRotateRings : RotateRings
 {
+    public static event Action TriedToSpinRings;
+
     [SerializeField]
     [Tooltip("The rings that should be rotated for the dummy interaction.")]
     private Ring[] dummyRings;
@@ -55,6 +58,9 @@ public class HubRotateRings : RotateRings
 
             // Spin the hologram ring (not to be confused with the "dial" ring).
             StartCoroutine(RotateHologramRing());
+
+            // Tell any interested scripts that the player tried to use the puzzle before it was ready.
+            if (TriedToSpinRings != null) TriedToSpinRings.Invoke();
         }
     }
 
