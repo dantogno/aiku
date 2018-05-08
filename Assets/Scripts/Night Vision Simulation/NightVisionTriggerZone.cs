@@ -19,7 +19,26 @@ public class NightVisionTriggerZone : MonoBehaviour
 
     private enum ZoneType { Trigger, Switch }
 
-    private bool generatorBlewUp = false, nightVisionIsOn = false;
+    private bool generatorBlewUp = false;
+
+    private bool nightVisionIsOn
+    {
+        get
+        {
+            return nightVision.enabled;
+        }
+        set
+        {
+            if (nightVision.enabled == value)
+                return;
+            nightVision.enabled = value;
+            if (value)
+                nightVision.StartScanning();
+            else
+                nightVision.StartScanning();
+        }
+        
+    }
 
     private void Awake()
     {
@@ -94,10 +113,6 @@ public class NightVisionTriggerZone : MonoBehaviour
             // The glitch effect script interferes with the night vision's rendering, so we turn it off.
             glitchEffect.enabled = false;
 
-            nightVision.enabled = true;
-
-            nightVision.StartScanning();
-
             nightVisionIsOn = true;
         }
     }
@@ -109,14 +124,10 @@ public class NightVisionTriggerZone : MonoBehaviour
     {
         if (nightVision != null && glitchEffect != null)
         {
-            nightVision.StopScanning();
-
-            // We disable the script, because it may interfere with glitchiness.
-            nightVision.enabled = false;
-
             // We are not using night vision anymore, so we 
             glitchEffect.enabled = true;
 
+            // We disable the script, because it may interfere with glitchiness.
             nightVisionIsOn = false;
         }
     }

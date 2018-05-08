@@ -69,6 +69,9 @@ public class NightVision : MonoBehaviour
     [SerializeField, Range(0, 20)] public float speed = 5;
     private float _Speed { get { return speed; } set { speed = value; } }
 
+    // added changes - wait for start of first scan every time it is on.
+    [SerializeField, Range(0, 10)] private float startDelay = 5.0f;
+    
     [SerializeField] private bool isScanning;
     #endregion
 
@@ -81,14 +84,15 @@ public class NightVision : MonoBehaviour
 
     private Shader shader;
     private Camera _camera;
-
-
-    public void OnEnable()
+    private Coroutine scanner;
+    
+    //Changed - Alex: On Enabled logic moved to awake.
+    public void Awake()
     {
         _camera = GetComponent<Camera>();
         _camera.depthTextureMode = DepthTextureMode.Depth;
+        scanner = null;
     }
-
     /// <summary>
     /// 	Finding the objects to interact with
     /// 	Can be changed from C to something else. Not as input
@@ -97,33 +101,31 @@ public class NightVision : MonoBehaviour
     /// </summary>
     /// 
 
+    // new scanning methods
     public void StartScanning()
     {
-        isScanning = true;
+        if (scanner == null)
+            scanner = StartCoroutine(Scan(startDelay));
     }
     public void StopScanning()
     {
-        isScanning = false;
+        if (scanner == null)
+            return;
+        StopCoroutine(scanner);
+        scanner = null;
+        _ScanDistance = 0;
     }
-
-    public void Update()
+    
+    // now a coroutine
+    private IEnumerator Scan(float delay)
     {
-        Scan();
-    }
-
-    private void Scan()
-    {
-        if (isScanning)
+        yield return new WaitForSeconds(startDelay);
+        while (isScanning)
         {
             _ScanDistance += Time.deltaTime * speed;
+            yield return null;
         }
-        else
-        {
-            isScanning = false;
-            _ScanDistance = 0;
-        }
-
-
+        _ScanDistance = 0;
     }
     /// <summary>
     /// Object is displayed through computing frustun corners in order to find where the camera
