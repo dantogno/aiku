@@ -112,7 +112,6 @@ public class HUDText : MonoBehaviour
                 if (!computerText.text.Contains(s))
                     computerText.text += s + "\n";
             }
-            computerText.text += "\n";
         }
 
         else if (crewmember == HubSceneChanger.CrewmemberName.Trevor)
@@ -122,7 +121,6 @@ public class HUDText : MonoBehaviour
                 if (!computerText.text.Contains(s))
                     computerText.text += s + "\n";
             }
-            computerText.text += "\n";
         }
         else if (crewmember == HubSceneChanger.CrewmemberName.Ray)
         {
@@ -131,7 +129,6 @@ public class HUDText : MonoBehaviour
                 if (!computerText.text.Contains(s))
                     computerText.text += s + "\n";
             }
-            computerText.text += "\n";
         }
     }
 

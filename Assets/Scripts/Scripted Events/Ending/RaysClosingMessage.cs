@@ -79,8 +79,9 @@ public class RaysClosingMessage : MonoBehaviour
     private IEnumerator RayTextSequence()
     {
         // Disable interaction until Ray has left the player a puddle of emotions.
-        InteractWithSelectedObject interactionScript = GetComponentInParent<InteractWithSelectedObject>();
-        if (interactionScript != null)
+        InteractWithSelectedObject interactionScript = Camera.main.GetComponent<InteractWithSelectedObject>();
+
+        if (interactionScript != null && scanningCam != null)
         {
             interactionScript.enabled = false;
             scanningCam.SetActive(false);
@@ -112,6 +113,8 @@ public class RaysClosingMessage : MonoBehaviour
         textWriter.DisplayText(endingLines3);
 
         #endregion
+
+        while (rayAudioSource.isPlaying) yield return null;
 
         // Enable interaction, so that the player can kill themself.
         if (interactionScript != null)

@@ -29,7 +29,19 @@ public class EndCredits : MonoBehaviour
     }
 
     [SerializeField, Tooltip("This panel is the backdrop over which the credits will roll.")]
-    private Image endCreditsPanel;
+    private Image endCreditsPanel, titleImage;
+
+    [SerializeField, Tooltip("This allows the title text to fade smoothly - more smoothly than a lerp.")]
+    private AnimationCurve titleImageFadeCurve;
+
+    [SerializeField, Tooltip("How long it takes the title text to fade in.")]
+    private float titleImageFadeInTime = 3;
+
+    [SerializeField, Tooltip("How long the title text is onscreen for.")]
+    private float titleImageWaitTime = 1.5f;
+
+    [SerializeField, Tooltip("How long it takes the title text to fade out.")]
+    private float titleImageFadeOutTime = 1.5f;
 
     [SerializeField, Tooltip("This is the text object which will display the concentration of our team members.")]
     private Text headerText;
@@ -94,10 +106,14 @@ public class EndCredits : MonoBehaviour
 
         endCreditsPanel.color = Color.black;
 
+        yield return new WaitForSeconds(2);
+
+        StartCoroutine(FadeTitleImage());
+
         yield return new WaitForSeconds(3);
 
         // This foreach loop cycles through the credits.
-        foreach(Credit credit in credits)
+        foreach (Credit credit in credits)
         {
             SetCreditText(credit);
 
@@ -161,5 +177,46 @@ public class EndCredits : MonoBehaviour
         {
             nameText.text += (credit.Names[i] + "\n");
         }
+    }
+
+    /// <summary>
+    /// Runs in parallel with credits.
+    /// </summary>
+    private IEnumerator FadeTitleImage()
+    {
+        yield return StartCoroutine(FadeImage(titleImage, titleImageFadeInTime, true));
+
+        yield return new WaitForSeconds(titleImageWaitTime);
+
+        yield return StartCoroutine(FadeImage(titleImage, titleImageFadeInTime, false));
+    }
+
+    /// <summary>
+    /// Fade image in or out.
+    /// </summary>
+    private IEnumerator FadeImage(Image imageToFade, float fadeTime, bool fadeIn)
+    {
+        // Fades look weird if their non-alpha channels do not match their counterpart's color.
+        Color clear = new Color(1, 1, 1, 0);
+
+        // Figure out which colors we want to lerp between, based on whether we are fading the text in or out.
+        Color originalColor = fadeIn ? clear : Color.white,
+            targetColor = fadeIn ? Color.white : clear;
+
+        #region Lerp between the two colors.
+
+        float elapsedTime = 0;
+        while (elapsedTime < fadeTime)
+        {
+            imageToFade.color = Color.Lerp(originalColor, targetColor, titleImageFadeCurve.Evaluate(elapsedTime / fadeTime));
+
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
+
+        #endregion
+
+        // Set the text color to the target color.
+        imageToFade.color = targetColor;
     }
 }
