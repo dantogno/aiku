@@ -21,6 +21,7 @@ public class NightVisionTriggerZone : MonoBehaviour
 
     private bool generatorBlewUp = false;
 
+    // property that handles boolean case and turns on/off night vision only when off/on
     private bool nightVisionIsOn
     {
         get
@@ -31,11 +32,11 @@ public class NightVisionTriggerZone : MonoBehaviour
         {
             if (nightVision.enabled == value)
                 return;
-            nightVision.enabled = value;
             if (value)
                 nightVision.StartScanning();
             else
                 nightVision.StartScanning();
+            nightVision.enabled = value;
         }
         
     }
