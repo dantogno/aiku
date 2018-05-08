@@ -158,7 +158,7 @@ public class EndCredits : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         // After the credits are done, quit the game! Wow, this is a clean script. This is such a nice, clean script. Good job, me.
-        Application.Quit();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScreen");
     }
 
     /// <summary>

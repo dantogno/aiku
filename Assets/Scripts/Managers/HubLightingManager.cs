@@ -44,6 +44,12 @@ public class HubLightingManager : MonoBehaviour
     private void Start()
     {
         DisableWallEmissives();
+
+        //the title screen needs moody lighting
+        if(FindObjectOfType<TitleScreenManager>() != null)
+        {
+            SwitchToEmergencyLighting();
+        }
     }
 
     /// <summary>
