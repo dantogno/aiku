@@ -88,7 +88,8 @@ public class PauseGame : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        Application.Quit();
+        TogglePauseMenu(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScreen");
     }
 
     #endregion
