@@ -54,7 +54,6 @@ public class RayElevatorButtonScript : MonoBehaviour , IInteractable
     {
         //TODO, add click sound;
         timeToStayLit = 0.5f;
-        Debug.Log(this.gameObject.name);
         if (this.gameObject.name == "Elevator Button Up")
         {
             elevatorScript.Interact(this.gameObject);
