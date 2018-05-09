@@ -56,7 +56,7 @@ public class PowerSwitch : PowerExchanger
 
     [Tooltip("Sound that plays when the player tries to access a blocked power switch.")]
     [SerializeField]
-    private AudioClip blockedAudioClip;
+    protected AudioClip blockedAudioClip;
 
     #endregion
     
