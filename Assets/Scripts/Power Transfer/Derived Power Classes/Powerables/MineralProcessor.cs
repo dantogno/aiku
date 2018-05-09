@@ -65,6 +65,6 @@ public class MineralProcessor : PowerableObject
     /// </summary>
     private void DestroyMinerals()
     {
-        Destroy(minerals.gameObject);
+        if (minerals.gameObject.activeInHierarchy) Destroy(minerals.gameObject);
     }
 }
