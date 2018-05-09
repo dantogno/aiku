@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Text which plays at beginning of game.
@@ -20,11 +21,21 @@ public class OpeningText : MonoBehaviour
     [SerializeField, Tooltip("The text writer component that prints text to the screen.")]
     private TextWriter textWriter;
 
+    [SerializeField, Tooltip("The UI element of the text for the opening sequence.")]
+    private Text uiText;
+
+    [SerializeField, Tooltip("The time it takes for a single loop of the ellipses at the end.")]
+    private float ellipsesTime = 2f;
+
     [SerializeField, Tooltip("Lines which are printed to the screen.")]
     private Lines[] startUpLines;
 
     // The player can only press skip once, to prevent button-mashing.
     private bool canSkip = true;
+    // The ellipses animate while this varibale is true.
+    private bool areEllipsesAnimating = false;
+    // Since the player can skip the intro, we run the risk of loading Hub twice.
+    private bool hubLoadStarted = false;
 
     private void Start()
     {
@@ -36,7 +47,11 @@ public class OpeningText : MonoBehaviour
         // Player can skip intro.
         if (Input.GetButtonDown("Interact") && canSkip)
         {
-            StartCoroutine(LoadNextScene());
+            if(!hubLoadStarted)
+            {
+                StartCoroutine(LoadNextScene());
+                hubLoadStarted = true;
+            }
         }
     }
 
@@ -53,7 +68,13 @@ public class OpeningText : MonoBehaviour
         textWriter.DisplayText(startUpLines[1].lines);
         yield return StartCoroutine(ClearTextAfterWait(12));
         textWriter.DisplayText(startUpLines[2].lines);
-        StartCoroutine(LoadNextScene());
+        string originalText = GetFullString(startUpLines[2].lines);
+        StartCoroutine(AnimateEllipses(originalText));
+        if(!hubLoadStarted)
+        {
+            StartCoroutine(LoadNextScene());
+            hubLoadStarted = true;
+        }
     }
 
     /// <summary>
@@ -81,6 +102,63 @@ public class OpeningText : MonoBehaviour
         while (!asyncLoad.isDone)
         {
             yield return null;
+        }
+        areEllipsesAnimating = false;
+    }
+
+    /// <summary>
+    /// Breaks down an array of strings into lines and returns it as a single string.
+    /// </summary>
+    /// <param name="lines"></param>
+    /// <returns></returns>
+    private string GetFullString(string[] lines)
+    {
+        string fullString = string.Empty;
+        for (int i = 0; i < lines.Length; i++)
+        {
+            if (i != lines.Length - 1)
+            {
+                fullString += lines[i] + "\n";
+            }
+            else
+            {
+                fullString += lines[i];
+            }
+        }
+        return fullString;
+    }
+
+    /// <summary>
+    /// Animates three dots at the end of a given UI text.
+    /// </summary>
+    /// <param name="originalText"></param>
+    /// <returns></returns>
+    private IEnumerator AnimateEllipses(string originalText)
+    {
+        areEllipsesAnimating = true;
+        float elapsedTime = 0;
+        int numDots = 0;
+        uiText.text = originalText;
+        while (areEllipsesAnimating)
+        {
+            elapsedTime += Time.deltaTime;
+            // Divided by 4 for each state of the dot string: {Empty, One, Two, Three}
+            if (elapsedTime >= ellipsesTime / 4f)
+            {
+                // We want to animate three dots
+                if (numDots < 3)
+                {
+                    uiText.text += ".";
+                    numDots++;
+                }
+                else
+                {
+                    uiText.text = originalText;
+                    numDots = 0;
+                }
+                elapsedTime = 0;
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
 }
