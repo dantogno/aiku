@@ -10,7 +10,7 @@ using UnityEngine;
 public class MineralBoxPickup : PickUp
 {
     [SerializeField, Tooltip("The canvas over the mineral processor.")]
-    private GameObject greenArrowCanvas;
+    private GameObject greenArrowCanvas, myArrow;
 
     [SerializeField, Tooltip("The collider attached to the mineral processor game object.")]
     private Collider mineralProcessor;
@@ -21,6 +21,8 @@ public class MineralBoxPickup : PickUp
 
         // Set the green arrow active when the player picks up the minerals.
         greenArrowCanvas.SetActive(true);
+
+        myArrow.SetActive(false);
     }
 
     /// <summary>
