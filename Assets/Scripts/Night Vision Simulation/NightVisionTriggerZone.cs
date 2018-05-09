@@ -35,7 +35,7 @@ public class NightVisionTriggerZone : MonoBehaviour
             if (value)
                 nightVision.StartScanning();
             else
-                nightVision.StartScanning();
+                nightVision.StopScanning();
             nightVision.enabled = value;
         }
         

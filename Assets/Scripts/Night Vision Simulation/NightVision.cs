@@ -53,10 +53,6 @@ public class NightVision : MonoBehaviour
     [SerializeField] public Transform _playerPos;
     private Transform playerPos { get { return _playerPos; } set { _playerPos = value; } }
 
-    //How far you want the scan to go
-    [SerializeField, Range(0, 50)] public float scanDistance = 10;
-    private float _ScanDistance { get { return scanDistance; } set { scanDistance = value; } }
-
     //Width of the scan (thickness)
     [SerializeField, Range(0, 20)] public float ScanWidth = 5;
     private float _ScanWidth { get { return ScanWidth; } set { ScanWidth = value; } }
@@ -85,12 +81,14 @@ public class NightVision : MonoBehaviour
     private Shader shader;
     private Camera _camera;
     private Coroutine scanner;
-    
+    private float _scanDistance;
+
     //Changed - Alex: On Enabled logic moved to awake.
     public void Awake()
     {
         _camera = GetComponent<Camera>();
         _camera.depthTextureMode = DepthTextureMode.Depth;
+        _scanDistance = 0.0f;
         scanner = null;
     }
     /// <summary>
@@ -113,7 +111,7 @@ public class NightVision : MonoBehaviour
             return;
         StopCoroutine(scanner);
         scanner = null;
-        _ScanDistance = 0;
+        _scanDistance = 0;
     }
     
     // now a coroutine
@@ -122,10 +120,10 @@ public class NightVision : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
         while (isScanning)
         {
-            _ScanDistance += Time.deltaTime * speed;
+            _scanDistance += Time.deltaTime * speed;
             yield return null;
         }
-        _ScanDistance = 0;
+        _scanDistance = 0;
     }
     /// <summary>
     /// Object is displayed through computing frustun corners in order to find where the camera
@@ -166,13 +164,13 @@ public class NightVision : MonoBehaviour
 
 
         _material.SetVector("_WorldSpaceScannerPos", playerPos.position);
-        if (_ScanDistance < _ScanningDistanceMax)
+        if (_scanDistance < _ScanningDistanceMax)
         {
-            _material.SetFloat("_ScanDistance", _ScanDistance);
+            _material.SetFloat("_ScanDistance", _scanDistance);
         }
         else
         {
-            _ScanDistance = 0;
+            _scanDistance = 0;
         }
         _material.SetFloat("_ScanWidth", _ScanWidth);
         RaycastGraphBlits.RaycastCornerBlit(source, destination, _material);
