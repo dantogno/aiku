@@ -14885,7 +14885,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 26dc516ef4d2eb343b54d3e6eb26438f, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -40866,9 +40866,9 @@ MonoBehaviour:
   _ScannerOrigin: {fileID: 1720201046}
   _playerPos: {fileID: 1720201046}
   _material: {fileID: 2100000, guid: 61b5951411bfc7c4191951fc7fcf3851, type: 2}
-  scanDistance: 5.8
   ScanWidth: 6.7
   scanningDistanceMax: 17.5
+  startDelay: 5
   speed: 2.3
   isScanning: 1
 --- !u!114 &1401109403
@@ -60654,7 +60654,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh111986
+  m_Name: pb_Mesh6154872
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -67595,10 +67595,10 @@ RectTransform:
   m_Father: {fileID: 1193897539}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 521.4, y: 400}
-  m_SizeDelta: {x: 657.2, y: 200}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 200, y: -100}
+  m_SizeDelta: {x: 350, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086281326
 MonoBehaviour:
@@ -67631,22 +67631,24 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 42
+    m_Font: {fileID: 12800000, guid: 26dc516ef4d2eb343b54d3e6eb26438f, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 42
-    m_Alignment: 5
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[Right click to use the scope]
+  m_Text: 'RIGHT CLICK TO USE THE SCOPE.
 
 
-    [Left click to interact with highlighted objects in the scope]'
+    LEFT CLICK TO INTERACT WITH
+
+    HIGHLIGHTED OBJECTS IN THE SCOPE.'
 --- !u!222 &2086281328
 CanvasRenderer:
   m_ObjectHideFlags: 0
