@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0021744387, g: 0.0047774343, b: 0.0066589573, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -14885,7 +14885,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 26dc516ef4d2eb343b54d3e6eb26438f, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -28960,6 +28960,22 @@ Prefab:
       propertyPath: grabSpeed
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 114581848584954172, guid: f8c4d6d5cd2e642869cd83743ae80145,
+        type: 2}
+      propertyPath: Subtitle
+      value: "Norma: The Geological Manipulation Device utilizes a small portable
+        tractor beam to move objects up to thirty kilograms.\n     ~\nNorma: The scope
+        can be calibrated for any element or compound which is-~\nNorma: we can skip
+        all this, you probably already read that stuff. Give me a minute.~\nOkay.
+        Safety. Hold on...\n    ~\nTrevor: With respect, I read- ~\nNorma: Hold on.
+        The precautions are different for different elements.~\nNorma: This thing
+        cost a lot of money, and I want to make sure we-~\nTrevor: Norma, I read the
+        manual. I know how to use the GMD.~\nNorma: I know you're anxious, Trevor.
+        But I had to jump through a lot of hoops to get you this tool. Just give me
+        a second here.~\nNorma: Let's just go through the safety checks. One ***********,
+        never *******************.      ~\nNorma: T***or?\n  ~\nTrevor, can you hear
+        me?\n     ~\nNorma: Someth************** cockpit.\n  ~"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8c4d6d5cd2e642869cd83743ae80145, type: 2}
   m_IsPrefabParent: 0
@@ -40850,9 +40866,9 @@ MonoBehaviour:
   _ScannerOrigin: {fileID: 1720201046}
   _playerPos: {fileID: 1720201046}
   _material: {fileID: 2100000, guid: 61b5951411bfc7c4191951fc7fcf3851, type: 2}
-  scanDistance: 5.8
   ScanWidth: 6.7
   scanningDistanceMax: 17.5
+  startDelay: 5
   speed: 2.3
   isScanning: 1
 --- !u!114 &1401109403
@@ -60638,7 +60654,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh148736
+  m_Name: pb_Mesh6154872
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -67579,10 +67595,10 @@ RectTransform:
   m_Father: {fileID: 1193897539}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 521.4, y: 400}
-  m_SizeDelta: {x: 657.2, y: 200}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 200, y: -100}
+  m_SizeDelta: {x: 350, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086281326
 MonoBehaviour:
@@ -67615,22 +67631,24 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 42
+    m_Font: {fileID: 12800000, guid: 26dc516ef4d2eb343b54d3e6eb26438f, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 42
-    m_Alignment: 5
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[Right click to use the scope]
+  m_Text: 'RIGHT CLICK TO USE THE SCOPE.
 
 
-    [Left click to interact with highlighted objects in the scope]'
+    LEFT CLICK TO INTERACT WITH
+
+    HIGHLIGHTED OBJECTS IN THE SCOPE.'
 --- !u!222 &2086281328
 CanvasRenderer:
   m_ObjectHideFlags: 0
