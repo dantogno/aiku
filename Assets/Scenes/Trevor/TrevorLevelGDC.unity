@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0021744387, g: 0.0047774343, b: 0.0066589573, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -28959,6 +28959,22 @@ Prefab:
         type: 2}
       propertyPath: grabSpeed
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114581848584954172, guid: f8c4d6d5cd2e642869cd83743ae80145,
+        type: 2}
+      propertyPath: Subtitle
+      value: "Norma: The Geological Manipulation Device utilizes a small portable
+        tractor beam to move objects up to thirty kilograms.\n     ~\nNorma: The scope
+        can be calibrated for any element or compound which is-~\nNorma: we can skip
+        all this, you probably already read that stuff. Give me a minute.~\nOkay.
+        Safety. Hold on...\n     ~\nTrevor: With respect, I read-~\nNorma: Hold on.
+        The precautions are different for different elements.~\nNorma: This thing
+        cost a lot of money, and I want to make sure we-~\nTrevor: Norma, I read the
+        manual. I know how to use the GMD.~\nNorma: I know you're anxious, Trevor.
+        But I had to jump through a lot of hoops to get you this tool. Just give me
+        a second here.\n     ~\nNorma: Let's just go through the safety checks. One
+        ***********, never *******************.~\nNorma: T***or?~Trevor, can you hear
+        me?\n     ~\nNorma: Someth************** cockpit.\n  ~"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8c4d6d5cd2e642869cd83743ae80145, type: 2}
@@ -60638,7 +60654,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh148736
+  m_Name: pb_Mesh3434372
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
