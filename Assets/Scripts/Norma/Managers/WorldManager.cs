@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour {
 
@@ -68,6 +69,22 @@ public class WorldManager : MonoBehaviour {
 
     private LockInteract lockScript;
     private GameObject brackets;
+
+    [Header("Subtitles Dependencies")]
+
+    [SerializeField]
+    [Tooltip("Drag the subtitle Manager here")]
+    private GameObject subtitleManager;
+
+
+    [SerializeField]
+    [Tooltip("Drag the subtitle text here")]
+    private Text SubtitleText;
+
+    [SerializeField]
+    [Tooltip("Drag the subtitle track 2 collider here")]
+    private GameObject subtitleTrackTwo;
+
 
     private void Awake()
     {
@@ -149,7 +166,9 @@ public class WorldManager : MonoBehaviour {
 		teleportingDoor.SetActive (true);
 		rampCollider.SetActive (true);
 		FlyingDoor.enabled = true;
-
+        subtitleManager.GetComponent<SubtitleManager>().TextSpeed = .5f;
+        SubtitleText.enabled = true;
+        subtitleTrackTwo.SetActive(true);
         if (StartedCutscene != null) StartedCutscene.Invoke();
     }
 
