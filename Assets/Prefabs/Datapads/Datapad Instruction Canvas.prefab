@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 223416005209197392}
   - component: {fileID: 114083709284385430}
   - component: {fileID: 114210283058148630}
-  - component: {fileID: 114891931273635036}
+  - component: {fileID: 114133351567494790}
   m_Layer: 5
   m_Name: Datapad Instruction Canvas
   m_TagString: Untagged
@@ -69,6 +69,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114133351567494790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844387418167894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb49f6abfe3de7d41903d6d257d7365a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114210283058148630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,17 +143,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &114891931273635036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844387418167894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52cd2eabd7ee6a47aebf56d36d5780d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222874108994857012
 CanvasRenderer:
   m_ObjectHideFlags: 1
