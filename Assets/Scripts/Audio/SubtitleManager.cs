@@ -108,6 +108,7 @@ public class SubtitleManager : MonoBehaviour
     {
         // Event subscription
         VOAudio.VOAudioTriggered += OnVOAudioTriggered;
+        RingVO.VOAudioTriggered += OnVOAudioTriggered;
     }
 
     /// <summary>
@@ -117,5 +118,6 @@ public class SubtitleManager : MonoBehaviour
     {
         // Have to unsubscribe too!
         VOAudio.VOAudioTriggered -= OnVOAudioTriggered;
+        RingVO.VOAudioTriggered -= OnVOAudioTriggered;
     }
 }
