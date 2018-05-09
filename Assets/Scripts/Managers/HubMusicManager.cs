@@ -76,7 +76,8 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void PlayAmbience()
     {
-        StartCoroutine(FadeInAmbience());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(FadeInAmbience());
     }
 
     /// <summary>
