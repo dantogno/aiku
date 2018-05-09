@@ -60,15 +60,6 @@ public class ClawConsole : MonoBehaviour, IInteractable
         }   
 	}
 
-    // used to get information about our player. We get the camera and the players FPS script here.
-    public void OnTriggerEnter(Collider collision)
-    {
-        if (collision.GetComponent<CustomRigidbodyFPSController>() != null && fpsController == null)
-        {
-            setFPSControllerAndCamera(collision.GetComponent<CustomRigidbodyFPSController>());
-        }
-    }
-
     void HandleCraneExitSequence()
     {
         //if the player hits the Cancel Crane button 
@@ -218,6 +209,10 @@ public class ClawConsole : MonoBehaviour, IInteractable
         //if the clawConsole is off
         if (!isActive) 
         {
+            if (this.fpsController == null)
+            {
+                setFPSControllerAndCamera(agent.GetComponent<CustomRigidbodyFPSController>());
+            }
 
             //move the flyCam to the player cam
             flyCam.transform.position = playerCam.transform.position;
