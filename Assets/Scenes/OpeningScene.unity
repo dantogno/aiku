@@ -417,6 +417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textWriter: {fileID: 1495386008}
+  uiText: {fileID: 540211888}
+  ellipsesTime: 2
   startUpLines:
   - lines:
     - 'Custom Firmware IO ##2000185006118.11'
@@ -440,7 +442,7 @@ MonoBehaviour:
     - Configuring CMFH modules
     - Calculating Aiku power dist unit levels
     - 
-    - Running boot diagnostics...
+    - Running boot diagnostics
 --- !u!114 &1495386010
 MonoBehaviour:
   m_ObjectHideFlags: 0

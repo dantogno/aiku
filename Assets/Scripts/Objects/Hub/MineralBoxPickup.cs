@@ -23,6 +23,14 @@ public class MineralBoxPickup : PickUp
         greenArrowCanvas.SetActive(true);
     }
 
+    /// <summary>
+    /// HACK: Player cannot drop mineral box, because otherwise they cannot pick it back up.
+    /// </summary>
+    protected override void DropThis()
+    {
+        // Cannot drop.
+    }
+
     protected void OnTriggerEnter(Collider other)
     {
         // Set the green arrow inactive if the minerals are dropped in the mineral processor and destroy minerals.

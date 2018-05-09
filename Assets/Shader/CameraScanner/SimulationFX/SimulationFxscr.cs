@@ -60,12 +60,13 @@ public class SimulationFxscr : MonoBehaviour
     private Coroutine scanner;
 
     //Changed - Alex: On Enabled logic moved to awake.
-    public void Awake()
+    public void OnEnable()
     {
-        _camera = GetComponent<Camera>();
-        _camera.depthTextureMode = DepthTextureMode.Depth;
-        _scanDistance = 0.0f;
-        scanner = null;
+        StartScanning();
+    }
+    public void OnDisable()
+    {
+        StopScanning();
     }
     /// <summary>
     /// 	Finding the objects to interact with
@@ -127,7 +128,7 @@ public class SimulationFxscr : MonoBehaviour
 		//Scan Distance Max will be how far we want the scan to go.
 		if (_scanDistance < _ScanningDistanceMax)
 		{
-			_material.SetFloat("_scanDistance", _scanDistance);
+			_material.SetFloat("_ScanDistance", _scanDistance);
 		}
 		else
 		{
