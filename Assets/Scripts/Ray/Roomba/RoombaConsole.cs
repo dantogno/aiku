@@ -51,6 +51,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     private InteractWithSelectedObject playerInteractionBehavior;
     private InteractWithSelectedObject roombaInteractionBehavior;
 
+    private DetectInteractableObject playerDetectInteractionBehavior;
+    private DetectInteractableObject roombaDetectInteractionBehavior;
+
     private Canvas playerCanvas;
     private Canvas roombaCanvas;
 
@@ -81,6 +84,9 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
         playerInteractionBehavior = player.GetComponentInChildren<InteractWithSelectedObject>();
         roombaInteractionBehavior = roomba.GetComponentInChildren<InteractWithSelectedObject>();
+
+        playerDetectInteractionBehavior = player.GetComponentInChildren<DetectInteractableObject>();
+        roombaDetectInteractionBehavior = roomba.GetComponentInChildren<DetectInteractableObject>();
 
         playerCanvas = player.GetComponentInChildren<Canvas>();
         roombaCanvas = roomba.GetComponentInChildren<Canvas>();
@@ -150,6 +156,11 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     {
         roombaIsActive = true;
 
+        // Needs to happen before the cameras are enabled/disabled
+        roombaDetectInteractionBehavior.enabled = true;
+        playerDetectInteractionBehavior.enabled = false;
+        playerDetectInteractionBehavior.ResetCurrentObject();
+
         roombaCam.enabled = true;
         playerCam.enabled = false;
 
@@ -174,6 +185,11 @@ public class RoombaConsole : MonoBehaviour, IInteractable
     {
         roombaIsActive = false;
 
+        // Needs to happen before the cameras are enabled/disabled
+        roombaDetectInteractionBehavior.enabled = false;
+        playerDetectInteractionBehavior.enabled = true;
+        roombaDetectInteractionBehavior.ResetCurrentObject();
+
         roombaCam.enabled = false;
         playerCam.enabled = true;
 
@@ -188,7 +204,6 @@ public class RoombaConsole : MonoBehaviour, IInteractable
 
         roombaInteractionBehavior.enabled = false;
         playerInteractionBehavior.enabled = true;
-
     }
 
     /// <summary>

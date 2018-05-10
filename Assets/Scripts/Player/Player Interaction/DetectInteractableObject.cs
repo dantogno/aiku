@@ -210,4 +210,14 @@ public class DetectInteractableObject : MonoBehaviour
     }
 #endif
 #endregion Gizmo
+
+    /// <summary>
+    /// Resets the object that was previously detected for interaction to null.
+    /// This is useful because an object stays "detected" even if this script is
+    /// disabled on the controller.
+    /// </summary>
+    public void ResetCurrentObject()
+    {
+        ObjectToInteractWith = null;
+    }
 }
