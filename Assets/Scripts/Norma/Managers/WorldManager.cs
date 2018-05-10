@@ -62,12 +62,24 @@ public class WorldManager : MonoBehaviour {
     [Tooltip("Drag the new location of the lock here")]
     private Transform newLockLocation;
 
+    [SerializeField]
+    [Tooltip("Drag the lock arrow here")]
+    private GameObject lockArrow;
+
+
+    private LockInteract lockinteractScript;
+
+    private bool isLockSequenceComplete = false;
+
     private bool hasScenePlayed;
     private RotateWorld rotatedScript;
     private InteractCamSwitch interactedCamera;
     private GlitchyEffect incorrectInputGlitch;
 
     private LockInteract lockScript;
+
+    [SerializeField]
+    [Tooltip("Drag the lock brackets here")]
     private GameObject brackets;
 
     [Header("Subtitles Dependencies")]
@@ -94,9 +106,8 @@ public class WorldManager : MonoBehaviour {
 		crowd.SetActive (false);
 		normaRunningAnimation.SetActive (false);
         normaCrying.SetActive(false);
-        brackets = GameObject.FindGameObjectWithTag("BracketArea");
 		teleportingDoor.SetActive (false);
-
+        lockinteractScript = Lock.GetComponent<LockInteract>();
 
     }
     private void OnEnable()
@@ -169,7 +180,38 @@ public class WorldManager : MonoBehaviour {
         subtitleManager.GetComponent<SubtitleManager>().TextSpeed = .5f;
         SubtitleText.enabled = true;
         subtitleTrackTwo.SetActive(true);
+
+        isLockSequenceComplete = true;
         if (StartedCutscene != null) StartedCutscene.Invoke();
+    }
+
+    /// <summary>
+    /// Checks to see whether the player is in roaming state with the lock, or using the lock
+    /// Disables Brackets and the animatedArrow on check
+    /// </summary>
+    private void Update()
+    {
+        if (lockinteractScript.currentState == PlayerStates.Roaming)
+        {
+            brackets.SetActive(true);
+            lockArrow.SetActive(true);
+
+            //If the second lock is complete. there is no need to point to the lock anymore
+            if(isLockSequenceComplete)
+            {
+                lockArrow.SetActive(false);
+            }
+        }
+
+
+        if (lockinteractScript.currentState == PlayerStates.UsingLock)
+        {
+            brackets.SetActive(false);
+            lockArrow.SetActive(false);
+
+        }
+
+
     }
 
 }
