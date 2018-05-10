@@ -31,17 +31,21 @@ public class Cryochamber : PowerableObject
     [SerializeField, Tooltip("The monitor renderer which will change with power level.")]
     private Renderer monitorRenderer;
 
+    [SerializeField, Tooltip("Who's inside?")]
+    private HubSceneChanger.CrewmemberName occupant;
+
     // The player can only enter levels after the generator explodes and before they have transferred all available power to the cryochambers.
     private bool canEnterLevels = true;
 
     private void OnEnable()
     {
         EngineSequenceManager.OnShutdown += AllowPlayerToEnterLevelsAndShutDown;
-        EndingScreen.AllocatedAllShipboardPowerToCryochambers += PreventPlayerFromEnteringLevels;
+        HubSceneChanger.FinishedLevel += PreventPlayerFromEnteringLevels;
     }
     private void OnDisable()
     {
         EngineSequenceManager.OnShutdown -= AllowPlayerToEnterLevelsAndShutDown;
+        HubSceneChanger.FinishedLevel -= PreventPlayerFromEnteringLevels;
     }
 
     /// <summary>
@@ -57,12 +61,15 @@ public class Cryochamber : PowerableObject
     /// <summary>
     /// After the player has collected all the ship's power, entering levels is no longer allowed.
     /// </summary>
-    private void PreventPlayerFromEnteringLevels()
+    private void PreventPlayerFromEnteringLevels(HubSceneChanger.CrewmemberName crewmemberWhoseLevelPlayerJustFinished)
     {
-        canEnterLevels = false;
+        if (crewmemberWhoseLevelPlayerJustFinished == occupant)
+        {
+            canEnterLevels = false;
 
-        sceneChanger.SetActive(false);
-        ordinaryMonitor.SetActive(true);
+            sceneChanger.SetActive(false);
+            ordinaryMonitor.SetActive(true);
+        }
     }
 
     /// <summary>
@@ -135,5 +142,15 @@ public class Cryochamber : PowerableObject
         poweredLight.SetActive(false);
         emergencyLight.SetActive(true);
         monitorRenderer.material = warningMaterial;
+    }
+
+    /// <summary>
+    /// We want to disable the scene transition monitor right when the player enters a level,
+    /// because we don't want the player to be able to re-enter it in the split-second before it disables after the level is finished.
+    /// </summary>
+    public void DisableSceneTransitionMonitor()
+    {
+        sceneChanger.SetActive(false);
+        ordinaryMonitor.SetActive(true);
     }
 }

@@ -25,8 +25,6 @@ public class HubMusicManager : MonoBehaviour
         originalAmbienceVolume = ambientSource.volume;
         originalNonAmbientVolume = nonAmbientSource.volume;
         originalTitleVolume = titleSource.volume;
-
-        StartCoroutine(FadeInAmbience());
     }
 
     private void OnEnable()
@@ -42,6 +40,12 @@ public class HubMusicManager : MonoBehaviour
         EngineSequenceManager.OnShutdown -= PlayMusic;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= StopMusicOnly;
         EndCredits.CreditsStarted -= PlayEndCreditsMusic;
+    }
+
+    private void Start()
+    {
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(FadeInAmbience());
     }
 
     /// <summary>
@@ -85,7 +89,8 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void PlayMusic()
     {
-        StartCoroutine(FadeAmbienceInAndThenStartMusic());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(FadeAmbienceInAndThenStartMusic());
     }
 
     /// <summary>
@@ -93,7 +98,8 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void PlayEndCreditsMusic()
     {
-        StartCoroutine(FadeAmbienceInAndThenStartMusicAtEndOfGame());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(FadeAmbienceInAndThenStartMusicAtEndOfGame());
     }
 
     /// <summary>
@@ -101,7 +107,8 @@ public class HubMusicManager : MonoBehaviour
     /// </summary>
     private void StopAmbience()
     {
-        StartCoroutine(FadeAmbienceOut());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(FadeAmbienceOut());
     }
 
     /// <summary>
@@ -125,8 +132,11 @@ public class HubMusicManager : MonoBehaviour
         nonAmbientSource.Play();
         titleSource.Play();
 
-        StartCoroutine(WaitForSongToFinishThenSwitchSongs());
-        StartCoroutine(FadeAmbienceOut());
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(WaitForSongToFinishThenSwitchSongs());
+            StartCoroutine(FadeAmbienceOut());
+        }
     }
 
     /// <summary>

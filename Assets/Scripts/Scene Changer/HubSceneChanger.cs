@@ -23,6 +23,9 @@ public class HubSceneChanger : SceneChanger
     [SerializeField, Tooltip("The name of the crewmember, since it's harder to slip up with enums than strings.")]
     private CrewmemberName crewmemberName;
 
+    [SerializeField, Tooltip("The cryochamber associated with this scene changer.")]
+    private Cryochamber cryochamber;
+
     private void OnEnable()
     {
         // When the player finishes a level, find out which one and broadcast appropriate event.
@@ -42,5 +45,12 @@ public class HubSceneChanger : SceneChanger
                 FinishedLevel.Invoke(crewmemberName);
             }
         }
+    }
+
+    public override void Interact(GameObject agentInteracting)
+    {
+        base.Interact(agentInteracting);
+
+        cryochamber.DisableSceneTransitionMonitor();
     }
 }

@@ -32,21 +32,6 @@ public class SubtitleManager : MonoBehaviour
         SubtitleTextComponent.text = "";
     }
 
-    private void Awake()
-    {
-        //This forces SubtitleManager to act as a singleton.
-        //If an instance of SubtitleManager already exists, the new one will destroy itself.
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
     /// <summary>
     /// VOAudioTriggered event handler
     /// </summary>
