@@ -1882,6 +1882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzle: {fileID: 114861078811382976}
   correctRotation: 315
   emissiveMaterial: {fileID: 2100000, guid: 9008595f1b5a7734b8261d7bfbd09671, type: 2}
 --- !u!114 &114766015076780942
@@ -1934,6 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzle: {fileID: 114861078811382976}
   correctRotation: 135
   emissiveMaterial: {fileID: 2100000, guid: 9008595f1b5a7734b8261d7bfbd09671, type: 2}
 --- !u!114 &114861078811382976
@@ -1988,6 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32a4d685047c734a9c392d9935323d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzle: {fileID: 114861078811382976}
   correctRotation: 225
   emissiveMaterial: {fileID: 2100000, guid: 9008595f1b5a7734b8261d7bfbd09671, type: 2}
 --- !u!114 &114943011662638182
