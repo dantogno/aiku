@@ -42,13 +42,20 @@ public class SimulationFxscr : MonoBehaviour
 	//Width of the scan (thickness)
 	[SerializeField, Range(0, 50)] public float ScanWidth = 30;
 	private float _ScanWidth { get { return ScanWidth; } set { ScanWidth = value; } }
+    
+    [Tooltip("set forfixed distance scan. set speed to 0 for the effect to work right.")]
+    [SerializeField, Range(0, 50)]
+    private float initialRange = 0;
 
     //How far you want the scan to go
     [SerializeField, Range(0, 50)] public float scanningDistanceMax = 20;
 	private float _ScanningDistanceMax { get { return scanningDistanceMax; } set { scanningDistanceMax = value; } }
 
     // added changes - wait for start of first scan every time it is on.
-    [SerializeField, Range(0, 10)] private float startDelay = 5.0f;
+    [Tooltip("delay in seconds before first scan")]
+    [SerializeField, Range(0, 10)] private float startDelay = 0.0f;
+    [Tooltip("delay in seconds between pulses")]
+    [SerializeField, Range(0, 10)] private float pulseDelay = 0.0f;
 
     //How fast to scan
     [SerializeField, Range(0, 20)] public float speed = 5;
@@ -80,7 +87,10 @@ public class SimulationFxscr : MonoBehaviour
     public void StartScanning()
     {
         if (scanner == null)
+        {
+            _scanDistance = initialRange;
             scanner = StartCoroutine(Scan(startDelay));
+        }
     }
     public void StopScanning()
     {
@@ -95,12 +105,13 @@ public class SimulationFxscr : MonoBehaviour
     private IEnumerator Scan(float delay)
     {
         yield return new WaitForSeconds(startDelay);
-        while (isScanning)
+        while (_scanDistance < _ScanningDistanceMax)
         {
             _scanDistance += Time.deltaTime * speed;
             yield return null;
         }
         _scanDistance = 0;
+        StartCoroutine(Scan(pulseDelay));
     }
 	/// <summary>
 	/// Object is displayed through computing frustun corners in order to find where the camera
@@ -125,16 +136,7 @@ public class SimulationFxscr : MonoBehaviour
 		//Where to start the scan in the world
 		_material.SetVector("_WorldSpaceScannerPos", _ScannerOrigin.position);
 
-		//Scan Distance Max will be how far we want the scan to go.
-		if (_scanDistance < _ScanningDistanceMax)
-		{
-			_material.SetFloat("_ScanDistance", _scanDistance);
-		}
-		else
-		{
-			_scanDistance = 0;
-		}
-	
+        _material.SetFloat("_ScanDistance", _scanDistance);
 
 		_material.SetFloat("_Distance", _scanDistance);
 		_material.SetFloat("_ScanWidth", _ScanWidth);
