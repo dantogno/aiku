@@ -18,6 +18,10 @@ public class ActivateRingObjects : ActivateObjects
     [Tooltip("The animator that opens the hologram door.")]
     private Animator doorAnimator;
 
+    [SerializeField]
+    [Tooltip("The green hovering arrow to deactivate.")]
+    private GameObject arrow;
+
     /// <summary>
     /// Disable the connected light and GameObjects.
     /// </summary>
@@ -56,6 +60,11 @@ public class ActivateRingObjects : ActivateObjects
         }
         // Play the correct animation.
         PlayAnimation();
+
+        if (arrow != null)
+        {
+            arrow.SetActive(false);
+        }
     }
 
     /// <summary>

@@ -26,7 +26,6 @@ public class MineralProcessor : PowerableObject
         if (other == minerals)
         {
             ProcessMinerals();
-            Invoke("DestroyMinerals", .1f);
         }
     }
 
@@ -58,13 +57,5 @@ public class MineralProcessor : PowerableObject
 
         // Get this annoying thing out of my face.
         arrow.SetActive(false);
-    }
-
-    /// <summary>
-    /// The minerals aren't destroying themselves properly, so we do it for them.
-    /// </summary>
-    private void DestroyMinerals()
-    {
-        if (minerals.gameObject.activeInHierarchy) Destroy(minerals.gameObject);
     }
 }
