@@ -16,6 +16,9 @@ public class Ring : MonoBehaviour
     public event Action RingStateChanged;
 
     [SerializeField]
+    private RingPuzzle puzzle;
+
+    [SerializeField]
     [Tooltip("The correct rotation in degrees for this object. So far this only works for the Y axis.")]
     [Range(0, 360)]
     private float correctRotation = 0;
@@ -34,10 +37,22 @@ public class Ring : MonoBehaviour
     /// </summary>
     public bool IsRotationCorrect { get; private set; }
 
-	/// <summary>
+    // When the puzzle has been solved, we don't want the dials to rotate anymore.
+    private bool canRotate = true;
+
+    private void OnEnable()
+    {
+        puzzle.PuzzleUnlocked += DisableRotation;
+    }
+    private void OnDisable()
+    {
+        puzzle.PuzzleUnlocked += DisableRotation;
+    }
+
+    /// <summary>
     /// Initialize needed values and disable the light.
     /// </summary>
-	private void Start ()
+    private void Start ()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         if(meshRenderer != null)
@@ -56,19 +71,22 @@ public class Ring : MonoBehaviour
     /// <param name="amountToRotate">The amount in degrees</param>
     public void Rotate(Vector3 amountToRotate)
     {
-        // This script currently only cares about the y rotation of the object.
-        currentRotation += amountToRotate.x;
-        // If the object has gone full circle or beyond, make sure to reset it.
-        if(currentRotation > 360)
+        if(canRotate)
         {
-            currentRotation -= 360;
-        }
-        this.transform.Rotate(amountToRotate);
+            // This script currently only cares about the y rotation of the object.
+            currentRotation += amountToRotate.x;
+            // If the object has gone full circle or beyond, make sure to reset it.
+            if (currentRotation > 360)
+            {
+                currentRotation -= 360;
+            }
+            this.transform.Rotate(amountToRotate);
 
-        // Check the state of the current rotation to see if the ring is in the correct position.
-        CheckCurrentRotation();
-        // Notify subscribers that the ring was rotated.
-        RingStateChanged.Invoke();
+            // Check the state of the current rotation to see if the ring is in the correct position.
+            CheckCurrentRotation();
+            // Notify subscribers that the ring was rotated.
+            RingStateChanged.Invoke();
+        }
     }
 
     /// <summary>
@@ -96,5 +114,13 @@ public class Ring : MonoBehaviour
                 meshRenderer.material = nonEmissiveMaterial;
             }
         }
+    }
+
+    /// <summary>
+    /// Disables rotation of the dial/ring.
+    /// </summary>
+    private void DisableRotation()
+    {
+        canRotate = false;
     }
 }

@@ -29,7 +29,6 @@ public class RingPuzzleButton : MonoBehaviour, IInteractable
     private void OnEnable()
     {
         puzzle.PuzzleUnlocked += EnableInteraction;
-        puzzle.PuzzleLocked += DisableInteraction;
     }
     /// <summary>
     /// Unsubscribe from the events when disabled.
@@ -37,7 +36,6 @@ public class RingPuzzleButton : MonoBehaviour, IInteractable
     private void OnDisable()
     {
         puzzle.PuzzleUnlocked -= EnableInteraction;
-        puzzle.PuzzleLocked -= DisableInteraction;
     }
 
     private void Start()
@@ -76,18 +74,6 @@ public class RingPuzzleButton : MonoBehaviour, IInteractable
         if(thisCollider != null)
         {
             thisCollider.enabled = true;
-        }
-    }
-
-    /// <summary>
-    /// Disables interaction with this button.
-    /// </summary>
-    private void DisableInteraction()
-    {
-        canInteract = false;
-        if (thisCollider != null)
-        {
-            thisCollider.enabled = false;
         }
     }
 }
