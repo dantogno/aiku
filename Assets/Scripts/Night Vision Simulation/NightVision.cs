@@ -57,10 +57,6 @@ public class NightVision : MonoBehaviour
     [SerializeField, Range(0, 20)] public float ScanWidth = 5;
     private float _ScanWidth { get { return ScanWidth; } set { ScanWidth = value; } }
 
-    [Tooltip("set forfixed distance scan. set speed to 0 for the effect to work right.")]
-    [SerializeField, Range(0, 50)]
-    private float initialRange = 0;
-
     //Width of the scan (thickness)
     [SerializeField, Range(0, 50)] public float scanningDistanceMax = 20;
     private float _ScanningDistanceMax { get { return scanningDistanceMax; } set { scanningDistanceMax = value; } }
@@ -69,10 +65,8 @@ public class NightVision : MonoBehaviour
     [SerializeField, Range(0, 20)] public float speed = 5;
     private float _Speed { get { return speed; } set { speed = value; } }
 
-    [Tooltip("delay in seconds before first scan")]
+    // added changes - wait for start of first scan every time it is on.
     [SerializeField, Range(0, 10)] private float startDelay = 5.0f;
-    [Tooltip("delay in seconds between pulses")]
-    [SerializeField, Range(0, 10)] private float pulseDelay = 1.0f;
 
     [SerializeField] private bool isScanning;
     #endregion
@@ -109,10 +103,7 @@ public class NightVision : MonoBehaviour
     public void StartScanning()
     {
         if (scanner == null)
-        {
-            _scanDistance = initialRange;
             scanner = StartCoroutine(Scan(startDelay));
-        }
     }
     public void StopScanning()
     {
@@ -127,13 +118,12 @@ public class NightVision : MonoBehaviour
     private IEnumerator Scan(float delay)
     {
         yield return new WaitForSeconds(startDelay);
-        while (_scanDistance < _ScanningDistanceMax)
+        while (isScanning)
         {
             _scanDistance += Time.deltaTime * speed;
             yield return null;
         }
         _scanDistance = 0;
-        StartCoroutine(Scan(pulseDelay));
     }
     /// <summary>
     /// Object is displayed through computing frustun corners in order to find where the camera
@@ -172,8 +162,16 @@ public class NightVision : MonoBehaviour
         _material.SetFloat("_MidIntensity", _MidColorIntensity);
         _material.SetFloat("_TrailIntensity", _TrailColorIntensity);
 
-        _material.SetVector("_WorldSpaceScannerPos", _ScannerOrigin.position);
-        _material.SetFloat("_ScanDistance", _scanDistance);
+
+        _material.SetVector("_WorldSpaceScannerPos", playerPos.position);
+        if (_scanDistance < _ScanningDistanceMax)
+        {
+            _material.SetFloat("_ScanDistance", _scanDistance);
+        }
+        else
+        {
+            _scanDistance = 0;
+        }
         _material.SetFloat("_ScanWidth", _ScanWidth);
         RaycastGraphBlits.RaycastCornerBlit(source, destination, _material);
     }
