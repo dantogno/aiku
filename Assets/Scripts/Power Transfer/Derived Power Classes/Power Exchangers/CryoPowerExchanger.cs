@@ -56,6 +56,8 @@ public class CryoPowerExchanger : PowerExchanger
 
         // Play the appropriate sound effect for the power exchange.
         myAudioSource.Play();
+
+        FindObjectOfType<EndingScreen>().CheckScene();
     }
 
     /// <summary>
