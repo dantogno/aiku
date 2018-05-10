@@ -26,14 +26,14 @@ public class Door : PowerableObject
 
     [Tooltip("If this box is checked, the door will not open.")]
     [SerializeField]
-    private bool locked = false;
+    protected bool locked = false;
 
     private Animator myAnimator;
 
     private AudioSource myAudioSource;
 
     private float originalPitch;
-    private bool open = false;
+    protected bool open = false;
 
     protected override void Start()
     {
@@ -57,7 +57,7 @@ public class Door : PowerableObject
         if (!IsFullyPowered && open) CloseDoor();
     }
 
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         //hack for solving scanner issue
         if (other.isTrigger)
@@ -80,7 +80,7 @@ public class Door : PowerableObject
         }
     }
 
-    private void OpenDoor()
+    protected void OpenDoor()
     {
         myAnimator.SetTrigger("Open");
         PlayOpenSound();

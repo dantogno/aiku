@@ -101,7 +101,6 @@ public class HUDText : MonoBehaviour
             {
                 computerText.text += s + "\n";
             }
-            computerText.text += "\n";
             enteredFirstLevel = true;
         }
 

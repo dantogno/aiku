@@ -64,5 +64,10 @@ public class Generator : MonoBehaviour
     private void StopExploding()
     {
         explosion.SetActive(false);
+
+        Animator myAnim = GetComponent<Animator>();
+
+        // This stops the animation from starting up when the scene is reloaded.
+        if (myAnim != null) myAnim.enabled = false;
     }
 }
