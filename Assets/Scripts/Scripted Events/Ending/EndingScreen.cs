@@ -41,7 +41,7 @@ public class EndingScreen : MonoBehaviour
     /// <summary>
     /// Check if the player has collected all power on the ship.
     /// </summary>
-    private void CheckScene()
+    public void CheckScene()
     {
         Cryochamber[] cryochambers = FindObjectsOfType<Cryochamber>();
                 
