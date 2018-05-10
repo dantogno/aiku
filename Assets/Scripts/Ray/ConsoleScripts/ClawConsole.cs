@@ -26,6 +26,7 @@ public class ClawConsole : MonoBehaviour, IInteractable
     private Camera playerCam;
     private CustomRigidbodyFPSController fpsController;
     //private RigidbodyFirstPersonController fpsController;
+    private DetectInteractableObject playerObjectDetection;
 
     //the camera that is used for moving and viewing
     //while operating the crane
@@ -113,7 +114,8 @@ public class ClawConsole : MonoBehaviour, IInteractable
             //switch back to player cam
             SwitchBetweenCameras();
             //give control back to the fpsController
-            fpsController.enabled = true; 
+            fpsController.enabled = true;
+            playerObjectDetection.enabled = true;
         }
 
         yield break;
@@ -230,6 +232,8 @@ public class ClawConsole : MonoBehaviour, IInteractable
 
             //stops the player controller from moving
             fpsController.enabled = false;
+            playerObjectDetection.enabled = false;
+            playerObjectDetection.ResetCurrentObject();
 
             //start the camera movement and rotation coroutine
             StartCoroutine(WaitForCameraToMoveAndRotate()); 
@@ -242,7 +246,7 @@ public class ClawConsole : MonoBehaviour, IInteractable
     {
         this.fpsController = FPSController;
         playerCam = fpsController.GetComponentInChildren<Camera>();
-
+        this.playerObjectDetection = playerCam.GetComponent<DetectInteractableObject>();
     }
     
 }
