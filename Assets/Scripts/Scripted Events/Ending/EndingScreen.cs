@@ -19,22 +19,7 @@ public class EndingScreen : MonoBehaviour
     // Every bit of power on the ship, excluding the player's.
     private static int allPowerOnTheShip = 22;
 
-    // The number of crewmembers the player has transferred power to.
-    private static int crewmembersSaved;
-
-    [SerializeField, Tooltip("The name of the crewmember, to appear in a prompt in the text appearing next to the monitor.")]
-    private string crewmemberName;
-
-    [SerializeField, Tooltip("Amount of time to wait after transferring power to check if all power has been collected.")]
-
-    // Scene changer attached to this GameObject.
-    private HubSceneChanger mySceneChanger;
-
-    private void Awake()
-    {
-        InitializeReferences();
-    }
-
+  
     private void OnEnable()
     {
         Cryochamber.AddedPowerToCryochamber += WaitToCheckScene;
@@ -44,10 +29,6 @@ public class EndingScreen : MonoBehaviour
         Cryochamber.AddedPowerToCryochamber -= WaitToCheckScene;
     }
 
-    private void InitializeReferences()
-    {
-        mySceneChanger = GetComponent<HubSceneChanger>();
-    }
 
     /// <summary>
     /// Wait to check power for a little bit, because the other subscribing events get mixed-up while power is being transferred.
@@ -76,4 +57,14 @@ public class EndingScreen : MonoBehaviour
         if (totalPower >= allPowerOnTheShip && AllocatedAllShipboardPowerToCryochambers != null)
             AllocatedAllShipboardPowerToCryochambers.Invoke();
     }
+
+    // TODO: Remove debug code
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.Backspace))
+    //    {
+    //        if (AllocatedAllShipboardPowerToCryochambers != null)
+    //            AllocatedAllShipboardPowerToCryochambers.Invoke();
+    //    }
+    //}
 }
