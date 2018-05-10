@@ -28,7 +28,6 @@ public class Bot : MonoBehaviour
     private void UnblockPowerSwitchAndEnableAudioSources()
     {
         UnblockChildPowerSwitch();
-        EnableAudioSources();
     }
 
     /// <summary>
@@ -38,14 +37,5 @@ public class Bot : MonoBehaviour
     {
         if (GetComponentInChildren<PowerSwitch>() != null)
             GetComponentInChildren<PowerSwitch>().UnblockPowerSwitch();
-    }
-
-    /// <summary>
-    /// Enable all audio source components in the bot's children.
-    /// </summary>
-    private void EnableAudioSources()
-    {
-        foreach (AudioSource source in GetComponentsInChildren<AudioSource>())
-            source.enabled = true;
     }
 }
