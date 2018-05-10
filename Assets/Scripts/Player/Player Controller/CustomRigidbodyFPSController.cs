@@ -142,7 +142,16 @@ public class CustomRigidbodyFPSController : MonoBehaviour
 
     public Vector3 Velocity
     {
-        get { return m_RigidBody.velocity; }
+        get
+        {
+            // TODO: This fixes the unhandled null
+            // not sure if it fixes it well...
+            // needed to fix to play with debugger on!
+            if (m_RigidBody == null)
+                return Vector3.zero;
+            else
+                return m_RigidBody.velocity;
+        }
     }
 
     public bool Grounded
