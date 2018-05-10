@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0021888323, g: 0.0048074853, b: 0.006656299, a: 1}
+  m_IndirectSpecularColor: {r: 0.0021744387, g: 0.0047774343, b: 0.0066589573, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -40866,10 +40866,12 @@ MonoBehaviour:
   _ScannerOrigin: {fileID: 1720201046}
   _playerPos: {fileID: 1720201046}
   _material: {fileID: 2100000, guid: 61b5951411bfc7c4191951fc7fcf3851, type: 2}
-  ScanWidth: 6.7
-  scanningDistanceMax: 17.5
-  startDelay: 5
-  speed: 2.3
+  ScanWidth: 25
+  initialRange: 25
+  scanningDistanceMax: 50
+  startDelay: 0
+  pulseDelay: 0
+  speed: 0
   isScanning: 1
 --- !u!114 &1401109403
 MonoBehaviour:
@@ -60654,7 +60656,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh1202838
+  m_Name: pb_Mesh8235378
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
