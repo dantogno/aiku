@@ -12,6 +12,12 @@ public class PhoneAnimationScript : MonoBehaviour
     [Tooltip("Add the animator for the hand Gameobject")]
     private GameObject handAnimation;
 
+    //In case the player wants to speed run, prevents them from seeing three hands
+    [SerializeField]
+    [Tooltip("Add the camera based hand animation here")]
+    private GameObject inspectingHandsAnimation;
+
+
     [SerializeField]
     [Tooltip("Add the animator for the phone sequence")]
     private Animator phoneAnimation;
@@ -51,6 +57,7 @@ public class PhoneAnimationScript : MonoBehaviour
         handAnimation.SetActive(true);
         phoneAnimation.speed = 1f;
         isAnimationPlaying = true;
+        inspectingHandsAnimation.SetActive(false);
     }
     /// <summary>
     /// Disables the Phone Sequence. Pauses the animation
