@@ -243,7 +243,7 @@ public class LockInteract : MonoBehaviour, IInteractable
 
             case LockType.HubLock:
 
-                if (passwordInput == "2817" && Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0 && knobPlacement == 0) // After it resets, call it a win
+                if (passwordInput == "2817" && LockisActive == true) // After it resets, call it a win
 
                     FinishWithLock();
                 break;
