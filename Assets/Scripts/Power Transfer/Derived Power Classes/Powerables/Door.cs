@@ -64,7 +64,7 @@ public class Door : PowerableObject
             return;
 
         // If the door is powered, closed, unlocked, and the player is close enough, it can open.
-        bool canOpen = IsFullyPowered && !open && !locked && other.tag == "Player";
+        bool canOpen = IsFullyPowered && !open && !locked && (other.tag == "Player" || other.tag == "MetalObject");
 
         if (canOpen) OpenDoor();
     }
