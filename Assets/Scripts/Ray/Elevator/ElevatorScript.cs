@@ -64,6 +64,9 @@ public class ElevatorScript : MonoBehaviour
 
     [SerializeField] 
     private GameObject secondFloorElevatorCallTrigger;
+
+    [SerializeField, Tooltip("I'm just adding audio functionality here for convenience. No offense to your pretty state-based code.")]
+    private AudioSource elevatorAudio;
     #endregion
 
     #region ElevatorStates
@@ -97,6 +100,7 @@ public class ElevatorScript : MonoBehaviour
 
     public IElevatorStates changeStateToStopped()
     {
+        elevatorAudio.Stop();
         return elevatorStopped;
     }
 
@@ -123,6 +127,7 @@ public class ElevatorScript : MonoBehaviour
             if (agent.tag == "ElevatorButtonUp")
             {
                 setElevatorState(changeStateToFirstFloor());
+            elevatorAudio.Play();
             }
             else if (agent.tag == "ElevatorButtonDown")
             {

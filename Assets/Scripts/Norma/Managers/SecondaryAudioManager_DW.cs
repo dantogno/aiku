@@ -40,6 +40,9 @@ public class SecondaryAudioManager_DW : MonoBehaviour
     [SerializeField, Tooltip("The AudioSource component which plays Norma's bone disease music.")]
     private AudioSource osteophosphateMusic;
 
+    [SerializeField, Tooltip("The AudioSource component which plays the distorted version of the march.")]
+    private AudioSource muddyMarch;
+
 
     [Header("Distorted VO")]
 
@@ -231,6 +234,7 @@ public class SecondaryAudioManager_DW : MonoBehaviour
 
         militaryOfficialSuperDistortedVO.Play();
         militaryOfficialDistortedVO.Play();
+        muddyMarch.Play();
     }
 
     private void OnMilitaryOfficialFoundFirstNumber()
@@ -251,6 +255,7 @@ public class SecondaryAudioManager_DW : MonoBehaviour
         militaryOfficialDistortedVO.Stop();
 
         militaryOfficialMusic.Play();
+        muddyMarch.Stop();
     }
 
     #endregion
