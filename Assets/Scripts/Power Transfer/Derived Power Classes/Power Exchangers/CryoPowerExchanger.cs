@@ -25,12 +25,27 @@ public class CryoPowerExchanger : PowerExchanger
     // Pitch changes a little bit each interaction, for variety.
     private float originalPitch;
 
+    private bool collectedAllPower = false;
+
     protected override void Awake()
     {
         base.Awake();
 
         myAudioSource = GetComponent<AudioSource>();
         originalPitch = myAudioSource.pitch;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers += OnCollectedAllPower;
+    }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        EndingScreen.AllocatedAllShipboardPowerToCryochambers -= OnCollectedAllPower;
     }
 
     /// <summary>
@@ -57,7 +72,7 @@ public class CryoPowerExchanger : PowerExchanger
         // Play the appropriate sound effect for the power exchange.
         myAudioSource.Play();
 
-        FindObjectOfType<EndingScreen>().CheckScene();
+        if (!collectedAllPower) FindObjectOfType<EndingScreen>().CheckScene();
     }
 
     /// <summary>
@@ -126,5 +141,10 @@ public class CryoPowerExchanger : PowerExchanger
 
         // Random pitching for variety.
         myAudioSource.pitch = UnityEngine.Random.Range(originalPitch - .1f, originalPitch + .1f);
+    }
+
+    private void OnCollectedAllPower()
+    {
+        collectedAllPower = true;
     }
 }
