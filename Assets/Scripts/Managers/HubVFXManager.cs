@@ -52,7 +52,8 @@ public class HubVFXManager : MonoBehaviour
     /// </summary>
     private void CallGlitchCoroutine()
     {
-        StartCoroutine(PlayTransitionalGlitchEffect());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(PlayTransitionalGlitchEffect());
     }
 
     /// <summary>

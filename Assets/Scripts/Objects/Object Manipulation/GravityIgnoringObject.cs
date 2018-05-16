@@ -15,11 +15,19 @@ public class GravityIgnoringObject : MonoBehaviour
     // This Objects Rigidbody.
     private Rigidbody thisObjectsRigidbody;
 
+    private void OnEnable()
+    {
+        SceneTransition.SceneChangeFinished += AllowGravityToMoveObject;
+    }
+    private void OnDestroy()
+    {
+        SceneTransition.SceneChangeFinished -= AllowGravityToMoveObject;
+    }
+
     private void Start()
     {
         thisObjectsRigidbody = this.GetComponent<Rigidbody>();
         thisObjectsRigidbody.isKinematic = true;
-        SceneTransition.SceneChangeFinished += AllowGravityToMoveObject;
     }
 
     // Allows gravity and all other forces to move this object. 
