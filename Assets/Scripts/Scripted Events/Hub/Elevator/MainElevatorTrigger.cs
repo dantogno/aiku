@@ -17,21 +17,27 @@ public class MainElevatorTrigger : MonoBehaviour
     [SerializeField, Tooltip("Animator component for the gate at the bottom of the elevator.")]
     private Animator gateAnimator;
 
+    [SerializeField] private MainElevatorButton button;
+
     // The powerable elevator.
     private PowerableObject myPowerable;
 
     private Collider myTrigger;
     private Animator myAnimator;
 
+    private bool hasAscended = false;
+
     private void OnEnable()
     {
         myPowerable.OnPoweredOn += OnElevatorPoweredOn;
         myPowerable.OnPoweredOff += OnElevatorPoweredOff;
+        if (button != null) button.PressedButton += SetHasAscended;
     }
     private void OnDisable()
     {
         myPowerable.OnPoweredOn -= OnElevatorPoweredOn;
         myPowerable.OnPoweredOff -= OnElevatorPoweredOff;
+        if (button != null) button.PressedButton -= SetHasAscended;
     }
 
     private void Awake()
@@ -94,10 +100,13 @@ public class MainElevatorTrigger : MonoBehaviour
     /// </summary>
     private void OnElevatorPoweredOn()
     {
-        myTrigger.enabled = true;
-        elevatorInvisibleBarrierCollider.enabled = false;
-        gateAnimator.SetTrigger("Open");
-        gateAnimator.GetComponent<AudioSource>().Play();
+        if (!hasAscended)
+        {
+            myTrigger.enabled = true;
+            elevatorInvisibleBarrierCollider.enabled = false;
+            gateAnimator.SetTrigger("Open");
+            gateAnimator.GetComponent<AudioSource>().Play();
+        }
     }
 
     /// <summary>
@@ -109,5 +118,10 @@ public class MainElevatorTrigger : MonoBehaviour
         elevatorInvisibleBarrierCollider.enabled = true;
 
         GetComponent<AudioSource>().Stop();
+    }
+
+    private void SetHasAscended()
+    {
+        hasAscended = true;
     }
 }

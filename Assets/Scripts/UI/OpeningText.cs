@@ -30,29 +30,12 @@ public class OpeningText : MonoBehaviour
     [SerializeField, Tooltip("Lines which are printed to the screen.")]
     private Lines[] startUpLines;
 
-    // The player can only press skip once, to prevent button-mashing.
-    private bool canSkip = true;
     // The ellipses animate while this varibale is true.
     private bool areEllipsesAnimating = false;
-    // Since the player can skip the intro, we run the risk of loading Hub twice.
-    private bool hubLoadStarted = false;
 
     private void Start()
     {
         StartCoroutine(StartUpTextSequence());
-    }
-
-    private void Update()
-    {
-        // Player can skip intro.
-        if (Input.GetButtonDown("Interact") && canSkip)
-        {
-            if(!hubLoadStarted)
-            {
-                StartCoroutine(LoadNextScene());
-                hubLoadStarted = true;
-            }
-        }
     }
 
     /// <summary>
@@ -70,11 +53,7 @@ public class OpeningText : MonoBehaviour
         textWriter.DisplayText(startUpLines[2].lines);
         string originalText = GetFullString(startUpLines[2].lines);
         StartCoroutine(AnimateEllipses(originalText));
-        if(!hubLoadStarted)
-        {
-            StartCoroutine(LoadNextScene());
-            hubLoadStarted = true;
-        }
+        StartCoroutine(LoadNextScene());
     }
 
     /// <summary>
@@ -95,8 +74,6 @@ public class OpeningText : MonoBehaviour
     /// <returns></returns>
     private IEnumerator LoadNextScene()
     {
-        canSkip = false;
-
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
         while (!asyncLoad.isDone)
