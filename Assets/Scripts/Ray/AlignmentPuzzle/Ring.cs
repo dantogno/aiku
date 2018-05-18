@@ -42,11 +42,11 @@ public class Ring : MonoBehaviour
 
     private void OnEnable()
     {
-        puzzle.PuzzleUnlocked += DisableRotation;
+        if (puzzle != null) puzzle.PuzzleUnlocked += DisableRotation;
     }
     private void OnDisable()
     {
-        puzzle.PuzzleUnlocked += DisableRotation;
+        if (puzzle != null) puzzle.PuzzleUnlocked -= DisableRotation;
     }
 
     /// <summary>

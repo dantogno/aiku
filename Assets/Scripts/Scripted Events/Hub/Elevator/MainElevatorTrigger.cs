@@ -31,13 +31,13 @@ public class MainElevatorTrigger : MonoBehaviour
     {
         myPowerable.OnPoweredOn += OnElevatorPoweredOn;
         myPowerable.OnPoweredOff += OnElevatorPoweredOff;
-        button.PressedButton += SetHasAscended;
+        if (button != null) button.PressedButton += SetHasAscended;
     }
     private void OnDisable()
     {
         myPowerable.OnPoweredOn -= OnElevatorPoweredOn;
         myPowerable.OnPoweredOff -= OnElevatorPoweredOff;
-        button.PressedButton -= SetHasAscended;
+        if (button != null) button.PressedButton -= SetHasAscended;
     }
 
     private void Awake()

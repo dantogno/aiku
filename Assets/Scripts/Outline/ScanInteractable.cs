@@ -44,10 +44,13 @@ public class ScanInteractable : MonoBehaviour
     {
         foreach (GameObject ps in powerSwitches)
         {
-            if (IsBlocked(ps))
-                EdgeInstance.DisableShader(ps);
-            else
-                EdgeInstance.TurnOnShader(ps);
+            if (ps != null)
+            {
+                if (IsBlocked(ps))
+                    EdgeInstance.DisableShader(ps);
+                else
+                    EdgeInstance.TurnOnShader(ps);
+            }
         }
     }
 

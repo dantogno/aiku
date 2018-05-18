@@ -11,10 +11,20 @@ public class GravityManager : MonoBehaviour
 {
     private Vector3 originalGravity;
 
+    private static GravityManager instance;
+
     private void Awake()
     {
         // This object needs to persist through scenes.
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         // Hold a reference to the original gravity.
         originalGravity = Physics.gravity;
         // Subscribe to the events where scene changes happen.

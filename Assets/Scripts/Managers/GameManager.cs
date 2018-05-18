@@ -7,11 +7,25 @@ using UnityEngine.SceneManagement;
 /// Apply this script to a dedicated GameObject alongside any other managers, so that it is easy to find.
 /// </summary>
 
-[RequireComponent(typeof(DontDestroyOnLoad))]
 public class GameManager : MonoBehaviour
 {
     // This variable tells us whether the developer shortcuts are enabled.
     private bool devToggle = false;
+
+    private static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Update()
     {
@@ -49,6 +63,14 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 SceneManager.LoadScene(4);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                SceneManager.LoadScene(5);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                SceneManager.LoadScene(6);
             }
         }
     }

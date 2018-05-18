@@ -12,8 +12,6 @@ public class TransitionCanvas : MonoBehaviour
 
     private void Awake()
     {
-        // This starts inactive.
-        this.gameObject.SetActive(false);
         // Make sure this object is a singleton
         bool exists = CheckForSingleton();
         if(exists)
@@ -24,6 +22,12 @@ public class TransitionCanvas : MonoBehaviour
         // Subscribe to scene transitions.
         SceneTransition.SceneChangeStarted += EnableThis;
         SceneTransition.SceneChangeFinished += DisableThis;
+    }
+
+    private void Start()
+    {
+        // This starts inactive.
+        this.gameObject.SetActive(false);
     }
 
     /// <summary>

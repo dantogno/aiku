@@ -35,11 +35,13 @@ public class HubMusicManager : MonoBehaviour
         AudioTrigger.PlayerEnteredTrigger += StopAmbience;
         SceneTransition.SceneChangeFinished += PlayAmbience;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         EngineSequenceManager.OnShutdown -= PlayMusic;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= StopMusicOnly;
         EndCredits.CreditsStarted -= PlayEndCreditsMusic;
+        AudioTrigger.PlayerEnteredTrigger -= StopAmbience;
+        SceneTransition.SceneChangeFinished -= PlayAmbience;
     }
 
     private void Start()
