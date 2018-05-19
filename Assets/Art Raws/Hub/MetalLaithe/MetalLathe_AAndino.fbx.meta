@@ -142,7 +142,12 @@ ModelImporter:
     3300000: persp3
     4300000: persp3
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LargeMetalLaithe_AAndino1
+    second: {fileID: 2100000, guid: 412c3d0cbcbe1684fa62d9eca1cbffc6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
