@@ -16,7 +16,7 @@ public class RaysClosingMessage : MonoBehaviour
     private TextWriter textWriter;
 
     [SerializeField, Tooltip("text lines to print to the screen.")]
-    private string[] plumLines, endingLines, endingLines2, endingLines3;
+    private string[] plumLines, endingLines, endingLines2, endingLines3, foundAllPowerLines;
 
     [SerializeField, Tooltip("The voice telling the player what they must do.")]
     private AudioSource plumAudioSource, rayAudioSource;
@@ -31,11 +31,13 @@ public class RaysClosingMessage : MonoBehaviour
     {
         Cryochamber.AddedPowerToCryochamberForFirstTime += DisplayPlumMessage;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers += DisplayRaysMessage;
+        EndingScreen.FoundAllPower += DisplayFoundAllPowerMessage;
     }
     private void OnDisable()
     {
         Cryochamber.AddedPowerToCryochamberForFirstTime -= DisplayPlumMessage;
         EndingScreen.AllocatedAllShipboardPowerToCryochambers -= DisplayRaysMessage;
+        EndingScreen.FoundAllPower -= DisplayFoundAllPowerMessage;
     }
 
     /// <summary>
@@ -62,6 +64,14 @@ public class RaysClosingMessage : MonoBehaviour
     private void DisplayRaysMessage()
     {
         StartCoroutine(RayTextSequence());
+    }
+
+    /// <summary>
+    /// Show this message when the player finds all the power.
+    /// </summary>
+    private void DisplayFoundAllPowerMessage()
+    {
+        textWriter.DisplayText(foundAllPowerLines);
     }
 
     /// <summary>
