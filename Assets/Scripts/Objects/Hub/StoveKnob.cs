@@ -15,7 +15,7 @@ public class StoveKnob : MonoBehaviour, IInteractable
     [SerializeField, Tooltip("The burner associated with this knob.")]
     private Renderer burner;
 
-    [SerializeField, Tooltip("The color we want the burner to glow")]
+    [SerializeField, Tooltip("The color we want the burner to glow"), ColorUsage(false, true, 0, 8, 0.125f, 3)]
     private Color glowColor;
 
     [SerializeField, Tooltip("The time it takes for the burner to get hot or cool down.")]
