@@ -189,7 +189,12 @@ ModelImporter:
     4300024: polySurface326
     4300026: polySurface318
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bathroom_Pipes_Mop_Toilet_AAndino
+    second: {fileID: 2100000, guid: f651ec86f6ae5914a8420ddbbdf31f47, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
