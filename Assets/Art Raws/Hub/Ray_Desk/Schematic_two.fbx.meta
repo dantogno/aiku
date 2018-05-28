@@ -12,7 +12,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Plane:Schematic_two
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane_Schematics_New
+    second: {fileID: 2100000, guid: 3e8ab58b92132c2408cdceed24f6b5ff, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
